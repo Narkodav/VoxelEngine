@@ -1,0 +1,129 @@
+#version 460
+
+const uint workGroupSize = 128;
+layout(local_size_x = workGroupSize) in;
+
+//in voxels
+const uint chunkWidth = 32;	//along X axis
+const uint chunkHeight = 32;	//along Y axis
+const uint chunkDepth = 32;	//along Z axis
+
+const float gridCellSize = 1.0f;
+const float gridCellCenterOffset = 0.5f;
+
+const uint chunkSize = chunkWidth * chunkHeight * chunkDepth;
+const uint chunkLayerSize = chunkWidth * chunkDepth;
+
+const uvec3 chunkMin = { 0, 0, 0 };
+const uvec3 chunkMax = { chunkWidth - 1, chunkHeight - 1, chunkDepth - 1 };
+
+struct Polygon                    // Total: 16 bytes
+{
+    uint positions[3];            // 4-byte aligned, 12 bytes total
+    uint padding;                 // 4-byte aligned, 5 bytes total
+};
+
+struct Coloring                   // Total: 16 bytes  
+{
+    uint uvs[3];                  // 4-byte aligned, 12 bytes
+    uint textureId;               // 4-byte aligned, 4 bytes
+};                                // Struct gets 16-byte alignment (largest member)
+
+struct IndexCacheEntry            // Total: 8 bytes
+{
+    uint start;                   // 4-byte aligned, 4 bytes
+    uint size;                    // 4-byte aligned, 4 bytes
+};
+
+struct Model                      // Total: 8 bytes
+{
+    uint geometryId;              // 4-byte aligned, 4 bytes
+    uint appearenceId;            // 4-byte aligned, 4 bytes
+};
+
+struct RangeStart                 // Total: 8 bytes
+{
+    uint polygon;                 // 4-byte aligned, 4 bytes
+    uint coloring;                // 4-byte aligned, 4 bytes
+};
+
+// Storage buffers - arrays follow std430 rules
+layout(set = 1, binding = 6, std430) readonly buffer GeometryCache {
+    IndexCacheEntry geometries[]; // 8-byte stride per element
+};
+
+layout(set = 1, binding = 7, std430) readonly buffer AppearenceCache {
+    IndexCacheEntry appearences[]; // 8-byte stride per element
+};
+
+layout(set = 1, binding = 8, std430) readonly buffer ModelCache {
+    Model models[];                // 8-byte stride per element
+};
+
+layout(set = 1, binding = 9, std430) readonly buffer StateToModelCache {
+    uint stateToModel[];           // 4-byte stride per element
+};
+
+//input data
+layout(set = 2, binding = 0, std430) readonly buffer ChunkData {
+    uint stateIds[chunkSize];           // 4-byte stride per element
+};
+
+struct DrawCommand                 // Total: 16 bytes
+{
+    uint vertexCount;              // 4-byte aligned, 4 bytes
+    uint instanceCount;            // 4-byte aligned, 4 bytes
+    uint firstVertex;              // 4-byte aligned, 4 bytes
+    uint firstInstance;            // 4-byte aligned, 4 bytes
+};
+
+// Output buffers
+layout(set = 2, binding = 1, std430) writeonly buffer RangeStartBuffer {
+    RangeStart rangeStarts[chunkSize];  // 8-byte stride per element
+};
+
+layout(set = 2, binding = 2, std430) writeonly buffer IndirectCommandBuffer {
+    DrawCommand commands[chunkSize];    // 16-byte stride per element
+};
+
+void main() {    
+    uint blockIndex = gl_WorkGroupID.x * workGroupSize + gl_LocalInvocationID.x;
+    
+    if (blockIndex >= chunkSize) return;
+    
+    uint stateId = stateIds[blockIndex];
+    if (stateId == 0 || stateId >= stateToModel.length()) 
+    {
+        rangeStarts[blockIndex] = RangeStart(0, 0);
+        commands[blockIndex] = DrawCommand(0, 0, 0, 0);
+        return;
+    }
+    
+    uint modelId = stateToModel[stateId];
+    if (modelId >= models.length()) {
+        rangeStarts[blockIndex] = RangeStart(0, 0);
+        commands[blockIndex] = DrawCommand(0, 0, 0, 0);
+        return;
+    }
+    
+    Model model = models[modelId];
+    if (model.geometryId >= geometries.length() || model.appearenceId >= appearences.length()) {
+        rangeStarts[blockIndex] = RangeStart(0, 0);
+        commands[blockIndex] = DrawCommand(0, 0, 0, 0);
+        return;
+    }
+    
+    IndexCacheEntry geometry = geometries[model.geometryId];
+    IndexCacheEntry appearance = appearences[model.appearenceId];
+    
+    // Store range starts for this block
+    rangeStarts[blockIndex] = RangeStart(geometry.start, appearance.start);
+    
+    // Generate indirect draw command with validation
+    uint instanceCount = min(geometry.size, 1000); // Clamp to reasonable limit
+    if (instanceCount == 0) {
+        commands[blockIndex] = DrawCommand(0, 0, 0, 0);
+    } else {
+        commands[blockIndex] = DrawCommand(3, instanceCount, 0, 0);
+    }
+}

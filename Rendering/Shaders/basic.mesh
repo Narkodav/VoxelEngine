@@ -1,0 +1,134 @@
+#version 460
+#extension GL_EXT_mesh_shader : enable
+#extension GL_EXT_nonuniform_qualifier : require
+
+layout(local_size_x = 1) in;
+
+layout(max_vertices = 360, max_primitives = 120) out;
+
+layout(location = 0) out vec2 UV[];
+layout(location = 1) flat out uint textureId[];
+
+layout(set = 0, binding = 0) uniform UniformPerFrame {
+    mat4 view;
+    mat4 proj;
+} perFrameUniforms;
+
+struct Polygon
+{
+    vec4 positions[3];
+};
+
+struct Coloring
+{
+    vec2 uvs[3];
+    uint textureId;
+    uint padding;
+};
+
+struct IndexCacheEntry
+{
+    uint start;
+    uint size;
+};
+
+struct Model
+{
+    uint geometryId;
+    uint appearenceId;
+};
+
+layout(set = 1, binding = 0, std430) readonly buffer PolygonCache {
+    Polygon polygons[];
+};
+
+layout(set = 1, binding = 1, std430) readonly buffer ColoringCache {
+    Coloring colorings[];
+};
+
+layout(set = 1, binding = 2, std430) readonly buffer PolygonIndexCache {
+    uint polygonIndices[];
+};
+
+layout(set = 1, binding = 3, std430) readonly buffer ColoringIndexCache {
+    uint coloringIndices[];
+};
+
+layout(set = 1, binding = 4, std430) readonly buffer GeometryCache {
+    IndexCacheEntry geometries[];
+};
+
+layout(set = 1, binding = 5, std430) readonly buffer AppearenceCache {
+    IndexCacheEntry appearences[];
+};
+
+layout(set = 1, binding = 6, std430) readonly buffer ModelCache {
+    Model models[];
+};
+
+layout(set = 1, binding = 6, std430) readonly buffer StateToModelCache {
+    uint stateToModel[];
+};
+
+layout(set = 2, binding = 0, std430) readonly buffer ChunkData {
+    uint stateIds[4096]; //16 * 16 * 16 chunk
+};
+
+layout(push_constant) uniform PushConstants {
+    vec3 chunkPosition;  // World position of chunk
+} pc;
+
+vec3 getBlockPosition(uint index) {
+    uint z = index / 256;
+    uint y = (index % 256) / 16;
+    uint x = index % 16;
+    return vec3(x, y, z);
+}
+
+void main() {
+    uint blockIndex = gl_WorkGroupID.x;  // Each workgroup handles one block
+    
+    if (blockIndex >= 4096) return;
+    
+    uint stateId = stateIds[blockIndex];
+    if (stateId == 0) return;  // Skip empty states
+    
+    uint modelId = stateToModel[stateId];
+    Model model = models[modelId];
+    IndexCacheEntry geometry = geometries[model.geometryId];
+    IndexCacheEntry appearance = appearences[model.appearenceId];
+    
+    vec3 blockPos = getBlockPosition(blockIndex);
+    vec3 worldPos = pc.chunkPosition + blockPos;
+    
+    uint outputVertexCount = 0;
+    uint outputPrimitiveCount = 0;
+    
+    // Process all polygons for this block
+    for (uint polyIdx = 0; polyIdx < geometry.size; polyIdx++) {
+        uint polygonId = polygonIndices[geometry.start + polyIdx];
+        uint coloringId = coloringIndices[appearance.start + polyIdx];
+        
+        Polygon poly = polygons[polygonId];
+        Coloring coloring = colorings[coloringId];
+        
+        // Direct output - no atomics needed
+        for (uint vertIdx = 0; vertIdx < 3; vertIdx++) {
+            vec4 localPos = poly.positions[vertIdx];
+            vec4 finalPos = vec4(localPos.xyz + worldPos, 1.0);
+            
+            gl_MeshVerticesEXT[outputVertexCount].gl_Position = 
+                perFrameUniforms.proj * perFrameUniforms.view * finalPos;
+            
+            UV[outputVertexCount] = coloring.uvs[vertIdx];
+            textureId[outputVertexCount] = coloring.textureId;
+            outputVertexCount++;
+        }
+        
+        gl_PrimitiveTriangleIndicesEXT[outputPrimitiveCount] = 
+            uvec3(outputPrimitiveCount * 3, outputPrimitiveCount * 3 + 1, outputPrimitiveCount * 3 + 2);
+        outputPrimitiveCount++;
+    }
+    
+    SetMeshOutputsEXT(outputVertexCount, outputPrimitiveCount);
+}

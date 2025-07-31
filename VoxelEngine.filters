@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\Shaders\ShaderCache.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\AssetCache.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\Shape.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\Renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameData\ResourceCache.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameData\Voxel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameData\VoxelAttribute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldManagement\VoxelVolume.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\StorageCache.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vendor\imgui\imgui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vendor\imgui\imgui_draw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vendor\imgui\imgui_impl_glfw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vendor\imgui\imgui_impl_vulkan.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vendor\imgui\imgui_tables.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vendor\imgui\imgui_widgets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\JsonParser\ValueTypes\Array.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\JsonParser\ValueTypes\Bool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\JsonParser\ValueTypes\Null.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\JsonParser\ValueTypes\Number.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\JsonParser\ValueTypes\Object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\JsonParser\ValueTypes\String.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\JsonParser\ValueTypes\Value.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\Shaders\ShaderCache.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\AssetCache.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\Shape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\Renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\ShaderLayoutDefinitions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameData\ResourceCache.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameData\Voxel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameData\VoxelAttribute.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldManagement\VoxelVolume.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\StorageCache.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\imgui\imgui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\imgui\imgui_impl_glfw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\imgui\imgui_impl_vulkan.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Rendering\Shaders\Voxel.vert" />
+    <CustomBuild Include="Vendor\imgui\backends\vulkan\glsl_shader.vert" />
+    <CustomBuild Include="Rendering\Shaders\basic.frag" />
+    <CustomBuild Include="Rendering\Shaders\Voxel.frag" />
+    <CustomBuild Include="Vendor\imgui\backends\vulkan\glsl_shader.frag" />
+    <CustomBuild Include="Rendering\Shaders\Voxel.vert" />
+    <CustomBuild Include="Vendor\imgui\backends\vulkan\glsl_shader.vert" />
+    <CustomBuild Include="Vendor\imgui\vulkan\glsl_shader.vert" />
+    <CustomBuild Include="Rendering\Shaders\basic.frag" />
+    <CustomBuild Include="Rendering\Shaders\Voxel.frag" />
+    <CustomBuild Include="Vendor\imgui\backends\vulkan\glsl_shader.frag" />
+    <CustomBuild Include="Vendor\imgui\vulkan\glsl_shader.frag" />
+    <CustomBuild Include="**/*.vert;**/*.frag" />
+    <CustomBuild Include="**/*.vert;**/*.frag" />
+    <CustomBuild Include="**/*.vert;**/*.frag" />
+    <CustomBuild Include="**/*.vert;**/*.frag" />
+    <CustomBuild Include="**/*.vert;**/*.frag" />
+    <CustomBuild Include="**/*.vert;**/*.frag" />
+    <CustomBuild Include="**/*.vert;**/*.frag" />
+    <CustomBuild Include="Vendor\imgui\backends\vulkan\glsl_shader.vert" />
+    <CustomBuild Include="Vendor\imgui\backends\vulkan\glsl_shader.frag" />
+    <CustomBuild Include="Rendering\Shaders\Voxel.vert" />
+    <CustomBuild Include="Vendor\imgui\backends\vulkan\glsl_shader.vert" />
+    <CustomBuild Include="Rendering\Shaders\basic.frag" />
+    <CustomBuild Include="Rendering\Shaders\Voxel.frag" />
+    <CustomBuild Include="Vendor\imgui\backends\vulkan\glsl_shader.frag" />
+    <CustomBuild Include="**/*.vert;**/*.frag" />
+    <CustomBuild Include="**/*.vert;**/*.frag" />
+    <CustomBuild Include="**/*.vert;**/*.frag" />
+    <CustomBuild Include="**/*.vert;**/*.frag" />
+    <CustomBuild Include="**/*.vert;**/*.frag" />
+    <CustomBuild Include="**/*.vert;**/*.frag" />
+    <CustomBuild Include="**/*.vert;**/*.frag" />
+    <CustomBuild Include="**/*.vert;**/*.frag" />
+    <CustomBuild Include="**/*.vert;**/*.frag" />
+    <CustomBuild Include="**/*.vert;**/*.frag" />
+    <CustomBuild Include="**/*.vert;**/*.frag" />
+    <CustomBuild Include="Rendering\Shaders\Voxel.vert" />
+    <CustomBuild Include="Vendor\imgui\backends\vulkan\glsl_shader.vert" />
+    <CustomBuild Include="Vendor\imgui\vulkan\glsl_shader.vert" />
+    <CustomBuild Include="Rendering\Shaders\basic.frag" />
+    <CustomBuild Include="Rendering\Shaders\Voxel.frag" />
+    <CustomBuild Include="Vendor\imgui\backends\vulkan\glsl_shader.frag" />
+    <CustomBuild Include="Vendor\imgui\vulkan\glsl_shader.frag" />
+    <CustomBuild Include="Rendering\Shaders\basic.mesh" />
+    <CustomBuild Include="**/*.vert;**/*.frag;**/*.mesh" />
+    <CustomBuild Include="**/*.vert;**/*.frag;**/*.mesh" />
+    <CustomBuild Include="**/*.vert;**/*.frag;**/*.mesh" />
+    <CustomBuild Include="**/*.vert;**/*.frag;**/*.mesh" />
+    <CustomBuild Include="**/*.vert;**/*.frag;**/*.mesh" />
+    <CustomBuild Include="**/*.vert;**/*.frag;**/*.mesh" />
+    <CustomBuild Include="**/*.vert;**/*.frag;**/*.mesh" />
+    <CustomBuild Include="**/*.vert;**/*.frag;**/*.mesh" />
+    <CustomBuild Include="**/*.vert;**/*.frag;**/*.mesh" />
+    <CustomBuild Include="**/*.vert;**/*.frag;**/*.mesh" />
+    <CustomBuild Include="**/*.vert;**/*.frag;**/*.mesh" />
+    <CustomBuild Include="**/*.vert;**/*.frag;**/*.mesh" />
+    <CustomBuild Include="Rendering\Shaders\basic.vert" />
+    <CustomBuild Include="Rendering\Shaders\basic.comp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Vendor\imgui\vulkan\glsl_shader.frag" />
+    <None Include="Vendor\imgui\vulkan\glsl_shader.vert" />
+    <None Include="Rendering\Shaders\backups\basic.comp" />
+    <None Include="Rendering\Shaders\backups\basic.frag" />
+    <None Include="Rendering\Shaders\backups\basic.vert" />
+  </ItemGroup>
+</Project>

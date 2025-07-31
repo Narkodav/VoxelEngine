@@ -1,0 +1,6 @@
+{
+  // states field is optional if you want one state you can add it as is, the voxel name would be used for the state name
+  // state names must not overlap between different blocks, they must be globally unique
+  "name": "dirt_block",
+  "model": "dirt_block"
+}
