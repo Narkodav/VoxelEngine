@@ -361,3 +361,18 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Vendor/imgui/examples/example_glfw_opengl2/example_glfw_opengl2.vcxproj
+/Vendor/imgui/examples/example_glfw_opengl3/example_glfw_opengl3.vcxproj
+/Vendor/imgui/examples/example_glfw_vulkan/example_glfw_vulkan.vcxproj
+/Vendor/imgui/examples/example_sdl2_directx11/example_sdl2_directx11.vcxproj
+/Vendor/imgui/examples/example_sdl2_opengl2/example_sdl2_opengl2.vcxproj
+/Vendor/imgui/examples/example_sdl2_opengl3/example_sdl2_opengl3.vcxproj
+/Vendor/imgui/examples/example_sdl2_sdlrenderer2/example_sdl2_sdlrenderer2.vcxproj
+/Vendor/imgui/examples/example_sdl2_vulkan/example_sdl2_vulkan.vcxproj
+/Vendor/imgui/examples/example_sdl3_opengl3/example_sdl3_opengl3.vcxproj
+/Vendor/imgui/examples/example_sdl3_sdlrenderer3/example_sdl3_sdlrenderer3.vcxproj
+/Vendor/imgui/examples/example_win32_directx10/example_win32_directx10.vcxproj
+/Vendor/imgui/examples/example_win32_directx11/example_win32_directx11.vcxproj
+/Vendor/imgui/examples/example_win32_directx12/example_win32_directx12.vcxproj
+/Vendor/imgui/examples/example_win32_directx9/example_win32_directx9.vcxproj
+/Vendor/imgui/examples/example_win32_opengl3/example_win32_opengl3.vcxproj
