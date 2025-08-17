@@ -1,7 +1,9 @@
 #version 460
 
-const uint workGroupSize = 128;
-layout(local_size_x = workGroupSize) in;
+const uint workGroupSizeX = 16;
+const uint workGroupSizeY = 8;
+const uint workGroupSizeZ = 8;
+layout(local_size_x = workGroupSizeX, local_size_y = workGroupSizeY, local_size_z = workGroupSizeZ) in;
 
 //in voxels
 const uint chunkWidth = 32;	//along X axis
@@ -38,92 +40,244 @@ struct IndexCacheEntry            // Total: 8 bytes
 struct Model                      // Total: 8 bytes
 {
     uint geometryId;              // 4-byte aligned, 4 bytes
-    uint appearenceId;            // 4-byte aligned, 4 bytes
+    uint appearanceId;            // 4-byte aligned, 4 bytes
 };
 
-struct RangeStart                 // Total: 8 bytes
+struct Chunk                       // Total: 48 bytes
 {
-    uint polygon;                 // 4-byte aligned, 4 bytes
-    uint coloring;                // 4-byte aligned, 4 bytes
+    ivec4 coord;                   // 16 bytes
+    uint start;                    // 4 bytes
+    uint neighbourStarts[6];       // 24 bytes  
+    uint padding;                  // 4 bytes
+};
+
+struct DrawCommand {
+    uint vertexCount;
+    uint instanceCount;
+    uint firstVertex;
+    uint firstInstance;
+};
+
+layout(set = 0, binding = 0, std430) readonly buffer Vertices {
+    vec4 vertices[];              // 16-byte aligned, 16-byte stride per element
+};
+
+layout(set = 0, binding = 1, std430) readonly buffer Uvs {
+    vec2 uvs[];                   // 8-byte aligned, 8-byte stride per element
+};
+
+layout(set = 0, binding = 2, std430) readonly buffer PolygonCache {
+    Polygon polygons[];           // 16-byte stride per element (12 bytes + 4 padding)
+};
+
+layout(set = 0, binding = 3, std430) readonly buffer ColoringCache {
+    Coloring colorings[];         // 16-byte stride per element
+};
+
+layout(set = 0, binding = 4, std430) readonly buffer PolygonIndexCache {
+    uint polygonIndices[];        // 4-byte stride per element
+};
+
+layout(set = 0, binding = 5, std430) readonly buffer ColoringIndexCache {
+    uint coloringIndices[];       // 4-byte stride per element
 };
 
 // Storage buffers - arrays follow std430 rules
-layout(set = 1, binding = 6, std430) readonly buffer GeometryCache {
+layout(set = 0, binding = 6, std430) readonly buffer GeometryCache {
     IndexCacheEntry geometries[]; // 8-byte stride per element
 };
 
-layout(set = 1, binding = 7, std430) readonly buffer AppearenceCache {
-    IndexCacheEntry appearences[]; // 8-byte stride per element
+layout(set = 0, binding = 7, std430) readonly buffer AppearanceCache {
+    IndexCacheEntry appearances[]; // 8-byte stride per element
 };
 
-layout(set = 1, binding = 8, std430) readonly buffer ModelCache {
+layout(set = 0, binding = 8, std430) readonly buffer ModelCache {
     Model models[];                // 8-byte stride per element
 };
 
-layout(set = 1, binding = 9, std430) readonly buffer StateToModelCache {
+layout(set = 0, binding = 9, std430) readonly buffer StateToModelCache {
     uint stateToModel[];           // 4-byte stride per element
 };
 
 //input data
-layout(set = 2, binding = 0, std430) readonly buffer ChunkData {
-    uint stateIds[chunkSize];           // 4-byte stride per element
+layout(set = 1, binding = 0, std430) readonly buffer Grid {
+    uint stateIds[];           // 4-byte stride per element
 };
 
-struct DrawCommand                 // Total: 16 bytes
+layout(set = 1, binding = 1, std430) readonly buffer Chunks {
+    Chunk chunks[];    // 48-byte stride per element
+};
+
+struct Indices {
+    uint polygon;
+    uint coloring;
+    uint block;
+};
+
+// Staging buffer
+layout(set = 2, binding = 0, std430) writeonly buffer StagingMemory {
+    Indices memory[];  // 8-byte stride per element
+    uint blockSize; //the size of each memory block
+} stagingMemory;
+
+layout(set = 2, binding = 1, std430) buffer GeometrySize {
+    uint GeometrySizes;
+};
+
+layout(set = 2, binding = 2, std430) writeonly buffer DrawCalls { //draw calls for each chunk
+    DrawCommand drawCalls[];
+};
+
+layout(set = 3, binding = 0) uniform Config {
+    float contrast;         // 0.0 = grayscale, 1.0 = normal, >1.0 = increased contrast    
+} config;
+
+layout(set = 3, binding = 1, std430) buffer Usage {
+    uint mutexes[];
+    uint threadCounter;
+} usage;
+
+const uint noError = 0;
+const uint errorChunkIndexOutOfBounds = 1;
+const uint errorBlockIndexOutOfBounds = 2;
+const uint errorStateIdOutOfBounds = 3;
+const uint errorModelIdOutOfBounds = 4;
+const uint errorGeometryIdOutOfBounds = 5;
+const uint errorAppearenceIdOutOfBounds = 6;
+const uint errorGeometrySizeIsZero = 7;
+
+struct Error {
+    uint errorCode;
+    uint localInvocationId;
+    uint globalInvocationId;
+    uint workGroupId;
+};
+
+layout(set = 3, binding = 2, std430) writeonly buffer ErrorDump {
+    uint errorCount;
+    Error errors[];
+};
+
+layout(push_constant) uniform PushConstants {
+    mat4 view;                    // 16-byte aligned, 64 bytes (4x4 matrix)
+    mat4 proj;                    // 16-byte aligned, 64 bytes (4x4 matrix)
+    uint chunkCount;
+    uint currentCount;
+} pushConstants;
+
+//layout(set = 2, binding = 4, std430) writeonly buffer DrawCall {
+//    DrawCommand drawCommands[];
+//} drawCommandArray[];
+
+void logError(uint errorCode)
 {
-    uint vertexCount;              // 4-byte aligned, 4 bytes
-    uint instanceCount;            // 4-byte aligned, 4 bytes
-    uint firstVertex;              // 4-byte aligned, 4 bytes
-    uint firstInstance;            // 4-byte aligned, 4 bytes
-};
+    uint index = atomicAdd(errorCount, 1);
 
-// Output buffers
-layout(set = 2, binding = 1, std430) writeonly buffer RangeStartBuffer {
-    RangeStart rangeStarts[chunkSize];  // 8-byte stride per element
-};
+    errors[index].errorCode = errorCode;
+    errors[index].localInvocationId = gl_LocalInvocationID.x;
+    errors[index].globalInvocationId = gl_GlobalInvocationID.x;
+    errors[index].workGroupId = gl_WorkGroupID.x;
+}
 
-layout(set = 2, binding = 2, std430) writeonly buffer IndirectCommandBuffer {
-    DrawCommand commands[chunkSize];    // 16-byte stride per element
-};
-
-void main() {    
-    uint blockIndex = gl_WorkGroupID.x * workGroupSize + gl_LocalInvocationID.x;
+void compute()
+{
+    uint chunkIndex = gl_GlobalInvocationID.x / chunkWidth;
+    uint localBlockIndex = gl_GlobalInvocationID.x % chunkWidth + 
+    gl_GlobalInvocationID.z * chunkWidth + 
+    gl_GlobalInvocationID.y * chunkLayerSize;
+    uint blockIndex = localBlockIndex + chunkIndex * chunkSize;
     
-    if (blockIndex >= chunkSize) return;
+//    if (chunkIndex >= pushConstants.chunkCount) { logError(errorChunkIndexOutOfBounds); return; }
+//    if (blockIndex >= pushConstants.chunkCount * chunkSize) { logError(errorBlockIndexOutOfBounds); return; }
     
     uint stateId = stateIds[blockIndex];
-    if (stateId == 0 || stateId >= stateToModel.length()) 
-    {
-        rangeStarts[blockIndex] = RangeStart(0, 0);
-        commands[blockIndex] = DrawCommand(0, 0, 0, 0);
+    if (stateId == 0) 
         return;
-    }
+//    if (stateId >= stateToModel.length()) { logError(errorStateIdOutOfBounds); return; }
     
     uint modelId = stateToModel[stateId];
-    if (modelId >= models.length()) {
-        rangeStarts[blockIndex] = RangeStart(0, 0);
-        commands[blockIndex] = DrawCommand(0, 0, 0, 0);
-        return;
-    }
+//    if (modelId >= models.length()) { logError(errorModelIdOutOfBounds); return; }
     
     Model model = models[modelId];
-    if (model.geometryId >= geometries.length() || model.appearenceId >= appearences.length()) {
-        rangeStarts[blockIndex] = RangeStart(0, 0);
-        commands[blockIndex] = DrawCommand(0, 0, 0, 0);
-        return;
-    }
+//    if (model.geometryId >= geometries.length()) { logError(errorGeometryIdOutOfBounds); return; }
+//    if (model.appearanceId >= appearances.length()) { logError(errorAppearenceIdOutOfBounds); return; }
     
     IndexCacheEntry geometry = geometries[model.geometryId];
-    IndexCacheEntry appearance = appearences[model.appearenceId];
+    IndexCacheEntry appearance = appearances[model.appearanceId];
     
-    // Store range starts for this block
-    rangeStarts[blockIndex] = RangeStart(geometry.start, appearance.start);
+//    if(geometry.size <= 0) { logError(errorGeometrySizeIsZero); return; }
     
-    // Generate indirect draw command with validation
-    uint instanceCount = min(geometry.size, 1000); // Clamp to reasonable limit
-    if (instanceCount == 0) {
-        commands[blockIndex] = DrawCommand(0, 0, 0, 0);
-    } else {
-        commands[blockIndex] = DrawCommand(3, instanceCount, 0, 0);
+    uint outputOffset = atomicAdd(usage.bufferUsage, geometry.size);
+
+    if(outputOffset + geometry.size > config.bufferSize)
+    {
+        if(outputOffset < config.bufferSize) //this is true for only one thread
+        {
+            usage.overflowed = 1;
+            drawCommand.instanceCount = outputOffset;
+        }
+        return;
+    }
+
+    for(uint i = 0; i < geometry.size; i++)
+    {
+        indices[outputOffset + i].polygon = polygonIndices[geometry.start + i];
+        indices[outputOffset + i].coloring = coloringIndices[appearance.start + i];
+        indices[outputOffset + i].block = blockIndex;
+    }    
+}
+
+void waitLock(uint mutexId) {
+    while ((atomicOr(usage.mutexes[mutexId], 0) & 1) == 1) {};
+}
+
+void lock(uint mutexId) { // 1 - is locked, 0 - is free
+    while (atomicCompSwap(usage.mutexes[mutexId], 0, 1) != 0) {};
+    memoryBarrier();
+}
+
+bool tryLock(uint mutexId) { // 1 - is locked, 0 - is free
+    if(atomicCompSwap(usage.mutexes[mutexId], 0, 1) == 0)
+    {
+        memoryBarrier();
+        return true;
+    }
+    return false;
+}
+
+void unlock(uint mutexId) {
+    atomicExchange(usage.mutexes[mutexId], 0); // Set back to 0
+    memoryBarrier();
+}
+
+void main() {
+
+    uint chunkId = chunkIds[gl_GlobalInvocationID.x / chunkWidth];
+    lock(chunkId);
+    if(chunkAllocations.headIds[chunkId] == -1)
+    {
+        if(tryLock(chunkId))
+        {
+        
+        }
+        else waitLock(chunkId)
+    }
+
+
+    compute();
+
+    atomicAdd(usage.threadCounter, 1);
+    uint count = atomicCompSwap(usage.threadCounter, stateIds.length(), 0);
+
+    if (count == stateIds.length()) {
+        if(usage.overflowed == 1)
+            return;
+        if(usage.bufferUsage > config.bufferThreshold)
+            usage.needsExpansion = 1;
+        drawCommand.vertexCount = 3;
+        drawCommand.firstVertex = 0;
+        drawCommand.firstInstance = 0;
+        drawCommand.instanceCount = usage.bufferUsage;
+
     }
 }

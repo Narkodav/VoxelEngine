@@ -1,0 +1,182 @@
+#version 460
+
+const uint workGroupSizeX = 16;
+const uint workGroupSizeY = 8;
+const uint workGroupSizeZ = 8;
+layout(local_size_x = workGroupSizeX, local_size_y = 1, local_size_z = 1) in;
+
+//in voxels
+const uint chunkWidth = 32;	//along X axis
+const uint chunkHeight = 32;	//along Y axis
+const uint chunkDepth = 32;	//along Z axis
+
+const float gridCellSize = 1.0f;
+const float gridCellCenterOffset = 0.5f;
+
+const uint chunkSize = chunkWidth * chunkHeight * chunkDepth;
+const uint chunkLayerSize = chunkWidth * chunkDepth;
+
+const uvec3 chunkMin = { 0, 0, 0 };
+const uvec3 chunkMax = { chunkWidth - 1, chunkHeight - 1, chunkDepth - 1 };
+
+struct Polygon                    // Total: 16 bytes
+{
+    uint positions[3];            // 4-byte aligned, 12 bytes total
+    uint padding;                 // 4-byte aligned, 5 bytes total
+};
+
+struct Coloring                   // Total: 16 bytes  
+{
+    uint uvs[3];                  // 4-byte aligned, 12 bytes
+    uint textureId;               // 4-byte aligned, 4 bytes
+};                                // Struct gets 16-byte alignment (largest member)
+
+struct IndexCacheEntry            // Total: 8 bytes
+{
+    uint start;                   // 4-byte aligned, 4 bytes
+    uint size;                    // 4-byte aligned, 4 bytes
+};
+
+struct Model                      // Total: 8 bytes
+{
+    uint geometryId;              // 4-byte aligned, 4 bytes
+    uint appearanceId;            // 4-byte aligned, 4 bytes
+};
+
+struct Chunk                       // Total: 48 bytes
+{
+    ivec4 coord;                   // 16 bytes
+    uint start;                    // 4 bytes
+    uint neighbourStarts[6];       // 24 bytes  
+    uint padding;                  // 4 bytes
+};
+
+struct DrawCommand {
+    uint vertexCount;
+    uint instanceCount;
+    uint firstVertex;
+    uint firstInstance;
+};
+
+layout(set = 0, binding = 0, std430) readonly buffer Vertices {
+    vec4 vertices[];              // 16-byte aligned, 16-byte stride per element
+};
+
+layout(set = 0, binding = 1, std430) readonly buffer Uvs {
+    vec2 uvs[];                   // 8-byte aligned, 8-byte stride per element
+};
+
+layout(set = 0, binding = 2, std430) readonly buffer PolygonCache {
+    Polygon polygons[];           // 16-byte stride per element (12 bytes + 4 padding)
+};
+
+layout(set = 0, binding = 3, std430) readonly buffer ColoringCache {
+    Coloring colorings[];         // 16-byte stride per element
+};
+
+layout(set = 0, binding = 4, std430) readonly buffer PolygonIndexCache {
+    uint polygonIndices[];        // 4-byte stride per element
+};
+
+layout(set = 0, binding = 5, std430) readonly buffer ColoringIndexCache {
+    uint coloringIndices[];       // 4-byte stride per element
+};
+
+// Storage buffers - arrays follow std430 rules
+layout(set = 0, binding = 6, std430) readonly buffer GeometryCache {
+    IndexCacheEntry geometries[]; // 8-byte stride per element
+};
+
+layout(set = 0, binding = 7, std430) readonly buffer AppearanceCache {
+    IndexCacheEntry appearances[]; // 8-byte stride per element
+};
+
+layout(set = 0, binding = 8, std430) readonly buffer ModelCache {
+    Model models[];                // 8-byte stride per element
+};
+
+layout(set = 0, binding = 9, std430) readonly buffer StateToModelCache {
+    uint stateToModel[];           // 4-byte stride per element
+};
+
+//input data
+layout(set = 1, binding = 0, std430) readonly buffer Grid {
+    uint stateIds[];           // 4-byte stride per element
+};
+
+layout(set = 1, binding = 1, std430) readonly buffer Chunks {
+    Chunk chunks[];    // 48-byte stride per element
+};
+
+layout(set = 1, binding = 2, std430) readonly buffer ChunkOffsets { //chunk id buffer for indirect dispatch
+    uint chunkIds[];
+};
+
+struct Indices {
+    uint polygon;
+    uint coloring;
+    uint block;
+};
+
+struct Allocation {
+    uint polygon;
+    uint coloring;
+    uint block;
+};
+
+// Staging buffer
+layout(set = 2, binding = 0, std430) readonly buffer StagingMemory {
+    Indices memory[];  // 8-byte stride per element
+    uint chunkUsages[];
+    uint blockSize; //the size of each memory block
+} stagingMemory;
+
+layout(set = 2, binding = 1, std430) writeonly buffer DrawCalls { //draw calls for each chunk
+    DrawCommand drawCalls[];
+};
+
+struct MemoryBlock {
+    uint bufferId;
+    uint size;
+    uint offset;
+    uint isFree;
+    int priorBlock;     //-1 if nullptr
+    int nextBlock;      //-1 if nullptr
+};
+
+layout(set = 3, binding = 0, std430) writeonly buffer MemoryBlocks {
+    MemoryBlock blocks[];
+    uint freeBlocks[];
+    uint freeBlocksSize;
+} memoryBlocks;
+
+//memory pool
+layout(set = 3, binding = 0, std430) writeonly buffer MemoryPool {
+    Indices memory[];
+    uint headMemoryBlock;
+    uint tailMemoryBlock;
+} memoryPool[];
+
+layout(set = 4, binding = 0) uniform Config {
+    float contrast;         // 0.0 = grayscale, 1.0 = normal, >1.0 = increased contrast    
+} config;
+
+layout(set = 4, binding = 1, std430) buffer Usage {
+    uint mutexes[];
+    uint threadCounter;
+} usage;
+
+layout(push_constant) uniform PushConstants {
+    mat4 view;                    // 16-byte aligned, 64 bytes (4x4 matrix)
+    mat4 proj;                    // 16-byte aligned, 64 bytes (4x4 matrix)
+    uint chunkCount;
+    uint currentCount;
+} pushConstants;
+
+
+void main() {
+    uint chunkId = chunkIds[gl_GlobalInvocationID.x];
+
+
+
+}

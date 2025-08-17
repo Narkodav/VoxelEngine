@@ -5,10 +5,11 @@
 layout(location = 0) in vec2 UV;
 layout(location = 1) flat in uint textureId;
 
-layout(set = 1, binding = 10) uniform sampler2D textures[];
-layout(set = 3, binding = 0) uniform ContrastControl {
-    float value; // 0.0 = grayscale, 1.0 = normal, >1.0 = increased contrast
-} contrast;
+layout(set = 0, binding = 10) uniform sampler2D textures[];
+
+layout(set = 2, binding = 0) uniform Config {
+    float contrast;         // 0.0 = grayscale, 1.0 = normal, >1.0 = increased contrast
+} config;
 
 layout(location = 0) out vec4 outColor;
 
@@ -24,5 +25,5 @@ vec4 adjustContrast(vec4 color, float contrast) {
 
 void main() {
     vec4 texColor = texture(textures[textureId], UV);
-    outColor = adjustContrast(texColor, contrast.value);
+    outColor = adjustContrast(texColor, config.contrast);
 }

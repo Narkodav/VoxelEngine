@@ -32,8 +32,8 @@ public:
 		size_t coloringBytes;
 		size_t geometryIndexBytes;
 		size_t geometryEntryBytes;
-		size_t appearenceIndexBytes;
-		size_t appearenceEntryBytes;
+		size_t appearanceIndexBytes;
+		size_t appearanceEntryBytes;
 		size_t modelBytes;
 
 		size_t totalModelBytes;
@@ -47,8 +47,8 @@ public:
 		size_t coloringCount;
 		size_t geometryIndexCount;
 		size_t geometryEntryCount;
-		size_t appearenceIndexCount;
-		size_t appearenceEntryCount;
+		size_t appearanceIndexCount;
+		size_t appearanceEntryCount;
 		size_t modelCount;
 	};
 
@@ -59,7 +59,7 @@ private:
 	PolygonCache m_polygonCache;
 	ColoringCache m_coloringCache;
 	Shape::PolygonIndexBuffer m_geometryCache;
-	Shape::ColoringIndexBuffer m_appearenceCache;
+	Shape::ColoringIndexBuffer m_appearanceCache;
 	ModelCache m_modelCache;
 
 	//VoxelCullingCache m_voxelCullingCache;
@@ -117,8 +117,8 @@ public:
 		return m_geometryCache;
 	}
 
-	const Shape::ColoringIndexBuffer& getAppearenceCache() const {
-		return m_appearenceCache;
+	const Shape::ColoringIndexBuffer& getAppearanceCache() const {
+		return m_appearanceCache;
 	}
 
 	const ModelCache& getModelCache() const {
@@ -159,11 +159,11 @@ public:
 		stats.geometryEntryBytes = stats.geometryEntryCount
 			* sizeof(Shape::PolygonIndexBuffer::Entry);
 
-		stats.appearenceIndexCount = m_appearenceCache.indexSize();
-		stats.appearenceIndexBytes = stats.appearenceIndexCount * sizeof(uint32_t);
+		stats.appearanceIndexCount = m_appearanceCache.indexSize();
+		stats.appearanceIndexBytes = stats.appearanceIndexCount * sizeof(uint32_t);
 
-		stats.appearenceEntryCount = m_appearenceCache.entrySize();
-		stats.appearenceEntryBytes = stats.appearenceEntryCount
+		stats.appearanceEntryCount = m_appearanceCache.entrySize();
+		stats.appearanceEntryBytes = stats.appearanceEntryCount
 			* sizeof(Shape::PolygonIndexBuffer::Entry);
 
 		stats.modelCount = m_modelCache.size();
@@ -172,13 +172,13 @@ public:
 		// Calculate totals
 		stats.totalModelBytes = stats.vertexBytes + stats.uvBytes +
 			stats.polygonBytes + stats.coloringBytes + stats.geometryIndexBytes +
-			stats.appearenceIndexBytes + stats.modelBytes;
+			stats.appearanceIndexBytes + stats.modelBytes;
 
 		stats.totalTextureBytes = stats.textureBytes;
 
 		stats.totalBytes = stats.textureBytes + stats.vertexBytes + stats.uvBytes +
 			stats.polygonBytes + stats.coloringBytes + stats.geometryIndexBytes +
-			stats.appearenceIndexBytes + stats.modelBytes;
+			stats.appearanceIndexBytes + stats.modelBytes;
 
 		return stats;
 	}
@@ -200,8 +200,8 @@ public:
 		std::cout << "Colorings:        " << stats.coloringCount << " items, " << formatBytes(stats.coloringBytes) << std::endl;
 		std::cout << "Geometry Indices: " << stats.geometryIndexCount << " items, " << formatBytes(stats.geometryIndexBytes) << std::endl;
 		std::cout << "Geometry Entries: " << stats.geometryEntryCount << " items, " << formatBytes(stats.geometryEntryBytes) << std::endl;
-		std::cout << "Appear. Indices:  " << stats.appearenceIndexCount << " items, " << formatBytes(stats.appearenceIndexBytes) << std::endl;
-		std::cout << "Appear. Entries:  " << stats.appearenceEntryCount << " items, " << formatBytes(stats.appearenceEntryBytes) << std::endl;
+		std::cout << "Appear. Indices:  " << stats.appearanceIndexCount << " items, " << formatBytes(stats.appearanceIndexBytes) << std::endl;
+		std::cout << "Appear. Entries:  " << stats.appearanceEntryCount << " items, " << formatBytes(stats.appearanceEntryBytes) << std::endl;
 		std::cout << "Models:           " << stats.modelCount << " items, " << formatBytes(stats.modelBytes) << std::endl;
 		std::cout << "======== Total Usage =========" << std::endl;
 		std::cout << "Total Models:     " << formatBytes(stats.totalModelBytes) << std::endl;

@@ -268,7 +268,7 @@ public:
 	};
 
 	using ColoringIndexBuffer = Id::IndexSequenceCache<Id::Coloring>;
-	using AppearenceId = ColoringIndexBuffer::EntryId;
+	using AppearanceId = ColoringIndexBuffer::EntryId;
 	using PolygonIndexBuffer = Id::IndexSequenceCache<Id::Polygon>;
 	using GeometryId = PolygonIndexBuffer::EntryId;
 
@@ -285,7 +285,7 @@ public:
 		//};
 
 		GeometryId geometry;
-		AppearenceId appearence;
+		AppearanceId appearence;
 
 		bool operator==(const Model& other) const {
 			return geometry == other.geometry && appearence == other.appearence;

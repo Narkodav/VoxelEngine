@@ -29,7 +29,7 @@ void AssetCache::moveAssetsToGpuStorage(const Gfx::Context& instance, const Gfx:
 {
     m_storageCache.setup(instance, device, transferQueue, temporaryPool,
         stagingMemory, stagingBuffer, m_vertexCache, m_uvCache,
-        voxelStateCache, m_modelCache, m_geometryCache, m_appearenceCache,
+        voxelStateCache, m_modelCache, m_geometryCache, m_appearanceCache,
         m_polygonCache, m_coloringCache, m_textureCache);
 }
 
@@ -85,7 +85,7 @@ void AssetCache::registerVoxelModel(const std::string& path)
         }
 
         auto geometryId = m_geometryCache.add(geometry);
-        auto appearenceId = m_appearenceCache.add(appearence);
+        auto appearenceId = m_appearanceCache.add(appearence);
 
         Shape::Model model = { geometryId, appearenceId };
 

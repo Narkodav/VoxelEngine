@@ -9,7 +9,7 @@
 class VoxelVolume
 {
 public:
-	using Volume = std::array<Id::VoxelState, Constants::chunkSize>;
+	using Volume = std::span<Id::VoxelState>; //a vies into the global block state array
 
 	//template<bool isConst, size_t layerSize = 1, size_t... subsequentSizes>
 	//class VoxelVolumeProxy
@@ -52,7 +52,7 @@ public:
 	//using ConstProxyType = VoxelVolumeProxy<true, Constants::chunkLayerSize>;
 
 private:
-	Volume volume = { Constants::emptyStateId };
+	Volume volume;
 
 public:
 	VoxelVolume() = default;

@@ -13,7 +13,7 @@ public:
 	{
 		VoxelVert = 0,
 		VoxelFrag,
-        VoxelCompute,
+        /*VoxelCompute,*/
 		NUM
 	};
 
@@ -23,7 +23,7 @@ private:
 	std::array<std::string, enumCast(ShaderPurpose::NUM)> m_shaderPaths = {
         "Rendering/Shaders/basic.vert.spv",
         "Rendering/Shaders/basic.frag.spv",
-        "Rendering/Shaders/basic.comp.spv",
+        /*"Rendering/Shaders/basic.comp.spv",*/
 	};
 
 	bool m_initialized = false;

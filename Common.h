@@ -71,10 +71,10 @@ enum class Directions3D : size_t
 	NUM,
 };
 
-using Coordinate3D = glm::vec<3, uint64_t, glm::lowp>;
-using CoordinateSigned3D = glm::vec<3, uint64_t, glm::lowp>;
+using Coordinate3D = glm::vec<3, uint32_t, glm::lowp>;
+using CoordinateSigned3D = glm::vec<3, uint32_t, glm::lowp>;
 using Position3D = glm::vec<3, float, glm::lowp>;
-using Direction3D = glm::vec<3, int64_t, glm::lowp>;
+using Direction3D = glm::ivec3;
 
 enum class Directions2D : size_t
 {
@@ -126,6 +126,8 @@ namespace Constants
 	const uint64_t ChunkPositionOffsetX = GlobalPositionOffset / chunkWidth;
 	const uint64_t ChunkPositionOffsetY = GlobalPositionOffset / chunkHeight;
 	const uint64_t ChunkPositionOffsetZ = GlobalPositionOffset / chunkDepth;
+
+	const uint32_t noChunkIndex = std::numeric_limits<uint32_t>::max();
 }
 
 static inline constexpr Position3D to3D(Position2D dir) { return Position3D{ dir.x, 0, dir.y }; };
@@ -184,12 +186,12 @@ static inline constexpr Coordinate3D fromChunkToGlobal(const Coordinate3D& chunk
 	return result;
 }
 
-static inline std::pair<Coordinate3D, Coordinate3D> fromGlobalToChunk(const Coordinate3D& coord) {
-	auto [quotX, remX] = modDiv(coord.x, Constants::chunkWidth);
-	auto [quotY, remY] = modDiv(coord.y, Constants::chunkHeight);
-	auto [quotZ, remZ] = modDiv(coord.z, Constants::chunkDepth);
-	return std::make_pair(Coordinate3D{ quotX, quotY, quotZ }, Coordinate3D{ remX, remY, remZ });
-}
+//static inline std::pair<Coordinate3D, Coordinate3D> fromGlobalToChunk(const Coordinate3D& coord) {
+//	auto [quotX, remX] = modDiv(coord.x, Constants::chunkWidth);
+//	auto [quotY, remY] = modDiv(coord.y, Constants::chunkHeight);
+//	auto [quotZ, remZ] = modDiv(coord.z, Constants::chunkDepth);
+//	return std::make_pair(Coordinate3D{ quotX, quotY, quotZ }, Coordinate3D{ remX, remY, remZ });
+//}
 
 static inline constexpr CoordinateSigned3D convertGlobalToSigned(const Coordinate3D& coord) {
 	return CoordinateSigned3D(static_cast<int64_t>(coord.x - Constants::GlobalPositionOffset),
@@ -227,13 +229,15 @@ namespace Id
 	};
 
 	template<typename T, typename Id>
-	struct NamedCache
+	class NamedCache
 	{
+	private:
 		std::vector<T> m_cache;
 		std::vector<std::string> m_names;
 		std::unordered_map<std::string, Id> m_nameToId;
 		mutable std::shared_mutex m_mutex;
 
+	public:
 		Id add(T&& object, std::string_view nameView)
 		{
 			std::unique_lock<std::shared_mutex> lock(m_mutex);
@@ -251,29 +255,29 @@ namespace Id
 			return it->second;
 		}
 
-		constexpr const T& get(Id id) const {
+		inline constexpr const T& get(Id id) const {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			assert(static_cast<Id::DataType>(id) < m_cache.size());
 			return m_cache[static_cast<Id::DataType>(id)];
 		}
 
-		T& get(Id id) {
+		inline T& get(Id id) {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			assert(static_cast<Id::DataType>(id) < m_cache.size());
 			return m_cache[static_cast<Id::DataType>(id)];
 		}
 
-		constexpr const T& operator[](Id id) const {
+		inline constexpr const T& operator[](Id id) const {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			return m_cache[static_cast<Id::DataType>(id)];
 		}
 
-		T& operator[](Id id) {
+		inline T& operator[](Id id) {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			return m_cache[static_cast<Id::DataType>(id)];
 		}
 
-		constexpr const T& operator[](const std::string& name) const {
+		inline constexpr const T& operator[](const std::string& name) const {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			auto it = m_nameToId.find(name);
 			if (it == m_nameToId.end()) {
@@ -282,7 +286,7 @@ namespace Id
 			return m_cache[it->second];
 		}
 
-		T& operator[](const std::string& name) {
+		inline T& operator[](const std::string& name) {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			auto it = m_nameToId.find(name);
 			if (it == m_nameToId.end()) {
@@ -291,7 +295,7 @@ namespace Id
 			return m_cache[it->second];
 		}
 
-		constexpr Id getId(const std::string& name) const {
+		inline constexpr Id getId(const std::string& name) const {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			auto it = m_nameToId.find(name);
 			if (it == m_nameToId.end()) {
@@ -300,22 +304,22 @@ namespace Id
 			return it->second;
 		}
 
-		constexpr bool exists(const std::string& name) const {
+		inline constexpr bool exists(const std::string& name) const {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			return m_nameToId.contains(name);
 		}
 
-		constexpr size_t size() const {
+		inline constexpr size_t size() const {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			return m_cache.size();
 		}
 
-		constexpr const std::vector<T>& data() const {
+		inline constexpr const std::vector<T>& data() const {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			return m_cache;
 		}
 
-		void reserve(size_t size) {
+		inline void reserve(size_t size) {
 			std::unique_lock<std::shared_mutex> lock(m_mutex);
 			m_cache.reserve(size);
 			m_names.reserve(size);
@@ -324,11 +328,12 @@ namespace Id
 	};
 
 	template<typename T, typename Id, typename Comparator = std::equal_to<T>>
-	struct Cache
+	class Cache
 	{
+	private:
 		std::vector<T> m_cache;
 		mutable std::shared_mutex m_mutex;
-
+	public:
 		Id add(T&& object)
 		{
 			std::unique_lock<std::shared_mutex> lock(m_mutex);
@@ -357,47 +362,48 @@ namespace Id
 			return static_cast<Id>(m_cache.size() - 1);
 		}
 
-		constexpr const T& get(Id id) const {
+		inline constexpr const T& get(Id id) const {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			assert(static_cast<Id::DataType>(id) < m_cache.size());
 			return m_cache[static_cast<Id::DataType>(id)];
 		}
 
-		T& get(Id id) {
+		inline T& get(Id id) {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			assert(static_cast<Id::DataType>(id) < m_cache.size());
 			return m_cache[static_cast<Id::DataType>(id)];
 		}
 
-		constexpr const T& operator[](Id id) const {
+		inline constexpr const T& operator[](Id id) const {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			return m_cache[static_cast<Id::DataType>(id)];
 		}
 
-		T& operator[](Id id) {
+		inline T& operator[](Id id) {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			return m_cache[static_cast<Id::DataType>(id)];
 		}
 
-		constexpr size_t size() const {
+		inline constexpr size_t size() const {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			return m_cache.size();
 		}
 
-		const std::vector<T>& data() const {
+		inline const std::vector<T>& data() const {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			return m_cache;
 		}
 
-		void reserve(size_t size) {
+		inline void reserve(size_t size) {
 			std::unique_lock<std::shared_mutex> lock(m_mutex);
 			m_cache.reserve(size);
 		}
 	};
 
 	template<typename Index, typename Comparator = std::equal_to<Index>>
-	struct IndexSequenceCache
+	class IndexSequenceCache
 	{
+	public:
 		struct EntryTag {};
 		using EntryId = Id<EntryTag>;
 
@@ -411,12 +417,13 @@ namespace Id
 		};
 
 		using EntryCache = Cache<Entry, EntryId>;
-
+	private:
 		std::vector<Index> m_indices;
 		EntryCache m_entries;
 
 		mutable std::shared_mutex m_mutex;
 
+	public:
 		EntryId add(const std::vector<Index>& sequence)
 		{
 			if (sequence.empty()) return m_entries.add(Entry{ 0, 0 });
@@ -447,29 +454,34 @@ namespace Id
 			return m_entries.add(entry);
 		}
 
-		constexpr size_t indexSize() const {
+		inline constexpr size_t indexSize() const {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			return m_indices.size();
 		}
 
-		const auto& indexData() const {
+		inline const auto& indexData() const {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			return m_indices;
 		}
 
-		constexpr size_t entrySize() const {
+		inline constexpr size_t entrySize() const {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			return m_entries.size();
 		}
 
-		const auto& entryCache() const {
+		inline const auto& entryCache() const {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			return m_entries;
 		}
 
-		const auto& entryData() const {
+		inline const auto& entryData() const {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			return m_entries.data();
+		}
+
+		inline const auto& operator[](size_t index) const {
+			std::shared_lock<std::shared_mutex> lock(m_mutex);
+			return m_indices[index];
 		}
 	};
 
@@ -524,3 +536,16 @@ struct VecEpsilonEqualComparator {
 		return glm::all(glm::epsilonEqual(a, b, std::numeric_limits<float>::epsilon()));
 	}
 };
+
+namespace std {
+	template<>
+	struct hash<glm::ivec3> {
+		size_t operator()(const glm::ivec3& v) const noexcept {
+			size_t seed = 0;
+			seed ^= std::hash<int>{}(v.x) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+			seed ^= std::hash<int>{}(v.y) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+			seed ^= std::hash<int>{}(v.z) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+			return seed;
+		}
+	};
+}

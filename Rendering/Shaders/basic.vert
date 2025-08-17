@@ -1,6 +1,13 @@
 #version 460
 #extension GL_KHR_vulkan_glsl : enable
 
+layout(location = 0) in uint vertexId;
+
+//instanced
+layout(location = 1) in uint polygon;
+layout(location = 2) in uint coloring;
+layout(location = 3) in uint block;
+
 layout(location = 0) out vec2 UV;
 layout(location = 1) flat out uint textureId;
 
@@ -19,11 +26,11 @@ const uint chunkLayerSize = chunkWidth * chunkDepth;
 const uvec3 chunkMin = { 0, 0, 0 };
 const uvec3 chunkMax = { chunkWidth - 1, chunkHeight - 1, chunkDepth - 1 };
 
-//per frame data - std140 layout (uniform buffer)
-layout(set = 0, binding = 0) uniform UniformPerFrame {
+layout(push_constant) uniform PushConstants {
     mat4 view;                    // 16-byte aligned, 64 bytes (4x4 matrix)
     mat4 proj;                    // 16-byte aligned, 64 bytes (4x4 matrix)
-} perFrameUniforms;               // Total: 128 bytes
+    uint chunkCount;
+} pushConstants;
 
 struct Polygon                    // Total: 16 bytes
 {
@@ -43,39 +50,49 @@ struct RangeStart                 // Total: 8 bytes
     uint coloring;                // 4-byte aligned, 4 bytes
 };
 
-// Storage buffers - std430 layout
-layout(set = 1, binding = 0, std430) readonly buffer Vertices {
+struct Chunk                       // Total: 48 bytes
+{
+    ivec4 coord;                   // 16 bytes
+    uint start;                    // 4 bytes
+    uint neighbourStarts[6];       // 24 bytes  
+    uint padding;                  // 4 bytes
+};
+
+layout(set = 0, binding = 0, std430) readonly buffer Vertices {
     vec4 vertices[];              // 16-byte aligned, 16-byte stride per element
 };
 
-layout(set = 1, binding = 1, std430) readonly buffer Uvs {
+layout(set = 0, binding = 1, std430) readonly buffer Uvs {
     vec2 uvs[];                   // 8-byte aligned, 8-byte stride per element
 };
 
-layout(set = 1, binding = 2, std430) readonly buffer PolygonCache {
+layout(set = 0, binding = 2, std430) readonly buffer PolygonCache {
     Polygon polygons[];           // 16-byte stride per element (12 bytes + 4 padding)
 };
 
-layout(set = 1, binding = 3, std430) readonly buffer ColoringCache {
+layout(set = 0, binding = 3, std430) readonly buffer ColoringCache {
     Coloring colorings[];         // 16-byte stride per element
 };
 
-layout(set = 1, binding = 4, std430) readonly buffer PolygonIndexCache {
+layout(set = 0, binding = 4, std430) readonly buffer PolygonIndexCache {
     uint polygonIndices[];        // 4-byte stride per element
 };
 
-layout(set = 1, binding = 5, std430) readonly buffer ColoringIndexCache {
+layout(set = 0, binding = 5, std430) readonly buffer ColoringIndexCache {
     uint coloringIndices[];       // 4-byte stride per element
 };
 
-layout(set = 2, binding = 1, std430) readonly buffer RangeStartBuffer {
-    RangeStart rangeStarts[chunkSize]; // 8-byte stride per element
+layout(set = 1, binding = 0, std430) readonly buffer ChunkData {
+    uint stateIds[];           // 4-byte stride per element
 };
 
-//per chunk data - std140 layout (uniform buffer)
-layout(set = 2, binding = 3) uniform ChunkPos {
-    vec4 chunkPos;                // 16-byte aligned, 16 bytes
+layout(set = 1, binding = 1, std430) readonly buffer Chunks {
+    Chunk chunks[];    // 48-byte stride per element
 };
+
+layout(set = 2, binding = 0) uniform Config {
+    float contrast;         // 0.0 = grayscale, 1.0 = normal, >1.0 = increased contrast
+} config;
 
 vec3 getBlockPosition(uint index) {
     uint z = (index % chunkLayerSize) / chunkWidth;
@@ -84,97 +101,26 @@ vec3 getBlockPosition(uint index) {
     return vec3(x, y, z);
 }
 
-vec4 getBlockGlobalPosition(uint index, vec3 chunkPos)
+vec3 getBlockGlobalPosition(uint index, vec3 chunkPos)
 {
     vec3 pos = getBlockPosition(index);
-    return vec4(chunkPos * chunkSizeVector + pos, 0); 
+    return chunkPos * chunkSizeVector + pos; 
 }
 
-vec4 getPosition(uint polygonId, uint positionId)
+vec4 getPosition(uint polygonId, uint blockId, uint positionId)
 {
+    uint chunkIndex = blockId / chunkSize;
+    uint localBlockIndex = blockId % chunkSize;
     vec4 vertexPos = vertices[polygons[polygonId].positions[positionId]];
-    vec4 blockPos = getBlockGlobalPosition(gl_DrawID, chunkPos.xyz);
-    return vec4(vertexPos.xyz + blockPos.xyz, 1.0);
+    vec3 blockPos = getBlockGlobalPosition(localBlockIndex, chunks[chunkIndex].coord.xyz);
+    return vec4(vertexPos.xyz + blockPos, 1.0);
 }
 
 void main() {
-    uint polygonIndex = polygonIndices[rangeStarts[gl_DrawID].polygon + gl_InstanceIndex];
-    uint coloringIndex = coloringIndices[rangeStarts[gl_DrawID].coloring + gl_InstanceIndex];
+    vec4 finalPos = getPosition(polygon, block, vertexId);
+    gl_Position = pushConstants.proj * pushConstants.view * finalPos;
 
-    vec4 finalPos = getPosition(polygonIndex, gl_VertexIndex);
-    gl_Position = perFrameUniforms.proj * perFrameUniforms.view * finalPos;
-
-    Coloring coloring = colorings[coloringIndex];
-    UV = uvs[coloring.uvs[gl_VertexIndex]];
-    textureId = coloring.textureId;
-
-//    // Bounds checking
-//    if (gl_DrawID >= 4096) {
-//        gl_Position = vec4(0, 0, 0, 1);
-//        UV = vec2(0, 0);
-//        textureId = 0;
-//        return;
-//    }
-//    
-//    RangeStart range = rangeStarts[gl_DrawID];
-//    uint polygonIdx = range.polygon + gl_InstanceIndex;
-//    uint coloringIdx = range.coloring + gl_InstanceIndex;
-//    
-//    // More bounds checking
-//    if (polygonIdx >= polygonIndices.length() || coloringIdx >= coloringIndices.length()) {
-//        gl_Position = vec4(0, 0, 0, 1);
-//        UV = vec2(0, 0);
-//        textureId = 0;
-//        return;
-//    }
-//    
-//    uint polygonIndex = polygonIndices[polygonIdx];
-//    uint coloringIndex = coloringIndices[coloringIdx];
-//    
-//    if (polygonIndex >= polygons.length() || coloringIndex >= colorings.length()) {
-//        gl_Position = vec4(0, 0, 0, 1);
-//        UV = vec2(0, 0);
-//        textureId = 0;
-//        return;
-//    }
-//    
-//    vec4 finalPos = getPosition(polygonIndex, gl_VertexIndex);
-//    gl_Position = perFrameUniforms.proj * perFrameUniforms.view * finalPos;
-//    
-//    Coloring coloring = colorings[coloringIndex];
-//    if (coloring.uvs[gl_VertexIndex] >= uvs.length()) {
-//        UV = vec2(0, 0);
-//    } else {
-//        UV = uvs[coloring.uvs[gl_VertexIndex]];
-//    }
-//    textureId = coloring.textureId;
-
-//        if (gl_DrawID >= 10) {
-//            gl_Position = vec4(0, 0, 0, 1);
-//            UV = vec2(0, 0);
-//            textureId = 0;
-//            return;
-//        }
-//
-//      if(gl_VertexIndex == 0)
-//      {
-//        gl_Position = perFrameUniforms.proj * perFrameUniforms.view * vec4(0, 0, gl_DrawID * 2, 1);
-////        UV = vec2(0, 0);
-//      }
-//      else if (gl_VertexIndex == 1)
-//      {
-//        gl_Position = perFrameUniforms.proj * perFrameUniforms.view * vec4(1, 0, gl_DrawID * 2, 1);
-////        UV = vec2(1, 0);
-//      }
-//      else
-//      {
-//        gl_Position = perFrameUniforms.proj * perFrameUniforms.view * vec4(0, 1, gl_DrawID * 2, 1);
-////        UV = vec2(0, 1);
-//      }      
-//      textureId = 0;
-//
-//      uint coloringIndex = coloringIndices[gl_VertexIndex];
-//      Coloring coloring = colorings[coloringIndex];
-//      UV = uvs[coloring.uvs[gl_VertexIndex]];
-//      textureId = coloring.textureId;
+    Coloring coloringData = colorings[coloring];
+    UV = uvs[coloringData.uvs[vertexId]];
+    textureId = coloringData.textureId;
 }
