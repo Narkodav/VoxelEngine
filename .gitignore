@@ -376,3 +376,19 @@ FodyWeavers.xsd
 /Vendor/imgui/examples/example_win32_directx12/example_win32_directx12.vcxproj
 /Vendor/imgui/examples/example_win32_directx9/example_win32_directx9.vcxproj
 /Vendor/imgui/examples/example_win32_opengl3/example_win32_opengl3.vcxproj
+/Vendor/CommonApi/include/MultiThreading/ThreadPool.h
+/Vendor/CommonApi/lib/Debug DLL/CommonApi.lib
+/Vendor/CommonApi/lib/Release DLL/CommonApi.lib
+/Vendor/CommonApi/src/Mathematics/Common.cpp
+/Vendor/CommonApi/src/Mathematics/PerlinNoise2d.cpp
+/Vendor/CommonApi/src/Mathematics/PerlinNoise3d.cpp
+/Vendor/CommonApi/src/MultiThreading/FileSystem.cpp
+/Vendor/CommonApi/src/MultiThreading/Logger.cpp
+/Vendor/CommonApi/src/MultiThreading/SharedPointer.cpp
+/Vendor/CommonApi/src/MultiThreading/ThreadPool.cpp
+/Vendor/CommonApi/src/MultiThreading/UniquePointer.cpp
+/Vendor/CommonApi/src/MultiThreading/WeakPointer.cpp
+/Vendor/CommonApi/src/Physics/Hitboxes.cpp
+/Vendor/CommonApi/src/Physics/RayCasting.cpp
+/Vendor/CommonApi/src/Utilities/BinPacker.cpp
+/Vendor/CommonApi/src/Utilities/Functions.cpp
