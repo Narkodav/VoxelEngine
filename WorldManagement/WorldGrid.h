@@ -119,22 +119,22 @@ public:
 	template<Shape::Side side>
 	inline Id::VoxelState getAdjacentBlockId(size_t block, size_t x, size_t y, size_t z, const Chunk& chunk) const
 	{
-		if constexpr (side == Shape::Side::BACK)
+		if constexpr (side == Shape::Side::FRONT)
 		{
 			if (z == 0)
 			{
-				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::BACK)];
+				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::FRONT)];
 				if (adj == m_grid.size())
 					return Constants::emptyStateId;
 				return m_grid[adj + y * Constants::chunkLayerSize + x * Constants::chunkDepth + 15];
 			}
 			return m_grid[block - Constants::chunkWidth];
 		}
-		else if constexpr (side == Shape::Side::FRONT)
+		else if constexpr (side == Shape::Side::BACK)
 		{
 			if (z == 15)
 			{
-				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::FRONT)];
+				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::BACK)];
 				if (adj == m_grid.size())
 					return Constants::emptyStateId;
 				return m_grid[adj + y * Constants::chunkLayerSize + x * Constants::chunkDepth];
@@ -145,7 +145,7 @@ public:
 		{
 			if (x == 0)
 			{
-				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::BACK)];
+				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::LEFT)];
 				if (adj == m_grid.size())
 					return Constants::emptyStateId;
 				return m_grid[adj + y * Constants::chunkLayerSize + 15 * Constants::chunkDepth + z];
@@ -156,7 +156,7 @@ public:
 		{
 			if (x == 15)
 			{
-				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::BACK)];
+				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::RIGHT)];
 				if (adj == m_grid.size())
 					return Constants::emptyStateId;
 				return m_grid[adj + y * Constants::chunkLayerSize + z];
@@ -167,7 +167,7 @@ public:
 		{
 			if (y == 0)
 			{
-				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::BACK)];
+				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::BOTTOM)];
 				if (adj == m_grid.size())
 					return Constants::emptyStateId;
 				return m_grid[adj + 15 * Constants::chunkLayerSize + x * Constants::chunkDepth + z];
@@ -178,7 +178,7 @@ public:
 		{
 			if (y == 15)
 			{
-				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::BACK)];
+				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::TOP)];
 				if (adj == m_grid.size())
 					return Constants::emptyStateId;
 				return m_grid[adj + x * Constants::chunkDepth + z];

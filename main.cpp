@@ -87,7 +87,7 @@ int main()
 	Mouse mouse = Mouse(window);
 
 	WorldGrid grid;
-	grid.resetSphereRadius(1, { 3, 0, 0 });
+	grid.resetSphereRadius(10, { 5, 0, 0 });
 
 	float mouseSensitivity = 80.f;
 	float moveSpeed = 10.f;
