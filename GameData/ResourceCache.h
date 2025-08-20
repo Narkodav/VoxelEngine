@@ -18,7 +18,7 @@ private:
 
 public:
 
-	void registerResources(const std::string& voxelsPath);
+	void registerResources(const std::string& voxelsPath, const std::string& texturePath, const std::string& modelsPath);
 	void registerVoxel(const std::string& path);
 
 	auto& getAssetCache() { return m_assetCache; };

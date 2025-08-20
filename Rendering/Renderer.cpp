@@ -217,7 +217,7 @@ void Renderer::init(std::string engineName, std::string appName,
 
     ImGui::StyleColorsDark();
     ImGui_ImplGlfw_InitForVulkan(window.getWindowHandle(), true);
-
+    
     ImGui_ImplVulkan_InitInfo init_info = {};
     init_info.Instance = m_context.getInstance();
     init_info.PhysicalDevice = m_physicalDevice->getHandle();
@@ -322,7 +322,7 @@ void Renderer::createAndWriteAssets(AssetCache& assetCache,
         m_transferQueue, m_temporaryBufferPool, m_stagingMemory,
         m_stagingBuffer, voxelStateCache);
     assetCache.writeToDescriptors(m_context, m_device, m_storageSet, m_sampler,
-        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
 }
 
 void Renderer::createLayouts()
@@ -339,6 +339,7 @@ void Renderer::createLayouts()
         Gfx::DescriptorDefinitions<
         StorageCache::VertexLayoutDefinition<>,
         StorageCache::UvLayoutDefinition<>,
+        StorageCache::NormalLayoutDefinition<>,
         StorageCache::PolygonLayoutDefinition<>,
         StorageCache::ColoringLayoutDefinition<>,
         StorageCache::PolygonIndexLayoutDefinition<>,
@@ -355,8 +356,9 @@ void Renderer::createLayouts()
         ConfigLayoutDefinition<>>());
 }
 
-void Renderer::cleanup()
+void Renderer::cleanup(StorageCache& cache)
 {
+	cache.destroy(m_context, m_device);
     m_device.waitIdle(m_context);
     m_temporaryBufferPool.destroy(m_context, m_device);    
     for (int i = 0; i < framesInFlight; ++i)
@@ -367,6 +369,10 @@ void Renderer::cleanup()
         m_perFrameInFlightObjects[i].renderFinishedSemaphore.destroy(m_context, m_device);
         m_perFrameInFlightObjects[i].inFlightFence.destroy(m_context, m_device);
     }
+    ImGui_ImplVulkan_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
+
     m_graphicsCommandPool.destroy(m_context, m_device);
 
     m_sampler.destroy(m_context, m_device);
@@ -379,6 +385,24 @@ void Renderer::cleanup()
     m_stagingMemory.destroy(m_context, m_device);
     m_descriptorPool.destroy(m_context, m_device);
 
+    m_gridBuffer.destroy(m_context, m_device);
+    m_chunkBuffer.destroy(m_context, m_device);
+    m_drawCommandsBuffer.destroy(m_context, m_device);
+
+    m_gridMemory.destroy(m_context, m_device);
+    m_chunkMemory.destroy(m_context, m_device);
+    m_drawCommandsMemory.destroy(m_context, m_device);
+
+    m_configMemory.destroy(m_context, m_device);
+    m_configBuffer.destroy(m_context, m_device);
+
+    m_indexBuffer.destroy(m_context, m_device);
+    m_indexMemory.destroy(m_context, m_device);
+
+    m_imguiDescriptorPool.destroy(m_context, m_device);
+
+    m_indicesPool.destroy(m_context, m_device);    
+
     m_pipeline.destroy(m_context, m_device);
 
     m_configLayout.destroy(m_context, m_device);
@@ -390,6 +414,7 @@ void Renderer::cleanup()
     m_swapChain.destroy(m_context, m_device);
     m_renderPass.destroy(m_context, m_device);
 
+    m_surface.destroy(m_context);
     m_device.destroy(m_context);
 
     m_context.destroy();
@@ -549,7 +574,7 @@ void Renderer::drawGui(const Graphics::CameraPerspective& camera)
     ImGui::NewFrame();
 
     ImGui::SetNextWindowPos(ImVec2(10, 10), ImGuiCond_Always);
-    ImGui::SetNextWindowSize(ImVec2(550, 500), ImGuiCond_Always);
+    ImGui::SetNextWindowSize(ImVec2(550, 700), ImGuiCond_Always);
 
     if (ImGui::Begin("Debug Info", nullptr,
         ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoDecoration |
@@ -614,7 +639,7 @@ void Renderer::drawGui(const Graphics::CameraPerspective& camera)
 //}
 
 void Renderer::updateChunk(const ResourceCache& resources, size_t chunkIndex,
-    const WorldGrid::Chunk& chunk, const WorldGrid::Grid& grid, size_t threadId)
+    const WorldGrid::Chunk& chunk, const WorldGrid& grid, size_t threadId)
 {
     auto startStaging = std::chrono::high_resolution_clock::now();
 
@@ -623,33 +648,43 @@ void Renderer::updateChunk(const ResourceCache& resources, size_t chunkIndex,
     auto& models = assets.getModelCache();
     auto& geometries = assets.getGeometryCache();
     auto& appearances = assets.getAppearanceCache();
+    auto& geometriesCache = geometries.entryCache();
+    auto& appearancesCache = appearances.entryCache();
+	auto& cullingCache = assets.getVoxelCullingCache();
 
     auto& buffer = m_stagingBuffers[threadId];
 
-    for(size_t x = 0; x < Constants::chunkWidth; ++x)
-    {
-        for(size_t z = 0; z < Constants::chunkDepth; ++z)
-        {
-            for(size_t y = 0; y < Constants::chunkHeight; ++y)
-            {
-                auto block = chunk.start + x + z * Constants::chunkWidth + y * Constants::chunkLayerSize;
-                const auto& state = grid[block];
-                if (state == Constants::emptyStateId)
-                    continue;
-                const auto& model = models[states[state].m_model];
-                const auto& geometryEntry = geometries.entryCache()[model.geometry];
-                const auto& appearanceEntry = appearances.entryCache()[model.appearence];
+    std::array<Shape::Model, enumCast(Shape::Side::NUM)> adjModels;
 
-                for (size_t i = 0; i < 1/*geometryEntry.size*/; ++i)
-                {
-                    Indices indices;
-                    indices.polygon = geometries[geometryEntry.start + i];
-                    indices.coloring = appearances[appearanceEntry.start + i];
-                    indices.block = block;
-                    buffer.push_back(indices);
-                }
-            }
-        }
+    size_t chunkEnd = chunk.start + Constants::chunkSize;
+    for (size_t block = chunk.start; block < chunkEnd; ++block)
+    {
+        //const auto& state = grid[block];
+        //if (state == Constants::emptyStateId)
+        //    continue;
+        //const auto& model = models[states[state].m_model];
+        //const auto& geometryEntry = geometriesCache[model.geometry];
+        //const auto& appearanceEntry = appearancesCache[model.appearence];
+
+        //for (size_t i = 0; i < geometryEntry.size; ++i)
+        //{
+        //    Indices indices;
+        //    indices.polygon = geometries[geometryEntry.start + i];
+        //    indices.coloring = appearances[appearanceEntry.start + i];
+        //    indices.block = block;
+        //    buffer.push_back(indices);
+        //}
+
+        //uint z = (index % chunkLayerSize) / chunkWidth;
+        //uint y = index / chunkLayerSize;
+        //uint x = index % chunkWidth;
+
+        cullingCache.populateBuffer(block,
+            (block - chunk.start) % Constants::chunkWidth,
+            (block - chunk.start) / Constants::chunkLayerSize,
+            ((block - chunk.start) % Constants::chunkLayerSize) / Constants::chunkWidth,
+            chunk, grid, buffer, states, models, geometriesCache,
+            appearancesCache, geometries, appearances);
     }
 
     auto endStaging = std::chrono::high_resolution_clock::now();
@@ -708,7 +743,7 @@ void Renderer::updateChunk(const ResourceCache& resources, size_t chunkIndex,
 }
 
 void Renderer::updateChunkAsync(const ResourceCache& resources, size_t chunkIndex,
-    const WorldGrid::Chunk& chunk, const WorldGrid::Grid& grid)
+    const WorldGrid::Chunk& chunk, const WorldGrid& grid)
 {
     m_poolHandle->pushTask([this, &resources, chunkIndex, &chunk, &grid](size_t threadId) {
         updateChunk(resources, chunkIndex, chunk, grid, threadId);
@@ -730,36 +765,32 @@ void Renderer::drawMemoryPoolVisualization(size_t chunkIndex) {
     ImVec2 cursorPos = ImGui::GetCursorScreenPos();
     ImDrawList* drawList = ImGui::GetWindowDrawList();
 
-
-    // Draw free memory (gray)
     for (const auto& block : freeRegions) {
         float width = (block.size / totalSize) * barSize.x;
         float offset = (block.offset / totalSize) * barSize.x;
         drawList->AddRectFilled(
             ImVec2(cursorPos.x + offset, cursorPos.y),
             ImVec2(cursorPos.x + offset + width, cursorPos.y + barSize.y),
-            IM_COL32(100, 100, 100, 255) // Gray for free memory
+            IM_COL32(100, 100, 100, 255)
         );
     }
 
-    // Draw used memory (red)
     for (const auto& block : allocations) {
         float width = (block.region.size / totalSize) * barSize.x;
         float offset = (block.region.offset / totalSize) * barSize.x;
         drawList->AddRectFilled(
             ImVec2(cursorPos.x + offset, cursorPos.y),
             ImVec2(cursorPos.x + offset + width, cursorPos.y + barSize.y),
-            IM_COL32(255, 0, 0, 255) // Red for used memory
+            IM_COL32(255, 0, 0, 255)
         );
         offset += width;
     }
 
-    // Optional: Draw border
     drawList->AddRect(
         cursorPos,
         ImVec2(cursorPos.x + barSize.x, cursorPos.y + barSize.y),
         IM_COL32(255, 255, 255, 255)
     );
 
-    ImGui::Dummy(barSize); // Advance cursor
+    ImGui::Dummy(barSize);
 }

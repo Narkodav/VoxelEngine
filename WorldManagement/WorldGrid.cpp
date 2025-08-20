@@ -13,24 +13,26 @@ void WorldGrid::resetSphereRadius(size_t sphereRadius, glm::ivec3 centerPos)
 	m_coordToChunk.clear();
 	uint32_t gridCursor = 0;
 
-	for (int32_t x = -static_cast<int32_t>(sphereRadius);
-		x < static_cast<int32_t>(sphereRadius + 1); ++x)
+	glm::ivec3 pos;
+
+	for (pos.x = -static_cast<int32_t>(sphereRadius);
+		pos.x < static_cast<int32_t>(sphereRadius + 1); ++pos.x)
 	{
-		for (int32_t z = -static_cast<int32_t>(sphereRadius);
-			z < static_cast<int32_t>(sphereRadius + 1); ++z)
+		for (pos.z = -static_cast<int32_t>(sphereRadius);
+			pos.z < static_cast<int32_t>(sphereRadius + 1); ++pos.z)
 		{
-			for (int32_t y = -static_cast<int32_t>(sphereRadius);
-				y < static_cast<int32_t>(sphereRadius + 1); ++y)
+			for (pos.y = -static_cast<int32_t>(sphereRadius);
+				pos.y < static_cast<int32_t>(sphereRadius + 1); ++pos.y)
 			{
 				glm::ivec3 coord;
 				uint32_t start;
 				uint32_t neighbourStarts[6];
 
-				glm::ivec3 pos = glm::ivec3(x, y, z) + centerPos;
+				glm::ivec3 posRel = pos + centerPos;
 				if (glm::length(glm::vec3(pos)) <= sphereRadius)
 				{
-					m_chunks.push_back(Chunk{ glm::ivec4(pos, 1), gridCursor, {0} });
-					m_coordToChunk.insert({ pos, m_chunks.size() - 1 });
+					m_chunks.push_back(Chunk{ glm::ivec4(posRel, 1), gridCursor, {0} });
+					m_coordToChunk.insert({ posRel, m_chunks.size() - 1 });
 					gridCursor += Constants::chunkSize;
 				}
 			}

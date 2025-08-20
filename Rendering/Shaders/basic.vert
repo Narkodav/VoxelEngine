@@ -12,9 +12,9 @@ layout(location = 0) out vec2 UV;
 layout(location = 1) flat out uint textureId;
 
 //in voxels
-const uint chunkWidth = 32;	//along X axis
-const uint chunkHeight = 32;	//along Y axis
-const uint chunkDepth = 32;	//along Z axis
+const uint chunkWidth = 16;	//along X axis
+const uint chunkHeight = 16;	//along Y axis
+const uint chunkDepth = 16;	//along Z axis
 const uvec3 chunkSizeVector = { chunkWidth, chunkHeight, chunkDepth };
 
 const float gridCellSize = 1.0f;
@@ -32,10 +32,10 @@ layout(push_constant) uniform PushConstants {
     uint chunkCount;
 } pushConstants;
 
-struct Polygon                    // Total: 16 bytes
+struct Polygon                    // Total: 12 bytes
 {
     uint positions[3];            // 4-byte aligned, 12 bytes total
-    uint padding;                 // 4-byte aligned, 5 bytes total
+    uint normal;
 };
 
 struct Coloring                   // Total: 16 bytes
@@ -66,19 +66,23 @@ layout(set = 0, binding = 1, std430) readonly buffer Uvs {
     vec2 uvs[];                   // 8-byte aligned, 8-byte stride per element
 };
 
-layout(set = 0, binding = 2, std430) readonly buffer PolygonCache {
+layout(set = 0, binding = 2, std430) readonly buffer Normals {
+    vec4 normals[];               // 16-byte aligned, 8-byte stride per element
+};
+
+layout(set = 0, binding = 3, std430) readonly buffer PolygonCache {
     Polygon polygons[];           // 16-byte stride per element (12 bytes + 4 padding)
 };
 
-layout(set = 0, binding = 3, std430) readonly buffer ColoringCache {
+layout(set = 0, binding = 4, std430) readonly buffer ColoringCache {
     Coloring colorings[];         // 16-byte stride per element
 };
 
-layout(set = 0, binding = 4, std430) readonly buffer PolygonIndexCache {
+layout(set = 0, binding = 5, std430) readonly buffer PolygonIndexCache {
     uint polygonIndices[];        // 4-byte stride per element
 };
 
-layout(set = 0, binding = 5, std430) readonly buffer ColoringIndexCache {
+layout(set = 0, binding = 6, std430) readonly buffer ColoringIndexCache {
     uint coloringIndices[];       // 4-byte stride per element
 };
 

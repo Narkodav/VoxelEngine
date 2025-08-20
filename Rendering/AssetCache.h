@@ -8,21 +8,23 @@
 #include <filesystem>
 
 #include "StorageCache.h"
+#include "VoxelCullingCache.h"
 
 #include "Graphics/MemoryManagement/PixelData.h"
 
 class AssetCache
 {
 public:
-	using ModelCache = Id::NamedCache<Shape::Model, Id::Model>;
+	using ModelCache	= Id::NamedCache<Shape::Model, Id::Model>;
 
-	using PolygonCache = Id::Cache<Shape::Polygon, Id::Polygon>;
+	using PolygonCache	= Id::Cache<Shape::Polygon, Id::Polygon>;
 	using ColoringCache = Id::Cache<Shape::Coloring, Id::Coloring>;
 
-	using VertexCache = Id::Cache<glm::vec4, Id::Vertex, VecEpsilonEqualComparator<glm::vec4>>;
-	using UvCache = Id::Cache<glm::vec2, Id::Uv, VecEpsilonEqualComparator<glm::vec2>>;
+	using VertexCache	= Id::Cache<glm::vec4, Id::Vertex, VecEpsilonEqualComparator<glm::vec4>>;
+	using UvCache		= Id::Cache<glm::vec2, Id::Uv, VecEpsilonEqualComparator<glm::vec2>>;
+	using NormalCache	= Id::Cache<glm::vec4, Id::Normal, VecEpsilonEqualComparator<glm::vec4>>;
 
-	using TextureCache = Id::NamedCache<Gfx::PixelData, Id::Texture>;
+	using TextureCache	= Id::NamedCache<Gfx::PixelData, Id::Texture>;
 
 	struct AssetStatistics {
 		size_t textureBytes;
@@ -56,17 +58,18 @@ private:
 	TextureCache m_textureCache;
 	VertexCache m_vertexCache;
 	UvCache m_uvCache;
+	NormalCache m_normalCache;
 	PolygonCache m_polygonCache;
 	ColoringCache m_coloringCache;
 	Shape::PolygonIndexBuffer m_geometryCache;
 	Shape::ColoringIndexBuffer m_appearanceCache;
 	ModelCache m_modelCache;
 
-	//VoxelCullingCache m_voxelCullingCache;
+	VoxelCullingCache m_voxelCullingCache;
 	StorageCache m_storageCache;
 
 public:
-	void init();
+	void init(const std::string& texturePath, const std::string& modelsPath);
 
 	void clearCache(const Gfx::Context& instance, const Gfx::Device& device);
 
@@ -82,51 +85,97 @@ public:
 
 	void writeToDescriptors(const Gfx::Context& instance, const Gfx::Device& device,
 		Gfx::DescriptorSetHandle& descriptorStorage, const Gfx::Sampler& sampler,
-		uint32_t bindingVertex, uint32_t bindingUv, uint32_t bindingPolygon,
+		uint32_t bindingVertex, uint32_t bindingUv, uint32_t bindingNormal, uint32_t bindingPolygon,
 		uint32_t bindingColoring, uint32_t bindingPolygonIndex, uint32_t bindingColoringIndex,
 		uint32_t bindingGeometry, uint32_t bindingAppearence, uint32_t bindingModel,
 		uint32_t bindingStateToModel, uint32_t bindingImage) const {
 		m_storageCache.writeToDescriptors(instance, device,
-			descriptorStorage, sampler, bindingVertex, bindingUv,
+			descriptorStorage, sampler, bindingVertex, bindingUv, bindingNormal,
 			bindingPolygon, bindingColoring, bindingPolygonIndex,
 			bindingColoringIndex, bindingGeometry, bindingAppearence, bindingModel,
 			bindingStateToModel, bindingImage);
 	}
 
-	const TextureCache& getTextureCache() const {
+	const auto& getTextureCache() const {
 		return m_textureCache;
 	}
 
-	const VertexCache& getVertexCache() const {
+	const auto& getVertexCache() const {
 		return m_vertexCache;
 	}
 
-	const UvCache& getUvCache() const {
+	const auto& getUvCache() const {
 		return m_uvCache;
 	}
 
-	const PolygonCache& getPolygonCache() const {
+	const auto& getPolygonCache() const {
 		return m_polygonCache;
 	}
 
-	const ColoringCache& getColoringCache() const {
+	const auto& getColoringCache() const {
 		return m_coloringCache;
 	}
 
-	const Shape::PolygonIndexBuffer& getGeometryCache() const {
+	const auto& getGeometryCache() const {
 		return m_geometryCache;
 	}
 
-	const Shape::ColoringIndexBuffer& getAppearanceCache() const {
+	const auto& getAppearanceCache() const {
 		return m_appearanceCache;
 	}
 
-	const ModelCache& getModelCache() const {
+	const auto& getModelCache() const {
 		return m_modelCache;
 	}
 
-	const StorageCache& getStorageCache() const {
+	const auto& getStorageCache() const {
 		return m_storageCache;
+	}
+
+	const auto& getVoxelCullingCache() const {
+		return m_voxelCullingCache;
+	}
+
+
+
+	auto& getTextureCache() {
+		return m_textureCache;
+	}
+
+	auto& getVertexCache() {
+		return m_vertexCache;
+	}
+
+	auto& getUvCache() {
+		return m_uvCache;
+	}
+
+	auto& getPolygonCache() {
+		return m_polygonCache;
+	}
+
+	auto& getColoringCache() {
+		return m_coloringCache;
+	}
+
+	auto& getGeometryCache() {
+		return m_geometryCache;
+	}
+
+	auto& getAppearanceCache() {
+		return m_appearanceCache;
+	}
+
+	auto& getModelCache() {
+		return m_modelCache;
+	}
+
+	auto& getStorageCache() {
+		return m_storageCache;
+	}
+
+	auto& getVoxelCullingCache() {
+		return m_voxelCullingCache;
 	}
 
 	AssetStatistics getStatistics() const {

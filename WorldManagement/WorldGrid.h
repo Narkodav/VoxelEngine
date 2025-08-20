@@ -1,5 +1,6 @@
 #pragma once
 #include "Common.h"
+#include "Rendering/Shape.h"
 
 #include <vector>
 #include <unordered_map>
@@ -95,24 +96,99 @@ public:
 		return ChunkView::fromChunk(m_grid, chunk);
 	}
 
-	const Id::VoxelState& getBlock(glm::ivec3 coords) const
+	inline const Id::VoxelState& getBlock(glm::ivec3 coords) const
 	{
 		return m_grid[coordsToIndex(coords)];
 	}
 
-	Id::VoxelState& getBlock(glm::ivec3 coords)
+	inline Id::VoxelState& getBlock(glm::ivec3 coords)
 	{
 		return m_grid[coordsToIndex(coords)];
 	}
 
-	const Id::VoxelState& getBlock(size_t index) const
+	inline const Id::VoxelState& getBlock(size_t index) const
 	{
 		return m_grid[index];
 	}
 
-	Id::VoxelState& getBlock(size_t index)
+	inline Id::VoxelState& getBlock(size_t index)
 	{
 		return m_grid[index];
+	}
+
+	template<Shape::Side side>
+	inline Id::VoxelState getAdjacentBlockId(size_t block, size_t x, size_t y, size_t z, const Chunk& chunk) const
+	{
+		if constexpr (side == Shape::Side::BACK)
+		{
+			if (z == 0)
+			{
+				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::BACK)];
+				if (adj == m_grid.size())
+					return Constants::emptyStateId;
+				return m_grid[adj + y * Constants::chunkLayerSize + x * Constants::chunkDepth + 15];
+			}
+			return m_grid[block - Constants::chunkWidth];
+		}
+		else if constexpr (side == Shape::Side::FRONT)
+		{
+			if (z == 15)
+			{
+				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::FRONT)];
+				if (adj == m_grid.size())
+					return Constants::emptyStateId;
+				return m_grid[adj + y * Constants::chunkLayerSize + x * Constants::chunkDepth];
+			}
+			return m_grid[block + Constants::chunkWidth];
+		}
+		else if constexpr (side == Shape::Side::LEFT)
+		{
+			if (x == 0)
+			{
+				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::BACK)];
+				if (adj == m_grid.size())
+					return Constants::emptyStateId;
+				return m_grid[adj + y * Constants::chunkLayerSize + 15 * Constants::chunkDepth + z];
+			}
+			return m_grid[block - 1];
+		}
+		else if constexpr (side == Shape::Side::RIGHT)
+		{
+			if (x == 15)
+			{
+				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::BACK)];
+				if (adj == m_grid.size())
+					return Constants::emptyStateId;
+				return m_grid[adj + y * Constants::chunkLayerSize + z];
+			}
+			return m_grid[block + 1];
+		}
+		else if constexpr (side == Shape::Side::BOTTOM)
+		{
+			if (y == 0)
+			{
+				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::BACK)];
+				if (adj == m_grid.size())
+					return Constants::emptyStateId;
+				return m_grid[adj + 15 * Constants::chunkLayerSize + x * Constants::chunkDepth + z];
+			}
+			return m_grid[block - Constants::chunkLayerSize];
+		}
+		else if constexpr (side == Shape::Side::TOP)
+		{
+			if (y == 15)
+			{
+				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::BACK)];
+				if (adj == m_grid.size())
+					return Constants::emptyStateId;
+				return m_grid[adj + x * Constants::chunkDepth + z];
+			}
+			return m_grid[block + Constants::chunkLayerSize];
+		}
+		else
+		{
+			static_assert(side >= Shape::Side::NUM && "invalid side index");
+		}
 	}
 
 private:

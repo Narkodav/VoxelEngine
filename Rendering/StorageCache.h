@@ -42,7 +42,23 @@ public:
         static vk::DescriptorBindingFlags getDescriptorBindingFlags() { return descriptorSetLayoutBindingFlags; };
     };
 
-    template<size_t bindingPolygon = 2>
+    template<size_t bindingNormal = 2>
+    struct NormalLayoutDefinition {
+        static constexpr vk::DescriptorSetLayoutBinding descriptorSetLayoutBinding = {
+                bindingNormal,
+                vk::DescriptorType::eStorageBuffer,
+                1,
+                vk::ShaderStageFlagBits::eVertex |
+                vk::ShaderStageFlagBits::eCompute |
+                vk::ShaderStageFlagBits::eMeshEXT,
+                nullptr
+        };
+        static constexpr vk::DescriptorBindingFlags descriptorSetLayoutBindingFlags;
+        static vk::DescriptorSetLayoutBinding getDescriptorSetLayoutBinding() { return descriptorSetLayoutBinding; };
+        static vk::DescriptorBindingFlags getDescriptorBindingFlags() { return descriptorSetLayoutBindingFlags; };
+    };
+
+    template<size_t bindingPolygon = 3>
     struct PolygonLayoutDefinition {
         static constexpr vk::DescriptorSetLayoutBinding descriptorSetLayoutBinding = {
                 bindingPolygon,
@@ -58,7 +74,7 @@ public:
         static vk::DescriptorBindingFlags getDescriptorBindingFlags() { return descriptorSetLayoutBindingFlags; };
     };
 
-    template<size_t bindingColoring = 3>
+    template<size_t bindingColoring = 4>
     struct ColoringLayoutDefinition {
         static constexpr vk::DescriptorSetLayoutBinding descriptorSetLayoutBinding = {
                 bindingColoring,
@@ -74,7 +90,7 @@ public:
         static vk::DescriptorBindingFlags getDescriptorBindingFlags() { return descriptorSetLayoutBindingFlags; };
     };
 
-    template<size_t bindingPolygonIndex = 4>
+    template<size_t bindingPolygonIndex = 5>
     struct PolygonIndexLayoutDefinition {
         static constexpr vk::DescriptorSetLayoutBinding descriptorSetLayoutBinding = {
                 bindingPolygonIndex,
@@ -90,7 +106,7 @@ public:
         static vk::DescriptorBindingFlags getDescriptorBindingFlags() { return descriptorSetLayoutBindingFlags; };
     };
 
-    template<size_t bindingColoringIndex = 5>
+    template<size_t bindingColoringIndex = 6>
     struct ColoringIndexLayoutDefinition {
         static constexpr vk::DescriptorSetLayoutBinding descriptorSetLayoutBinding = {
                 bindingColoringIndex,
@@ -106,7 +122,7 @@ public:
         static vk::DescriptorBindingFlags getDescriptorBindingFlags() { return descriptorSetLayoutBindingFlags; };
     };
 
-    template<size_t bindingGeometry = 6>
+    template<size_t bindingGeometry = 7>
     struct GeometryLayoutDefinition {
         static constexpr vk::DescriptorSetLayoutBinding descriptorSetLayoutBinding = {
                 bindingGeometry,
@@ -122,7 +138,7 @@ public:
         static vk::DescriptorBindingFlags getDescriptorBindingFlags() { return descriptorSetLayoutBindingFlags; };
     };
 
-    template<size_t bindingAppearence = 7>
+    template<size_t bindingAppearence = 8>
     struct AppearenceLayoutDefinition {
         static constexpr vk::DescriptorSetLayoutBinding descriptorSetLayoutBinding = {
                 bindingAppearence,
@@ -138,7 +154,7 @@ public:
         static vk::DescriptorBindingFlags getDescriptorBindingFlags() { return descriptorSetLayoutBindingFlags; };
     };
 
-    template<size_t bindingModel = 8>
+    template<size_t bindingModel = 9>
     struct ModelLayoutDefinition {
         static constexpr vk::DescriptorSetLayoutBinding descriptorSetLayoutBinding = {
                 bindingModel,
@@ -154,7 +170,7 @@ public:
         static vk::DescriptorBindingFlags getDescriptorBindingFlags() { return descriptorSetLayoutBindingFlags; };
     };
 
-    template<size_t bindingStateToModel = 9>
+    template<size_t bindingStateToModel = 10>
     struct StateToModelLayoutDefinition {
         static constexpr vk::DescriptorSetLayoutBinding descriptorSetLayoutBinding = {
                 bindingStateToModel,
@@ -170,7 +186,7 @@ public:
         static vk::DescriptorBindingFlags getDescriptorBindingFlags() { return descriptorSetLayoutBindingFlags; };
     };
 
-    template <size_t bindingImage = 10>
+    template <size_t bindingImage = 11>
     struct ImageLayoutDefinition {
         static constexpr vk::DescriptorSetLayoutBinding descriptorSetLayoutBinding = {
                 bindingImage,                                        // binding
@@ -201,6 +217,7 @@ public:
 private:
     Gfx::Buffer m_vertexBuffer;
     Gfx::Buffer m_uvBuffer;
+    Gfx::Buffer m_normalBuffer;
     Gfx::Buffer m_polygonBuffer;
     Gfx::Buffer m_coloringBuffer;
     Gfx::Buffer m_polygonIndexBuffer;
@@ -212,6 +229,7 @@ private:
 
     Gfx::Memory m_vertexMemory;
     Gfx::Memory m_uvMemory;
+    Gfx::Memory m_normalMemory;
     Gfx::Memory m_polygonMemory;
     Gfx::Memory m_coloringMemory;
     Gfx::Memory m_polygonIndexMemory;
@@ -227,6 +245,7 @@ private:
     //in bytes
     size_t m_vertexBufferSize;
     size_t m_uvBufferSize;
+    size_t m_normalBufferSize;
     size_t m_polygonBufferSize;
     size_t m_coloringBufferSize;
     size_t m_polygonIndexBufferSize;
@@ -248,6 +267,7 @@ public:
         Gfx::Buffer& stagingBuffer, 
         const Id::Cache<glm::vec4, Id::Vertex, VecEpsilonEqualComparator<glm::vec4>>& vertexCache,
         const Id::Cache<glm::vec2, Id::Uv, VecEpsilonEqualComparator<glm::vec2>>& uvCache,
+        const Id::Cache<glm::vec4, Id::Normal, VecEpsilonEqualComparator<glm::vec4>>& normalCache,
         const Id::NamedCache<Voxel::State, Id::VoxelState>& stateCache,
         const Id::NamedCache<Shape::Model, Id::Model>& modelCache,
         const Shape::PolygonIndexBuffer& geometryCache,
@@ -260,7 +280,7 @@ public:
 
     void writeToDescriptors(const Gfx::Context& instance, const Gfx::Device& device,
         Gfx::DescriptorSetHandle& descriptorStorage, const Gfx::Sampler& sampler,
-        uint32_t bindingVertex, uint32_t bindingUv, uint32_t bindingPolygon,
+        uint32_t bindingVertex, uint32_t bindingUv, uint32_t bindingNormal, uint32_t bindingPolygon,
         uint32_t bindingColoring, uint32_t bindingPolygonIndex, uint32_t bindingColoringIndex,
         uint32_t bindingGeometry, uint32_t bindingAppearence, uint32_t bindingModel,
         uint32_t bindingStateToModel, uint32_t bindingImage) const;

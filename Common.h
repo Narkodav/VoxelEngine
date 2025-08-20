@@ -107,9 +107,9 @@ namespace Constants
 	};
 
 	//in voxels
-	const size_t chunkWidth = 32;	//along X axis
-	const size_t chunkHeight = 32;	//along Y axis
-	const size_t chunkDepth = 32;	//along Z axis
+	const size_t chunkWidth = 16;	//along X axis
+	const size_t chunkHeight = 16;	//along Y axis
+	const size_t chunkDepth = 16;	//along Z axis
 
 	const float gridCellSize = 1.0f;
 	const float gridCellCenterOffset = 0.5f;
@@ -483,21 +483,33 @@ namespace Id
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			return m_indices[index];
 		}
+
+		void reserveEntryData(size_t size) { 
+			std::unique_lock<std::shared_mutex> lock(m_mutex);
+			m_entries.reserve(size);
+		}
+
+		void reserveIndexData(size_t size) {
+			std::unique_lock<std::shared_mutex> lock(m_mutex);
+			m_indices.reserve(size);
+		}
 	};
 
 	struct VertexTag			{};
 	struct UvTag				{};
+	struct NormalTag			{};
 	struct PolygonTag			{};
 	struct ColoringTag			{};
 	struct TextureTag			{};
 	struct ModelTag				{};
-	
+
 	struct VoxelTag				{};
 	struct VoxelStateTag		{};
 	struct VoxelAttributeTag	{};
 
 	using Vertex			= Id<VertexTag>;
 	using Uv				= Id<UvTag>;
+	using Normal			= Id<NormalTag>;
 	using Polygon			= Id<PolygonTag>;
 	using Coloring			= Id<ColoringTag>;
 	using Texture			= Id<TextureTag>;

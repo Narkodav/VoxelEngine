@@ -1,8 +1,8 @@
 #include "AssetCache.h"
 
-void AssetCache::init()
+void AssetCache::init(const std::string& texturePath, const std::string& modelsPath)
 {
-    registerAssets("res/resourcePack/textures", "res/resourcePack/models");
+    registerAssets(texturePath, modelsPath);
 }
 
 void AssetCache::clearCache(const Gfx::Context& instance, const Gfx::Device& device)
@@ -20,7 +20,7 @@ void AssetCache::registerAssets(const std::string& texturesPath, const std::stri
 
     for (size_t i = 0; i < modelFiles.size(); i++)
         registerVoxelModel(modelFiles[i]);
-
+    m_voxelCullingCache.init(m_geometryCache, m_polygonCache, m_vertexCache, m_normalCache);
 }
 
 void AssetCache::moveAssetsToGpuStorage(const Gfx::Context& instance, const Gfx::Device& device,
@@ -28,7 +28,7 @@ void AssetCache::moveAssetsToGpuStorage(const Gfx::Context& instance, const Gfx:
     Gfx::Buffer& stagingBuffer, const Id::NamedCache<Voxel::State, Id::VoxelState>& voxelStateCache)
 {
     m_storageCache.setup(instance, device, transferQueue, temporaryPool,
-        stagingMemory, stagingBuffer, m_vertexCache, m_uvCache,
+        stagingMemory, stagingBuffer, m_vertexCache, m_uvCache, m_normalCache,
         voxelStateCache, m_modelCache, m_geometryCache, m_appearanceCache,
         m_polygonCache, m_coloringCache, m_textureCache);
 }
@@ -309,6 +309,7 @@ void AssetCache::parseShape(const std::unique_ptr<Json::Value>& shape,
             rotation,
             m_vertexCache,
             m_uvCache,
+            m_normalCache,
             m_polygonCache,
             m_coloringCache,
             geometry,

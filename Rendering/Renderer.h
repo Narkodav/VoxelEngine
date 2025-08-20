@@ -198,7 +198,7 @@ private:
 
 public:
 	Renderer() = default;
-	~Renderer() { cleanup(); };
+	~Renderer() = default;
 
 	void init(std::string engineName, std::string appName,
 		Window& window, MT::ThreadPool& poolHandle);
@@ -206,7 +206,7 @@ public:
 	void createAndWriteAssets(AssetCache& assetCache,
 		const Id::NamedCache<Voxel::State, Id::VoxelState>& voxelStateCache);
 
-	void cleanup();
+	void cleanup(StorageCache& cache);
 
 	void drawFrame(const Gfx::CameraPerspective& camera);
 
@@ -218,9 +218,9 @@ public:
 	//ChunkMapping getChunkMapping();
 
 	void updateChunk(const ResourceCache& resources, size_t chunkIndex,
-		const WorldGrid::Chunk& chunk, const WorldGrid::Grid& grid, size_t threadId);
+		const WorldGrid::Chunk& chunk, const WorldGrid& grid, size_t threadId);
 	void updateChunkAsync(const ResourceCache& resources, size_t chunkIndex,
-		const WorldGrid::Chunk& chunk, const WorldGrid::Grid& grid);
+		const WorldGrid::Chunk& chunk, const WorldGrid& grid);
 private:
 	void createLayouts();
 	void createConfigBuffers();

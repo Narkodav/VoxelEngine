@@ -5,6 +5,7 @@ void StorageCache::setup(const Gfx::Context& instance, const Gfx::Device& device
     Gfx::Buffer& stagingBuffer,
     const Id::Cache<glm::vec4, Id::Vertex, VecEpsilonEqualComparator<glm::vec4>>& vertexCache,
     const Id::Cache<glm::vec2, Id::Uv, VecEpsilonEqualComparator<glm::vec2>>& uvCache,
+    const Id::Cache<glm::vec4, Id::Normal, VecEpsilonEqualComparator<glm::vec4>>& normalCache,
     const Id::NamedCache<Voxel::State, Id::VoxelState>& stateCache,
     const Id::NamedCache<Shape::Model, Id::Model>& modelCache,
     const Shape::PolygonIndexBuffer& geometryCache,
@@ -15,6 +16,7 @@ void StorageCache::setup(const Gfx::Context& instance, const Gfx::Device& device
 {
     m_vertexBufferSize = vertexCache.size() * sizeof(glm::vec4);
     m_uvBufferSize = uvCache.size() * sizeof(glm::vec2);
+    m_normalBufferSize = normalCache.size() * sizeof(glm::vec4);
     m_polygonBufferSize = polygonCache.size() * sizeof(Shape::Polygon);
     m_coloringBufferSize = coloringCache.size() * sizeof(Shape::Coloring);
     m_polygonIndexBufferSize = geometryCache.indexSize() * sizeof(uint32_t);
@@ -45,6 +47,17 @@ void StorageCache::setup(const Gfx::Context& instance, const Gfx::Device& device
         instance, device, transferQueue,
         stagingMemory, stagingBuffer, m_uvBuffer,
         uvCache.data());
+
+    m_normalBuffer = Gfx::Buffer(instance, device,
+        Gfx::Buffer::Descriptor(m_normalBufferSize,
+            Gfx::BufferUsage::Bits::TransferDst | Gfx::BufferUsage::Bits::Storage, false));
+    m_normalMemory = Gfx::Memory(instance, device, m_normalBuffer.getMemoryRequirements(),
+        Gfx::MemoryProperty::Bits::DeviceLocal, m_normalBuffer.getMemoryRequirements().size);
+    m_normalMemory.bindBuffer(instance, device, m_normalBuffer);
+    temporaryPool.makeOneTimeDataTransfer<glm::vec2>(
+        instance, device, transferQueue,
+        stagingMemory, stagingBuffer, m_normalBuffer,
+        normalCache.data());
 
     m_polygonBuffer = Gfx::Buffer(instance, device,
         Gfx::Buffer::Descriptor(m_polygonBufferSize,
@@ -163,9 +176,9 @@ void StorageCache::setup(const Gfx::Context& instance, const Gfx::Device& device
 
 void StorageCache::writeToDescriptors(const Gfx::Context& instance, const Gfx::Device& device,
     Gfx::DescriptorSetHandle& descriptorStorage, const Gfx::Sampler& sampler,
-    uint32_t bindingVertex, uint32_t bindingUv,uint32_t bindingPolygon, 
-    uint32_t bindingColoring, uint32_t bindingPolygonIndex,uint32_t bindingColoringIndex, 
-    uint32_t bindingGeometry, uint32_t bindingAppearence,uint32_t bindingModel, 
+    uint32_t bindingVertex, uint32_t bindingUv, uint32_t bindingNormal, uint32_t bindingPolygon,
+    uint32_t bindingColoring, uint32_t bindingPolygonIndex, uint32_t bindingColoringIndex,
+    uint32_t bindingGeometry, uint32_t bindingAppearence, uint32_t bindingModel,
     uint32_t bindingStateToModel, uint32_t bindingImage) const
 {
     descriptorStorage->write(instance, device, m_vertexBuffer, bindingVertex, 0, m_vertexBufferSize);
@@ -187,6 +200,7 @@ void StorageCache::destroy(const Gfx::Context& instance, const Gfx::Device& devi
 {
     m_vertexBuffer.destroy(instance, device);
     m_uvBuffer.destroy(instance, device);
+    m_normalBuffer.destroy(instance, device);
     m_polygonBuffer.destroy(instance, device);
     m_coloringBuffer.destroy(instance, device);
     m_polygonIndexBuffer.destroy(instance, device);
@@ -198,6 +212,7 @@ void StorageCache::destroy(const Gfx::Context& instance, const Gfx::Device& devi
     
     m_vertexMemory.destroy(instance, device);
     m_uvMemory.destroy(instance, device);
+    m_normalMemory.destroy(instance, device);
     m_polygonMemory.destroy(instance, device);
     m_coloringMemory.destroy(instance, device);
     m_polygonIndexMemory.destroy(instance, device);

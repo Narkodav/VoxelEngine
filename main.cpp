@@ -70,7 +70,7 @@ int main()
 	renderer.init("eng", "app", window, pool);
 
 	ResourceCache resources;
-	resources.registerResources("res/resourcePack/voxels");
+	resources.registerResources("res/resourcePack/voxels", "res/resourcePack/textures", "res/resourcePack/models");
 	resources.getAssetCache().printStatistics();
 
 	FrameRateCalculator calculator;
@@ -87,7 +87,7 @@ int main()
 	Mouse mouse = Mouse(window);
 
 	WorldGrid grid;
-	grid.resetSphereRadius(10, { 0, 0, 0 });
+	grid.resetSphereRadius(1, { 3, 0, 0 });
 
 	float mouseSensitivity = 80.f;
 	float moveSpeed = 10.f;
@@ -99,7 +99,7 @@ int main()
 		grid.getBlock(i) = 1;
 
 	for(size_t i = 0; i < grid.getChunks().size(); ++i)
-		renderer.updateChunkAsync(resources, i, grid.getChunks()[i], grid.getGrid());
+		renderer.updateChunkAsync(resources, i, grid.getChunks()[i], grid);
 
 	while (!window.shouldClose()) {
 		auto startTime = std::chrono::high_resolution_clock::now();
@@ -129,8 +129,7 @@ int main()
 		calculator.updateFrameRate();
 		//calculator.displayFrameRateToConsole();
 	}
-
-	renderer.cleanup();
+	pool.terminate();
+	renderer.cleanup(resources.getAssetCache().getStorageCache());
 	window.destroy();
-
 }

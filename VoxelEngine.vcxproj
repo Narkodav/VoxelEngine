@@ -110,7 +110,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)Vendor\glfw-3.3.8.bin.WIN64\include;$(ProjectDir)Vendor\assimp\include;$(ProjectDir)Vendor\imgui;$(ProjectDir)Vendor;$(SolutionDir);E:\Program Files (x86)\API\Vulkan\Include;$(ProjectDir)Vendor\CommonApi\include;$(ProjectDir)Vendor\stb_image;$(ProjectDir);$(ProjectDir)Vendor\include;$(ProjectDir)Vendor\JsonParser\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Vendor\glfw-3.3.8.bin.WIN64\include;$(ProjectDir)Vendor\assimp\include;$(ProjectDir)Vendor\imgui;$(ProjectDir)Vendor;$(SolutionDir);E:\Program Files (x86)\API\Vulkan\Include;$(ProjectDir)Vendor\CommonApi\include;$(ProjectDir)Vendor\stb_image;$(ProjectDir);$(ProjectDir)Vendor\include;$(ProjectDir)Vendor\JsonParser\include;$(ProjectDir)Vendor\Clipper2Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
@@ -129,7 +129,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)Vendor\glfw-3.3.8.bin.WIN64\include;$(ProjectDir)Vendor\assimp\include;$(ProjectDir)Vendor\imgui;$(ProjectDir)Vendor;$(SolutionDir);E:\Program Files (x86)\API\Vulkan\Include;$(ProjectDir)Vendor\CommonApi\include;$(ProjectDir)Vendor\stb_image;$(ProjectDir);$(ProjectDir)Vendor\include;$(ProjectDir)Vendor\JsonParser\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Vendor\glfw-3.3.8.bin.WIN64\include;$(ProjectDir)Vendor\assimp\include;$(ProjectDir)Vendor\imgui;$(ProjectDir)Vendor;$(SolutionDir);E:\Program Files (x86)\API\Vulkan\Include;$(ProjectDir)Vendor\CommonApi\include;$(ProjectDir)Vendor\stb_image;$(ProjectDir);$(ProjectDir)Vendor\include;$(ProjectDir)Vendor\JsonParser\include;$(ProjectDir)Vendor\Clipper2Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Math\LinearAlgebra.cpp" />
     <ClCompile Include="Rendering\DebugConsole.cpp" />
     <ClCompile Include="GameData\ResourceCache.cpp" />
     <ClCompile Include="GameData\Voxel.cpp" />
@@ -153,6 +154,10 @@
     <ClCompile Include="Rendering\Shape.cpp" />
     <ClCompile Include="Rendering\Renderer.cpp" />
     <ClCompile Include="Rendering\Shaders\ShaderCache.cpp" />
+    <ClCompile Include="Rendering\VoxelCullingCache.cpp" />
+    <ClCompile Include="Vendor\Clipper2Lib\src\clipper.engine.cpp" />
+    <ClCompile Include="Vendor\Clipper2Lib\src\clipper.offset.cpp" />
+    <ClCompile Include="Vendor\Clipper2Lib\src\clipper.rectclip.cpp" />
     <ClCompile Include="Vendor\imgui\imgui.cpp" />
     <ClCompile Include="Vendor\imgui\imgui_draw.cpp" />
     <ClCompile Include="Vendor\imgui\imgui_impl_glfw.cpp" />
@@ -169,6 +174,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h" />
+    <ClInclude Include="Math\LinearAlgebra.h" />
     <ClInclude Include="Rendering\DebugConsole.h" />
     <ClInclude Include="GameData\ResourceCache.h" />
     <ClInclude Include="GameData\Voxel.h" />
@@ -179,6 +185,14 @@
     <ClInclude Include="Rendering\Renderer.h" />
     <ClInclude Include="Rendering\ShaderLayoutDefinitions.h" />
     <ClInclude Include="Rendering\Shaders\ShaderCache.h" />
+    <ClInclude Include="Rendering\VoxelCullingCache.h" />
+    <ClInclude Include="Vendor\Clipper2Lib\include\clipper2\clipper.core.h" />
+    <ClInclude Include="Vendor\Clipper2Lib\include\clipper2\clipper.engine.h" />
+    <ClInclude Include="Vendor\Clipper2Lib\include\clipper2\clipper.h" />
+    <ClInclude Include="Vendor\Clipper2Lib\include\clipper2\clipper.minkowski.h" />
+    <ClInclude Include="Vendor\Clipper2Lib\include\clipper2\clipper.offset.h" />
+    <ClInclude Include="Vendor\Clipper2Lib\include\clipper2\clipper.rectclip.h" />
+    <ClInclude Include="Vendor\Clipper2Lib\include\clipper2\clipper.version.h" />
     <ClInclude Include="Vendor\CommonApi\include\MultiThreading\ThreadPool.h" />
     <ClInclude Include="Vendor\imgui\imgui.h" />
     <ClInclude Include="Vendor\imgui\imgui_impl_glfw.h" />
@@ -199,11 +213,6 @@
       <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\basic.frag.spv</Outputs>
       <Message>Compiling shader basic.frag</Message>
     </CustomBuild>
-    <CustomBuild Include="Rendering\Shaders\Voxel.frag">
-      <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\Voxel.frag" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\Voxel.frag.spv"</Command>
-      <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\Voxel.frag.spv</Outputs>
-      <Message>Compiling shader Voxel.frag</Message>
-    </CustomBuild>
     <CustomBuild Include="Vendor\imgui\backends\vulkan\glsl_shader.frag">
       <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\backends\vulkan\glsl_shader.frag" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\backends\vulkan\glsl_shader.frag.spv"</Command>
       <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\backends\vulkan\glsl_shader.frag.spv</Outputs>
@@ -218,11 +227,6 @@
       <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\basic.vert" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\basic.vert.spv"</Command>
       <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\basic.vert.spv</Outputs>
       <Message>Compiling shader basic.vert</Message>
-    </CustomBuild>
-    <CustomBuild Include="Rendering\Shaders\Voxel.vert">
-      <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\Voxel.vert" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\Voxel.vert.spv"</Command>
-      <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\Voxel.vert.spv</Outputs>
-      <Message>Compiling shader Voxel.vert</Message>
     </CustomBuild>
     <CustomBuild Include="Vendor\imgui\backends\vulkan\glsl_shader.vert">
       <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\backends\vulkan\glsl_shader.vert" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\backends\vulkan\glsl_shader.vert.spv"</Command>

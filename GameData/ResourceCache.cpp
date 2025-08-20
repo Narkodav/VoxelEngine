@@ -1,8 +1,8 @@
 #include "ResourceCache.h"
 
-void ResourceCache::registerResources(const std::string& voxelsPath)
+void ResourceCache::registerResources(const std::string& voxelsPath, const std::string& texturePath, const std::string& modelsPath)
 {
-    m_assetCache.init();
+    m_assetCache.init(texturePath, modelsPath);
 
     auto voxelFiles = getFilesInDirectory(voxelsPath);
 

@@ -124,8 +124,7 @@ public:
 		TOP		= enumCast(Directions3D::UP),
 		BACK	= enumCast(Directions3D::BACKWARD),
 		LEFT	= enumCast(Directions3D::LEFT),
-		BOTTOM	= enumCast(Directions3D::DOWN),		
-		NONE, //for the polygons that cannot be culled
+		BOTTOM	= enumCast(Directions3D::DOWN),
 		NUM,
 	};
 
@@ -135,8 +134,7 @@ public:
 		"top",
 		"back",
 		"left",
-		"bottom",
-		"none"
+		"bottom"
 	};
 
 	enum class FaceCorner : uint8_t
@@ -243,8 +241,8 @@ public:
 	//shape geometry
 	struct alignas(4) Polygon
 	{
-		uint32_t position[3]; //polygon
-		uint32_t padding;
+		Id::Vertex position[3]; //polygon
+		Id::Normal normal;
 
 		bool operator==(const Polygon& other) const {
 			return position[0] == other.position[0] &&
@@ -256,8 +254,8 @@ public:
 	//face coloring
 	struct alignas(4) Coloring
 	{
-		uint32_t uvs[3];
-		uint32_t textureId;
+		Id::Uv uvs[3];
+		Id::Texture textureId;
 
 		bool operator==(const Coloring& other) const {
 			return textureId == other.textureId &&
@@ -306,6 +304,7 @@ public:
 		glm::vec3 rotation,
 		Id::Cache<glm::vec4, Id::Vertex, VecEpsilonEqualComparator<glm::vec4>>& vertexCache,
 		Id::Cache<glm::vec2, Id::Uv, VecEpsilonEqualComparator<glm::vec2>>& uvCache,
+		Id::Cache<glm::vec4, Id::Normal, VecEpsilonEqualComparator<glm::vec4>>& normalCache,
 		Id::Cache<Shape::Polygon, Id::Polygon>& polygonCache,
 		Id::Cache<Shape::Coloring, Id::Coloring>& coloringCache,
 		std::vector<Id::Polygon>& geometry,
@@ -328,12 +327,16 @@ public:
 			polygon.position[0] = verticesInd[verticesInd.size() - 6];
 			polygon.position[1] = verticesInd[verticesInd.size() - 5];
 			polygon.position[2] = verticesInd[verticesInd.size() - 4];
+			polygon.normal = normalCache.add(glm::vec4(
+				Constants::directionsFloat3D[enumCast(static_cast<Directions3D>(i))], 0));
 
 			geometry.push_back(polygonCache.add(polygon));
 
 			polygon.position[0] = verticesInd[verticesInd.size() - 3];
 			polygon.position[1] = verticesInd[verticesInd.size() - 2];
 			polygon.position[2] = verticesInd[verticesInd.size() - 1];
+			polygon.normal = normalCache.add(glm::vec4(
+				Constants::directionsFloat3D[enumCast(static_cast<Directions3D>(i))], 0));
 
 			geometry.push_back(polygonCache.add(polygon));
 
@@ -361,13 +364,6 @@ public:
 
 	static inline const Gfx::Buffer& getIndexBuffer() { return indexBuffer; };
 	static inline const Gfx::Buffer& getPositionBuffer() { return positionBuffer; };
-
-
-	static void initBuffers(const Gfx::Context& instance,
-		const Gfx::Device& device, Gfx::MappedMemory& stagingMemory,
-		const Gfx::Buffer& stagingBuffer, Gfx::CommandPool& temporaryPool,
-		const Gfx::Queue& transferQueue);
-	static void destroyBuffers(const Gfx::Context& instance, const Gfx::Device& device);
 		
 	//rotates scales and transposes a front face vertex
 	static void transformFaceVertex(glm::vec4& vertex, glm::vec3 dimentions, glm::vec3 position, Side side)
