@@ -71,8 +71,81 @@ private:
 		const Id::NamedCache<Voxel::State, Id::VoxelState>& voxelStates,
 		const Id::NamedCache<Shape::Model, Id::Model>& modelCache) const
 	{
-		auto adjState = grid.getAdjacentBlockId<side>(block, x, y, z, chunk);
-		if (adjState == Constants::emptyStateId)
+		Id::VoxelState adjState;
+		auto& voxelGrid = grid.getGrid();
+		if constexpr (side == Shape::Side::FRONT)
+		{
+			if (z == 0)
+			{
+				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::FRONT)];
+				if (adj == WorldGrid::noChunkIndex)
+					return m_noCullingIndex;
+				adjState = voxelGrid[adj + y * Constants::chunkLayerSize + 15 * Constants::chunkDepth + x];
+			}
+			else adjState = voxelGrid[block - Constants::chunkWidth];
+		}
+		else if constexpr (side == Shape::Side::BACK)
+		{
+			if (z == 15)
+			{
+				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::BACK)];
+				if (adj == WorldGrid::noChunkIndex)
+					return m_noCullingIndex;
+				adjState = voxelGrid[adj + y * Constants::chunkLayerSize + x];
+			}
+			else adjState = voxelGrid[block + Constants::chunkWidth];
+		}
+		else if constexpr (side == Shape::Side::LEFT)
+		{
+			if (x == 0)
+			{
+				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::LEFT)];
+				if (adj == WorldGrid::noChunkIndex)
+					return m_noCullingIndex;
+				adjState = voxelGrid[adj + y * Constants::chunkLayerSize + z * Constants::chunkDepth + 15];
+			}
+			else adjState = voxelGrid[block - 1];
+		}
+		else if constexpr (side == Shape::Side::RIGHT)
+		{
+			if (x == 15)
+			{
+				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::RIGHT)];
+				if (adj == WorldGrid::noChunkIndex)
+					return m_noCullingIndex;
+				adjState = voxelGrid[adj + y * Constants::chunkLayerSize + z * Constants::chunkDepth];
+			}
+			else adjState = voxelGrid[block + 1];
+		}
+		else if constexpr (side == Shape::Side::BOTTOM)
+		{
+			if (y == 0)
+			{
+				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::BOTTOM)];
+				if (adj == WorldGrid::noChunkIndex)
+					return m_noCullingIndex;
+				adjState = voxelGrid[adj + 15 * Constants::chunkLayerSize + z * Constants::chunkDepth + x];
+			}
+			else adjState = voxelGrid[block - Constants::chunkLayerSize];
+		}
+		else if constexpr (side == Shape::Side::TOP)
+		{
+			//(block - chunk.start) % Constants::chunkWidth,
+			//	(block - chunk.start) / Constants::chunkLayerSize,
+			//	((block - chunk.start) % Constants::chunkLayerSize) / Constants::chunkWidth,
+
+			if (y == 15)
+			{
+				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::TOP)];
+				if (adj == WorldGrid::noChunkIndex)
+					return m_noCullingIndex;
+				adjState = voxelGrid[adj + z * Constants::chunkDepth + x];
+			}
+			else adjState = voxelGrid[block + Constants::chunkLayerSize];
+		}
+		else static_assert(side >= Shape::Side::NUM && "invalid side index");
+
+		if(adjState == Constants::emptyStateId)
 			return m_noCullingIndex;
 		auto& geom = modelCache[voxelStates[adjState].m_model].geometry;
 		return cullingEntries[m_cullingIds[enumCast(side) * m_geometryAmount * m_geometryAmount

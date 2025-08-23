@@ -155,19 +155,10 @@ void VoxelCullingCache::populateBuffer(size_t block, size_t x, size_t y, size_t 
 		return;
 	const auto& modelMain = modelCache[voxelStates[state].m_model];
 	const auto& geometryEntry = geometryEntries[modelMain.geometry];
-	const auto& appearanceEntry = appearanceEntries[modelMain.appearence];	
-
-	//for (size_t i = 0; i < geometryEntry.size; ++i)
-	//{
-	//	Indices index;
-	//	index.polygon = geometries[geometryEntry.start + i];
-	//	index.coloring = appearances[appearanceEntry.start + i];
-	//	index.block = block;
-	//	indices.push_back(index);
-	//}
+	const auto& appearanceEntry = appearanceEntries[modelMain.appearence];
 
 	BitMask currentMask;
-	size_t entrySize = 0;	
+	size_t entrySize = 0;
 
 	size_t count = geometryEntry.size / std::numeric_limits<BitMask>::digits;
 	size_t rest = geometryEntry.size - count * std::numeric_limits<BitMask>::digits;

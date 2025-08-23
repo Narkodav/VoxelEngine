@@ -63,6 +63,9 @@ int main()
 {	
 	bool cursorMode = 1;
 
+	WorldGrid grid;
+	grid.resetSphereRadius(15, { 13, 0, 0 });
+
 	MT::ThreadPool pool(16);
 	Window window = Window(Graphics::Extent2D(800, 600), "app",
 		Window::Attributes::firstPersonGameMaximisedAtr());
@@ -86,21 +89,22 @@ int main()
 	Keyboard keyboard = Keyboard(window);
 	Mouse mouse = Mouse(window);
 
-	WorldGrid grid;
-	grid.resetSphereRadius(10, { 5, 0, 0 });
-
 	float mouseSensitivity = 80.f;
 	float moveSpeed = 10.f;
 
 	renderer.createAndWriteAssets(resources.getAssetCache(), resources.getVoxelStateCache());
-	renderer.resetChunkBuffers(grid.getChunks().size());
+	renderer.resetChunkBuffers(grid);
 
+	std::srand(/*std::time({})*/ 214314);
 	for (size_t i = 0; i < grid.getGrid().size(); ++i)
-		grid.getBlock(i) = 1;
+		grid.getBlock(i) = std::rand() % 101 > 50 ? 0 : 1;;
 
-	for(size_t i = 0; i < grid.getChunks().size(); ++i)
-		renderer.updateChunkAsync(resources, i, grid.getChunks()[i], grid);
+	for(size_t i = 0; i < grid.getAllocatedChunks().size(); ++i)
+		renderer.updateChunkAsync(resources, grid.getAllocatedChunks()[i].getIndex(), grid);
+	size_t i = 0;
+	size_t counter = 0;
 
+	//renderer.updateChunk(resources, i, grid, 0);
 	while (!window.shouldClose()) {
 		auto startTime = std::chrono::high_resolution_clock::now();
 		
@@ -114,10 +118,16 @@ int main()
 		camera.setAspectRatio(window.getAspectRatio());
 
 		handleInputs(mouse, keyboard, window, camera, deltaTime, mouseSensitivity, moveSpeed, cursorMode);
-
-		//std::copy(gridVec.begin(), gridVec.end(), gridMapping.begin());
-		//std::copy(chunkVec.begin(), chunkVec.end(), chunkMapping.begin());
 		
+		//if(counter == 1000)
+		//{
+		//	renderer.unmeshChunk(i);
+		//	i = (i + 1) % grid.getChunks().size();
+		//	renderer.updateChunk(resources, i, grid, 0);
+		//}
+		//counter = (counter + 1) % 1001;
+		//renderer.updateChunk(resources, i, grid, 0);
+		//i = (i + 1) % grid.getChunks().size();
 		//game loop
 
 

@@ -1,4 +1,6 @@
 #pragma once
+#define NOMINMAX
+
 #include <stdexcept>
 #include <cstdint>
 #include <array>

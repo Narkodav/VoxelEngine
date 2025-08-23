@@ -1,6 +1,7 @@
 #pragma once
 #include "Common.h"
 #include "Rendering/Shape.h"
+#include "Utility/StructOfArraysPool.h"
 
 #include <vector>
 #include <unordered_map>
@@ -14,50 +15,23 @@ public:
 	struct alignas(16) Chunk {	
 		glm::ivec4 coord;
 		uint32_t start;
-		uint32_t neighbourStarts[6];	
+		uint32_t neighbourStarts[6];
 		uint32_t padding;
 	};
 
-	using Chunks = std::vector<Chunk>;
 	using CoordToChunk = std::unordered_map<glm::ivec3, size_t>;
 
-	struct ChunkView {
-		std::span<Id::VoxelState> chunk;
-		std::span<Id::VoxelState> neighbours[6];
 
-		static ChunkView fromChunk(Grid& grid, const Chunk& chunk)
-		{
-			ChunkView view;
-			view.chunk = std::span<Id::VoxelState>(
-				grid.data() + chunk.start, Constants::chunkSize);
-			for (size_t i = 0; i < 6; i++)
-				view.neighbours[i] = std::span<Id::VoxelState>(
-					grid.data() + chunk.neighbourStarts[i], Constants::chunkSize);
-			return view;
-		}
-	};
+	using GridPoolDescriptor = StructOfArraysPoolType<Id::VoxelState, Constants::chunkSize>;
+	using ChunksPoolDescriptor = StructOfArraysPoolType<Chunk, 1>;
+	using GridPool = StructOfArraysPool<GridPoolDescriptor, ChunksPoolDescriptor>;
 
-	struct ConstChunkView {
-		std::span<const Id::VoxelState> chunk;
-		std::span<const Id::VoxelState> neighbours[6];
-
-		static ConstChunkView fromChunk(const Grid& grid, const Chunk& chunk)
-		{
-			ConstChunkView view;
-			view.chunk = std::span<const Id::VoxelState>(
-				grid.data() + chunk.start, Constants::chunkSize);
-			for (size_t i = 0; i < 6; i++)
-				view.neighbours[i] = std::span<const Id::VoxelState>(
-					grid.data() + chunk.neighbourStarts[i], Constants::chunkSize);
-			return view;
-		}
-	};
-
+	static inline const uint32_t noChunkIndex = std::numeric_limits<uint32_t>::max();
 private:
-	Grid m_grid;
-	Chunks m_chunks;
+	GridPool m_pool;
+	std::vector<GridPool::Allocation> m_allocations;
 	CoordToChunk m_coordToChunk;
-	size_t m_sphereRadius = 0;
+    size_t m_sphereRadius = 0;
 
 public:
 	WorldGrid() = default;
@@ -66,124 +40,101 @@ public:
 
 	void resetSphereRadius(size_t sphereRadius, glm::ivec3 centerPos);
 
-	const Grid& getGrid() const { return m_grid; }
-	const Chunks& getChunks() const { return m_chunks; }
-	const CoordToChunk& getCoordToChunk() const { return m_coordToChunk; }
-	
-	ConstChunkView getChunk(glm::ivec3 chunkCoords) const
-	{
-		const Chunk& chunk = m_chunks[m_coordToChunk.at(chunkCoords)];
-		return ConstChunkView::fromChunk(m_grid, chunk);
-	}
+	const auto& getGrid() const { return m_pool.getField<0>(); }
+	const auto& getAllocatedChunks() const { return m_allocations; }
+	const auto& getCoordToChunk() const { return m_coordToChunk; }
+	const auto& getPool() const { return m_pool; }
 
-	ChunkView getChunk(glm::ivec3 chunkCoords)
-	{
-		const Chunk& chunk = m_chunks[m_coordToChunk.at(chunkCoords)];
-		return ChunkView::fromChunk(m_grid, chunk);
-	}
-
-	ConstChunkView getChunk(size_t index) const
-	{
-		const Chunk& chunk = m_chunks[m_grid.data() +
-			index * Constants::chunkSize, Constants::chunkSize];
-		return ConstChunkView::fromChunk(m_grid, chunk);
-	}
-
-	ChunkView getChunk(size_t index)
-	{
-		const Chunk& chunk = m_chunks[m_grid.data() +
-			index * Constants::chunkSize, Constants::chunkSize];
-		return ChunkView::fromChunk(m_grid, chunk);
-	}
 
 	inline const Id::VoxelState& getBlock(glm::ivec3 coords) const
 	{
-		return m_grid[coordsToIndex(coords)];
+		return m_pool.getField<0>()[coordsToIndex(coords)];
 	}
 
 	inline Id::VoxelState& getBlock(glm::ivec3 coords)
 	{
-		return m_grid[coordsToIndex(coords)];
+		return m_pool.getField<0>()[coordsToIndex(coords)];
 	}
 
 	inline const Id::VoxelState& getBlock(size_t index) const
 	{
-		return m_grid[index];
+		return m_pool.getField<0>()[index];
 	}
 
 	inline Id::VoxelState& getBlock(size_t index)
 	{
-		return m_grid[index];
+		return m_pool.getField<0>()[index];
 	}
 
 	template<Shape::Side side>
 	inline Id::VoxelState getAdjacentBlockId(size_t block, size_t x, size_t y, size_t z, const Chunk& chunk) const
 	{
+		auto& grid = m_pool.getField<0>();
 		if constexpr (side == Shape::Side::FRONT)
 		{
 			if (z == 0)
 			{
 				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::FRONT)];
-				if (adj == m_grid.size())
+				if (adj == noChunkIndex)
 					return Constants::emptyStateId;
-				return m_grid[adj + y * Constants::chunkLayerSize + x * Constants::chunkDepth + 15];
+				return grid[adj + y * Constants::chunkLayerSize + x * Constants::chunkDepth + 15];
 			}
-			return m_grid[block - Constants::chunkWidth];
+			return grid[block - Constants::chunkWidth];
 		}
 		else if constexpr (side == Shape::Side::BACK)
 		{
 			if (z == 15)
 			{
 				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::BACK)];
-				if (adj == m_grid.size())
+				if (adj == noChunkIndex)
 					return Constants::emptyStateId;
-				return m_grid[adj + y * Constants::chunkLayerSize + x * Constants::chunkDepth];
+				return grid[adj + y * Constants::chunkLayerSize + x * Constants::chunkDepth];
 			}
-			return m_grid[block + Constants::chunkWidth];
+			return grid[block + Constants::chunkWidth];
 		}
 		else if constexpr (side == Shape::Side::LEFT)
 		{
 			if (x == 0)
 			{
 				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::LEFT)];
-				if (adj == m_grid.size())
+				if (adj == noChunkIndex)
 					return Constants::emptyStateId;
-				return m_grid[adj + y * Constants::chunkLayerSize + 15 * Constants::chunkDepth + z];
+				return grid[adj + y * Constants::chunkLayerSize + 15 * Constants::chunkDepth + z];
 			}
-			return m_grid[block - 1];
+			return grid[block - 1];
 		}
 		else if constexpr (side == Shape::Side::RIGHT)
 		{
 			if (x == 15)
 			{
 				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::RIGHT)];
-				if (adj == m_grid.size())
+				if (adj == noChunkIndex)
 					return Constants::emptyStateId;
-				return m_grid[adj + y * Constants::chunkLayerSize + z];
+				return grid[adj + y * Constants::chunkLayerSize + z];
 			}
-			return m_grid[block + 1];
+			return grid[block + 1];
 		}
 		else if constexpr (side == Shape::Side::BOTTOM)
 		{
 			if (y == 0)
 			{
 				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::BOTTOM)];
-				if (adj == m_grid.size())
+				if (adj == noChunkIndex)
 					return Constants::emptyStateId;
-				return m_grid[adj + 15 * Constants::chunkLayerSize + x * Constants::chunkDepth + z];
+				return grid[adj + 15 * Constants::chunkLayerSize + x * Constants::chunkDepth + z];
 			}
-			return m_grid[block - Constants::chunkLayerSize];
+			return grid[block - Constants::chunkLayerSize];
 		}
 		else if constexpr (side == Shape::Side::TOP)
 		{
 			if (y == 15)
 			{
 				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::TOP)];
-				if (adj == m_grid.size())
+				if (adj == noChunkIndex)
 					return Constants::emptyStateId;
-				return m_grid[adj + x * Constants::chunkDepth + z];
+				return grid[adj + x * Constants::chunkDepth + z];
 			}
-			return m_grid[block + Constants::chunkLayerSize];
+			return grid[block + Constants::chunkLayerSize];
 		}
 		else
 		{
@@ -202,8 +153,7 @@ private:
 		coords.z - chunkCoords.z * Constants::chunkDepth };
 
 		auto& chunk = m_coordToChunk.at(chunkCoords);
-
-		return m_chunks[chunk].start + coords.x + coords.z * Constants::chunkWidth +
+		return m_allocations[chunk].getField<1>().start + coords.x + coords.z * Constants::chunkWidth +
 			coords.y * Constants::chunkLayerSize;
 	}
 };

@@ -92,63 +92,12 @@ public:
 template <size_t binding = 0>
 struct ConfigLayoutDefinition {
     static constexpr vk::DescriptorSetLayoutBinding descriptorSetLayoutBinding = {
-            binding,                                              // binding
+            binding,                                        // binding
             vk::DescriptorType::eUniformBuffer,				// descriptor type
             1,												// descriptor count
             vk::ShaderStageFlagBits::eFragment |
+            vk::ShaderStageFlagBits::eVertex |
             vk::ShaderStageFlagBits::eCompute,              // stage flags
-            nullptr                                         // immutable samplers
-    };
-
-    static constexpr vk::DescriptorBindingFlags descriptorSetLayoutBindingFlags;
-
-    static vk::DescriptorSetLayoutBinding
-        getDescriptorSetLayoutBinding()
-    {
-        return descriptorSetLayoutBinding;
-    };
-
-    static vk::DescriptorBindingFlags
-        getDescriptorBindingFlags()
-    {
-        return descriptorSetLayoutBindingFlags;
-    };
-};
-
-template <size_t binding = 1>
-struct UsageLayoutDefinition {
-    static constexpr vk::DescriptorSetLayoutBinding descriptorSetLayoutBinding = {
-            binding,                                        // binding
-            vk::DescriptorType::eStorageBuffer,				// descriptor type
-            1,												// descriptor count
-            vk::ShaderStageFlagBits::eFragment |
-            vk::ShaderStageFlagBits::eCompute,               // stage flags
-            nullptr                                         // immutable samplers
-    };
-
-    static constexpr vk::DescriptorBindingFlags descriptorSetLayoutBindingFlags;
-
-    static vk::DescriptorSetLayoutBinding
-        getDescriptorSetLayoutBinding()
-    {
-        return descriptorSetLayoutBinding;
-    };
-
-    static vk::DescriptorBindingFlags
-        getDescriptorBindingFlags()
-    {
-        return descriptorSetLayoutBindingFlags;
-    };
-};
-
-template <size_t binding = 2>
-struct ErrorLayoutDefinition {
-    static constexpr vk::DescriptorSetLayoutBinding descriptorSetLayoutBinding = {
-            binding,                                        // binding
-            vk::DescriptorType::eStorageBuffer,				// descriptor type
-            1,												// descriptor count
-            vk::ShaderStageFlagBits::eFragment |
-            vk::ShaderStageFlagBits::eCompute,               // stage flags
             nullptr                                         // immutable samplers
     };
 
@@ -222,7 +171,7 @@ struct ChunkDataLayoutDefinition {
 };
 
 template <size_t binding = 2>
-struct IndicesBufferLayoutDefinition {
+struct CommandBufferLayoutDefinition {
     static constexpr vk::DescriptorSetLayoutBinding descriptorSetLayoutBinding = {
             binding,                                        // binding
             vk::DescriptorType::eStorageBuffer,				// descriptor type
@@ -248,19 +197,20 @@ struct IndicesBufferLayoutDefinition {
     };
 };
 
-template <size_t binding = 3>
-struct CommandBufferLayoutDefinition {
+template <size_t binding = 0>
+struct PoolLayoutDefinition {
     static constexpr vk::DescriptorSetLayoutBinding descriptorSetLayoutBinding = {
             binding,                                        // binding
-            vk::DescriptorType::eStorageBuffer,				// descriptor type
-            1,												// descriptor count
-            vk::ShaderStageFlagBits::eVertex |
-            vk::ShaderStageFlagBits::eCompute |
-            vk::ShaderStageFlagBits::eMeshEXT,              // stage flags
+            vk::DescriptorType::eStorageBuffer,             // descriptor type
+            1024,                                           // descriptor count
+            vk::ShaderStageFlagBits::eVertex,               // stage flags
             nullptr                                         // immutable samplers
     };
 
-    static constexpr vk::DescriptorBindingFlags descriptorSetLayoutBindingFlags;
+    static constexpr vk::DescriptorBindingFlags descriptorSetLayoutBindingFlags =
+        vk::DescriptorBindingFlagBits::ePartiallyBound |
+        vk::DescriptorBindingFlagBits::eVariableDescriptorCount |
+        vk::DescriptorBindingFlagBits::eUpdateAfterBind;
 
     static vk::DescriptorSetLayoutBinding
         getDescriptorSetLayoutBinding()

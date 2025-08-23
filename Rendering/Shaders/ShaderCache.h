@@ -13,6 +13,8 @@ public:
 	{
 		VoxelVert = 0,
 		VoxelFrag,
+        //ModelVert,
+        //ModelFrag,
         /*VoxelCompute,*/
 		NUM
 	};
@@ -21,8 +23,10 @@ private:
 	std::array<Gfx::Shader, enumCast(ShaderPurpose::NUM)> m_shaders;
 
 	std::array<std::string, enumCast(ShaderPurpose::NUM)> m_shaderPaths = {
-        "Rendering/Shaders/basic.vert.spv",
-        "Rendering/Shaders/basic.frag.spv",
+        "Rendering/Shaders/Voxel.vert.spv",
+        "Rendering/Shaders/Voxel.frag.spv",
+        //"Rendering/Shaders/Model.vert.spv",
+        //"Rendering/Shaders/Model.frag.spv",
         /*"Rendering/Shaders/basic.comp.spv",*/
 	};
 

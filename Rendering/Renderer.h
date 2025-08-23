@@ -21,6 +21,8 @@
 #include "GameData/ResourceCache.h"
 #include "WorldManagement/WorldGrid.h"
 #include "Rendering/DebugConsole.h"
+#include "Rendering/Compass.h"
+#include "Utility/StructOfArraysPool.h"
 
 #include "Multithreading/ThreadPool.h"
 
@@ -47,48 +49,9 @@ private:
 		float contrast;
 	};
 
-	//const uint noError = 0;
-	//const uint errorChunkIndexOutOfBounds = 1;
-	//const uint errorBlockIndexOutOfBounds = 2;
-	//const uint errorStateIdOutOfBounds = 3;
-	//const uint errorModelIdOutOfBounds = 4;
-	//const uint errorGeometryIdOutOfBounds = 5;
-	//const uint errorAppearenceIdOutOfBounds = 6;
-	//const uint errorGeometrySizeIsZero = 7;
-
-	enum class ShaderErrors : uint32_t {
-		None = 0,
-		ChunkIndexOutOfBounds = 1,
-		BlockIndexOutOfBounds = 2,
-		StateIdOutOfBounds = 3,
-		ModelIdOutOfBounds = 4,
-		GeometryIdOutOfBounds = 5,
-		AppearenceIdOutOfBounds = 6,
-		GeometrySizeIsZero = 7,
-	};
-
-	static inline const std::array<std::string, 8> shaderErrorMessages = {
-		"No error",
-		"Chunk index out of bounds",
-		"Block index out of bounds",
-		"State id out of bounds",
-		"Model id out of bounds",
-		"Geometry id out of bounds",
-		"Appearance id out of bounds",
-		"Geometry size is zero"
-	};
-
-	struct Error {
-		ShaderErrors errorCode;
-		uint32_t localInvocationId;
-		uint32_t globalInvocationId;
-		uint32_t workGroupId;
-	};
-
 	struct PushConstants {
 		glm::mat4 view;
 		glm::mat4 proj;
-		uint32_t chunkCount;
 	};
 
 	struct RangeStarts
@@ -105,6 +68,11 @@ private:
 		Gfx::Fence inFlightFence;
 	};
 
+	struct PoolDrawCommand {
+		Gfx::DrawCommand drawCommand;
+		uint32_t bufferId;
+	};
+
 	uint32_t m_frameCounter = 0;
 	uint32_t m_currentFrame = 0;
 	float m_deltaTime = 0.0f;
@@ -116,6 +84,7 @@ private:
 
 	Gfx::DescriptorSetHandle m_storageSet;
 	Gfx::DescriptorSetHandle m_perChunkSet;
+	Gfx::DescriptorSetHandle m_poolSet;
 	Gfx::DescriptorSetHandle m_configSet;
 
 	Gfx::Context m_context;
@@ -141,9 +110,10 @@ private:
 
 	Gfx::DescriptorSetLayout m_storageLayout;
 	Gfx::DescriptorSetLayout m_perChunkLayout;
+	Gfx::DescriptorSetLayout m_poolLayout;
 	Gfx::DescriptorSetLayout m_configLayout;
 
-	Gfx::MappedMemory m_uniformMemory;
+	/*Gfx::MappedMemory m_uniformMemory;*/
 	Gfx::MappedMemory m_contrastMemory;
 
 	Gfx::Buffer m_contrastBuffer;
@@ -160,7 +130,7 @@ private:
 	// per chunk data
 	Gfx::Buffer m_gridBuffer;
 	Gfx::Buffer m_chunkBuffer;
-	Gfx::Buffer m_drawCommandsBuffer;	
+	Gfx::Buffer m_drawCommandsBuffer;
 
 	Gfx::MappedMemory m_gridMemory;
 	Gfx::MappedMemory m_chunkMemory;
@@ -182,7 +152,8 @@ private:
 
 	std::mutex m_poolLock;
 	std::vector<std::unique_ptr<std::mutex>> m_chunkDrawLocks;
-	std::vector<std::pair<Gfx::DrawCommand, size_t>> m_drawCommands;
+	std::vector<bool> m_meshedChunks;
+	/*std::vector<PoolDrawCommand> m_drawCommands;*/
 	std::shared_mutex m_drawLock;
 
 	Config* m_configMapping;
@@ -193,6 +164,11 @@ private:
 	std::vector<Gfx::MemoryPool<Gfx::MappedMemory>::Allocation> m_indexAllocations;
 	std::vector<Gfx::CommandBufferHandle> m_perChunkBuffers;
 	std::vector<std::vector<Indices>> m_stagingBuffers;
+
+	std::mutex m_drawCommandLock;
+	std::unordered_map<size_t, size_t> m_drawIndexToPoolIndex;
+	std::vector<size_t> m_chunkDrawIndices;
+	size_t m_drawCommandAmount;
 
 	DebugConsole m_debugConsole;
 
@@ -212,15 +188,15 @@ public:
 
 	void handleResize(const Gfx::Extent2D& extent);
 
-	void resetChunkBuffers(size_t chunkAmount);
+	void resetChunkBuffers(const WorldGrid& grid);
 
 	//GridMapping getGridMapping();
 	//ChunkMapping getChunkMapping();
 
-	void updateChunk(const ResourceCache& resources, size_t chunkIndex,
-		const WorldGrid::Chunk& chunk, const WorldGrid& grid, size_t threadId);
-	void updateChunkAsync(const ResourceCache& resources, size_t chunkIndex,
-		const WorldGrid::Chunk& chunk, const WorldGrid& grid);
+	void updateChunk(const ResourceCache& resources, size_t chunkIndex, const WorldGrid& grid, size_t threadId);
+	void updateChunkAsync(const ResourceCache& resources, size_t chunkIndex, const WorldGrid& grid);
+
+	void unmeshChunk(size_t chunkPoolIndex);
 private:
 	void createLayouts();
 	void createConfigBuffers();

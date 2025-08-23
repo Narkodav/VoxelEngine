@@ -156,6 +156,7 @@
     <ClCompile Include="Rendering\Renderer.cpp" />
     <ClCompile Include="Rendering\Shaders\ShaderCache.cpp" />
     <ClCompile Include="Rendering\VoxelCullingCache.cpp" />
+    <ClCompile Include="Utility\StructOfArraysPool.cpp" />
     <ClCompile Include="Vendor\Clipper2Lib\src\clipper.engine.cpp" />
     <ClCompile Include="Vendor\Clipper2Lib\src\clipper.offset.cpp" />
     <ClCompile Include="Vendor\Clipper2Lib\src\clipper.rectclip.cpp" />
@@ -188,6 +189,7 @@
     <ClInclude Include="Rendering\ShaderLayoutDefinitions.h" />
     <ClInclude Include="Rendering\Shaders\ShaderCache.h" />
     <ClInclude Include="Rendering\VoxelCullingCache.h" />
+    <ClInclude Include="Utility\StructOfArraysPool.h" />
     <ClInclude Include="Vendor\Clipper2Lib\include\clipper2\clipper.core.h" />
     <ClInclude Include="Vendor\Clipper2Lib\include\clipper2\clipper.engine.h" />
     <ClInclude Include="Vendor\Clipper2Lib\include\clipper2\clipper.h" />
@@ -210,10 +212,35 @@
     <ClInclude Include="WorldManagement\VoxelVolume.h" />
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="Rendering\Shaders\basic.frag">
-      <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\basic.frag" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\basic.frag.spv"</Command>
-      <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\basic.frag.spv</Outputs>
+    <CustomBuild Include="Rendering\Shaders\backups\basic.vert">
+      <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\backups\basic.vert" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\backups\basic.vert.spv"</Command>
+      <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\backups\basic.vert.spv</Outputs>
+      <Message>Compiling shader basic.vert</Message>
+    </CustomBuild>
+    <CustomBuild Include="Rendering\Shaders\Voxel.vert">
+      <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\Voxel.vert" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\Voxel.vert.spv"</Command>
+      <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\Voxel.vert.spv</Outputs>
+      <Message>Compiling shader Voxel.vert</Message>
+    </CustomBuild>
+    <CustomBuild Include="Vendor\imgui\backends\vulkan\glsl_shader.vert">
+      <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\backends\vulkan\glsl_shader.vert" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\backends\vulkan\glsl_shader.vert.spv"</Command>
+      <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\backends\vulkan\glsl_shader.vert.spv</Outputs>
+      <Message>Compiling shader glsl_shader.vert</Message>
+    </CustomBuild>
+    <CustomBuild Include="Vendor\imgui\vulkan\glsl_shader.vert">
+      <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\vulkan\glsl_shader.vert" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\vulkan\glsl_shader.vert.spv"</Command>
+      <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\vulkan\glsl_shader.vert.spv</Outputs>
+      <Message>Compiling shader glsl_shader.vert</Message>
+    </CustomBuild>
+    <CustomBuild Include="Rendering\Shaders\backups\basic.frag">
+      <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\backups\basic.frag" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\backups\basic.frag.spv"</Command>
+      <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\backups\basic.frag.spv</Outputs>
       <Message>Compiling shader basic.frag</Message>
+    </CustomBuild>
+    <CustomBuild Include="Rendering\Shaders\Voxel.frag">
+      <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\Voxel.frag" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\Voxel.frag.spv"</Command>
+      <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\Voxel.frag.spv</Outputs>
+      <Message>Compiling shader Voxel.frag</Message>
     </CustomBuild>
     <CustomBuild Include="Vendor\imgui\backends\vulkan\glsl_shader.frag">
       <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\backends\vulkan\glsl_shader.frag" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\backends\vulkan\glsl_shader.frag.spv"</Command>
@@ -225,20 +252,10 @@
       <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\vulkan\glsl_shader.frag.spv</Outputs>
       <Message>Compiling shader glsl_shader.frag</Message>
     </CustomBuild>
-    <CustomBuild Include="Rendering\Shaders\basic.vert">
-      <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\basic.vert" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\basic.vert.spv"</Command>
-      <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\basic.vert.spv</Outputs>
-      <Message>Compiling shader basic.vert</Message>
-    </CustomBuild>
-    <CustomBuild Include="Vendor\imgui\backends\vulkan\glsl_shader.vert">
-      <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\backends\vulkan\glsl_shader.vert" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\backends\vulkan\glsl_shader.vert.spv"</Command>
-      <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\backends\vulkan\glsl_shader.vert.spv</Outputs>
-      <Message>Compiling shader glsl_shader.vert</Message>
-    </CustomBuild>
-    <CustomBuild Include="Vendor\imgui\vulkan\glsl_shader.vert">
-      <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\vulkan\glsl_shader.vert" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\vulkan\glsl_shader.vert.spv"</Command>
-      <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\vulkan\glsl_shader.vert.spv</Outputs>
-      <Message>Compiling shader glsl_shader.vert</Message>
+    <CustomBuild Include="Rendering\Shaders\backups\basic.comp">
+      <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\backups\basic.comp" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\backups\basic.comp.spv"</Command>
+      <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\backups\basic.comp.spv</Outputs>
+      <Message>Compiling shader basic.comp</Message>
     </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

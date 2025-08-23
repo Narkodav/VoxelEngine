@@ -36,7 +36,9 @@ void Renderer::init(std::string engineName, std::string appName,
         {Gfx::DeviceFeature::MeshShaderEXT, true},
         {Gfx::DeviceFeature::TaskShaderEXT, true},
         {Gfx::DeviceFeature::ShaderDrawParameters, true},
-        {Gfx::DeviceFeature::MultiDrawIndirect, true}, };
+        {Gfx::DeviceFeature::MultiDrawIndirect, true},
+        {Gfx::DeviceFeature::DescriptorBindingStorageBufferUpdateAfterBind, true},
+        {Gfx::DeviceFeature::NullDescriptor, true}, };
 
     requirements.queueProperties.push_back(Gfx::RequiredQueueProperties());
     requirements.queueProperties.back().queueProperties
@@ -96,10 +98,10 @@ void Renderer::init(std::string engineName, std::string appName,
     m_pipeline = Gfx::Pipeline(m_context, m_device, m_renderPass,
         { m_shaderCache.getShader(ShaderCache::ShaderPurpose::VoxelVert),
         m_shaderCache.getShader(ShaderCache::ShaderPurpose::VoxelFrag) }, m_canvas, m_format,
-        Gfx::VertexDefinitions<VertexDefinitionPositionId, VertexDefinitionIndices>(),
-        { &m_storageLayout, &m_perChunkLayout, &m_configLayout },
+        Gfx::VertexDefinitions<VertexDefinitionPositionId>(),
+        { &m_storageLayout, &m_perChunkLayout, &m_poolLayout, &m_configLayout },
         { Gfx::PushConstantRange{ Gfx::ShaderStage::Bits::Vertex, 0, sizeof(PushConstants)} },
-        Gfx::Pipeline::CullMode::None);
+        Gfx::Pipeline::CullMode::Back);
 
     //m_computePipeline = Gfx::ComputePipeline(m_context, m_device,
     //    m_shaderCache.getShader(ShaderCache::ShaderPurpose::VoxelCompute),
@@ -112,7 +114,7 @@ void Renderer::init(std::string engineName, std::string appName,
 
     m_descriptorPool = Gfx::DescriptorPool(m_context, m_device, {
             Gfx::DescriptorPool::Size(framesInFlight + 2, Gfx::DescriptorType::UniformBuffer),
-            Gfx::DescriptorPool::Size(10 + 3, Gfx::DescriptorType::StorageBuffer),
+            Gfx::DescriptorPool::Size(11 + 3 + 1024, Gfx::DescriptorType::StorageBuffer),
             Gfx::DescriptorPool::Size(1024, Gfx::DescriptorType::CombinedImageSampler)
         }, framesInFlight + 3,
         Gfx::DescriptorPoolCreateFlags::Bits::UpdateAfterBind);
@@ -129,6 +131,8 @@ void Renderer::init(std::string engineName, std::string appName,
         layouts.push_back(&m_perChunkLayout);
         layouts.push_back(&m_configLayout);
         layoutsVariableSized.push_back(&m_storageLayout);
+        layoutsVariableSized.push_back(&m_poolLayout);
+        descriptorCounts.push_back(1024);
         descriptorCounts.push_back(1024);
 
         sets = m_descriptorPool.allocateSets(m_context, m_device, layouts);        
@@ -167,7 +171,8 @@ void Renderer::init(std::string engineName, std::string appName,
     }
 
     m_sampler = Gfx::Sampler(m_context, m_device, Gfx::Sampler::Descriptor(m_context, m_device));
-    m_storageSet = setsVariableSized.front();
+    m_storageSet = setsVariableSized[0];
+    m_poolSet = setsVariableSized[1];
 
     m_stagingBuffer = Gfx::Buffer(m_context, m_device, stagingMemorySize,
         Gfx::BufferUsage::Bits::TransferSrc, false);
@@ -256,7 +261,7 @@ void Renderer::createConfigBuffers()
     m_configMapping->contrast = 0.8f;
 }
 
-void Renderer::resetChunkBuffers(size_t chunkAmount)
+void Renderer::resetChunkBuffers(const WorldGrid& grid)
 {
     m_gridBuffer.destroy(m_context, m_device);
     m_chunkBuffer.destroy(m_context, m_device);
@@ -266,7 +271,9 @@ void Renderer::resetChunkBuffers(size_t chunkAmount)
     m_chunkMemory.destroy(m_context, m_device);
     m_drawCommandsMemory.destroy(m_context, m_device);
 
-    size_t blockCount = chunkAmount * Constants::chunkSize;
+    m_chunkCount = grid.getPool().getPoolSize();
+
+    size_t blockCount = m_chunkCount * Constants::chunkSize;
     m_gridBuffer = Gfx::Buffer(m_context, m_device,
         blockCount * sizeof(Id::VoxelState),
         Gfx::BufferUsage::Bits::Storage, false);
@@ -276,7 +283,7 @@ void Renderer::resetChunkBuffers(size_t chunkAmount)
         m_gridBuffer.getMemoryRequirements().size);
 
     m_chunkBuffer = Gfx::Buffer(m_context, m_device,
-        chunkAmount * sizeof(WorldGrid::Chunk),
+        m_chunkCount * sizeof(WorldGrid::Chunk),
         Gfx::BufferUsage::Bits::Storage, false);
     m_chunkMemory = Gfx::MappedMemory(m_context, m_device,
         m_chunkBuffer.getMemoryRequirements(),
@@ -284,7 +291,7 @@ void Renderer::resetChunkBuffers(size_t chunkAmount)
         m_chunkBuffer.getMemoryRequirements().size);
 
     m_drawCommandsBuffer = Gfx::Buffer(m_context, m_device,
-        sizeof(Gfx::DrawCommand),
+        sizeof(PoolDrawCommand) * m_chunkCount,
         Gfx::BufferUsage::Bits::Storage
         | Gfx::BufferUsage::Bits::Indirect
         | Gfx::BufferUsage::Bits::TransferDst, false);
@@ -295,24 +302,34 @@ void Renderer::resetChunkBuffers(size_t chunkAmount)
 
     m_indicesPool = Gfx::MemoryPool<Gfx::MappedMemory>(m_context, m_device,
         sizeof(Indices) * 120 * Constants::chunkSize * 16,
-        Gfx::BufferUsage::Bits::Vertex, Gfx::MemoryProperty::Bits::HostVisibleCoherent, false);
+        Gfx::BufferUsage::Bits::Storage, Gfx::MemoryProperty::Bits::HostVisibleCoherent, false);
 
     m_gridMemory.bindBuffer(m_context, m_device, m_gridBuffer);
     m_chunkMemory.bindBuffer(m_context, m_device, m_chunkBuffer);
     m_drawCommandsMemory.bindBuffer(m_context, m_device, m_drawCommandsBuffer);
 
-    m_chunkCount = chunkAmount;
+    auto commands = m_drawCommandsMemory.getMapping<PoolDrawCommand>(m_chunkCount);
+    for (size_t i = 0; i < m_chunkCount; ++i)
+        commands[i] = PoolDrawCommand{ Gfx::DrawCommand{0, 0, 0, 0}, 0 };
 
     m_perChunkSet->write(m_context, m_device, m_gridBuffer,
         0, 0, m_gridBuffer.getMemoryRequirements().size);
     m_perChunkSet->write(m_context, m_device, m_chunkBuffer,
         1, 0, m_chunkBuffer.getMemoryRequirements().size);
+    m_perChunkSet->write(m_context, m_device, m_drawCommandsBuffer,
+        2, 0, m_drawCommandsBuffer.getMemoryRequirements().size);
 
-	m_drawCommands.resize(chunkAmount, std::pair<Gfx::DrawCommand, size_t>(Gfx::DrawCommand(0, 0, 0, 0), 0));
-	m_indexAllocations.resize(chunkAmount, Gfx::MemoryPool<Gfx::MappedMemory>::Allocation::getEmptyAllocation());
-	m_stagingBuffers.resize(m_poolHandle->getWorkerCount());
-    for(size_t i = 0; i < m_stagingBuffers.size(); ++i)
+    m_indexAllocations.resize(m_chunkCount, Gfx::MemoryPool<Gfx::MappedMemory>::Allocation::getEmptyAllocation());
+    m_stagingBuffers.resize(m_poolHandle->getWorkerCount());
+    for (size_t i = 0; i < m_stagingBuffers.size(); ++i)
         m_stagingBuffers[i].reserve(Constants::chunkSize * 120);
+
+    m_drawIndexToPoolIndex.clear();
+    m_chunkDrawIndices.clear();
+    m_chunkDrawIndices.resize(m_chunkCount);
+    m_meshedChunks.resize(m_chunkCount, false);
+
+    m_drawCommandAmount = 0;
 }
 
 void Renderer::createAndWriteAssets(AssetCache& assetCache, 
@@ -330,9 +347,8 @@ void Renderer::createLayouts()
     m_perChunkLayout = Gfx::DescriptorSetLayout(m_context, m_device,
         Gfx::DescriptorDefinitions<
         GridDataLayoutDefinition<>,
-        ChunkDataLayoutDefinition<>/*,
-        IndicesBufferLayoutDefinition<>,
-        CommandBufferLayoutDefinition<>*/
+        ChunkDataLayoutDefinition<>,
+        CommandBufferLayoutDefinition<>
         >());
 
     m_storageLayout = Gfx::DescriptorSetLayout(m_context, m_device,
@@ -348,12 +364,20 @@ void Renderer::createLayouts()
         StorageCache::GeometryLayoutDefinition<>,
         StorageCache::ModelLayoutDefinition<>,
         StorageCache::StateToModelLayoutDefinition<>,
-        StorageCache::ImageLayoutDefinition<>>(),
+        StorageCache::ImageLayoutDefinition<>
+        >(),
+        Gfx::DescriptorSetLayoutCreate::Bits::UpdateAfterBind);
+
+    m_poolLayout = Gfx::DescriptorSetLayout(m_context, m_device,
+        Gfx::DescriptorDefinitions<
+        PoolLayoutDefinition<>
+        >(),
         Gfx::DescriptorSetLayoutCreate::Bits::UpdateAfterBind);
 
     m_configLayout = Gfx::DescriptorSetLayout(m_context, m_device,
         Gfx::DescriptorDefinitions<
-        ConfigLayoutDefinition<>>());
+        ConfigLayoutDefinition<>
+        >());
 }
 
 void Renderer::cleanup(StorageCache& cache)
@@ -377,7 +401,6 @@ void Renderer::cleanup(StorageCache& cache)
 
     m_sampler.destroy(m_context, m_device);
 
-    m_uniformMemory.destroy(m_context, m_device);
     m_contrastBuffer.destroy(m_context, m_device);
     m_stagingBuffer.destroy(m_context, m_device);
 
@@ -442,7 +465,6 @@ void Renderer::handleResize(const Gfx::Extent2D& extent)
 void Renderer::drawFrame(const Graphics::CameraPerspective& camera)
 {
     PushConstants constants;
-    constants.chunkCount = m_chunkCount;
     constants.proj = camera.getProjection();
     constants.view = camera.getView();
 
@@ -464,10 +486,7 @@ void Renderer::drawFrame(const Graphics::CameraPerspective& camera)
 
     m_perFrameInFlightObjects[m_currentFrame].graphicsCommandBuffer->reset(m_context);
     m_perFrameInFlightObjects[m_currentFrame].graphicsCommandBuffer->record(m_context);
-
-    m_perFrameInFlightObjects[m_currentFrame].graphicsCommandBuffer->pushConstants(m_context, m_pipeline,
-        Gfx::ShaderStage::Bits::Vertex, 0, sizeof(PushConstants), &constants);
-
+        
     //if (m_frameCounter == 0)
     //{
     //    m_perFrameInFlightObjects[m_currentFrame].graphicsCommandBuffer->pushConstants(m_context, m_computePipeline,
@@ -502,27 +521,17 @@ void Renderer::drawFrame(const Graphics::CameraPerspective& camera)
     m_perFrameInFlightObjects[m_currentFrame].graphicsCommandBuffer->bindPipeline(m_context, m_pipeline);
     m_perFrameInFlightObjects[m_currentFrame].graphicsCommandBuffer->setRenderView(m_context, m_canvas);
     m_perFrameInFlightObjects[m_currentFrame].graphicsCommandBuffer->bindDescriptorSets(
-        m_context, m_pipeline, { m_storageSet, m_perChunkSet, m_configSet }, {});
+        m_context, m_pipeline, { m_storageSet, m_perChunkSet, m_poolSet, m_configSet }, {});
 
     m_perFrameInFlightObjects[m_currentFrame].graphicsCommandBuffer->bindVertexBuffers(m_context,
         std::array<const Gfx::Buffer*, 1>{ &m_indexBuffer },
         std::array<vk::DeviceSize, 1>{ vk::DeviceSize(0) }, 0);
 
-	auto& buffers = m_indicesPool.getBuffers();
+    m_perFrameInFlightObjects[m_currentFrame].graphicsCommandBuffer->pushConstants(m_context, m_pipeline,
+        Gfx::ShaderStage::Bits::Vertex, 0, sizeof(PushConstants), &constants);
 
-    for (size_t i = 0; i < m_chunkCount; ++i)
-    {
-        if(m_drawCommands[i].first.vertexCount == 0)
-			continue;
-
-        m_perFrameInFlightObjects[m_currentFrame].graphicsCommandBuffer->bindVertexBuffers(m_context,
-            std::array<const Gfx::Buffer*, 1>{ &buffers[m_drawCommands[i].second] },
-            std::array<vk::DeviceSize, 1>{ vk::DeviceSize(0) }, 1);
-
-        m_perFrameInFlightObjects[m_currentFrame].graphicsCommandBuffer->draw(m_context,
-            m_drawCommands[i].first.vertexCount, m_drawCommands[i].first.instanceCount,
-            m_drawCommands[i].first.firstVertex, m_drawCommands[i].first.firstInstance);
-    }
+    m_perFrameInFlightObjects[m_currentFrame].graphicsCommandBuffer->drawIndirect(m_context,
+        m_drawCommandsBuffer, 0, m_drawCommandAmount, sizeof(PoolDrawCommand));
 
     drawGui(camera);
 
@@ -562,9 +571,6 @@ void Renderer::drawFrame(const Graphics::CameraPerspective& camera)
     }
 
     m_currentFrame = (m_currentFrame + 1) % framesInFlight;
-    m_frameCounter = (m_frameCounter + 1) % 1000000;
-
-    m_perFrameInFlightObjects[m_currentFrame].inFlightFence.wait(m_context, m_device);
 }
 
 void Renderer::drawGui(const Graphics::CameraPerspective& camera)
@@ -594,6 +600,8 @@ void Renderer::drawGui(const Graphics::CameraPerspective& camera)
 
     for (size_t i = 0; i < bufferCount; ++i)
         drawMemoryPoolVisualization(i);
+
+    /*Compass::drawCoordinateAxes(camera, ImVec2(100, 500));*/
 
     ImGui::End();
 
@@ -638,10 +646,11 @@ void Renderer::drawGui(const Graphics::CameraPerspective& camera)
 //    }
 //}
 
-void Renderer::updateChunk(const ResourceCache& resources, size_t chunkIndex,
-    const WorldGrid::Chunk& chunk, const WorldGrid& grid, size_t threadId)
+void Renderer::updateChunk(const ResourceCache& resources, size_t chunkPoolIndex, const WorldGrid& grid, size_t threadId)
 {
     auto startStaging = std::chrono::high_resolution_clock::now();
+
+    auto& chunk = grid.getPool().getField<1>()[chunkPoolIndex];
 
     auto& assets = resources.getAssetCache();
     auto& states = resources.getVoxelStateCache();
@@ -654,31 +663,9 @@ void Renderer::updateChunk(const ResourceCache& resources, size_t chunkIndex,
 
     auto& buffer = m_stagingBuffers[threadId];
 
-    std::array<Shape::Model, enumCast(Shape::Side::NUM)> adjModels;
-
     size_t chunkEnd = chunk.start + Constants::chunkSize;
     for (size_t block = chunk.start; block < chunkEnd; ++block)
     {
-        //const auto& state = grid[block];
-        //if (state == Constants::emptyStateId)
-        //    continue;
-        //const auto& model = models[states[state].m_model];
-        //const auto& geometryEntry = geometriesCache[model.geometry];
-        //const auto& appearanceEntry = appearancesCache[model.appearence];
-
-        //for (size_t i = 0; i < geometryEntry.size; ++i)
-        //{
-        //    Indices indices;
-        //    indices.polygon = geometries[geometryEntry.start + i];
-        //    indices.coloring = appearances[appearanceEntry.start + i];
-        //    indices.block = block;
-        //    buffer.push_back(indices);
-        //}
-
-        //uint z = (index % chunkLayerSize) / chunkWidth;
-        //uint y = index / chunkLayerSize;
-        //uint x = index % chunkWidth;
-
         cullingCache.populateBuffer(block,
             (block - chunk.start) % Constants::chunkWidth,
             (block - chunk.start) / Constants::chunkLayerSize,
@@ -691,9 +678,14 @@ void Renderer::updateChunk(const ResourceCache& resources, size_t chunkIndex,
     auto stagingDuration = std::chrono::duration_cast<std::chrono::microseconds>(endStaging - startStaging).count();
 
     auto startAllocation = std::chrono::high_resolution_clock::now();
-    auto& allocation = m_indexAllocations[chunkIndex];
+    auto& allocation = m_indexAllocations[chunkPoolIndex];
 
-    if (allocation.region.size > buffer.size() * sizeof(Indices))
+    if (buffer.size() == 0)
+    {
+        unmeshChunk(chunkPoolIndex);
+        return;
+    }
+    else if (allocation.region.size > buffer.size() * sizeof(Indices))
     {
         std::unique_lock<std::mutex> lock(m_poolLock);
         m_indicesPool.shrink(allocation, buffer.size() * sizeof(Indices));
@@ -703,7 +695,11 @@ void Renderer::updateChunk(const ResourceCache& resources, size_t chunkIndex,
         std::unique_lock<std::mutex> lock(m_poolLock);
         m_indicesPool.free(allocation);
         allocation = m_indicesPool.allocate(
-            m_context, m_device, buffer.size() * sizeof(Indices));
+            m_context, m_device, buffer.size() * sizeof(Indices),
+            [this](Gfx::MappedMemory& memory, Gfx::Buffer& buffer, size_t bufferIndex) {
+                m_poolSet->write(m_context, m_device, buffer, 0, 0, buffer.getMemoryRequirements().size, bufferIndex);
+            }
+        );
     }
 
     auto endAllocation = std::chrono::high_resolution_clock::now();
@@ -711,42 +707,84 @@ void Renderer::updateChunk(const ResourceCache& resources, size_t chunkIndex,
 
     auto startMemoryPopulate = std::chrono::high_resolution_clock::now();
     {
-        std::shared_lock<std::shared_mutex> lock(m_drawLock);
+        std::shared_lock<std::shared_mutex> lockDraw(m_drawLock);
         m_perFrameInFlightObjects[m_currentFrame].inFlightFence.wait(m_context, m_device);
 
         auto& memory = m_indicesPool.getMemories()[allocation.bufferIndex];
         auto mapping = memory.getMapping<Indices>(buffer.size(), allocation.region.offset);
-        std::copy(buffer.begin(), buffer.end(), mapping.begin());        
-
-        auto& command = m_drawCommands[chunkIndex];
-        command.first.vertexCount = 3;
-        command.first.instanceCount = buffer.size();
-        command.first.firstVertex = 0;
-        command.first.firstInstance = allocation.region.offset / sizeof(Indices);
-        command.second = allocation.bufferIndex;
-        buffer.clear();
+        std::copy(buffer.begin(), buffer.end(), mapping.begin());
 
         auto chunkMapping = m_chunkMemory.getMapping<WorldGrid::Chunk>(m_chunkCount);
-        chunkMapping[chunkIndex] = chunk;
+        chunkMapping[chunkPoolIndex] = chunk;
+
+        std::lock_guard<std::mutex> lockCommand(m_drawCommandLock);
+        if (!m_meshedChunks[chunkPoolIndex])
+        {
+            m_chunkDrawIndices[chunkPoolIndex] = m_drawCommandAmount++;
+            m_drawIndexToPoolIndex.insert({ m_chunkDrawIndices[chunkPoolIndex], chunkPoolIndex });
+        }        
+
+        auto commands = m_drawCommandsMemory.getMapping<PoolDrawCommand>(m_drawCommandAmount);
+        auto& command = commands[m_chunkDrawIndices[chunkPoolIndex]];
+        command.drawCommand.vertexCount = 3;
+        command.drawCommand.instanceCount = buffer.size();
+        command.drawCommand.firstVertex = 0;
+        command.drawCommand.firstInstance = allocation.region.offset / sizeof(Indices);
+        command.bufferId = allocation.bufferIndex;
     }
+    buffer.clear();
+    m_meshedChunks[chunkPoolIndex] = true;
 
     auto endMemoryPopulate = std::chrono::high_resolution_clock::now();
     auto memoryPopulateDuration = std::chrono::duration_cast<std::chrono::microseconds>(endMemoryPopulate - startMemoryPopulate).count();
 
-
     m_debugConsole.log("Chunk {} updated with {} indices, "
         "Allocation: size {}, offset {}, buffer {}\n"
         "Timings (μs): Staging: {}, Allocation: {}, MemoryPopulate: {}\n",
-        chunkIndex, buffer.size(),
+        chunkPoolIndex, buffer.size(),
         allocation.region.size, allocation.region.offset, allocation.bufferIndex,
         stagingDuration, allocationDuration, memoryPopulateDuration);
 }
 
-void Renderer::updateChunkAsync(const ResourceCache& resources, size_t chunkIndex,
-    const WorldGrid::Chunk& chunk, const WorldGrid& grid)
+void Renderer::unmeshChunk(size_t chunkPoolIndex)
 {
-    m_poolHandle->pushTask([this, &resources, chunkIndex, &chunk, &grid](size_t threadId) {
-        updateChunk(resources, chunkIndex, chunk, grid, threadId);
+    if (!m_meshedChunks[chunkPoolIndex])
+        return;
+
+    auto startUnmesh = std::chrono::high_resolution_clock::now();
+    {
+        std::lock_guard<std::mutex> lockCommand(m_drawCommandLock);
+        auto index = m_chunkDrawIndices[chunkPoolIndex];
+        const auto& itCur = m_drawIndexToPoolIndex.find(index);
+        const auto& itNew = m_drawIndexToPoolIndex.find(m_drawCommandAmount--);
+        itCur->second = itNew->second;
+        m_chunkDrawIndices[itCur->second] = index;
+        m_drawIndexToPoolIndex.erase(itNew);
+
+        std::shared_lock<std::shared_mutex> lockDraw(m_drawLock);
+        m_perFrameInFlightObjects[m_currentFrame].inFlightFence.wait(m_context, m_device);
+        auto commands = m_drawCommandsMemory.getMapping<PoolDrawCommand>(m_drawCommandAmount);        
+        commands[index] = commands.back();
+    }
+
+    auto& allocation = m_indexAllocations[chunkPoolIndex];
+    if (allocation.region.size != 0)
+    {
+        std::unique_lock<std::mutex> lock(m_poolLock);
+        m_indicesPool.free(allocation);
+    }
+    m_meshedChunks[chunkPoolIndex] = false;
+
+    auto endUnmesh = std::chrono::high_resolution_clock::now();
+    auto unmeshDuration = std::chrono::duration_cast<std::chrono::microseconds>(endUnmesh - startUnmesh).count();
+
+    m_debugConsole.log("Chunk {} unmeshed\n Timings (μs): Unmesh: {}\n", chunkPoolIndex, unmeshDuration);
+}
+
+void Renderer::updateChunkAsync(const ResourceCache& resources, size_t chunkIndex, const WorldGrid& grid)
+{
+    m_poolHandle->pushTask([this, &resources, chunkIndex, &grid](size_t threadId) {
+        updateChunk(resources, chunkIndex, grid, threadId);
         });
 }
 
