@@ -5,6 +5,10 @@
 
 layout(location = 0) in uint vertexId;
 
+layout(location = 1) in uint polygonId;
+layout(location = 2) in uint coloringId;
+layout(location = 3) in uint blockId;
+
 layout(location = 0) out vec2 UV;
 layout(location = 1) flat out uint textureId;
 
@@ -49,9 +53,10 @@ struct RangeStart                 // Total: 8 bytes
 struct Chunk                       // Total: 44 bytes
 {
     ivec4 coord;                   // 16 bytes
+    ivec4 cornerCoord;             // 16 bytes
     uint start;                    // 4 bytes
     uint neighbourStarts[6];       // 24 bytes
-    uint padding;
+    uint padding;                  // 4 bytes
 };
 
 layout(set = 0, binding = 0, std430) readonly buffer Vertices {
@@ -125,29 +130,18 @@ vec3 getBlockPosition(uint index) {
     return vec3(x, y, z);
 }
 
-vec3 getBlockGlobalPosition(uint index, vec3 chunkPos)
-{
-    vec3 pos = getBlockPosition(index);
-    return chunkPos * chunkSizeVector + pos; 
-}
-
 vec4 getPosition(uint polygonId, uint blockId, uint positionId)
 {
     uint localBlockIndex = blockId % chunkSize;
     uint chunkIndex = blockId / chunkSize;
-    vec4 vertexPos = vertices[polygons[polygonId].positions[positionId]];
-    vec3 blockPos = getBlockGlobalPosition(localBlockIndex, chunks[chunkIndex].coord.xyz);
-    return vec4(vertexPos.xyz + blockPos, 1.0);
+    return vec4(vertices[polygons[polygonId].positions[positionId]].xyz + 
+    chunks[chunkIndex].cornerCoord.xyz + getBlockPosition(localBlockIndex), 1.0);
 }
 
 void main() {
-    DrawCommand command = drawCommands[gl_DrawID];
-    Indices index = vertexBuffers[command.bufferId].indices[gl_InstanceIndex];
-
-    vec4 finalPos = getPosition(index.polygon, index.block, vertexId);
+    vec4 finalPos = getPosition(polygonId, blockId, vertexId);
     gl_Position = pushConstants.proj * pushConstants.view * finalPos;
     
-    Coloring coloringData = colorings[index.coloring];
-    UV = uvs[coloringData.uvs[vertexId]];
-    textureId = coloringData.textureId;
+    UV = uvs[colorings[coloringId].uvs[vertexId]];
+    textureId = colorings[coloringId].textureId;
 }

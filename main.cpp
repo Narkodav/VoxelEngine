@@ -64,7 +64,7 @@ int main()
 	bool cursorMode = 1;
 
 	WorldGrid grid;
-	grid.resetSphereRadius(15, { 13, 0, 0 });
+	grid.generateCylinder(10, 16, { 0, 0, 0 });
 
 	MT::ThreadPool pool(16);
 	Window window = Window(Graphics::Extent2D(800, 600), "app",
@@ -80,7 +80,7 @@ int main()
 	calculator.setFrameTimeBuffer(100);
 
 	Graphics::CameraPerspective camera = Graphics::CameraPerspective(
-		glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(-1.0f, -1.0f, -1.0f),
+		glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 16.0f * 17, 0.0f),
 		0.0f, 0.0f, 100.0f,
 		window.getAspectRatio(), 0.1f, 100000.0f);
 

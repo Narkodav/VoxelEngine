@@ -165,7 +165,7 @@ public:
         return alloc;
     };
 
-    inline auto deallocate(Allocation& alloc) {
+    inline auto free(Allocation& alloc) {
         if (!alloc.isValid()) throw std::runtime_error("Trying to deallocate an invalid allocation");
         m_freeIndices.push(alloc.m_index);
         alloc.m_index = Allocation::s_invalidAlloc;

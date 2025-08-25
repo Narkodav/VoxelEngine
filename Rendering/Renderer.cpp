@@ -98,7 +98,7 @@ void Renderer::init(std::string engineName, std::string appName,
     m_pipeline = Gfx::Pipeline(m_context, m_device, m_renderPass,
         { m_shaderCache.getShader(ShaderCache::ShaderPurpose::VoxelVert),
         m_shaderCache.getShader(ShaderCache::ShaderPurpose::VoxelFrag) }, m_canvas, m_format,
-        Gfx::VertexDefinitions<VertexDefinitionPositionId>(),
+        Gfx::VertexDefinitions<VertexDefinitionPositionId, VertexDefinitionIndices>(),
         { &m_storageLayout, &m_perChunkLayout, &m_poolLayout, &m_configLayout },
         { Gfx::PushConstantRange{ Gfx::ShaderStage::Bits::Vertex, 0, sizeof(PushConstants)} },
         Gfx::Pipeline::CullMode::Back);
@@ -265,11 +265,9 @@ void Renderer::resetChunkBuffers(const WorldGrid& grid)
 {
     m_gridBuffer.destroy(m_context, m_device);
     m_chunkBuffer.destroy(m_context, m_device);
-    m_drawCommandsBuffer.destroy(m_context, m_device);
 
     m_gridMemory.destroy(m_context, m_device);
     m_chunkMemory.destroy(m_context, m_device);
-    m_drawCommandsMemory.destroy(m_context, m_device);
 
     m_chunkCount = grid.getPool().getPoolSize();
 
@@ -290,34 +288,34 @@ void Renderer::resetChunkBuffers(const WorldGrid& grid)
         Gfx::MemoryProperty::Bits::HostVisibleCoherent,
         m_chunkBuffer.getMemoryRequirements().size);
 
-    m_drawCommandsBuffer = Gfx::Buffer(m_context, m_device,
-        sizeof(PoolDrawCommand) * m_chunkCount,
-        Gfx::BufferUsage::Bits::Storage
-        | Gfx::BufferUsage::Bits::Indirect
-        | Gfx::BufferUsage::Bits::TransferDst, false);
-    m_drawCommandsMemory = Gfx::MappedMemory(m_context, m_device,
-        m_drawCommandsBuffer.getMemoryRequirements(),
-        Gfx::MemoryProperty::Bits::HostVisibleCoherent,
-        m_drawCommandsBuffer.getMemoryRequirements().size);
+    //m_drawCommandsBuffer = Gfx::Buffer(m_context, m_device,
+    //    sizeof(Gfx::DrawCommand) * m_chunkCount,
+    //    Gfx::BufferUsage::Bits::Storage
+    //    | Gfx::BufferUsage::Bits::Indirect
+    //    | Gfx::BufferUsage::Bits::TransferDst, false);
+    //m_drawCommandsMemory = Gfx::MappedMemory(m_context, m_device,
+    //    m_drawCommandsBuffer.getMemoryRequirements(),
+    //    Gfx::MemoryProperty::Bits::HostVisibleCoherent,
+    //    m_drawCommandsBuffer.getMemoryRequirements().size);
 
     m_indicesPool = Gfx::MemoryPool<Gfx::MappedMemory>(m_context, m_device,
         sizeof(Indices) * 120 * Constants::chunkSize * 16,
-        Gfx::BufferUsage::Bits::Storage, Gfx::MemoryProperty::Bits::HostVisibleCoherent, false);
+        Gfx::BufferUsage::Bits::Vertex | Gfx::BufferUsage::Bits::Storage, Gfx::MemoryProperty::Bits::HostVisibleCoherent, false);
 
     m_gridMemory.bindBuffer(m_context, m_device, m_gridBuffer);
     m_chunkMemory.bindBuffer(m_context, m_device, m_chunkBuffer);
-    m_drawCommandsMemory.bindBuffer(m_context, m_device, m_drawCommandsBuffer);
+    //m_drawCommandsMemory.bindBuffer(m_context, m_device, m_drawCommandsBuffer);
 
-    auto commands = m_drawCommandsMemory.getMapping<PoolDrawCommand>(m_chunkCount);
-    for (size_t i = 0; i < m_chunkCount; ++i)
-        commands[i] = PoolDrawCommand{ Gfx::DrawCommand{0, 0, 0, 0}, 0 };
+    //auto commands = m_drawCommandsMemory.getMapping<PoolDrawCommand>(m_chunkCount);
+    //for (size_t i = 0; i < m_chunkCount; ++i)
+    //    commands[i] = PoolDrawCommand{ Gfx::DrawCommand{0, 0, 0, 0}, 0 };
 
     m_perChunkSet->write(m_context, m_device, m_gridBuffer,
         0, 0, m_gridBuffer.getMemoryRequirements().size);
     m_perChunkSet->write(m_context, m_device, m_chunkBuffer,
         1, 0, m_chunkBuffer.getMemoryRequirements().size);
-    m_perChunkSet->write(m_context, m_device, m_drawCommandsBuffer,
-        2, 0, m_drawCommandsBuffer.getMemoryRequirements().size);
+    //m_perChunkSet->write(m_context, m_device, m_drawCommandsBuffer,
+    //    2, 0, m_drawCommandsBuffer.getMemoryRequirements().size);
 
     m_indexAllocations.resize(m_chunkCount, Gfx::MemoryPool<Gfx::MappedMemory>::Allocation::getEmptyAllocation());
     m_stagingBuffers.resize(m_poolHandle->getWorkerCount());
@@ -327,9 +325,7 @@ void Renderer::resetChunkBuffers(const WorldGrid& grid)
     m_drawIndexToPoolIndex.clear();
     m_chunkDrawIndices.clear();
     m_chunkDrawIndices.resize(m_chunkCount);
-    m_meshedChunks.resize(m_chunkCount, false);
-
-    m_drawCommandAmount = 0;
+    m_meshedChunks.resize(m_chunkCount, false);    
 }
 
 void Renderer::createAndWriteAssets(AssetCache& assetCache, 
@@ -409,12 +405,16 @@ void Renderer::cleanup(StorageCache& cache)
     m_descriptorPool.destroy(m_context, m_device);
 
     m_gridBuffer.destroy(m_context, m_device);
-    m_chunkBuffer.destroy(m_context, m_device);
-    m_drawCommandsBuffer.destroy(m_context, m_device);
+    m_chunkBuffer.destroy(m_context, m_device);    
 
     m_gridMemory.destroy(m_context, m_device);
     m_chunkMemory.destroy(m_context, m_device);
-    m_drawCommandsMemory.destroy(m_context, m_device);
+
+    for(size_t i = 0; i < m_drawCommandMemories.size(); ++i)
+    {
+        m_drawCommandBuffers[i].destroy(m_context, m_device);
+        m_drawCommandMemories[i].destroy(m_context, m_device);
+    }
 
     m_configMemory.destroy(m_context, m_device);
     m_configBuffer.destroy(m_context, m_device);
@@ -530,8 +530,16 @@ void Renderer::drawFrame(const Graphics::CameraPerspective& camera)
     m_perFrameInFlightObjects[m_currentFrame].graphicsCommandBuffer->pushConstants(m_context, m_pipeline,
         Gfx::ShaderStage::Bits::Vertex, 0, sizeof(PushConstants), &constants);
 
-    m_perFrameInFlightObjects[m_currentFrame].graphicsCommandBuffer->drawIndirect(m_context,
-        m_drawCommandsBuffer, 0, m_drawCommandAmount, sizeof(PoolDrawCommand));
+    {
+        //std::unique_lock<std::shared_mutex> lockCommand(m_drawCommandLock); //this should not be necessary
+        for (size_t i = 0; i < m_drawCommandBuffers.size(); ++i)
+        {
+            m_perFrameInFlightObjects[m_currentFrame].graphicsCommandBuffer->bindVertexBuffers(m_context,
+                std::array<const Gfx::Buffer*, 1>{ &m_indicesPool.getBuffers().at(i) }, { 0 }, 1);
+            m_perFrameInFlightObjects[m_currentFrame].graphicsCommandBuffer->drawIndirect(m_context,
+                m_drawCommandBuffers.at(i), 0, m_drawCommandAmounts.at(i), sizeof(Gfx::DrawCommand));
+        }
+    }
 
     drawGui(camera);
 
@@ -604,22 +612,6 @@ void Renderer::drawGui(const Graphics::CameraPerspective& camera)
     /*Compass::drawCoordinateAxes(camera, ImVec2(100, 500));*/
 
     ImGui::End();
-
-    //ImGui::Text("Draw command:");
-    //ImGui::Text("Vertex count:      %i", drawCommand.vertexCount);
-    //ImGui::Text("Instance count:    %i", drawCommand.instanceCount);
-    //ImGui::Text("First vertex:      %i", drawCommand.firstVertex);
-    //ImGui::Text("First instance:    %i", drawCommand.firstInstance);    
-
-    //ImGui::Text("Config:");
-    //ImGui::Text("Buffer size:       %i", m_configMapping->bufferSize);
-    //ImGui::Text("Buffer threshold:  %i", m_configMapping->bufferThreshold);
-    //ImGui::Text("Contrast:          %.2f", m_configMapping->contrast);
-    //
-    //ImGui::Text("Usage:");
-    //ImGui::Text("Buffer usage:      %i", m_usageMapping->bufferUsage);
-    //ImGui::Text("Needs expansion:   %i", m_usageMapping->needsExpansion);
-    //ImGui::Text("Overflowed:        %i", m_usageMapping->overflowed);
 
     m_debugConsole.draw();
 
@@ -697,7 +689,23 @@ void Renderer::updateChunk(const ResourceCache& resources, size_t chunkPoolIndex
         allocation = m_indicesPool.allocate(
             m_context, m_device, buffer.size() * sizeof(Indices),
             [this](Gfx::MappedMemory& memory, Gfx::Buffer& buffer, size_t bufferIndex) {
+                std::shared_lock<std::shared_mutex> lockDraw(m_drawLock);
+                m_perFrameInFlightObjects[m_currentFrame].inFlightFence.wait(m_context, m_device);                
+
                 m_poolSet->write(m_context, m_device, buffer, 0, 0, buffer.getMemoryRequirements().size, bufferIndex);
+
+                std::unique_lock<std::shared_mutex> lockCommand(m_drawCommandLock);
+                m_drawCommandBuffers.emplace_back(m_context, m_device,
+                    sizeof(Gfx::DrawCommand) * m_chunkCount,
+                    Gfx::BufferUsage::Bits::Storage
+                    | Gfx::BufferUsage::Bits::Indirect
+                    | Gfx::BufferUsage::Bits::TransferDst, false);
+                m_drawCommandMemories.emplace_back(m_context, m_device,
+                    m_drawCommandBuffers.back().getMemoryRequirements(),
+                    Gfx::MemoryProperty::Bits::HostVisibleCoherent,
+                    m_drawCommandBuffers.back().getMemoryRequirements().size);
+				m_drawCommandMemories.back().bindBuffer(m_context, m_device, m_drawCommandBuffers.back());
+                m_drawCommandAmounts.push_back(0);
             }
         );
     }
@@ -716,21 +724,20 @@ void Renderer::updateChunk(const ResourceCache& resources, size_t chunkPoolIndex
 
         auto chunkMapping = m_chunkMemory.getMapping<WorldGrid::Chunk>(m_chunkCount);
         chunkMapping[chunkPoolIndex] = chunk;
-
-        std::lock_guard<std::mutex> lockCommand(m_drawCommandLock);
+                
         if (!m_meshedChunks[chunkPoolIndex])
         {
-            m_chunkDrawIndices[chunkPoolIndex] = m_drawCommandAmount++;
+            std::unique_lock<std::shared_mutex> lockCommand(m_drawCommandLock);
+            m_chunkDrawIndices[chunkPoolIndex] = { allocation.bufferIndex, m_drawCommandAmounts[allocation.bufferIndex]++ };
             m_drawIndexToPoolIndex.insert({ m_chunkDrawIndices[chunkPoolIndex], chunkPoolIndex });
-        }        
-
-        auto commands = m_drawCommandsMemory.getMapping<PoolDrawCommand>(m_drawCommandAmount);
-        auto& command = commands[m_chunkDrawIndices[chunkPoolIndex]];
-        command.drawCommand.vertexCount = 3;
-        command.drawCommand.instanceCount = buffer.size();
-        command.drawCommand.firstVertex = 0;
-        command.drawCommand.firstInstance = allocation.region.offset / sizeof(Indices);
-        command.bufferId = allocation.bufferIndex;
+        }
+        std::shared_lock<std::shared_mutex> lockCommand(m_drawCommandLock);
+        auto commands = m_drawCommandMemories[allocation.bufferIndex].getMapping<Gfx::DrawCommand>(m_drawCommandAmounts[allocation.bufferIndex]);
+        auto& command = commands[m_chunkDrawIndices[chunkPoolIndex].drawCommandIndex];
+        command.vertexCount = 3;
+        command.instanceCount = buffer.size();
+        command.firstVertex = 0;
+        command.firstInstance = allocation.region.offset / sizeof(Indices);
     }
     buffer.clear();
     m_meshedChunks[chunkPoolIndex] = true;
@@ -753,18 +760,19 @@ void Renderer::unmeshChunk(size_t chunkPoolIndex)
 
     auto startUnmesh = std::chrono::high_resolution_clock::now();
     {
-        std::lock_guard<std::mutex> lockCommand(m_drawCommandLock);
-        auto index = m_chunkDrawIndices[chunkPoolIndex];
-        const auto& itCur = m_drawIndexToPoolIndex.find(index);
-        const auto& itNew = m_drawIndexToPoolIndex.find(m_drawCommandAmount--);
-        itCur->second = itNew->second;
-        m_chunkDrawIndices[itCur->second] = index;
-        m_drawIndexToPoolIndex.erase(itNew);
-
         std::shared_lock<std::shared_mutex> lockDraw(m_drawLock);
         m_perFrameInFlightObjects[m_currentFrame].inFlightFence.wait(m_context, m_device);
-        auto commands = m_drawCommandsMemory.getMapping<PoolDrawCommand>(m_drawCommandAmount);        
-        commands[index] = commands.back();
+
+        std::unique_lock<std::shared_mutex> lockCommand(m_drawCommandLock);
+        auto& index = m_chunkDrawIndices[chunkPoolIndex];
+        const auto& itCur = m_drawIndexToPoolIndex.find(index);
+        const auto& itBack = m_drawIndexToPoolIndex.find({ index.bufferIndex, m_drawCommandAmounts[index.bufferIndex]--});
+        itCur->second = itBack->second;
+        m_chunkDrawIndices[itCur->second] = index;
+        m_drawIndexToPoolIndex.erase(itBack);
+        
+        auto commands = m_drawCommandMemories[index.bufferIndex].getMapping<Gfx::DrawCommand>(m_drawCommandAmounts[index.bufferIndex]);
+        commands[index.drawCommandIndex] = commands.back();
     }
 
     auto& allocation = m_indexAllocations[chunkPoolIndex];

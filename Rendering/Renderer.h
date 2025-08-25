@@ -26,18 +26,6 @@
 
 #include "Multithreading/ThreadPool.h"
 
-//layout(set = 2, binding = 0) uniform Config {
-//    float contrast;         // 0.0 = grayscale, 1.0 = normal, >1.0 = increased contrast
-//    uint bufferSize;        //in indices, not bytes, current index buffer size
-//    uint bufferThreshold;   //in indices, not bytes, current index buffer threshold
-//} config;
-//
-//layout(set = 2, binding = 1, std430) writeonly buffer Usage {
-//    uint bufferUsage;       // Current usage written by compute shader
-//    uint needsExpansion;    // 1 if threshold exceeded
-//    uint overflowed;        // 1 if buffer size exceeded
-//} usage;
-
 class Renderer
 {
 public:
@@ -60,6 +48,25 @@ private:
 		uint32_t startColoring;
 	};
 
+	struct ChunkDrawIndex
+	{
+		size_t bufferIndex;
+		size_t drawCommandIndex;
+
+		struct Hash {
+			size_t operator()(const ChunkDrawIndex& val) const {
+				size_t seed = 0;
+				seed ^= std::hash<size_t>()(val.bufferIndex) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+				seed ^= std::hash<size_t>()(val.drawCommandIndex) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+				return seed;
+			}
+		};
+
+		bool operator==(const ChunkDrawIndex& other) const {
+			return bufferIndex == other.bufferIndex && drawCommandIndex == other.drawCommandIndex;
+		}
+	};
+
 	struct PerFrameObjects
 	{
 		Gfx::CommandBufferHandle graphicsCommandBuffer;
@@ -68,10 +75,10 @@ private:
 		Gfx::Fence inFlightFence;
 	};
 
-	struct PoolDrawCommand {
-		Gfx::DrawCommand drawCommand;
-		uint32_t bufferId;
-	};
+	//struct PoolDrawCommand {
+	//	Gfx::DrawCommand drawCommand;
+	//	uint32_t bufferId;
+	//};
 
 	uint32_t m_frameCounter = 0;
 	uint32_t m_currentFrame = 0;
@@ -130,11 +137,11 @@ private:
 	// per chunk data
 	Gfx::Buffer m_gridBuffer;
 	Gfx::Buffer m_chunkBuffer;
-	Gfx::Buffer m_drawCommandsBuffer;
+	std::vector<Gfx::Buffer> m_drawCommandBuffers;
 
 	Gfx::MappedMemory m_gridMemory;
 	Gfx::MappedMemory m_chunkMemory;
-	Gfx::MappedMemory m_drawCommandsMemory;
+	std::vector<Gfx::MappedMemory> m_drawCommandMemories;
 
 	Gfx::MemoryPool<Gfx::MappedMemory> m_indicesPool;
 
@@ -162,13 +169,13 @@ private:
 
 	
 	std::vector<Gfx::MemoryPool<Gfx::MappedMemory>::Allocation> m_indexAllocations;
-	std::vector<Gfx::CommandBufferHandle> m_perChunkBuffers;
+	/*std::vector<Gfx::CommandBufferHandle> m_perChunkBuffers;*/
 	std::vector<std::vector<Indices>> m_stagingBuffers;
 
-	std::mutex m_drawCommandLock;
-	std::unordered_map<size_t, size_t> m_drawIndexToPoolIndex;
-	std::vector<size_t> m_chunkDrawIndices;
-	size_t m_drawCommandAmount;
+	std::shared_mutex m_drawCommandLock;
+	std::unordered_map<ChunkDrawIndex, size_t, ChunkDrawIndex::Hash> m_drawIndexToPoolIndex;
+	std::vector<ChunkDrawIndex> m_chunkDrawIndices;
+	std::vector<size_t> m_drawCommandAmounts;
 
 	DebugConsole m_debugConsole;
 

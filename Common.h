@@ -113,6 +113,8 @@ namespace Constants
 	const size_t chunkHeight = 16;	//along Y axis
 	const size_t chunkDepth = 16;	//along Z axis
 
+	const glm::uvec3 chunkDimensions = { chunkWidth, chunkHeight, chunkDepth };
+
 	const float gridCellSize = 1.0f;
 	const float gridCellCenterOffset = 0.5f;
 
@@ -156,6 +158,14 @@ static inline constexpr Directions3D to3D(Directions2D dir) {
 	case Directions2D::LEFT: return Directions3D::LEFT;
 	default: throw std::invalid_argument("Cannot convert UP/DOWN to 2D direction");
 	}
+}
+
+static inline constexpr Directions3D reverseDir3D(size_t dir) {
+	return enumCast<Directions3D>((dir + enumCast(Directions3D::NUM) / 2) % enumCast(Directions3D::NUM));
+}
+
+static inline constexpr Directions2D reverseDir2D(size_t dir) {
+	return enumCast<Directions2D>((dir + enumCast(Directions2D::NUM) / 2) % enumCast(Directions2D::NUM));
 }
 
 static inline constexpr Directions3D reverseDir(Directions3D dir) {

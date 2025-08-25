@@ -14,6 +14,7 @@ public:
 
 	struct alignas(16) Chunk {	
 		glm::ivec4 coord;
+		glm::ivec4 blockCornerCoord;
 		uint32_t start;
 		uint32_t neighbourStarts[6];
 		uint32_t padding;
@@ -30,19 +31,20 @@ public:
 private:
 	GridPool m_pool;
 	std::vector<GridPool::Allocation> m_allocations;
-	CoordToChunk m_coordToChunk;
-    size_t m_sphereRadius = 0;
+	CoordToChunk m_coordToAllocation;
 
 public:
 	WorldGrid() = default;
 
 	WorldGrid(size_t sphereRadius, glm::ivec3 centerPos);
+	WorldGrid(size_t radius, size_t height, glm::ivec3 centerPos);
 
-	void resetSphereRadius(size_t sphereRadius, glm::ivec3 centerPos);
+	void generateSphere(size_t radius, glm::ivec3 centerPos);
+	void generateCylinder(size_t radius, size_t height, glm::ivec3 centerPos);
 
 	const auto& getGrid() const { return m_pool.getField<0>(); }
 	const auto& getAllocatedChunks() const { return m_allocations; }
-	const auto& getCoordToChunk() const { return m_coordToChunk; }
+	const auto& getCoordToChunk() const { return m_coordToAllocation; }
 	const auto& getPool() const { return m_pool; }
 
 
@@ -66,80 +68,41 @@ public:
 		return m_pool.getField<0>()[index];
 	}
 
-	template<Shape::Side side>
-	inline Id::VoxelState getAdjacentBlockId(size_t block, size_t x, size_t y, size_t z, const Chunk& chunk) const
+	void addChunk(glm::ivec3 chunkCoords)
 	{
-		auto& grid = m_pool.getField<0>();
-		if constexpr (side == Shape::Side::FRONT)
+		if (m_coordToAllocation.find(chunkCoords) != m_coordToAllocation.end())
+			return;
+		m_allocations.push_back(m_pool.allocate());
+		auto& alloc = m_allocations.back();
+		auto& chunk = alloc.getField<1>();
+		chunk.coord = glm::ivec4(chunkCoords, 1);
+		chunk.blockCornerCoord = chunk.coord * glm::ivec4(Constants::chunkDimensions, 1);
+		chunk.start = alloc.getEntryOffset<0>();
+		m_coordToAllocation.insert({ chunkCoords, m_allocations.size() - 1 });
+		for (size_t j = 0; j < 6; ++j)
 		{
-			if (z == 0)
+			glm::ivec3 neighbourPos = glm::ivec3(chunk.coord) + Constants::directions3D[j];
+			auto it = m_coordToAllocation.find(neighbourPos);
+			if (it != m_coordToAllocation.end())
 			{
-				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::FRONT)];
-				if (adj == noChunkIndex)
-					return Constants::emptyStateId;
-				return grid[adj + y * Constants::chunkLayerSize + x * Constants::chunkDepth + 15];
+				chunk.neighbourStarts[j] = m_allocations[it->second].getEntryOffset<0>();
+				auto& neighbourChunk = m_allocations[it->second].getField<1>();
+				neighbourChunk.neighbourStarts[enumCast(reverseDir3D(j))] = chunk.start;
 			}
-			return grid[block - Constants::chunkWidth];
+			else chunk.neighbourStarts[j] = noChunkIndex;
 		}
-		else if constexpr (side == Shape::Side::BACK)
-		{
-			if (z == 15)
-			{
-				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::BACK)];
-				if (adj == noChunkIndex)
-					return Constants::emptyStateId;
-				return grid[adj + y * Constants::chunkLayerSize + x * Constants::chunkDepth];
-			}
-			return grid[block + Constants::chunkWidth];
-		}
-		else if constexpr (side == Shape::Side::LEFT)
-		{
-			if (x == 0)
-			{
-				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::LEFT)];
-				if (adj == noChunkIndex)
-					return Constants::emptyStateId;
-				return grid[adj + y * Constants::chunkLayerSize + 15 * Constants::chunkDepth + z];
-			}
-			return grid[block - 1];
-		}
-		else if constexpr (side == Shape::Side::RIGHT)
-		{
-			if (x == 15)
-			{
-				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::RIGHT)];
-				if (adj == noChunkIndex)
-					return Constants::emptyStateId;
-				return grid[adj + y * Constants::chunkLayerSize + z];
-			}
-			return grid[block + 1];
-		}
-		else if constexpr (side == Shape::Side::BOTTOM)
-		{
-			if (y == 0)
-			{
-				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::BOTTOM)];
-				if (adj == noChunkIndex)
-					return Constants::emptyStateId;
-				return grid[adj + 15 * Constants::chunkLayerSize + x * Constants::chunkDepth + z];
-			}
-			return grid[block - Constants::chunkLayerSize];
-		}
-		else if constexpr (side == Shape::Side::TOP)
-		{
-			if (y == 15)
-			{
-				auto adj = chunk.neighbourStarts[enumCast(Shape::Side::TOP)];
-				if (adj == noChunkIndex)
-					return Constants::emptyStateId;
-				return grid[adj + x * Constants::chunkDepth + z];
-			}
-			return grid[block + Constants::chunkLayerSize];
-		}
-		else
-		{
-			static_assert(side >= Shape::Side::NUM && "invalid side index");
-		}
+	}
+
+	void removeChunk(glm::ivec3 chunkCoords)
+	{
+		auto it = m_coordToAllocation.find(chunkCoords);
+		if (it == m_coordToAllocation.end())
+			return;
+		auto& alloc = m_allocations[it->second];
+		m_pool.free(alloc);
+		m_coordToAllocation.find(m_allocations.back().getField<1>().coord)->second = it->second;
+		m_allocations[it->second] = m_allocations.back();
+		m_allocations.pop_back();
 	}
 
 private:
@@ -152,7 +115,7 @@ private:
 		coords.y - chunkCoords.y * Constants::chunkHeight,
 		coords.z - chunkCoords.z * Constants::chunkDepth };
 
-		auto& chunk = m_coordToChunk.at(chunkCoords);
+		auto& chunk = m_coordToAllocation.at(chunkCoords);
 		return m_allocations[chunk].getField<1>().start + coords.x + coords.z * Constants::chunkWidth +
 			coords.y * Constants::chunkLayerSize;
 	}
