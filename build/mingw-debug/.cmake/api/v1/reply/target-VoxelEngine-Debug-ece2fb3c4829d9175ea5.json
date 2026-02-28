@@ -1,0 +1,356 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "VoxelEngine.exe"
+		},
+		{
+			"path" : "VoxelEngine.pdb"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"target_link_libraries",
+			"target_compile_options",
+			"add_definitions",
+			"target_include_directories",
+			"target_compile_features"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt",
+			"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 9,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 54,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 65,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 68,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 72,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 62,
+				"parent" : 6
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 40,
+				"parent" : 6
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 24,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 62,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 73,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 34,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 31,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -std=gnu++20"
+				},
+				{
+					"backtrace" : 9,
+					"fragment" : "-Wall"
+				},
+				{
+					"backtrace" : 9,
+					"fragment" : "-Wextra"
+				},
+				{
+					"backtrace" : 9,
+					"fragment" : "-Wpedantic"
+				},
+				{
+					"backtrace" : 10,
+					"fragment" : "-mavx"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 11,
+					"define" : "_WIN32_WINNT=0x0600"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 12,
+					"path" : "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/Vendor/glm"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "E:/Program Files (x86)/Code/C_code/libraries/JsonParser/include"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/Vendor/Clipper2Lib/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Program Files (x86)/API/Vulkan/Include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Program Files (x86)/Code/C_code/libraries/Containers/include"
+				},
+				{
+					"backtrace" : 3,
+					"isSystem" : true,
+					"path" : "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/Vendor/imgui"
+				},
+				{
+					"backtrace" : 3,
+					"isSystem" : true,
+					"path" : "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/Vendor/imgui/backends"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					13
+				],
+				"standard" : "20"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "CommonApi::@e174f40a7e2c7a10db09"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "GraphicsWrapper::@b818e5f2ddefbb854c33"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "imgui::@89ff14b4ff87006eb4a0"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "Clipper2Lib::@652bd998630e33fca0a1"
+		}
+	],
+	"id" : "VoxelEngine::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-g",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "GraphicsWrapper\\libGraphicsWrapper.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "Vendor\\imgui\\libimgui.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "Vendor\\Clipper2Lib\\libClipper2Lib.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "-ldwmapi",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 7,
+				"fragment" : "CommonApi\\libCommonApi.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 8,
+				"fragment" : "\"E:\\Program Files (x86)\\API\\Vulkan\\Lib\\vulkan-1.lib\"",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "VoxelEngine",
+	"nameOnDisk" : "VoxelEngine.exe",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/Rendering/StorageCache.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/Rendering/AssetCache.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/Rendering/VoxelCullingCache.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/Rendering/Renderer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/GameData/ResourceCache.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/WorldManagement/Generator.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/WorldManagement/WorldGrid.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/main.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}

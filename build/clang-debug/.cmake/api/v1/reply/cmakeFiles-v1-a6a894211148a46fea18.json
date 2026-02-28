@@ -1,0 +1,357 @@
+{
+	"globsDependent" : 
+	[
+		{
+			"expression" : "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/*.cpp",
+			"paths" : 
+			[
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Buffer.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/CommandBuffer.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/CommandPool.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/DebugUtilsMessenger.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/DescriptorPool.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/DescriptorSet.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Device.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Fence.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/FrameBuffer.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Image.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Instance.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Memory.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/PhysicalDevice.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/PhysicalDeviceCache.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Pipeline.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Queue.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/RenderPass.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Sampler.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Semaphore.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/ShaderModule.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Surface.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/SwapChain.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/PlatformManagement/WindowWin32.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/TaskTables/FeatureTaskTables.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/TaskTables/PhysicalDeviceCacheTaskTables.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/TaskTables/PropertyTaskTables.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/TaskTables/QueuePropertyTaskTables.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Utility/Camera.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Utility/PixelData2D.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Utility/Utility.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/DebugLogger.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/DeviceWrapper.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/InstanceWrapper.cpp"
+			],
+			"recurse" : true
+		}
+	],
+	"inputs" : 
+	[
+		{
+			"path" : "CMakeLists.txt"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "build/clang-debug/CMakeFiles/3.30.2/CMakeSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "build/clang-debug/CMakeFiles/3.30.2/CMakeCCompiler.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "build/clang-debug/CMakeFiles/3.30.2/CMakeCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/Platform/Windows.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/CMakeCInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/Compiler/Clang-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/Compiler/Clang.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/Platform/Windows-Clang-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/Platform/Windows-Clang.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "build/clang-debug/CMakeFiles/3.30.2/CMakeRCCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/CMakeRCInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/Compiler/Clang-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/Compiler/Clang.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/Platform/Windows-Clang-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/Platform/Windows-Clang.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/FindVulkan.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/Code/C_code/libraries/Containers/lib/cmake/Containers/ContainersConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/Code/C_code/libraries/Containers/lib/cmake/Containers/ContainersTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/CMakeLists.txt"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/CMakePackageConfigHelpers.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/WriteBasicConfigVersionFile.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/install/CommonApiConfig.cmake.in"
+		},
+		{
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/CMakeLists.txt"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/CMakePackageConfigHelpers.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/WriteBasicConfigVersionFile.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/install/GraphicsWrapperConfig.cmake.in"
+		},
+		{
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/Code/C_code/libraries/JsonParser/CMakeLists.txt"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/CheckCXXCompilerFlag.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/Internal/CheckCompilerFlag.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/Internal/CheckFlagCommonConfig.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/CheckCXXSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/Code/C_code/libraries/JsonParser/tests/standard_compliant.json"
+		},
+		{
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/Code/C_code/libraries/JsonParser/tests/test.json"
+		},
+		{
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/Code/C_code/libraries/JsonParser/tests/test_edge_cases.json"
+		},
+		{
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/Code/C_code/libraries/JsonParser/tests/test_invalid.json"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/CMakePackageConfigHelpers.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/share/cmake-3.30/Modules/WriteBasicConfigVersionFile.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "E:/Program Files (x86)/Code/C_code/libraries/JsonParser/install/JsonParserConfig.cmake.in"
+		},
+		{
+			"path" : "Vendor/imgui/CMakeLists.txt"
+		},
+		{
+			"path" : "Vendor/Clipper2Lib/CMakeLists.txt"
+		}
+	],
+	"kind" : "cmakeFiles",
+	"paths" : 
+	{
+		"build" : "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug",
+		"source" : "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine"
+	},
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 1
+	}
+}

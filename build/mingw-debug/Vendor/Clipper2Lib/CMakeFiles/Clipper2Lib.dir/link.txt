@@ -1,0 +1,2 @@
+A:\compilers\mingw64\bin\ar.exe qc libClipper2Lib.a CMakeFiles/Clipper2Lib.dir/src/clipper.engine.cpp.obj CMakeFiles/Clipper2Lib.dir/src/clipper.offset.cpp.obj CMakeFiles/Clipper2Lib.dir/src/clipper.rectclip.cpp.obj
+A:\compilers\mingw64\bin\ranlib.exe libClipper2Lib.a

@@ -1,0 +1,246 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						6
+					]
+				},
+				{
+					"build" : "CommonApi",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-CommonApi-Debug-5c99424a1c38f005e5e1.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "E:/Program Files (x86)/Code/C_code/libraries/CommonApi",
+					"targetIndexes" : 
+					[
+						1,
+						2
+					]
+				},
+				{
+					"build" : "GraphicsWrapper",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-GraphicsWrapper-Debug-6b28432e1bcea4f9816c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper",
+					"targetIndexes" : 
+					[
+						3,
+						4
+					]
+				},
+				{
+					"build" : "JsonParser",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-JsonParser-Debug-79f960acda8707788d28.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 3,
+					"source" : "E:/Program Files (x86)/Code/C_code/libraries/JsonParser",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "Vendor/imgui",
+					"jsonFile" : "directory-Vendor.imgui-Debug-79d770752ac9dacfa44b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "Vendor/imgui",
+					"targetIndexes" : 
+					[
+						7
+					]
+				},
+				{
+					"build" : "Vendor/Clipper2Lib",
+					"jsonFile" : "directory-Vendor.Clipper2Lib-Debug-f9b2f38bfad5d7818fa7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "Vendor/Clipper2Lib",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						4,
+						5
+					],
+					"name" : "VoxelEngine",
+					"targetIndexes" : 
+					[
+						0,
+						6,
+						7
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "CommonApi",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1,
+						2
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2
+					],
+					"name" : "GraphicsWrapper",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						3,
+						4
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						3
+					],
+					"name" : "JsonParser",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						5
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 5,
+					"id" : "Clipper2Lib::@652bd998630e33fca0a1",
+					"jsonFile" : "target-Clipper2Lib-Debug-6652c3521b3d722c7c19.json",
+					"name" : "Clipper2Lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "CommonApi::@e174f40a7e2c7a10db09",
+					"jsonFile" : "target-CommonApi-Debug-7c18b92ab40c434435b6.json",
+					"name" : "CommonApi",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "CommonApiTests::@e174f40a7e2c7a10db09",
+					"jsonFile" : "target-CommonApiTests-Debug-7009b0dc3520d25cc6ef.json",
+					"name" : "CommonApiTests",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "GraphicsWrapper::@b818e5f2ddefbb854c33",
+					"jsonFile" : "target-GraphicsWrapper-Debug-dfb419aad42bbffe58df.json",
+					"name" : "GraphicsWrapper",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "GraphicsWrapperTests::@b818e5f2ddefbb854c33",
+					"jsonFile" : "target-GraphicsWrapperTests-Debug-4b6986fcaa3ddcc15d77.json",
+					"name" : "GraphicsWrapperTests",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "JsonParserBenchmark::@3252e5e7c2fd5cc67d4b",
+					"jsonFile" : "target-JsonParserBenchmark-Debug-e05dc66790ed69e14c58.json",
+					"name" : "JsonParserBenchmark",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "VoxelEngine::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-VoxelEngine-Debug-acdcbf40883581cfb94d.json",
+					"name" : "VoxelEngine",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "imgui::@89ff14b4ff87006eb4a0",
+					"jsonFile" : "target-imgui-Debug-06ebf6f7c88fc82c1e0e.json",
+					"name" : "imgui",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/msvc-debug",
+		"source" : "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

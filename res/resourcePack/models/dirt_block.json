@@ -2,21 +2,7 @@
     "name": "dirt_block",
     "shapes" : [
       {
-        "dimensions": {
-          "width": 1.0,
-          "height": 1.0,
-          "depth": 1.0
-        },
-        "position": {
-          "x": 0.5,
-          "y": 0.5,
-          "z": 0.5
-        },
-        "rotation": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
+        // if dimensions position and rotation not specified - a cube is assumed
         "textures": {
           "front": {
             "name": "dirt",

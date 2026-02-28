@@ -2,34 +2,9 @@
     "name": "grass_block",
     "shapes" : [
       {
-        "dimensions": {
-          "width": 1.0,
-          "height": 1.0,
-          "depth": 1.0
-        },
-        "position": {
-          "x": 0.5,
-          "y": 0.5,
-          "z": 0.5
-        },
-        "rotation": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
         "textures": {
           "front": {
             "name": "grass_block_side"
-            //"uv": {
-            //  "u1": 0.0,
-            //  "v1": 0.0, //bottom left
-            //  "u2": 1.0,
-            //  "v2": 0.0, //bottom right
-            //  "u3": 1.0,
-            //  "v3": 1.0, //top right
-            //  "u4": 0.0,
-            //  "v4": 1.0  //top left
-            //}
           },
           "right": {
             "name": "grass_block_side"

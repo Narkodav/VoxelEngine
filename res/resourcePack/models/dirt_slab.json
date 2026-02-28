@@ -1,0 +1,52 @@
+{
+    "name": "dirt_slab",
+    "shapes" : [
+    {
+        "dimensions": {
+        "width": 1.0,
+        "height": 0.5,
+        "depth": 1.0
+        },
+        "position": {
+        "x": 0.5,
+        "y": 0.25,
+        "z": 0.5
+        },
+        "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+        },
+        "textures": {
+        "front": {
+            "name": "dirt",
+            //"uv": {
+            //  "u1": 0.0,
+            //  "v1": 0.0, //bottom left
+            //  "u2": 1.0,
+            //  "v2": 0.0, //bottom right
+            //  "u3": 1.0,
+            //  "v3": 1.0, //top right
+            //  "u4": 0.0,
+            //  "v4": 1.0  //top left
+            //}
+        },
+        "right": {
+            "name": "dirt"
+        },
+        "top": {
+            "name": "dirt"
+        },
+        "back": {
+            "name": "dirt"
+        },
+        "left": {
+            "name": "dirt"
+        },
+        "bottom": {
+            "name": "dirt"
+        }
+        }
+    }
+]
+}

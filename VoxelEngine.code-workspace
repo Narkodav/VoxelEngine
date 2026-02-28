@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../libraries/GraphicsWrapper"
+		},
+		{
+			"path": "../../libraries/CommonApi"
+		},
+		{
+			"path": "../../libraries/Containers"
+		},
+		{
+			"path": "../../libraries/JsonParser"
+		}
+	],
+	"settings": {}
+}

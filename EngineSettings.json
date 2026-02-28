@@ -1,0 +1,30 @@
+{
+    "MouseSensitivity" : 80.0,
+    "MoveVelocity" : 10.0,
+    "SpeedMoveVelocity" : 100.0,
+    "Generator" : {
+        "Type" : "Cylinder",
+        "Radius" : 10,
+        "Height" : 16,
+        "BottomCenterPostition" : {
+            "X" : 0,
+            "Y" : 0,
+            "Z" : 0
+        }
+    },
+    "CameraSettings" : {
+        "WorldUpVector" : {
+            "X" : 0,
+            "Y" : 1,
+            "Z" : 0
+        },
+        "Position" : {
+            "X" : 0,
+            "Y" : 0,
+            "Z" : 0
+        },
+        "Pitch" : 0.0,
+        "Yaw" : 0.0,
+        "Fov" : 100.0
+    }
+}

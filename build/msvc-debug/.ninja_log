@@ -1,0 +1,10 @@
+# ninja log v5
+5	39	0	E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/msvc-debug/CMakeFiles/cmake.verify_globs	c15155f487e14866
+106	3003	7932492736496428	CommonApi/CMakeFiles/CommonApi.dir/src/Utilities/Functions.cpp.obj	5165f37c13f2605b
+100	3263	7932492740557365	CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/ErrorMapper.cpp.obj	7fe64080bbf781cd
+85	4388	7932492752078660	CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/ThreadPool.cpp.obj	2c6205b1e68a7579
+90	4556	7932492753143010	CommonApi/CMakeFiles/CommonApi.dir/src/Physics/Hitboxes.cpp.obj	47db63b90cb2953d
+95	4704	7932492755041706	CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/Console.cpp.obj	9d95273d2392d543
+75	5215	7932492759804023	CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/FileSystem.cpp.obj	fb2a8f02cc90f1b6
+80	5448	7932492761933934	CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/Logger.cpp.obj	263027d64ccc0f24
+5448	7259	7932492777438653	CommonApi/CommonApi.lib	fcc42c90f79b095e

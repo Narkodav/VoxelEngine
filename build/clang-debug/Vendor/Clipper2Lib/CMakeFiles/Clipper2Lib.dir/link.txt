@@ -1,0 +1,2 @@
+C:\Users\user\.utils\llvm-mingw\bin\llvm-ar.exe qc libClipper2Lib.a CMakeFiles/Clipper2Lib.dir/src/clipper.engine.cpp.obj CMakeFiles/Clipper2Lib.dir/src/clipper.offset.cpp.obj CMakeFiles/Clipper2Lib.dir/src/clipper.rectclip.cpp.obj
+C:\Users\user\.utils\llvm-mingw\bin\llvm-ranlib.exe libClipper2Lib.a

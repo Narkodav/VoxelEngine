@@ -1,0 +1,124 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"E:/Program Files (x86)/Code/C_code/libraries/CommonApi/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 81,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 88,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 92,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 96,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 109,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"CommonApi/CommonApi.lib"
+			],
+			"targetId" : "CommonApi::@e174f40a7e2c7a10db09",
+			"targetIndex" : 1,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include",
+			"paths" : 
+			[
+				{
+					"from" : "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/include",
+					"to" : "."
+				}
+			],
+			"type" : "directory"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "include",
+			"paths" : 
+			[
+				"E:/Program Files (x86)/Code/C_code/libraries/CommonApi/Vendor/glm/glm"
+			],
+			"type" : "directory"
+		},
+		{
+			"backtrace" : 4,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/CommonApi",
+			"exportName" : "CommonApiTargets",
+			"exportTargets" : 
+			[
+				{
+					"id" : "CommonApi::@e174f40a7e2c7a10db09",
+					"index" : 1
+				},
+				{
+					"id" : "glm::@e174f40a7e2c7a10db09",
+					"index" : 0
+				}
+			],
+			"paths" : 
+			[
+				"CommonApi/CMakeFiles/Export/c68879267fe758ecda80508577c51158/CommonApiTargets.cmake"
+			],
+			"type" : "export"
+		},
+		{
+			"backtrace" : 5,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/CommonApi",
+			"paths" : 
+			[
+				"build/msvc-debug/CommonApi/CommonApiConfig.cmake"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "CommonApi",
+		"source" : "E:/Program Files (x86)/Code/C_code/libraries/CommonApi"
+	}
+}

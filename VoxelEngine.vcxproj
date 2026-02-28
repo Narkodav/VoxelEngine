@@ -139,22 +139,25 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(ProjectDir)Vendor\glfw-3.3.8.bin.WIN64\lib-vc2022;E:\Program Files (x86)\API\Vulkan\Lib;$(ProjectDir)Vendor\CommonApi\lib\Release DLL;%(AdditionalLibraryDirectories);$(ProjectDir)Vendor\JsonParser\bin\ReleaseDll</AdditionalLibraryDirectories>
-      <AdditionalDependencies>user32.lib;Gdi32.lib;Shell32.lib;vulkan-1.lib;glfw3.lib;CommonApi.lib;JsonParser_MD.lib;</AdditionalDependencies>
+      <AdditionalDependencies>user32.lib;Gdi32.lib;Shell32.lib;vulkan-1.lib;glfw3.lib;CommonApi.lib;VulkanGraphics.lib;JsonParser_MD.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Rendering\Compass.cpp" />
-    <ClCompile Include="Math\LinearAlgebra.cpp" />
-    <ClCompile Include="Rendering\DebugConsole.cpp" />
     <ClCompile Include="GameData\ResourceCache.cpp" />
     <ClCompile Include="GameData\Voxel.cpp" />
     <ClCompile Include="GameData\VoxelAttribute.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Math\LinearAlgebra.cpp" />
     <ClCompile Include="Rendering\AssetCache.cpp" />
-    <ClCompile Include="Rendering\StorageCache.cpp" />
-    <ClCompile Include="Rendering\Shape.cpp" />
+    <ClCompile Include="Rendering\Compass.cpp" />
+    <ClCompile Include="Rendering\DebugConsole.cpp" />
+    <ClCompile Include="Rendering\GridRendering\ChunkMesh.cpp" />
+    <ClCompile Include="Rendering\GridRendering\GridMesh.cpp" />
+    <ClCompile Include="Rendering\GridRendering\VoxelMeshing.cpp" />
     <ClCompile Include="Rendering\Renderer.cpp" />
     <ClCompile Include="Rendering\Shaders\ShaderCache.cpp" />
+    <ClCompile Include="Rendering\Shape.cpp" />
+    <ClCompile Include="Rendering\StorageCache.cpp" />
     <ClCompile Include="Rendering\VoxelCullingCache.cpp" />
     <ClCompile Include="Utility\StructOfArraysPool.cpp" />
     <ClCompile Include="Vendor\Clipper2Lib\src\clipper.engine.cpp" />
@@ -162,12 +165,10 @@
     <ClCompile Include="Vendor\Clipper2Lib\src\clipper.rectclip.cpp" />
     <ClCompile Include="Vendor\imgui\imgui.cpp" />
     <ClCompile Include="Vendor\imgui\imgui_draw.cpp" />
-    <ClCompile Include="Vendor\imgui\imgui_impl_glfw.cpp" />
     <ClCompile Include="Vendor\imgui\imgui_impl_vulkan.cpp" />
+    <ClCompile Include="Vendor\imgui\imgui_impl_win32.cpp" />
     <ClCompile Include="Vendor\imgui\imgui_tables.cpp" />
     <ClCompile Include="Vendor\imgui\imgui_widgets.cpp" />
-    <ClCompile Include="WorldManagement\WorldGrid.cpp" />
-    <ClCompile Include="WorldManagement\VoxelVolume.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VulkanGraphics\VulkanGraphics.vcxproj">
@@ -176,18 +177,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h" />
-    <ClInclude Include="Rendering\Compass.h" />
-    <ClInclude Include="Math\LinearAlgebra.h" />
-    <ClInclude Include="Rendering\DebugConsole.h" />
     <ClInclude Include="GameData\ResourceCache.h" />
     <ClInclude Include="GameData\Voxel.h" />
     <ClInclude Include="GameData\VoxelAttribute.h" />
+    <ClInclude Include="Math\LinearAlgebra.h" />
     <ClInclude Include="Rendering\AssetCache.h" />
-    <ClInclude Include="Rendering\StorageCache.h" />
-    <ClInclude Include="Rendering\Shape.h" />
+    <ClInclude Include="Rendering\Compass.h" />
+    <ClInclude Include="Rendering\DebugConsole.h" />
+    <ClInclude Include="Rendering\GridRendering\ChunkMesh.h" />
+    <ClInclude Include="Rendering\GridRendering\GridMesh.h" />
+    <ClInclude Include="Rendering\GridRendering\VoxelMeshing.h" />
     <ClInclude Include="Rendering\Renderer.h" />
     <ClInclude Include="Rendering\ShaderLayoutDefinitions.h" />
     <ClInclude Include="Rendering\Shaders\ShaderCache.h" />
+    <ClInclude Include="Rendering\Shape.h" />
+    <ClInclude Include="Rendering\StorageCache.h" />
     <ClInclude Include="Rendering\VoxelCullingCache.h" />
     <ClInclude Include="Utility\StructOfArraysPool.h" />
     <ClInclude Include="Vendor\Clipper2Lib\include\clipper2\clipper.core.h" />
@@ -199,8 +203,8 @@
     <ClInclude Include="Vendor\Clipper2Lib\include\clipper2\clipper.version.h" />
     <ClInclude Include="Vendor\CommonApi\include\MultiThreading\ThreadPool.h" />
     <ClInclude Include="Vendor\imgui\imgui.h" />
-    <ClInclude Include="Vendor\imgui\imgui_impl_glfw.h" />
     <ClInclude Include="Vendor\imgui\imgui_impl_vulkan.h" />
+    <ClInclude Include="Vendor\imgui\imgui_impl_win32.h" />
     <ClInclude Include="Vendor\JsonParser\ValueTypes\Array.h" />
     <ClInclude Include="Vendor\JsonParser\ValueTypes\Bool.h" />
     <ClInclude Include="Vendor\JsonParser\ValueTypes\Null.h" />
@@ -208,55 +212,6 @@
     <ClInclude Include="Vendor\JsonParser\ValueTypes\Object.h" />
     <ClInclude Include="Vendor\JsonParser\ValueTypes\String.h" />
     <ClInclude Include="Vendor\JsonParser\ValueTypes\Value.h" />
-    <ClInclude Include="WorldManagement\WorldGrid.h" />
-    <ClInclude Include="WorldManagement\VoxelVolume.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="Rendering\Shaders\backups\basic.vert">
-      <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\backups\basic.vert" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\backups\basic.vert.spv"</Command>
-      <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\backups\basic.vert.spv</Outputs>
-      <Message>Compiling shader basic.vert</Message>
-    </CustomBuild>
-    <CustomBuild Include="Rendering\Shaders\Voxel.vert">
-      <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\Voxel.vert" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\Voxel.vert.spv"</Command>
-      <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\Voxel.vert.spv</Outputs>
-      <Message>Compiling shader Voxel.vert</Message>
-    </CustomBuild>
-    <CustomBuild Include="Vendor\imgui\backends\vulkan\glsl_shader.vert">
-      <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\backends\vulkan\glsl_shader.vert" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\backends\vulkan\glsl_shader.vert.spv"</Command>
-      <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\backends\vulkan\glsl_shader.vert.spv</Outputs>
-      <Message>Compiling shader glsl_shader.vert</Message>
-    </CustomBuild>
-    <CustomBuild Include="Vendor\imgui\vulkan\glsl_shader.vert">
-      <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\vulkan\glsl_shader.vert" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\vulkan\glsl_shader.vert.spv"</Command>
-      <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\vulkan\glsl_shader.vert.spv</Outputs>
-      <Message>Compiling shader glsl_shader.vert</Message>
-    </CustomBuild>
-    <CustomBuild Include="Rendering\Shaders\backups\basic.frag">
-      <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\backups\basic.frag" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\backups\basic.frag.spv"</Command>
-      <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\backups\basic.frag.spv</Outputs>
-      <Message>Compiling shader basic.frag</Message>
-    </CustomBuild>
-    <CustomBuild Include="Rendering\Shaders\Voxel.frag">
-      <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\Voxel.frag" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\Voxel.frag.spv"</Command>
-      <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\Voxel.frag.spv</Outputs>
-      <Message>Compiling shader Voxel.frag</Message>
-    </CustomBuild>
-    <CustomBuild Include="Vendor\imgui\backends\vulkan\glsl_shader.frag">
-      <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\backends\vulkan\glsl_shader.frag" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\backends\vulkan\glsl_shader.frag.spv"</Command>
-      <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\backends\vulkan\glsl_shader.frag.spv</Outputs>
-      <Message>Compiling shader glsl_shader.frag</Message>
-    </CustomBuild>
-    <CustomBuild Include="Vendor\imgui\vulkan\glsl_shader.frag">
-      <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\vulkan\glsl_shader.frag" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\vulkan\glsl_shader.frag.spv"</Command>
-      <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Vendor\imgui\vulkan\glsl_shader.frag.spv</Outputs>
-      <Message>Compiling shader glsl_shader.frag</Message>
-    </CustomBuild>
-    <CustomBuild Include="Rendering\Shaders\backups\basic.comp">
-      <Command>"E:/Program Files (x86)/API/Vulkan/Bin/glslc.exe" "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\backups\basic.comp" -o "E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\backups\basic.comp.spv"</Command>
-      <Outputs>E:\unik\C_code\vulkan_projects\VoxelEngine\Rendering\Shaders\backups\basic.comp.spv</Outputs>
-      <Message>Compiling shader basic.comp</Message>
-    </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
