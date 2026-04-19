@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/src/GameData/EngineSettingsDeserializer.cpp" "CMakeFiles/VoxelEngine.dir/src/GameData/EngineSettingsDeserializer.cpp.obj" "gcc" "CMakeFiles/VoxelEngine.dir/src/GameData/EngineSettingsDeserializer.cpp.obj.d"
   "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/src/GameData/ResourceCache.cpp" "CMakeFiles/VoxelEngine.dir/src/GameData/ResourceCache.cpp.obj" "gcc" "CMakeFiles/VoxelEngine.dir/src/GameData/ResourceCache.cpp.obj.d"
   "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/src/Rendering/AssetCache.cpp" "CMakeFiles/VoxelEngine.dir/src/Rendering/AssetCache.cpp.obj" "gcc" "CMakeFiles/VoxelEngine.dir/src/Rendering/AssetCache.cpp.obj.d"
   "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/src/Rendering/Renderer.cpp" "CMakeFiles/VoxelEngine.dir/src/Rendering/Renderer.cpp.obj" "gcc" "CMakeFiles/VoxelEngine.dir/src/Rendering/Renderer.cpp.obj.d"

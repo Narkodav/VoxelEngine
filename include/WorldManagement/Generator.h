@@ -6,8 +6,8 @@
 
 #include "WorldManagement/WorldGrid.h"
 
-#include "Mathematics/PerlinNoise2d.h"
-#include "Mathematics/PerlinNoise3d.h"
+#include "CommonApi/Mathematics/PerlinNoise2d.h"
+#include "CommonApi/Mathematics/PerlinNoise3d.h"
 
 #include <random>
 
@@ -15,7 +15,8 @@
 class Generator
 {
 public:
-	enum class BlockTypes :unsigned int
+
+	enum class BlockTypes : uint32_t
 	{
 		Air = 0,
 		Dirt = 1,

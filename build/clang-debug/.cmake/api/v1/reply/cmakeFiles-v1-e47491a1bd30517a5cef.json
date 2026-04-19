@@ -37,7 +37,8 @@
 				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Utility/Utility.cpp",
 				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/DebugLogger.cpp",
 				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/DeviceWrapper.cpp",
-				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/InstanceWrapper.cpp"
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/InstanceWrapper.cpp",
+				"E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/PipelineWrapper.cpp"
 			],
 			"recurse" : true
 		}

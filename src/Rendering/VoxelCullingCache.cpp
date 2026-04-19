@@ -162,7 +162,37 @@ void VoxelCullingCache::populateBuffer(size_t block, size_t x, size_t y, size_t 
 	const auto& modelMain = modelCache[voxelStates[state].m_model];
 	const auto& geometryEntry = geometryEntries[modelMain.geometry];
 	const auto& appearanceEntry = appearanceEntries[modelMain.appearence];
-	
+
+	switch(geometryEntry.metadata.geometryType) {
+		case Shape::GeometryType::Generic:
+			populateGenericBuffer(
+				block, x, y, z, chunk, grid, indices, voxelStates,
+				modelCache, modelMain, geometries, appearances,
+				geometryEntry, appearanceEntry
+			);
+			break;
+		case Shape::GeometryType::Cube:
+			populateCubeBuffer(
+				block, x, y, z, chunk, grid, indices, voxelStates,
+				modelCache, modelMain, geometries, appearances,
+				geometryEntry, appearanceEntry
+			);
+			break;
+		default:
+	}	
+
+}
+
+void VoxelCullingCache::populateGenericBuffer(size_t block, size_t x, size_t y, size_t z,
+	const WorldGrid::Chunk& chunk, 
+	const WorldGrid& grid, std::vector<Indices>& indices,
+	const Id::NamedCache<Voxel::State, Id::VoxelState>& voxelStates,
+	const Id::NamedCache<Shape::Model, Id::Model>& modelCache,
+	const Shape::Model& modelMain,
+	const Shape::PolygonIndexBuffer& geometries, const Shape::ColoringIndexBuffer& appearances,
+	const Shape::PolygonIndexBuffer::Entry& geometryEntry,
+	const Shape::ColoringIndexBuffer::Entry& appearanceEntry
+) const {
 	BitMask currentMask;
 	//size_t entrySize = 0;
 	
@@ -176,10 +206,60 @@ void VoxelCullingCache::populateBuffer(size_t block, size_t x, size_t y, size_t 
 		currentMask = 0;
 		for (size_t j = 0; j < enumCast(Shape::Side::Count); ++j)
 			currentMask |= m_cullings[cullingIndices[j] + i];
-		for (size_t j = 0; j < (sizeof(BitMask) * 8); ++j)
+		for (size_t j = 0; j < (sizeof(BitMask) * 8); ++j) {
+			if ((currentMask & 1) == 0) {
+				Indices index;
+				index.polygon = geometries[geometryEntry.start + i * (sizeof(BitMask) * 8) + j];
+				index.coloring = appearances[appearanceEntry.start + i * (sizeof(BitMask) * 8) + j];
+				index.block = block;
+				indices.push_back(index);
+			}
+			currentMask >>= 1;
+		}
+	}
+
+	currentMask = 0;
+	for (size_t j = 0; j < enumCast(Shape::Side::Count); ++j)
+		currentMask |= m_cullings[cullingIndices[j] + count];
+	for (size_t j = 0; j < rest; ++j)
+	{
+		if ((currentMask & 1) == 0)
 		{
-			if ((currentMask & 1) == 0)
-			{
+			Indices index;
+			index.polygon = geometries[geometryEntry.start + count * (sizeof(BitMask) * 8) + j];
+			index.coloring = appearances[appearanceEntry.start + count * (sizeof(BitMask) * 8) + j];
+			index.block = block;
+			indices.push_back(index);
+		}
+		currentMask >>= 1;
+	}
+}
+
+void VoxelCullingCache::populateCubeBuffer(size_t block, size_t x, size_t y, size_t z,
+	const WorldGrid::Chunk& chunk, 
+	const WorldGrid& grid, std::vector<Indices>& indices,
+	const Id::NamedCache<Voxel::State, Id::VoxelState>& voxelStates,
+	const Id::NamedCache<Shape::Model, Id::Model>& modelCache,
+	const Shape::Model& modelMain,
+	const Shape::PolygonIndexBuffer& geometries, const Shape::ColoringIndexBuffer& appearances,
+	const Shape::PolygonIndexBuffer::Entry& geometryEntry,
+	const Shape::ColoringIndexBuffer::Entry& appearanceEntry
+) const {
+	BitMask currentMask;
+	//size_t entrySize = 0;
+	
+	size_t count = geometryEntry.size / (sizeof(BitMask) * 8);
+	size_t rest = geometryEntry.size - count * (sizeof(BitMask) * 8);
+	
+	auto cullingIndices = getCullingIndices(block, x, y, z, modelMain.geometry, chunk, grid, voxelStates, modelCache);
+	
+	for (size_t i = 0; i < count; ++i)
+	{
+		currentMask = 0;
+		for (size_t j = 0; j < enumCast(Shape::Side::Count); ++j)
+			currentMask |= m_cullings[cullingIndices[j] + i];
+		for (size_t j = 0; j < (sizeof(BitMask) * 8); ++j) {
+			if ((currentMask & 1) == 0) {
 				Indices index;
 				index.polygon = geometries[geometryEntry.start + i * (sizeof(BitMask) * 8) + j];
 				index.coloring = appearances[appearanceEntry.start + i * (sizeof(BitMask) * 8) + j];

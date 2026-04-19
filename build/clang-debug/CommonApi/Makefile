@@ -189,173 +189,173 @@ CommonApiTests/fast:
 	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApiTests.dir\build.make CommonApi/CMakeFiles/CommonApiTests.dir/build
 .PHONY : CommonApiTests/fast
 
-src/MultiThreading/FileSystem.obj: src/MultiThreading/FileSystem.cpp.obj
-.PHONY : src/MultiThreading/FileSystem.obj
+src/CommonApi/MultiThreading/FileSystem.obj: src/CommonApi/MultiThreading/FileSystem.cpp.obj
+.PHONY : src/CommonApi/MultiThreading/FileSystem.obj
 
 # target to build an object file
-src/MultiThreading/FileSystem.cpp.obj:
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/FileSystem.cpp.obj
-.PHONY : src/MultiThreading/FileSystem.cpp.obj
+src/CommonApi/MultiThreading/FileSystem.cpp.obj:
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/FileSystem.cpp.obj
+.PHONY : src/CommonApi/MultiThreading/FileSystem.cpp.obj
 
-src/MultiThreading/FileSystem.i: src/MultiThreading/FileSystem.cpp.i
-.PHONY : src/MultiThreading/FileSystem.i
+src/CommonApi/MultiThreading/FileSystem.i: src/CommonApi/MultiThreading/FileSystem.cpp.i
+.PHONY : src/CommonApi/MultiThreading/FileSystem.i
 
 # target to preprocess a source file
-src/MultiThreading/FileSystem.cpp.i:
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/FileSystem.cpp.i
-.PHONY : src/MultiThreading/FileSystem.cpp.i
+src/CommonApi/MultiThreading/FileSystem.cpp.i:
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/FileSystem.cpp.i
+.PHONY : src/CommonApi/MultiThreading/FileSystem.cpp.i
 
-src/MultiThreading/FileSystem.s: src/MultiThreading/FileSystem.cpp.s
-.PHONY : src/MultiThreading/FileSystem.s
+src/CommonApi/MultiThreading/FileSystem.s: src/CommonApi/MultiThreading/FileSystem.cpp.s
+.PHONY : src/CommonApi/MultiThreading/FileSystem.s
 
 # target to generate assembly for a file
-src/MultiThreading/FileSystem.cpp.s:
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/FileSystem.cpp.s
-.PHONY : src/MultiThreading/FileSystem.cpp.s
+src/CommonApi/MultiThreading/FileSystem.cpp.s:
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/FileSystem.cpp.s
+.PHONY : src/CommonApi/MultiThreading/FileSystem.cpp.s
 
-src/MultiThreading/Logger.obj: src/MultiThreading/Logger.cpp.obj
-.PHONY : src/MultiThreading/Logger.obj
+src/CommonApi/MultiThreading/Logger.obj: src/CommonApi/MultiThreading/Logger.cpp.obj
+.PHONY : src/CommonApi/MultiThreading/Logger.obj
 
 # target to build an object file
-src/MultiThreading/Logger.cpp.obj:
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/Logger.cpp.obj
-.PHONY : src/MultiThreading/Logger.cpp.obj
+src/CommonApi/MultiThreading/Logger.cpp.obj:
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/Logger.cpp.obj
+.PHONY : src/CommonApi/MultiThreading/Logger.cpp.obj
 
-src/MultiThreading/Logger.i: src/MultiThreading/Logger.cpp.i
-.PHONY : src/MultiThreading/Logger.i
+src/CommonApi/MultiThreading/Logger.i: src/CommonApi/MultiThreading/Logger.cpp.i
+.PHONY : src/CommonApi/MultiThreading/Logger.i
 
 # target to preprocess a source file
-src/MultiThreading/Logger.cpp.i:
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/Logger.cpp.i
-.PHONY : src/MultiThreading/Logger.cpp.i
+src/CommonApi/MultiThreading/Logger.cpp.i:
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/Logger.cpp.i
+.PHONY : src/CommonApi/MultiThreading/Logger.cpp.i
 
-src/MultiThreading/Logger.s: src/MultiThreading/Logger.cpp.s
-.PHONY : src/MultiThreading/Logger.s
+src/CommonApi/MultiThreading/Logger.s: src/CommonApi/MultiThreading/Logger.cpp.s
+.PHONY : src/CommonApi/MultiThreading/Logger.s
 
 # target to generate assembly for a file
-src/MultiThreading/Logger.cpp.s:
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/Logger.cpp.s
-.PHONY : src/MultiThreading/Logger.cpp.s
+src/CommonApi/MultiThreading/Logger.cpp.s:
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/Logger.cpp.s
+.PHONY : src/CommonApi/MultiThreading/Logger.cpp.s
 
-src/MultiThreading/ThreadPool.obj: src/MultiThreading/ThreadPool.cpp.obj
-.PHONY : src/MultiThreading/ThreadPool.obj
+src/CommonApi/Physics/Hitboxes.obj: src/CommonApi/Physics/Hitboxes.cpp.obj
+.PHONY : src/CommonApi/Physics/Hitboxes.obj
 
 # target to build an object file
-src/MultiThreading/ThreadPool.cpp.obj:
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/ThreadPool.cpp.obj
-.PHONY : src/MultiThreading/ThreadPool.cpp.obj
+src/CommonApi/Physics/Hitboxes.cpp.obj:
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Physics/Hitboxes.cpp.obj
+.PHONY : src/CommonApi/Physics/Hitboxes.cpp.obj
 
-src/MultiThreading/ThreadPool.i: src/MultiThreading/ThreadPool.cpp.i
-.PHONY : src/MultiThreading/ThreadPool.i
+src/CommonApi/Physics/Hitboxes.i: src/CommonApi/Physics/Hitboxes.cpp.i
+.PHONY : src/CommonApi/Physics/Hitboxes.i
 
 # target to preprocess a source file
-src/MultiThreading/ThreadPool.cpp.i:
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/ThreadPool.cpp.i
-.PHONY : src/MultiThreading/ThreadPool.cpp.i
+src/CommonApi/Physics/Hitboxes.cpp.i:
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Physics/Hitboxes.cpp.i
+.PHONY : src/CommonApi/Physics/Hitboxes.cpp.i
 
-src/MultiThreading/ThreadPool.s: src/MultiThreading/ThreadPool.cpp.s
-.PHONY : src/MultiThreading/ThreadPool.s
+src/CommonApi/Physics/Hitboxes.s: src/CommonApi/Physics/Hitboxes.cpp.s
+.PHONY : src/CommonApi/Physics/Hitboxes.s
 
 # target to generate assembly for a file
-src/MultiThreading/ThreadPool.cpp.s:
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/ThreadPool.cpp.s
-.PHONY : src/MultiThreading/ThreadPool.cpp.s
+src/CommonApi/Physics/Hitboxes.cpp.s:
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Physics/Hitboxes.cpp.s
+.PHONY : src/CommonApi/Physics/Hitboxes.cpp.s
 
-src/Physics/Hitboxes.obj: src/Physics/Hitboxes.cpp.obj
-.PHONY : src/Physics/Hitboxes.obj
+src/CommonApi/PlatformAbstractions/Console.obj: src/CommonApi/PlatformAbstractions/Console.cpp.obj
+.PHONY : src/CommonApi/PlatformAbstractions/Console.obj
 
 # target to build an object file
-src/Physics/Hitboxes.cpp.obj:
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/Physics/Hitboxes.cpp.obj
-.PHONY : src/Physics/Hitboxes.cpp.obj
+src/CommonApi/PlatformAbstractions/Console.cpp.obj:
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Console.cpp.obj
+.PHONY : src/CommonApi/PlatformAbstractions/Console.cpp.obj
 
-src/Physics/Hitboxes.i: src/Physics/Hitboxes.cpp.i
-.PHONY : src/Physics/Hitboxes.i
+src/CommonApi/PlatformAbstractions/Console.i: src/CommonApi/PlatformAbstractions/Console.cpp.i
+.PHONY : src/CommonApi/PlatformAbstractions/Console.i
 
 # target to preprocess a source file
-src/Physics/Hitboxes.cpp.i:
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/Physics/Hitboxes.cpp.i
-.PHONY : src/Physics/Hitboxes.cpp.i
+src/CommonApi/PlatformAbstractions/Console.cpp.i:
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Console.cpp.i
+.PHONY : src/CommonApi/PlatformAbstractions/Console.cpp.i
 
-src/Physics/Hitboxes.s: src/Physics/Hitboxes.cpp.s
-.PHONY : src/Physics/Hitboxes.s
+src/CommonApi/PlatformAbstractions/Console.s: src/CommonApi/PlatformAbstractions/Console.cpp.s
+.PHONY : src/CommonApi/PlatformAbstractions/Console.s
 
 # target to generate assembly for a file
-src/Physics/Hitboxes.cpp.s:
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/Physics/Hitboxes.cpp.s
-.PHONY : src/Physics/Hitboxes.cpp.s
+src/CommonApi/PlatformAbstractions/Console.cpp.s:
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Console.cpp.s
+.PHONY : src/CommonApi/PlatformAbstractions/Console.cpp.s
 
-src/PlatformAbstractions/Console.obj: src/PlatformAbstractions/Console.cpp.obj
-.PHONY : src/PlatformAbstractions/Console.obj
+src/CommonApi/PlatformAbstractions/ErrorMapper.obj: src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.obj
+.PHONY : src/CommonApi/PlatformAbstractions/ErrorMapper.obj
 
 # target to build an object file
-src/PlatformAbstractions/Console.cpp.obj:
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/Console.cpp.obj
-.PHONY : src/PlatformAbstractions/Console.cpp.obj
+src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.obj:
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.obj
+.PHONY : src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.obj
 
-src/PlatformAbstractions/Console.i: src/PlatformAbstractions/Console.cpp.i
-.PHONY : src/PlatformAbstractions/Console.i
+src/CommonApi/PlatformAbstractions/ErrorMapper.i: src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.i
+.PHONY : src/CommonApi/PlatformAbstractions/ErrorMapper.i
 
 # target to preprocess a source file
-src/PlatformAbstractions/Console.cpp.i:
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/Console.cpp.i
-.PHONY : src/PlatformAbstractions/Console.cpp.i
+src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.i:
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.i
+.PHONY : src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.i
 
-src/PlatformAbstractions/Console.s: src/PlatformAbstractions/Console.cpp.s
-.PHONY : src/PlatformAbstractions/Console.s
+src/CommonApi/PlatformAbstractions/ErrorMapper.s: src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.s
+.PHONY : src/CommonApi/PlatformAbstractions/ErrorMapper.s
 
 # target to generate assembly for a file
-src/PlatformAbstractions/Console.cpp.s:
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/Console.cpp.s
-.PHONY : src/PlatformAbstractions/Console.cpp.s
+src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.s:
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.s
+.PHONY : src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.s
 
-src/PlatformAbstractions/ErrorMapper.obj: src/PlatformAbstractions/ErrorMapper.cpp.obj
-.PHONY : src/PlatformAbstractions/ErrorMapper.obj
+src/CommonApi/PlatformAbstractions/Thread.obj: src/CommonApi/PlatformAbstractions/Thread.cpp.obj
+.PHONY : src/CommonApi/PlatformAbstractions/Thread.obj
 
 # target to build an object file
-src/PlatformAbstractions/ErrorMapper.cpp.obj:
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/ErrorMapper.cpp.obj
-.PHONY : src/PlatformAbstractions/ErrorMapper.cpp.obj
+src/CommonApi/PlatformAbstractions/Thread.cpp.obj:
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Thread.cpp.obj
+.PHONY : src/CommonApi/PlatformAbstractions/Thread.cpp.obj
 
-src/PlatformAbstractions/ErrorMapper.i: src/PlatformAbstractions/ErrorMapper.cpp.i
-.PHONY : src/PlatformAbstractions/ErrorMapper.i
+src/CommonApi/PlatformAbstractions/Thread.i: src/CommonApi/PlatformAbstractions/Thread.cpp.i
+.PHONY : src/CommonApi/PlatformAbstractions/Thread.i
 
 # target to preprocess a source file
-src/PlatformAbstractions/ErrorMapper.cpp.i:
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/ErrorMapper.cpp.i
-.PHONY : src/PlatformAbstractions/ErrorMapper.cpp.i
+src/CommonApi/PlatformAbstractions/Thread.cpp.i:
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Thread.cpp.i
+.PHONY : src/CommonApi/PlatformAbstractions/Thread.cpp.i
 
-src/PlatformAbstractions/ErrorMapper.s: src/PlatformAbstractions/ErrorMapper.cpp.s
-.PHONY : src/PlatformAbstractions/ErrorMapper.s
+src/CommonApi/PlatformAbstractions/Thread.s: src/CommonApi/PlatformAbstractions/Thread.cpp.s
+.PHONY : src/CommonApi/PlatformAbstractions/Thread.s
 
 # target to generate assembly for a file
-src/PlatformAbstractions/ErrorMapper.cpp.s:
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/ErrorMapper.cpp.s
-.PHONY : src/PlatformAbstractions/ErrorMapper.cpp.s
+src/CommonApi/PlatformAbstractions/Thread.cpp.s:
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Thread.cpp.s
+.PHONY : src/CommonApi/PlatformAbstractions/Thread.cpp.s
 
-src/Utilities/Functions.obj: src/Utilities/Functions.cpp.obj
-.PHONY : src/Utilities/Functions.obj
+src/CommonApi/Utilities/Functions.obj: src/CommonApi/Utilities/Functions.cpp.obj
+.PHONY : src/CommonApi/Utilities/Functions.obj
 
 # target to build an object file
-src/Utilities/Functions.cpp.obj:
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/Utilities/Functions.cpp.obj
-.PHONY : src/Utilities/Functions.cpp.obj
+src/CommonApi/Utilities/Functions.cpp.obj:
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Utilities/Functions.cpp.obj
+.PHONY : src/CommonApi/Utilities/Functions.cpp.obj
 
-src/Utilities/Functions.i: src/Utilities/Functions.cpp.i
-.PHONY : src/Utilities/Functions.i
+src/CommonApi/Utilities/Functions.i: src/CommonApi/Utilities/Functions.cpp.i
+.PHONY : src/CommonApi/Utilities/Functions.i
 
 # target to preprocess a source file
-src/Utilities/Functions.cpp.i:
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/Utilities/Functions.cpp.i
-.PHONY : src/Utilities/Functions.cpp.i
+src/CommonApi/Utilities/Functions.cpp.i:
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Utilities/Functions.cpp.i
+.PHONY : src/CommonApi/Utilities/Functions.cpp.i
 
-src/Utilities/Functions.s: src/Utilities/Functions.cpp.s
-.PHONY : src/Utilities/Functions.s
+src/CommonApi/Utilities/Functions.s: src/CommonApi/Utilities/Functions.cpp.s
+.PHONY : src/CommonApi/Utilities/Functions.s
 
 # target to generate assembly for a file
-src/Utilities/Functions.cpp.s:
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/Utilities/Functions.cpp.s
-.PHONY : src/Utilities/Functions.cpp.s
+src/CommonApi/Utilities/Functions.cpp.s:
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f CommonApi\CMakeFiles\CommonApi.dir\build.make CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Utilities/Functions.cpp.s
+.PHONY : src/CommonApi/Utilities/Functions.cpp.s
 
 tests/test.obj: tests/test.cpp.obj
 .PHONY : tests/test.obj
@@ -395,27 +395,27 @@ help:
 	@echo ... rebuild_cache
 	@echo ... CommonApi
 	@echo ... CommonApiTests
-	@echo ... src/MultiThreading/FileSystem.obj
-	@echo ... src/MultiThreading/FileSystem.i
-	@echo ... src/MultiThreading/FileSystem.s
-	@echo ... src/MultiThreading/Logger.obj
-	@echo ... src/MultiThreading/Logger.i
-	@echo ... src/MultiThreading/Logger.s
-	@echo ... src/MultiThreading/ThreadPool.obj
-	@echo ... src/MultiThreading/ThreadPool.i
-	@echo ... src/MultiThreading/ThreadPool.s
-	@echo ... src/Physics/Hitboxes.obj
-	@echo ... src/Physics/Hitboxes.i
-	@echo ... src/Physics/Hitboxes.s
-	@echo ... src/PlatformAbstractions/Console.obj
-	@echo ... src/PlatformAbstractions/Console.i
-	@echo ... src/PlatformAbstractions/Console.s
-	@echo ... src/PlatformAbstractions/ErrorMapper.obj
-	@echo ... src/PlatformAbstractions/ErrorMapper.i
-	@echo ... src/PlatformAbstractions/ErrorMapper.s
-	@echo ... src/Utilities/Functions.obj
-	@echo ... src/Utilities/Functions.i
-	@echo ... src/Utilities/Functions.s
+	@echo ... src/CommonApi/MultiThreading/FileSystem.obj
+	@echo ... src/CommonApi/MultiThreading/FileSystem.i
+	@echo ... src/CommonApi/MultiThreading/FileSystem.s
+	@echo ... src/CommonApi/MultiThreading/Logger.obj
+	@echo ... src/CommonApi/MultiThreading/Logger.i
+	@echo ... src/CommonApi/MultiThreading/Logger.s
+	@echo ... src/CommonApi/Physics/Hitboxes.obj
+	@echo ... src/CommonApi/Physics/Hitboxes.i
+	@echo ... src/CommonApi/Physics/Hitboxes.s
+	@echo ... src/CommonApi/PlatformAbstractions/Console.obj
+	@echo ... src/CommonApi/PlatformAbstractions/Console.i
+	@echo ... src/CommonApi/PlatformAbstractions/Console.s
+	@echo ... src/CommonApi/PlatformAbstractions/ErrorMapper.obj
+	@echo ... src/CommonApi/PlatformAbstractions/ErrorMapper.i
+	@echo ... src/CommonApi/PlatformAbstractions/ErrorMapper.s
+	@echo ... src/CommonApi/PlatformAbstractions/Thread.obj
+	@echo ... src/CommonApi/PlatformAbstractions/Thread.i
+	@echo ... src/CommonApi/PlatformAbstractions/Thread.s
+	@echo ... src/CommonApi/Utilities/Functions.obj
+	@echo ... src/CommonApi/Utilities/Functions.i
+	@echo ... src/CommonApi/Utilities/Functions.s
 	@echo ... tests/test.obj
 	@echo ... tests/test.i
 	@echo ... tests/test.s

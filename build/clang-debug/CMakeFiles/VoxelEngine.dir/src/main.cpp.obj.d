@@ -1272,10 +1272,10 @@ CMakeFiles/VoxelEngine.dir/src/main.cpp.obj: \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/PlatformManagement/Mouse.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/PlatformManagement/InputStateTracker.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/PlatformManagement/Keyboard.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/Utilities/EventSystems/MultiEventSystem.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/Namespaces.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/Utilities/EventSystems/EventSystemConcept.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/Utilities/EventSystems/SingleCallbackEventSystem.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Utilities/EventSystems/MultiEventSystem.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Namespaces.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Utilities/EventSystems/EventSystemConcept.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Utilities/EventSystems/SingleCallbackEventSystem.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/../FunctionPointers.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/../DeviceFunctionTable.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/../FunctionTable.h \
@@ -1341,14 +1341,9 @@ CMakeFiles/VoxelEngine.dir/src/main.cpp.obj: \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Utility/BufferDataBuilders.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Utility/Camera.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/InstanceWrapper.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/Instance.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/Surface.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/PhysicalDeviceCache.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/DebugLogger.h \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/shared_mutex \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/DebugUtilsMessenger.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/DeviceWrapper.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/Device.h \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/Rendering/Renderer.h \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/Rendering/ShaderCache.h \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/Common.h \
@@ -1407,7 +1402,6 @@ CMakeFiles/VoxelEngine.dir/src/main.cpp.obj: \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/Vendor/imgui/imgui.h \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/Vendor/imgui/imconfig.h \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/Vendor/imgui/backends/imgui_impl_vulkan.h \
-  E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/GameData/EngineFilesystem.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/JsonParser/include/JsonParser/Value.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/JsonParser/include/JsonParser/Concepts.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/JsonParser/include/JsonParser/Utils/Macros.h \
@@ -1530,6 +1524,7 @@ CMakeFiles/VoxelEngine.dir/src/main.cpp.obj: \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/JsonParser/include/JsonParser/StreamParser.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/JsonParser/include/JsonParser/StrictContainerParser.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/JsonParser/include/JsonParser/StrictStreamParser.h \
+  E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/GameData/EngineFilesystem.h \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/Rendering/StorageCache.h \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/Rendering/Shape.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/Vendor/glm/glm/gtc/type_ptr.hpp \
@@ -1577,26 +1572,26 @@ CMakeFiles/VoxelEngine.dir/src/main.cpp.obj: \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/Vendor/Clipper2Lib/include/clipper2/clipper.rectclip.h \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/Rendering/DebugConsole.h \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/Rendering/Compass.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/MultiThreading/ThreadPool.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/MultiThreading/Deque.h \
-  C:/Users/user/.utils/llvm-mingw/include/c++/v1/condition_variable \
-  C:/Users/user/.utils/llvm-mingw/include/c++/v1/__stop_token/stop_callback.h \
-  C:/Users/user/.utils/llvm-mingw/include/c++/v1/__stop_token/intrusive_shared_ptr.h \
-  C:/Users/user/.utils/llvm-mingw/include/c++/v1/__stop_token/stop_state.h \
-  C:/Users/user/.utils/llvm-mingw/include/c++/v1/__stop_token/atomic_unique_lock.h \
-  C:/Users/user/.utils/llvm-mingw/include/c++/v1/__stop_token/intrusive_list_view.h \
-  C:/Users/user/.utils/llvm-mingw/include/c++/v1/__stop_token/stop_token.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/MultiThreading/Vector.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/MultiThreading/ThreadPools/MinimalThreadPool.h \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/thread \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/__thread/this_thread.h \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/__thread/thread.h \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/__thread/jthread.h \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/__stop_token/stop_source.h \
+  C:/Users/user/.utils/llvm-mingw/include/c++/v1/__stop_token/intrusive_shared_ptr.h \
+  C:/Users/user/.utils/llvm-mingw/include/c++/v1/__stop_token/stop_state.h \
+  C:/Users/user/.utils/llvm-mingw/include/c++/v1/__stop_token/atomic_unique_lock.h \
+  C:/Users/user/.utils/llvm-mingw/include/c++/v1/__stop_token/intrusive_list_view.h \
+  C:/Users/user/.utils/llvm-mingw/include/c++/v1/__stop_token/stop_token.h \
+  C:/Users/user/.utils/llvm-mingw/include/c++/v1/condition_variable \
+  C:/Users/user/.utils/llvm-mingw/include/c++/v1/__stop_token/stop_callback.h \
+  E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/GameData/EngineSettingsDeserializer.h \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/WorldManagement/Generator.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/Mathematics/PerlinNoise2d.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/Mathematics/Common.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/Mathematics/PerlinNoise3d.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/PlatformAbstractions/Console.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/PlatformAbstractions/ErrorMapper.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/Utilities/StringConversions.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/Utilities/MeyersSingleton.h
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Mathematics/PerlinNoise2d.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Mathematics/Common.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Mathematics/PerlinNoise3d.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/PlatformAbstractions/Console.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/PlatformAbstractions/ErrorMapper.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Utilities/StringConversions.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Utilities/MeyersSingleton.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Utilities/PackedRecordBuffer.h

@@ -68,131 +68,131 @@ include CommonApi/CMakeFiles/CommonApi.dir/progress.make
 # Include the compile flags for this target's objects.
 include CommonApi/CMakeFiles/CommonApi.dir/flags.make
 
-CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/FileSystem.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/flags.make
-CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/FileSystem.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/includes_CXX.rsp
-CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/FileSystem.cpp.obj: E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/src/MultiThreading/FileSystem.cpp
-CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/FileSystem.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/FileSystem.cpp.obj"
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/FileSystem.cpp.obj -MF CMakeFiles\CommonApi.dir\src\MultiThreading\FileSystem.cpp.obj.d -o CMakeFiles\CommonApi.dir\src\MultiThreading\FileSystem.cpp.obj -c "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\MultiThreading\FileSystem.cpp"
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/FileSystem.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/flags.make
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/FileSystem.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/includes_CXX.rsp
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/FileSystem.cpp.obj: E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/src/CommonApi/MultiThreading/FileSystem.cpp
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/FileSystem.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/FileSystem.cpp.obj"
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/FileSystem.cpp.obj -MF CMakeFiles\CommonApi.dir\src\CommonApi\MultiThreading\FileSystem.cpp.obj.d -o CMakeFiles\CommonApi.dir\src\CommonApi\MultiThreading\FileSystem.cpp.obj -c "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\CommonApi\MultiThreading\FileSystem.cpp"
 
-CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/FileSystem.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CommonApi.dir/src/MultiThreading/FileSystem.cpp.i"
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\MultiThreading\FileSystem.cpp" > CMakeFiles\CommonApi.dir\src\MultiThreading\FileSystem.cpp.i
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/FileSystem.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/FileSystem.cpp.i"
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\CommonApi\MultiThreading\FileSystem.cpp" > CMakeFiles\CommonApi.dir\src\CommonApi\MultiThreading\FileSystem.cpp.i
 
-CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/FileSystem.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CommonApi.dir/src/MultiThreading/FileSystem.cpp.s"
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\MultiThreading\FileSystem.cpp" -o CMakeFiles\CommonApi.dir\src\MultiThreading\FileSystem.cpp.s
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/FileSystem.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/FileSystem.cpp.s"
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\CommonApi\MultiThreading\FileSystem.cpp" -o CMakeFiles\CommonApi.dir\src\CommonApi\MultiThreading\FileSystem.cpp.s
 
-CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/Logger.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/flags.make
-CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/Logger.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/includes_CXX.rsp
-CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/Logger.cpp.obj: E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/src/MultiThreading/Logger.cpp
-CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/Logger.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/Logger.cpp.obj"
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/Logger.cpp.obj -MF CMakeFiles\CommonApi.dir\src\MultiThreading\Logger.cpp.obj.d -o CMakeFiles\CommonApi.dir\src\MultiThreading\Logger.cpp.obj -c "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\MultiThreading\Logger.cpp"
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/Logger.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/flags.make
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/Logger.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/includes_CXX.rsp
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/Logger.cpp.obj: E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/src/CommonApi/MultiThreading/Logger.cpp
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/Logger.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/Logger.cpp.obj"
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/Logger.cpp.obj -MF CMakeFiles\CommonApi.dir\src\CommonApi\MultiThreading\Logger.cpp.obj.d -o CMakeFiles\CommonApi.dir\src\CommonApi\MultiThreading\Logger.cpp.obj -c "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\CommonApi\MultiThreading\Logger.cpp"
 
-CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/Logger.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CommonApi.dir/src/MultiThreading/Logger.cpp.i"
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\MultiThreading\Logger.cpp" > CMakeFiles\CommonApi.dir\src\MultiThreading\Logger.cpp.i
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/Logger.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/Logger.cpp.i"
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\CommonApi\MultiThreading\Logger.cpp" > CMakeFiles\CommonApi.dir\src\CommonApi\MultiThreading\Logger.cpp.i
 
-CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/Logger.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CommonApi.dir/src/MultiThreading/Logger.cpp.s"
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\MultiThreading\Logger.cpp" -o CMakeFiles\CommonApi.dir\src\MultiThreading\Logger.cpp.s
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/Logger.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/Logger.cpp.s"
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\CommonApi\MultiThreading\Logger.cpp" -o CMakeFiles\CommonApi.dir\src\CommonApi\MultiThreading\Logger.cpp.s
 
-CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/ThreadPool.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/flags.make
-CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/ThreadPool.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/includes_CXX.rsp
-CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/ThreadPool.cpp.obj: E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/src/MultiThreading/ThreadPool.cpp
-CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/ThreadPool.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/ThreadPool.cpp.obj"
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/ThreadPool.cpp.obj -MF CMakeFiles\CommonApi.dir\src\MultiThreading\ThreadPool.cpp.obj.d -o CMakeFiles\CommonApi.dir\src\MultiThreading\ThreadPool.cpp.obj -c "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\MultiThreading\ThreadPool.cpp"
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Physics/Hitboxes.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/flags.make
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Physics/Hitboxes.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/includes_CXX.rsp
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Physics/Hitboxes.cpp.obj: E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/src/CommonApi/Physics/Hitboxes.cpp
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Physics/Hitboxes.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Physics/Hitboxes.cpp.obj"
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Physics/Hitboxes.cpp.obj -MF CMakeFiles\CommonApi.dir\src\CommonApi\Physics\Hitboxes.cpp.obj.d -o CMakeFiles\CommonApi.dir\src\CommonApi\Physics\Hitboxes.cpp.obj -c "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\CommonApi\Physics\Hitboxes.cpp"
 
-CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/ThreadPool.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CommonApi.dir/src/MultiThreading/ThreadPool.cpp.i"
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\MultiThreading\ThreadPool.cpp" > CMakeFiles\CommonApi.dir\src\MultiThreading\ThreadPool.cpp.i
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Physics/Hitboxes.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CommonApi.dir/src/CommonApi/Physics/Hitboxes.cpp.i"
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\CommonApi\Physics\Hitboxes.cpp" > CMakeFiles\CommonApi.dir\src\CommonApi\Physics\Hitboxes.cpp.i
 
-CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/ThreadPool.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CommonApi.dir/src/MultiThreading/ThreadPool.cpp.s"
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\MultiThreading\ThreadPool.cpp" -o CMakeFiles\CommonApi.dir\src\MultiThreading\ThreadPool.cpp.s
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Physics/Hitboxes.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CommonApi.dir/src/CommonApi/Physics/Hitboxes.cpp.s"
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\CommonApi\Physics\Hitboxes.cpp" -o CMakeFiles\CommonApi.dir\src\CommonApi\Physics\Hitboxes.cpp.s
 
-CommonApi/CMakeFiles/CommonApi.dir/src/Physics/Hitboxes.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/flags.make
-CommonApi/CMakeFiles/CommonApi.dir/src/Physics/Hitboxes.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/includes_CXX.rsp
-CommonApi/CMakeFiles/CommonApi.dir/src/Physics/Hitboxes.cpp.obj: E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/src/Physics/Hitboxes.cpp
-CommonApi/CMakeFiles/CommonApi.dir/src/Physics/Hitboxes.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CommonApi/CMakeFiles/CommonApi.dir/src/Physics/Hitboxes.cpp.obj"
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CommonApi/CMakeFiles/CommonApi.dir/src/Physics/Hitboxes.cpp.obj -MF CMakeFiles\CommonApi.dir\src\Physics\Hitboxes.cpp.obj.d -o CMakeFiles\CommonApi.dir\src\Physics\Hitboxes.cpp.obj -c "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\Physics\Hitboxes.cpp"
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Console.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/flags.make
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Console.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/includes_CXX.rsp
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Console.cpp.obj: E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/src/CommonApi/PlatformAbstractions/Console.cpp
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Console.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Console.cpp.obj"
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Console.cpp.obj -MF CMakeFiles\CommonApi.dir\src\CommonApi\PlatformAbstractions\Console.cpp.obj.d -o CMakeFiles\CommonApi.dir\src\CommonApi\PlatformAbstractions\Console.cpp.obj -c "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\CommonApi\PlatformAbstractions\Console.cpp"
 
-CommonApi/CMakeFiles/CommonApi.dir/src/Physics/Hitboxes.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CommonApi.dir/src/Physics/Hitboxes.cpp.i"
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\Physics\Hitboxes.cpp" > CMakeFiles\CommonApi.dir\src\Physics\Hitboxes.cpp.i
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Console.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Console.cpp.i"
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\CommonApi\PlatformAbstractions\Console.cpp" > CMakeFiles\CommonApi.dir\src\CommonApi\PlatformAbstractions\Console.cpp.i
 
-CommonApi/CMakeFiles/CommonApi.dir/src/Physics/Hitboxes.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CommonApi.dir/src/Physics/Hitboxes.cpp.s"
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\Physics\Hitboxes.cpp" -o CMakeFiles\CommonApi.dir\src\Physics\Hitboxes.cpp.s
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Console.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Console.cpp.s"
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\CommonApi\PlatformAbstractions\Console.cpp" -o CMakeFiles\CommonApi.dir\src\CommonApi\PlatformAbstractions\Console.cpp.s
 
-CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/Console.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/flags.make
-CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/Console.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/includes_CXX.rsp
-CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/Console.cpp.obj: E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/src/PlatformAbstractions/Console.cpp
-CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/Console.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/Console.cpp.obj"
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/Console.cpp.obj -MF CMakeFiles\CommonApi.dir\src\PlatformAbstractions\Console.cpp.obj.d -o CMakeFiles\CommonApi.dir\src\PlatformAbstractions\Console.cpp.obj -c "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\PlatformAbstractions\Console.cpp"
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/flags.make
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/includes_CXX.rsp
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.obj: E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/src/CommonApi/PlatformAbstractions/ErrorMapper.cpp
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.obj"
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.obj -MF CMakeFiles\CommonApi.dir\src\CommonApi\PlatformAbstractions\ErrorMapper.cpp.obj.d -o CMakeFiles\CommonApi.dir\src\CommonApi\PlatformAbstractions\ErrorMapper.cpp.obj -c "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\CommonApi\PlatformAbstractions\ErrorMapper.cpp"
 
-CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/Console.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CommonApi.dir/src/PlatformAbstractions/Console.cpp.i"
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\PlatformAbstractions\Console.cpp" > CMakeFiles\CommonApi.dir\src\PlatformAbstractions\Console.cpp.i
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.i"
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\CommonApi\PlatformAbstractions\ErrorMapper.cpp" > CMakeFiles\CommonApi.dir\src\CommonApi\PlatformAbstractions\ErrorMapper.cpp.i
 
-CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/Console.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CommonApi.dir/src/PlatformAbstractions/Console.cpp.s"
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\PlatformAbstractions\Console.cpp" -o CMakeFiles\CommonApi.dir\src\PlatformAbstractions\Console.cpp.s
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.s"
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\CommonApi\PlatformAbstractions\ErrorMapper.cpp" -o CMakeFiles\CommonApi.dir\src\CommonApi\PlatformAbstractions\ErrorMapper.cpp.s
 
-CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/ErrorMapper.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/flags.make
-CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/ErrorMapper.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/includes_CXX.rsp
-CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/ErrorMapper.cpp.obj: E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/src/PlatformAbstractions/ErrorMapper.cpp
-CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/ErrorMapper.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/ErrorMapper.cpp.obj"
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/ErrorMapper.cpp.obj -MF CMakeFiles\CommonApi.dir\src\PlatformAbstractions\ErrorMapper.cpp.obj.d -o CMakeFiles\CommonApi.dir\src\PlatformAbstractions\ErrorMapper.cpp.obj -c "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\PlatformAbstractions\ErrorMapper.cpp"
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Thread.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/flags.make
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Thread.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/includes_CXX.rsp
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Thread.cpp.obj: E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/src/CommonApi/PlatformAbstractions/Thread.cpp
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Thread.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Thread.cpp.obj"
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Thread.cpp.obj -MF CMakeFiles\CommonApi.dir\src\CommonApi\PlatformAbstractions\Thread.cpp.obj.d -o CMakeFiles\CommonApi.dir\src\CommonApi\PlatformAbstractions\Thread.cpp.obj -c "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\CommonApi\PlatformAbstractions\Thread.cpp"
 
-CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/ErrorMapper.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CommonApi.dir/src/PlatformAbstractions/ErrorMapper.cpp.i"
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\PlatformAbstractions\ErrorMapper.cpp" > CMakeFiles\CommonApi.dir\src\PlatformAbstractions\ErrorMapper.cpp.i
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Thread.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Thread.cpp.i"
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\CommonApi\PlatformAbstractions\Thread.cpp" > CMakeFiles\CommonApi.dir\src\CommonApi\PlatformAbstractions\Thread.cpp.i
 
-CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/ErrorMapper.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CommonApi.dir/src/PlatformAbstractions/ErrorMapper.cpp.s"
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\PlatformAbstractions\ErrorMapper.cpp" -o CMakeFiles\CommonApi.dir\src\PlatformAbstractions\ErrorMapper.cpp.s
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Thread.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Thread.cpp.s"
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\CommonApi\PlatformAbstractions\Thread.cpp" -o CMakeFiles\CommonApi.dir\src\CommonApi\PlatformAbstractions\Thread.cpp.s
 
-CommonApi/CMakeFiles/CommonApi.dir/src/Utilities/Functions.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/flags.make
-CommonApi/CMakeFiles/CommonApi.dir/src/Utilities/Functions.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/includes_CXX.rsp
-CommonApi/CMakeFiles/CommonApi.dir/src/Utilities/Functions.cpp.obj: E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/src/Utilities/Functions.cpp
-CommonApi/CMakeFiles/CommonApi.dir/src/Utilities/Functions.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CommonApi/CMakeFiles/CommonApi.dir/src/Utilities/Functions.cpp.obj"
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CommonApi/CMakeFiles/CommonApi.dir/src/Utilities/Functions.cpp.obj -MF CMakeFiles\CommonApi.dir\src\Utilities\Functions.cpp.obj.d -o CMakeFiles\CommonApi.dir\src\Utilities\Functions.cpp.obj -c "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\Utilities\Functions.cpp"
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Utilities/Functions.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/flags.make
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Utilities/Functions.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/includes_CXX.rsp
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Utilities/Functions.cpp.obj: E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/src/CommonApi/Utilities/Functions.cpp
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Utilities/Functions.cpp.obj: CommonApi/CMakeFiles/CommonApi.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Utilities/Functions.cpp.obj"
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Utilities/Functions.cpp.obj -MF CMakeFiles\CommonApi.dir\src\CommonApi\Utilities\Functions.cpp.obj.d -o CMakeFiles\CommonApi.dir\src\CommonApi\Utilities\Functions.cpp.obj -c "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\CommonApi\Utilities\Functions.cpp"
 
-CommonApi/CMakeFiles/CommonApi.dir/src/Utilities/Functions.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CommonApi.dir/src/Utilities/Functions.cpp.i"
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\Utilities\Functions.cpp" > CMakeFiles\CommonApi.dir\src\Utilities\Functions.cpp.i
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Utilities/Functions.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CommonApi.dir/src/CommonApi/Utilities/Functions.cpp.i"
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\CommonApi\Utilities\Functions.cpp" > CMakeFiles\CommonApi.dir\src\CommonApi\Utilities\Functions.cpp.i
 
-CommonApi/CMakeFiles/CommonApi.dir/src/Utilities/Functions.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CommonApi.dir/src/Utilities/Functions.cpp.s"
-	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\Utilities\Functions.cpp" -o CMakeFiles\CommonApi.dir\src\Utilities\Functions.cpp.s
+CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Utilities/Functions.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CommonApi.dir/src/CommonApi/Utilities/Functions.cpp.s"
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CommonApi" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "E:\Program Files (x86)\Code\C_code\libraries\CommonApi\src\CommonApi\Utilities\Functions.cpp" -o CMakeFiles\CommonApi.dir\src\CommonApi\Utilities\Functions.cpp.s
 
 # Object files for target CommonApi
 CommonApi_OBJECTS = \
-"CMakeFiles/CommonApi.dir/src/MultiThreading/FileSystem.cpp.obj" \
-"CMakeFiles/CommonApi.dir/src/MultiThreading/Logger.cpp.obj" \
-"CMakeFiles/CommonApi.dir/src/MultiThreading/ThreadPool.cpp.obj" \
-"CMakeFiles/CommonApi.dir/src/Physics/Hitboxes.cpp.obj" \
-"CMakeFiles/CommonApi.dir/src/PlatformAbstractions/Console.cpp.obj" \
-"CMakeFiles/CommonApi.dir/src/PlatformAbstractions/ErrorMapper.cpp.obj" \
-"CMakeFiles/CommonApi.dir/src/Utilities/Functions.cpp.obj"
+"CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/FileSystem.cpp.obj" \
+"CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/Logger.cpp.obj" \
+"CMakeFiles/CommonApi.dir/src/CommonApi/Physics/Hitboxes.cpp.obj" \
+"CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Console.cpp.obj" \
+"CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.obj" \
+"CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Thread.cpp.obj" \
+"CMakeFiles/CommonApi.dir/src/CommonApi/Utilities/Functions.cpp.obj"
 
 # External object files for target CommonApi
 CommonApi_EXTERNAL_OBJECTS =
 
-CommonApi/libCommonApi.a: CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/FileSystem.cpp.obj
-CommonApi/libCommonApi.a: CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/Logger.cpp.obj
-CommonApi/libCommonApi.a: CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/ThreadPool.cpp.obj
-CommonApi/libCommonApi.a: CommonApi/CMakeFiles/CommonApi.dir/src/Physics/Hitboxes.cpp.obj
-CommonApi/libCommonApi.a: CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/Console.cpp.obj
-CommonApi/libCommonApi.a: CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/ErrorMapper.cpp.obj
-CommonApi/libCommonApi.a: CommonApi/CMakeFiles/CommonApi.dir/src/Utilities/Functions.cpp.obj
+CommonApi/libCommonApi.a: CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/FileSystem.cpp.obj
+CommonApi/libCommonApi.a: CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/Logger.cpp.obj
+CommonApi/libCommonApi.a: CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Physics/Hitboxes.cpp.obj
+CommonApi/libCommonApi.a: CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Console.cpp.obj
+CommonApi/libCommonApi.a: CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.obj
+CommonApi/libCommonApi.a: CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Thread.cpp.obj
+CommonApi/libCommonApi.a: CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Utilities/Functions.cpp.obj
 CommonApi/libCommonApi.a: CommonApi/CMakeFiles/CommonApi.dir/build.make
 CommonApi/libCommonApi.a: CommonApi/CMakeFiles/CommonApi.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX static library libCommonApi.a"

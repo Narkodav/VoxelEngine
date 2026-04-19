@@ -13,7 +13,7 @@
 #include "Rendering/Compass.h"
 #include "Utility/StructOfArraysPool.h"
 
-#include "MultiThreading/ThreadPool.h"
+#include "CommonApi/MultiThreading/ThreadPools/MinimalThreadPool.h"
 
 #include "Common.h"
 
@@ -34,6 +34,19 @@ class Renderer
 public:
 	using GridMapping = std::span<Id::VoxelState>;
 	using ChunkMapping = std::span<WorldGrid::Chunk>;
+
+    struct CameraSettings {
+		glm::vec3 upVector;
+		glm::ivec3 position;
+		float pitch;
+		float yaw;
+		float fov;
+    };
+
+    struct GraphicsSettings {
+		CameraSettings camera;
+		float contrast;
+    };
 
 private:
 	struct Config {
@@ -85,7 +98,8 @@ private:
 
 	Gfx::Utility::RenderPassData m_renderPassData;
 	Gfx::Utility::SwapChainData m_swapChainData;
-	Gfx::Utility::GraphicsPipelineData m_graphicsPipelineData;
+	Gfx::Utility::GraphicsPipelineData m_generalVoxelGraphicsPipelineData;
+	Gfx::Utility::GraphicsPipelineData m_cubeVoxelGraphicsPipelineData;
 	//Gfx::ComputePipeline m_computePipeline;
 
 	Gfx::CommandPool m_graphicsCommandPool;
@@ -141,7 +155,7 @@ private:
 
 	size_t m_chunkCount = 0;
 
-	MT::ThreadPool* m_poolHandle = nullptr;
+	MT::MinimalThreadPool* m_poolHandle = nullptr;
 
 	std::mutex m_poolLock;
 	std::vector<std::unique_ptr<std::mutex>> m_chunkDrawLocks;
@@ -169,7 +183,7 @@ public:
 	~Renderer() = default;
 
 	void init(std::string engineName, std::string appName,
-		Platform::Window& window, MT::ThreadPool& poolHandle,
+		Platform::Window& window, MT::MinimalThreadPool& poolHandle,
 		const EngineFilesystem& engineFiles);
 
 	void createAndWriteAssets(AssetCache& assetCache,
@@ -192,6 +206,11 @@ public:
 	void unmeshChunk(size_t chunkPoolIndex);
 
 	void dumpHandles();
+
+	void setContrast(float contrast) {
+		m_configMapping.get<Config>()->contrast = contrast;
+	}
+
 private:
 	void createLayouts();
 	void configureMemory();

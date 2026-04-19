@@ -9,6 +9,8 @@ class EngineFilesystem {
 public:
     enum class Path {
         EngineConfig,
+        EngineSettings,
+        
         Count,
     };
 
@@ -32,6 +34,8 @@ private:
     static inline const std::string s_defaultModelDirectoryPath = "models";
     static inline const std::string s_defaultVoxelDirectoryPath = "voxels";
 
+    static inline const std::string s_defaultConfigFileName = "EngineConfig.json";
+    static inline const std::string s_defaultSettingsFilePath = "EngineSettings.json";
 
     std::array<std::filesystem::path, enumCast(Path::Count)> m_paths;
     std::array<std::filesystem::path, enumCast(Directory::Count)> m_directories;
@@ -39,7 +43,7 @@ private:
 public:
 
     void init() {
-        m_paths[enumCast(Path::EngineConfig)] = getConfigFilepath();
+        m_paths[enumCast(Path::EngineConfig)] = findConfigFilepath();
         m_directories[enumCast(Directory::Executable)] = std::filesystem::current_path();
         
         Json::Value config = Json::Value::fromFile(m_paths[enumCast(Path::EngineConfig)].string()).front();
@@ -62,6 +66,8 @@ public:
         registerDirectory(Directory::Assets, Directory::Textures, "textureDirectory", s_defaultTextureDirectoryPath, root);
         registerDirectory(Directory::Assets, Directory::Models, "modelDirectory", s_defaultModelDirectoryPath, root);
         registerDirectory(Directory::Assets, Directory::Voxels, "voxelDirectory", s_defaultVoxelDirectoryPath, root);
+
+        registerFile(Directory::Root, Path::EngineSettings, "engineSettings", s_defaultSettingsFilePath, root);
     }
 
     const auto& getRootDirectory() const { return m_directories[enumCast(Directory::Root)]; }    
@@ -89,6 +95,18 @@ public:
         return std::filesystem::weakly_canonical(m_directories[enumCast(dir)] / filename);
     }
 
+    auto getFile(Path path) const {
+        return std::filesystem::path(m_paths[enumCast(path)]);
+    }
+
+    auto getConfigFile() const {
+        return getFile(Path::EngineConfig);
+    }
+
+    auto getSettingsFile() const {
+        return getFile(Path::EngineSettings);
+    }
+
 private:
 
     void registerDirectory(Directory base, Directory target, std::string_view configName, 
@@ -114,7 +132,6 @@ private:
                 m_directories[enumCast(target)]
             );
         }
-        
     }
 
     std::filesystem::path resolve(
@@ -135,6 +152,31 @@ private:
             }
         }
         return files;
+    }
+
+    void registerFile(Directory base, Path target, std::string_view configName, 
+        std::string_view defaultPath, Json::Value::Object& root) {
+        
+        auto targetDirIt = root.find(configName);
+        if(targetDirIt == root.end()) {
+            m_paths[enumCast(target)] = resolve(
+                m_directories[enumCast(base)],
+                defaultPath
+            );
+        }
+        else {
+            auto& targetDir = targetDirIt->second;
+            if(!targetDir.isString()) {
+                std::string error = std::string("Ill formed EngineConfig.json, ") 
+                + std::string(configName) + std::string(" must contain a string");
+                throw std::runtime_error(error);
+            }
+            m_paths[enumCast(target)] = targetDir.asString();
+            m_paths[enumCast(target)] = resolve(
+                m_directories[enumCast(base)],
+                m_paths[enumCast(target)]
+            );
+        }
     }
 
     // static inline std::filesystem::path getExeDirectory() {
@@ -162,13 +204,13 @@ private:
     // #endif
     // }
 
-    static inline std::filesystem::path getConfigFilepath() {
+    static inline std::filesystem::path findConfigFilepath() {
         auto path = std::filesystem::current_path();
         try {
             for (size_t i = 0; i < 3; ++i)
             {
                 for (const auto& entry : std::filesystem::directory_iterator(path)) {
-                    if (entry.is_regular_file() && entry.path().filename().string() == "EngineConfig.json")
+                    if (entry.is_regular_file() && entry.path().filename().string() == s_defaultConfigFileName)
                         return entry.path();
                 }
                 path = path.parent_path();

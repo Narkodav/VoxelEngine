@@ -9,7 +9,7 @@
 #include "Rendering/DebugConsole.h"
 #include "Math/LinearAlgebra.h"
 
-#include "MultiThreading/ThreadPool.h"
+#include "CommonApi/MultiThreading/ThreadPools/MinimalThreadPool.h"
 
 class Compass
 {

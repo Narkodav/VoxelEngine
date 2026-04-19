@@ -65,6 +65,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/DeviceWrapper.cpp.obj.d"
   "CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/InstanceWrapper.cpp.obj"
   "CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/InstanceWrapper.cpp.obj.d"
+  "CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/PipelineWrapper.cpp.obj"
+  "CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/PipelineWrapper.cpp.obj.d"
   "libGraphicsWrapper.a"
   "libGraphicsWrapper.pdb"
 )

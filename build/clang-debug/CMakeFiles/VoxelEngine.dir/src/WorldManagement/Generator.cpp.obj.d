@@ -1330,10 +1330,10 @@ CMakeFiles/VoxelEngine.dir/src/WorldManagement/Generator.cpp.obj: \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/PlatformManagement/Mouse.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/PlatformManagement/InputStateTracker.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/PlatformManagement/Keyboard.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/Utilities/EventSystems/MultiEventSystem.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/Namespaces.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/Utilities/EventSystems/EventSystemConcept.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/Utilities/EventSystems/SingleCallbackEventSystem.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Utilities/EventSystems/MultiEventSystem.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Namespaces.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Utilities/EventSystems/EventSystemConcept.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Utilities/EventSystems/SingleCallbackEventSystem.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/../FunctionPointers.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/../DeviceFunctionTable.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/../FunctionTable.h \
@@ -1399,13 +1399,130 @@ CMakeFiles/VoxelEngine.dir/src/WorldManagement/Generator.cpp.obj: \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Utility/BufferDataBuilders.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Utility/Camera.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/InstanceWrapper.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/Instance.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/Surface.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/PhysicalDeviceCache.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/DebugLogger.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/DebugUtilsMessenger.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/DeviceWrapper.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/Device.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/JsonParser/include/JsonParser/Value.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/JsonParser/include/JsonParser/Concepts.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/JsonParser/include/JsonParser/Utils/Macros.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/JsonParser/include/JsonParser/ContainerParser.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/JsonParser/include/JsonParser/Utils/SIMDUtils.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/immintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/x86gprintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/hresetintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/uintrintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/usermsrintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/crc32intrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/prfchiintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/raointintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/cmpccxaddintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/mmintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/xmmintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/emmintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/pmmintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/tmmintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/smmintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/popcntintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/wmmintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/__wmmintrin_aes.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/__wmmintrin_pclmul.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/clflushoptintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/clwbintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avxintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx2intrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/f16cintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/bmiintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/bmi2intrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/lzcntintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/fmaintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512fintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512vlintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512bwintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512bitalgintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512cdintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512vpopcntdqintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512vpopcntdqvlintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512vnniintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512vlvnniintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avxvnniintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512dqintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512vlbitalgintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512vlbwintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512vlcdintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512vldqintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512ifmaintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512ifmavlintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avxifmaintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512vbmiintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512vbmivlintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512vbmi2intrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512vlvbmi2intrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512fp16intrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512vlfp16intrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512bf16intrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512vlbf16intrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/pkuintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/vpclmulqdqintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/vaesintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/gfniintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avxvnniint8intrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avxneconvertintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/sha512intrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/sm3intrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/sm4intrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avxvnniint16intrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/rtmintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/xtestintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/shaintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/fxsrintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/xsaveintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/xsaveoptintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/xsavecintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/xsavesintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/cetintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/adcintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/adxintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/rdseedintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/wbnoinvdintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/cldemoteintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/waitpkgintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/movdirintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/movrsintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/movrs_avx10_2intrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/movrs_avx10_2_512intrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/pconfigintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/sgxintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/ptwriteintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/invpcidintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/keylockerintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/amxintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/amxfp16intrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/amxcomplexintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/amxfp8intrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/amxmovrsintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/amxavx512intrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/amxtf32intrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512vp2intersectintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx512vlvp2intersectintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx10_2bf16intrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx10_2convertintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx10_2copyintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx10_2minmaxintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx10_2niintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx10_2satcvtdsintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx10_2satcvtintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx10_2_512bf16intrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx10_2_512convertintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx10_2_512minmaxintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx10_2_512niintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx10_2_512satcvtdsintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/avx10_2_512satcvtintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/sm4evexintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/enqcmdintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/serializeintrin.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/tsxldtrkintrin.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/JsonParser/include/JsonParser/StreamParser.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/JsonParser/include/JsonParser/StrictContainerParser.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/JsonParser/include/JsonParser/StrictStreamParser.h \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/WorldManagement/WorldGrid.h \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/Rendering/Shape.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/Vendor/glm/glm/gtc/type_ptr.hpp \
@@ -1436,6 +1553,6 @@ CMakeFiles/VoxelEngine.dir/src/WorldManagement/Generator.cpp.obj: \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/Vendor/glm/glm/gtc/../mat4x3.hpp \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/Vendor/glm/glm/gtc/type_ptr.inl \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/Utility/StructOfArraysPool.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/Mathematics/PerlinNoise2d.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/Mathematics/Common.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/Mathematics/PerlinNoise3d.h
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Mathematics/PerlinNoise2d.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Mathematics/Common.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Mathematics/PerlinNoise3d.h

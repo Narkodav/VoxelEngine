@@ -14,6 +14,7 @@ add_executable(${PROJECT_NAME}
     ${CMAKE_CURRENT_SOURCE_DIR}/src/Rendering/Renderer.cpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/src/GameData/ResourceCache.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/GameData/EngineSettingsDeserializer.cpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/src/WorldManagement/Generator.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/WorldManagement/WorldGrid.cpp

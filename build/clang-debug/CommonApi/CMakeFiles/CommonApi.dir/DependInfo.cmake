@@ -8,13 +8,13 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/src/MultiThreading/FileSystem.cpp" "CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/FileSystem.cpp.obj" "gcc" "CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/FileSystem.cpp.obj.d"
-  "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/src/MultiThreading/Logger.cpp" "CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/Logger.cpp.obj" "gcc" "CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/Logger.cpp.obj.d"
-  "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/src/MultiThreading/ThreadPool.cpp" "CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/ThreadPool.cpp.obj" "gcc" "CommonApi/CMakeFiles/CommonApi.dir/src/MultiThreading/ThreadPool.cpp.obj.d"
-  "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/src/Physics/Hitboxes.cpp" "CommonApi/CMakeFiles/CommonApi.dir/src/Physics/Hitboxes.cpp.obj" "gcc" "CommonApi/CMakeFiles/CommonApi.dir/src/Physics/Hitboxes.cpp.obj.d"
-  "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/src/PlatformAbstractions/Console.cpp" "CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/Console.cpp.obj" "gcc" "CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/Console.cpp.obj.d"
-  "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/src/PlatformAbstractions/ErrorMapper.cpp" "CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/ErrorMapper.cpp.obj" "gcc" "CommonApi/CMakeFiles/CommonApi.dir/src/PlatformAbstractions/ErrorMapper.cpp.obj.d"
-  "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/src/Utilities/Functions.cpp" "CommonApi/CMakeFiles/CommonApi.dir/src/Utilities/Functions.cpp.obj" "gcc" "CommonApi/CMakeFiles/CommonApi.dir/src/Utilities/Functions.cpp.obj.d"
+  "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/src/CommonApi/MultiThreading/FileSystem.cpp" "CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/FileSystem.cpp.obj" "gcc" "CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/FileSystem.cpp.obj.d"
+  "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/src/CommonApi/MultiThreading/Logger.cpp" "CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/Logger.cpp.obj" "gcc" "CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/Logger.cpp.obj.d"
+  "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/src/CommonApi/Physics/Hitboxes.cpp" "CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Physics/Hitboxes.cpp.obj" "gcc" "CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Physics/Hitboxes.cpp.obj.d"
+  "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/src/CommonApi/PlatformAbstractions/Console.cpp" "CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Console.cpp.obj" "gcc" "CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Console.cpp.obj.d"
+  "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/src/CommonApi/PlatformAbstractions/ErrorMapper.cpp" "CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.obj" "gcc" "CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.obj.d"
+  "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/src/CommonApi/PlatformAbstractions/Thread.cpp" "CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Thread.cpp.obj" "gcc" "CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Thread.cpp.obj.d"
+  "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/src/CommonApi/Utilities/Functions.cpp" "CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Utilities/Functions.cpp.obj" "gcc" "CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Utilities/Functions.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

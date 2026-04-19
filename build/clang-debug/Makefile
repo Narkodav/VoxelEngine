@@ -265,6 +265,30 @@ Clipper2Lib/fast:
 	$(MAKE) $(MAKESILENT) -f Vendor\Clipper2Lib\CMakeFiles\Clipper2Lib.dir\build.make Vendor/Clipper2Lib/CMakeFiles/Clipper2Lib.dir/build
 .PHONY : Clipper2Lib/fast
 
+src/GameData/EngineSettingsDeserializer.obj: src/GameData/EngineSettingsDeserializer.cpp.obj
+.PHONY : src/GameData/EngineSettingsDeserializer.obj
+
+# target to build an object file
+src/GameData/EngineSettingsDeserializer.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VoxelEngine.dir\build.make CMakeFiles/VoxelEngine.dir/src/GameData/EngineSettingsDeserializer.cpp.obj
+.PHONY : src/GameData/EngineSettingsDeserializer.cpp.obj
+
+src/GameData/EngineSettingsDeserializer.i: src/GameData/EngineSettingsDeserializer.cpp.i
+.PHONY : src/GameData/EngineSettingsDeserializer.i
+
+# target to preprocess a source file
+src/GameData/EngineSettingsDeserializer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VoxelEngine.dir\build.make CMakeFiles/VoxelEngine.dir/src/GameData/EngineSettingsDeserializer.cpp.i
+.PHONY : src/GameData/EngineSettingsDeserializer.cpp.i
+
+src/GameData/EngineSettingsDeserializer.s: src/GameData/EngineSettingsDeserializer.cpp.s
+.PHONY : src/GameData/EngineSettingsDeserializer.s
+
+# target to generate assembly for a file
+src/GameData/EngineSettingsDeserializer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VoxelEngine.dir\build.make CMakeFiles/VoxelEngine.dir/src/GameData/EngineSettingsDeserializer.cpp.s
+.PHONY : src/GameData/EngineSettingsDeserializer.cpp.s
+
 src/GameData/ResourceCache.obj: src/GameData/ResourceCache.cpp.obj
 .PHONY : src/GameData/ResourceCache.obj
 
@@ -477,6 +501,9 @@ help:
 	@echo ... JsonParserBenchmark
 	@echo ... VoxelEngine
 	@echo ... imgui
+	@echo ... src/GameData/EngineSettingsDeserializer.obj
+	@echo ... src/GameData/EngineSettingsDeserializer.i
+	@echo ... src/GameData/EngineSettingsDeserializer.s
 	@echo ... src/GameData/ResourceCache.obj
 	@echo ... src/GameData/ResourceCache.i
 	@echo ... src/GameData/ResourceCache.s

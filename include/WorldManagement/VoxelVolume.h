@@ -9,7 +9,7 @@
 class VoxelVolume
 {
 public:
-	using Volume = std::span<Id::VoxelState>; //a vies into the global block state array
+	using Volume = std::span<Id::VoxelState>; //a view into the global block state array
 
 	//template<bool isConst, size_t layerSize = 1, size_t... subsequentSizes>
 	//class VoxelVolumeProxy

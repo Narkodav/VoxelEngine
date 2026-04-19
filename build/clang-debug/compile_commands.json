@@ -1,0 +1,374 @@
+[
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -D_WIN32_WINNT=0x0600 @CMakeFiles/VoxelEngine.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -mavx -o CMakeFiles\\VoxelEngine.dir\\src\\Rendering\\StorageCache.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\src\\Rendering\\StorageCache.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/src/Rendering/StorageCache.cpp",
+  "output": "CMakeFiles/VoxelEngine.dir/src/Rendering/StorageCache.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -D_WIN32_WINNT=0x0600 @CMakeFiles/VoxelEngine.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -mavx -o CMakeFiles\\VoxelEngine.dir\\src\\Rendering\\AssetCache.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\src\\Rendering\\AssetCache.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/src/Rendering/AssetCache.cpp",
+  "output": "CMakeFiles/VoxelEngine.dir/src/Rendering/AssetCache.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -D_WIN32_WINNT=0x0600 @CMakeFiles/VoxelEngine.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -mavx -o CMakeFiles\\VoxelEngine.dir\\src\\Rendering\\VoxelCullingCache.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\src\\Rendering\\VoxelCullingCache.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/src/Rendering/VoxelCullingCache.cpp",
+  "output": "CMakeFiles/VoxelEngine.dir/src/Rendering/VoxelCullingCache.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -D_WIN32_WINNT=0x0600 @CMakeFiles/VoxelEngine.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -mavx -o CMakeFiles\\VoxelEngine.dir\\src\\Rendering\\Renderer.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\src\\Rendering\\Renderer.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/src/Rendering/Renderer.cpp",
+  "output": "CMakeFiles/VoxelEngine.dir/src/Rendering/Renderer.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -D_WIN32_WINNT=0x0600 @CMakeFiles/VoxelEngine.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -mavx -o CMakeFiles\\VoxelEngine.dir\\src\\GameData\\ResourceCache.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\src\\GameData\\ResourceCache.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/src/GameData/ResourceCache.cpp",
+  "output": "CMakeFiles/VoxelEngine.dir/src/GameData/ResourceCache.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -D_WIN32_WINNT=0x0600 @CMakeFiles/VoxelEngine.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -mavx -o CMakeFiles\\VoxelEngine.dir\\src\\GameData\\EngineSettingsDeserializer.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\src\\GameData\\EngineSettingsDeserializer.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/src/GameData/EngineSettingsDeserializer.cpp",
+  "output": "CMakeFiles/VoxelEngine.dir/src/GameData/EngineSettingsDeserializer.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -D_WIN32_WINNT=0x0600 @CMakeFiles/VoxelEngine.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -mavx -o CMakeFiles\\VoxelEngine.dir\\src\\WorldManagement\\Generator.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\src\\WorldManagement\\Generator.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/src/WorldManagement/Generator.cpp",
+  "output": "CMakeFiles/VoxelEngine.dir/src/WorldManagement/Generator.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -D_WIN32_WINNT=0x0600 @CMakeFiles/VoxelEngine.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -mavx -o CMakeFiles\\VoxelEngine.dir\\src\\WorldManagement\\WorldGrid.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\src\\WorldManagement\\WorldGrid.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/src/WorldManagement/WorldGrid.cpp",
+  "output": "CMakeFiles/VoxelEngine.dir/src/WorldManagement/WorldGrid.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -D_WIN32_WINNT=0x0600 @CMakeFiles/VoxelEngine.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -mavx -o CMakeFiles\\VoxelEngine.dir\\src\\main.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\src\\main.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/src/main.cpp",
+  "output": "CMakeFiles/VoxelEngine.dir/src/main.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CommonApi",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DCOMMON_API_EXPORTS @CMakeFiles/CommonApi.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\CommonApi.dir\\src\\CommonApi\\MultiThreading\\FileSystem.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\CommonApi\\src\\CommonApi\\MultiThreading\\FileSystem.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/src/CommonApi/MultiThreading/FileSystem.cpp",
+  "output": "CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/FileSystem.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CommonApi",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DCOMMON_API_EXPORTS @CMakeFiles/CommonApi.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\CommonApi.dir\\src\\CommonApi\\MultiThreading\\Logger.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\CommonApi\\src\\CommonApi\\MultiThreading\\Logger.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/src/CommonApi/MultiThreading/Logger.cpp",
+  "output": "CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/MultiThreading/Logger.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CommonApi",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DCOMMON_API_EXPORTS @CMakeFiles/CommonApi.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\CommonApi.dir\\src\\CommonApi\\Physics\\Hitboxes.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\CommonApi\\src\\CommonApi\\Physics\\Hitboxes.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/src/CommonApi/Physics/Hitboxes.cpp",
+  "output": "CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Physics/Hitboxes.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CommonApi",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DCOMMON_API_EXPORTS @CMakeFiles/CommonApi.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\CommonApi.dir\\src\\CommonApi\\PlatformAbstractions\\Console.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\CommonApi\\src\\CommonApi\\PlatformAbstractions\\Console.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/src/CommonApi/PlatformAbstractions/Console.cpp",
+  "output": "CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Console.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CommonApi",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DCOMMON_API_EXPORTS @CMakeFiles/CommonApi.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\CommonApi.dir\\src\\CommonApi\\PlatformAbstractions\\ErrorMapper.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\CommonApi\\src\\CommonApi\\PlatformAbstractions\\ErrorMapper.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/src/CommonApi/PlatformAbstractions/ErrorMapper.cpp",
+  "output": "CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/ErrorMapper.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CommonApi",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DCOMMON_API_EXPORTS @CMakeFiles/CommonApi.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\CommonApi.dir\\src\\CommonApi\\PlatformAbstractions\\Thread.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\CommonApi\\src\\CommonApi\\PlatformAbstractions\\Thread.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/src/CommonApi/PlatformAbstractions/Thread.cpp",
+  "output": "CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/PlatformAbstractions/Thread.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CommonApi",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DCOMMON_API_EXPORTS @CMakeFiles/CommonApi.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\CommonApi.dir\\src\\CommonApi\\Utilities\\Functions.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\CommonApi\\src\\CommonApi\\Utilities\\Functions.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/src/CommonApi/Utilities/Functions.cpp",
+  "output": "CommonApi/CMakeFiles/CommonApi.dir/src/CommonApi/Utilities/Functions.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CommonApi",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe  @CMakeFiles/CommonApiTests.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\CommonApiTests.dir\\tests\\test.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\CommonApi\\tests\\test.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/CommonApi/tests/test.cpp",
+  "output": "CommonApi/CMakeFiles/CommonApiTests.dir/tests/test.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\Buffer.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\Buffer.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Buffer.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/Buffer.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\CommandBuffer.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\CommandBuffer.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/CommandBuffer.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/CommandBuffer.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\CommandPool.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\CommandPool.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/CommandPool.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/CommandPool.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\DebugUtilsMessenger.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\DebugUtilsMessenger.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/DebugUtilsMessenger.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/DebugUtilsMessenger.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\DescriptorPool.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\DescriptorPool.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/DescriptorPool.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/DescriptorPool.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\DescriptorSet.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\DescriptorSet.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/DescriptorSet.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/DescriptorSet.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\Device.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\Device.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Device.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/Device.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\Fence.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\Fence.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Fence.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/Fence.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\FrameBuffer.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\FrameBuffer.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/FrameBuffer.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/FrameBuffer.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\Image.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\Image.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Image.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/Image.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\Instance.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\Instance.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Instance.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/Instance.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\Memory.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\Memory.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Memory.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/Memory.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\PhysicalDevice.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\PhysicalDevice.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/PhysicalDevice.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/PhysicalDevice.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\PhysicalDeviceCache.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\PhysicalDeviceCache.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/PhysicalDeviceCache.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/PhysicalDeviceCache.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\Pipeline.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\Pipeline.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Pipeline.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/Pipeline.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\Queue.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\Queue.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Queue.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/Queue.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\RenderPass.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\RenderPass.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/RenderPass.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/RenderPass.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\Sampler.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\Sampler.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Sampler.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/Sampler.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\Semaphore.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\Semaphore.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Semaphore.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/Semaphore.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\ShaderModule.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\ShaderModule.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/ShaderModule.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/ShaderModule.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\Surface.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\Surface.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Surface.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/Surface.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\SwapChain.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\SwapChain.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/SwapChain.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/SwapChain.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\PlatformManagement\\WindowWin32.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\PlatformManagement\\WindowWin32.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/PlatformManagement/WindowWin32.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/PlatformManagement/WindowWin32.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\TaskTables\\FeatureTaskTables.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\TaskTables\\FeatureTaskTables.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/TaskTables/FeatureTaskTables.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/TaskTables/FeatureTaskTables.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\TaskTables\\PhysicalDeviceCacheTaskTables.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\TaskTables\\PhysicalDeviceCacheTaskTables.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/TaskTables/PhysicalDeviceCacheTaskTables.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/TaskTables/PhysicalDeviceCacheTaskTables.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\TaskTables\\PropertyTaskTables.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\TaskTables\\PropertyTaskTables.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/TaskTables/PropertyTaskTables.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/TaskTables/PropertyTaskTables.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\TaskTables\\QueuePropertyTaskTables.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\TaskTables\\QueuePropertyTaskTables.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/TaskTables/QueuePropertyTaskTables.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/TaskTables/QueuePropertyTaskTables.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\Utility\\Camera.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\Utility\\Camera.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Utility/Camera.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Utility/Camera.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\Utility\\PixelData2D.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\Utility\\PixelData2D.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Utility/PixelData2D.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Utility/PixelData2D.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\Utility\\Utility.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\Utility\\Utility.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Utility/Utility.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Utility/Utility.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\Wrappers\\DebugLogger.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\Wrappers\\DebugLogger.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/DebugLogger.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/DebugLogger.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\Wrappers\\DeviceWrapper.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\Wrappers\\DeviceWrapper.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/DeviceWrapper.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/DeviceWrapper.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\Wrappers\\InstanceWrapper.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\Wrappers\\InstanceWrapper.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/InstanceWrapper.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/InstanceWrapper.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\Wrappers\\PipelineWrapper.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\Wrappers\\PipelineWrapper.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/PipelineWrapper.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/PipelineWrapper.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe  @CMakeFiles/GraphicsWrapperTests.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapperTests.dir\\tests\\main.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\GraphicsWrapper\\tests\\main.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/tests/main.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapperTests.dir/tests/main.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/JsonParser",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe  @CMakeFiles/JsonParserBenchmark.dir/includes_CXX.rsp -g -std=gnu++20 -mavx -o CMakeFiles\\JsonParserBenchmark.dir\\tests\\benchmark.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\JsonParser\\tests\\benchmark.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/JsonParser/tests/benchmark.cpp",
+  "output": "JsonParser/CMakeFiles/JsonParserBenchmark.dir/tests/benchmark.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/Vendor/imgui",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe  @CMakeFiles/imgui.dir/includes_CXX.rsp -g -o CMakeFiles\\imgui.dir\\imgui.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\Vendor\\imgui\\imgui.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/Vendor/imgui/imgui.cpp",
+  "output": "Vendor/imgui/CMakeFiles/imgui.dir/imgui.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/Vendor/imgui",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe  @CMakeFiles/imgui.dir/includes_CXX.rsp -g -o CMakeFiles\\imgui.dir\\imgui_draw.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\Vendor\\imgui\\imgui_draw.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/Vendor/imgui/imgui_draw.cpp",
+  "output": "Vendor/imgui/CMakeFiles/imgui.dir/imgui_draw.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/Vendor/imgui",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe  @CMakeFiles/imgui.dir/includes_CXX.rsp -g -o CMakeFiles\\imgui.dir\\imgui_tables.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\Vendor\\imgui\\imgui_tables.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/Vendor/imgui/imgui_tables.cpp",
+  "output": "Vendor/imgui/CMakeFiles/imgui.dir/imgui_tables.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/Vendor/imgui",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe  @CMakeFiles/imgui.dir/includes_CXX.rsp -g -o CMakeFiles\\imgui.dir\\imgui_widgets.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\Vendor\\imgui\\imgui_widgets.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/Vendor/imgui/imgui_widgets.cpp",
+  "output": "Vendor/imgui/CMakeFiles/imgui.dir/imgui_widgets.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/Vendor/imgui",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe  @CMakeFiles/imgui.dir/includes_CXX.rsp -g -o CMakeFiles\\imgui.dir\\backends\\imgui_impl_vulkan.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\Vendor\\imgui\\backends\\imgui_impl_vulkan.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/Vendor/imgui/backends/imgui_impl_vulkan.cpp",
+  "output": "Vendor/imgui/CMakeFiles/imgui.dir/backends/imgui_impl_vulkan.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/Vendor/imgui",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe  @CMakeFiles/imgui.dir/includes_CXX.rsp -g -o CMakeFiles\\imgui.dir\\backends\\imgui_impl_win32.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\Vendor\\imgui\\backends\\imgui_impl_win32.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/Vendor/imgui/backends/imgui_impl_win32.cpp",
+  "output": "Vendor/imgui/CMakeFiles/imgui.dir/backends/imgui_impl_win32.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/Vendor/Clipper2Lib",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe  @CMakeFiles/Clipper2Lib.dir/includes_CXX.rsp -g -o CMakeFiles\\Clipper2Lib.dir\\src\\clipper.engine.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\Vendor\\Clipper2Lib\\src\\clipper.engine.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/Vendor/Clipper2Lib/src/clipper.engine.cpp",
+  "output": "Vendor/Clipper2Lib/CMakeFiles/Clipper2Lib.dir/src/clipper.engine.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/Vendor/Clipper2Lib",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe  @CMakeFiles/Clipper2Lib.dir/includes_CXX.rsp -g -o CMakeFiles\\Clipper2Lib.dir\\src\\clipper.offset.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\Vendor\\Clipper2Lib\\src\\clipper.offset.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/Vendor/Clipper2Lib/src/clipper.offset.cpp",
+  "output": "Vendor/Clipper2Lib/CMakeFiles/Clipper2Lib.dir/src/clipper.offset.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/Vendor/Clipper2Lib",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe  @CMakeFiles/Clipper2Lib.dir/includes_CXX.rsp -g -o CMakeFiles\\Clipper2Lib.dir\\src\\clipper.rectclip.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\Vendor\\Clipper2Lib\\src\\clipper.rectclip.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/Vendor/Clipper2Lib/src/clipper.rectclip.cpp",
+  "output": "Vendor/Clipper2Lib/CMakeFiles/Clipper2Lib.dir/src/clipper.rectclip.cpp.obj"
+}
+]

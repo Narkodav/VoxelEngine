@@ -1,85 +1,135 @@
 #include "WorldManagement/WorldGrid.h"
 
-WorldGrid::WorldGrid(size_t radius, glm::ivec3 centerPos)
-{
-	generateSphere(radius, centerPos);
+void WorldGrid::generate(const GeneratorSettings& settings) {
+	// auto& generatorSettings = config.asObject().at("Generator").asObject();
+	// if(generatorSettings.at("Type") == "Cube") {
+	// 	auto edge = generatorSettings.at("Edge").asInteger();
+	// 	glm::ivec3 cornerPos = Json::getVector<glm::ivec3>(generatorSettings.at("CornerPosition"));
+	// 	generateCube(edge, cornerPos);
+	// }
+	// else if(generatorSettings.at("Type") == "Parallelepiped") {
+	// 	auto width = generatorSettings.at("Width").asInteger();
+	// 	auto height = generatorSettings.at("Height").asInteger();
+	// 	auto depth = generatorSettings.at("Depth").asInteger();
+	// 	glm::ivec3 cornerPos = Json::getVector<glm::ivec3>(generatorSettings.at("CornerPosition"));
+	// 	generateParallelogram(width, height, depth, cornerPos);
+	// }
+	// else if(generatorSettings.at("Type") == "Cube") {
+	// 	auto edge = generatorSettings.at("Edge").asInteger();
+	// 	glm::ivec3 cornerPos = Json::getVector<glm::ivec3>(generatorSettings.at("CornerPosition"));
+	// 	generateCube(edge, cornerPos);
+	// }
+	// else if(generatorSettings.at("Type") == "Sphere") {
+	// 	auto radius = generatorSettings.at("Radius").asInteger();
+	// 	glm::ivec3 centerPos = Json::getVector<glm::ivec3>(generatorSettings.at("CenterPosition"));
+	// 	generateSphere(radius, centerPos);
+	// }
+	// else if(generatorSettings.at("Type") == "Cylinder") {
+	// 	auto radius = generatorSettings.at("Radius").asInteger();
+	// 	auto height = generatorSettings.at("Height").asInteger();
+	// 	glm::ivec3 bottomCenterPostition = Json::getVector<glm::ivec3>(generatorSettings.at("BottomCenterPosition"));
+	// 	generateCylinder(radius, height, bottomCenterPostition);
+	// }
+	// else throw std::runtime_error("Shape not implemented");
+
+	switch (settings.shape) {
+		case ShapeToGenerate::Sphere:
+			generateSphere(*static_cast<const SphereGeneratorParams*>(settings.params.get()));
+			break;
+		case ShapeToGenerate::Cylinder:
+			generateCylinder(*static_cast<const CylinderGeneratorParams*>(settings.params.get()));
+			break;
+		case ShapeToGenerate::Parallelepiped:
+			generateParallelepiped(*static_cast<const ParallelepipedGeneratorParams*>(settings.params.get()));
+			break;
+		case ShapeToGenerate::Cube:
+			generateCube(*static_cast<const CubeGeneratorParams*>(settings.params.get()));
+			break;
+		default:
+			throw std::runtime_error("Shape not implemented");
+	}
 }
 
-WorldGrid::WorldGrid(size_t radius, size_t height, glm::ivec3 centerPos)
-{
-	generateCylinder(radius, height, centerPos);
-}
-
-void WorldGrid::generateSphere(size_t radius, glm::ivec3 centerPos)
+void WorldGrid::generateSphere(const SphereGeneratorParams& params)
 {
 	m_pool.clear();
 	m_allocations.clear();
 	m_coordToAllocation.clear();
 
-	m_pool = GridPool(radius * radius * radius * 8);
+	m_pool = GridPool((params.radius * 2 + 1) * (params.radius * 2 + 1) * (params.radius * 2 + 1) * 2);
 
 	glm::ivec3 pos;
 
-	for (pos.x = -static_cast<int32_t>(radius);
-		pos.x < static_cast<int32_t>(radius + 1); ++pos.x)
+	for (pos.x = -static_cast<int32_t>(params.radius);
+		pos.x < static_cast<int32_t>(params.radius + 1); ++pos.x)
 	{
-		for (pos.z = -static_cast<int32_t>(radius);
-			pos.z < static_cast<int32_t>(radius + 1); ++pos.z)
+		for (pos.z = -static_cast<int32_t>(params.radius);
+			pos.z < static_cast<int32_t>(params.radius + 1); ++pos.z)
 		{
-			for (pos.y = -static_cast<int32_t>(radius);
-				pos.y < static_cast<int32_t>(radius + 1); ++pos.y)
+			for (pos.y = -static_cast<int32_t>(params.radius);
+				pos.y < static_cast<int32_t>(params.radius + 1); ++pos.y)
 			{
-				glm::ivec3 posRel = pos + centerPos;
-				if (glm::length(glm::vec3(pos)) <= radius)
+				glm::ivec3 posRel = pos + params.centerPosition;
+				if (glm::length(glm::vec3(pos)) <= params.radius)
 					addChunk(posRel);
 			}
 		}
 	}
 }
 
-void WorldGrid::generateCylinder(size_t radius, size_t height, glm::ivec3 centerPos)
+void WorldGrid::generateCylinder(const CylinderGeneratorParams& params)
 {
 	m_pool.clear();
 	m_allocations.clear();
 	m_coordToAllocation.clear();
 
-	m_pool = GridPool(radius * radius * height * 4);
+	m_pool = GridPool((params.radius * 2 + 1) * (params.radius * 2 + 1) * params.height * 2);
 
 	glm::ivec3 pos;
 
-	for (pos.x = -static_cast<int32_t>(radius);
-		pos.x < static_cast<int32_t>(radius + 1); ++pos.x)
+	for (pos.x = -static_cast<int32_t>(params.radius);
+		pos.x < static_cast<int32_t>(params.radius + 1); ++pos.x)
 	{
-		for (pos.z = -static_cast<int32_t>(radius);
-			pos.z < static_cast<int32_t>(radius + 1); ++pos.z)
+		for (pos.z = -static_cast<int32_t>(params.radius);
+			pos.z < static_cast<int32_t>(params.radius + 1); ++pos.z)
 		{
-			for (pos.y = 0; pos.y < static_cast<int64_t>(height); ++pos.y)
+			for (pos.y = 0; pos.y < static_cast<int64_t>(params.height); ++pos.y)
 			{
-				glm::ivec3 posRel = pos + centerPos;
-				if (glm::length(glm::vec2(pos.x, pos.z)) <= radius)
+				glm::ivec3 posRel = pos + params.bottomCenterPosition;
+				if (glm::length(glm::vec2(pos.x, pos.z)) <= params.radius)
 					addChunk(posRel);
 			}
 		}
 	}
 }
 
-void WorldGrid::generateParallelogram(size_t width, size_t height, size_t depth, glm::ivec3 cornerPos)
+void WorldGrid::generateParallelepiped(const ParallelepipedGeneratorParams& params)
 {
 	m_pool.clear();
 	m_allocations.clear();
 	m_coordToAllocation.clear();
 
-	m_pool = GridPool(width * height * depth);
+	m_pool = GridPool(params.width * params.height * params.depth * 2);
 	glm::ivec3 pos;
 
-	for (pos.x = cornerPos.x; pos.x < cornerPos.x + static_cast<int32_t>(width); ++pos.x)
-		for (pos.z = cornerPos.z; pos.z < cornerPos.z + static_cast<int32_t>(depth); ++pos.z)
-			for (pos.y = cornerPos.y; pos.y < cornerPos.y + static_cast<int32_t>(height); ++pos.y)
+	for (pos.x = params.cornerPosition.x; pos.x < params.cornerPosition.x + static_cast<int32_t>(params.width); ++pos.x)
+		for (pos.z = params.cornerPosition.z; pos.z < params.cornerPosition.z + static_cast<int32_t>(params.depth); ++pos.z)
+			for (pos.y = params.cornerPosition.y; pos.y < params.cornerPosition.y + static_cast<int32_t>(params.height); ++pos.y)
 				addChunk(pos);
 }
 
-void WorldGrid::generateCube(size_t edge, glm::ivec3 cornerPos) {
-	generateParallelogram(edge, edge, edge, cornerPos);
+void WorldGrid::generateCube(const CubeGeneratorParams& params) {
+	m_pool.clear();
+	m_allocations.clear();
+	m_coordToAllocation.clear();
+
+	m_pool = GridPool(params.edge * params.edge * params.edge * 2);
+	glm::ivec3 pos;
+
+	for (pos.x = params.cornerPosition.x; pos.x < params.cornerPosition.x + static_cast<int32_t>(params.edge); ++pos.x)
+		for (pos.z = params.cornerPosition.z; pos.z < params.cornerPosition.z + static_cast<int32_t>(params.edge); ++pos.z)
+			for (pos.y = params.cornerPosition.y; pos.y < params.cornerPosition.y + static_cast<int32_t>(params.edge); ++pos.y)
+				addChunk(pos);
 }
 
 void WorldGrid::sortAllocationsByDistance(glm::ivec3 centerPos)

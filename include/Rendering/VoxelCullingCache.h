@@ -159,6 +159,28 @@ private:
 		return cullingEntries[m_cullingIds[m_sideOffsets[enumCast(side)] + m_geometryAmount * geometryMain + geom]].start;
 	}
 
+	void populateGenericBuffer(size_t block, size_t x, size_t y, size_t z,
+		const WorldGrid::Chunk& chunk, 
+		const WorldGrid& grid, std::vector<Indices>& indices,
+		const Id::NamedCache<Voxel::State, Id::VoxelState>& voxelStates,
+		const Id::NamedCache<Shape::Model, Id::Model>& modelCache,
+		const Shape::Model& modelMain,
+		const Shape::PolygonIndexBuffer& geometries, const Shape::ColoringIndexBuffer& appearances,
+		const Shape::PolygonIndexBuffer::Entry& geometryEntry,
+		const Shape::ColoringIndexBuffer::Entry& appearanceEntry
+	) const;
+
+	void populateCubeBuffer(size_t block, size_t x, size_t y, size_t z,
+		const WorldGrid::Chunk& chunk, 
+		const WorldGrid& grid, std::vector<Indices>& indices,
+		const Id::NamedCache<Voxel::State, Id::VoxelState>& voxelStates,
+		const Id::NamedCache<Shape::Model, Id::Model>& modelCache,
+		const Shape::Model& modelMain,
+		const Shape::PolygonIndexBuffer& geometries, const Shape::ColoringIndexBuffer& appearances,
+		const Shape::PolygonIndexBuffer::Entry& geometryEntry,
+		const Shape::ColoringIndexBuffer::Entry& appearanceEntry
+	) const;
+
 //	const std::vector<SideData>& getVoxelData(Id::VoxelModel main, Id::VoxelModel adj, Shape::Side side) const;
 //	const std::vector<SideData>& getVoxelDataAir(Id::VoxelModel main, Shape::Side side) const;
 //

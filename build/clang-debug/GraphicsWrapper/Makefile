@@ -981,6 +981,30 @@ src/Graphics/Wrappers/InstanceWrapper.cpp.s:
 	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f GraphicsWrapper\CMakeFiles\GraphicsWrapper.dir\build.make GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/InstanceWrapper.cpp.s
 .PHONY : src/Graphics/Wrappers/InstanceWrapper.cpp.s
 
+src/Graphics/Wrappers/PipelineWrapper.obj: src/Graphics/Wrappers/PipelineWrapper.cpp.obj
+.PHONY : src/Graphics/Wrappers/PipelineWrapper.obj
+
+# target to build an object file
+src/Graphics/Wrappers/PipelineWrapper.cpp.obj:
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f GraphicsWrapper\CMakeFiles\GraphicsWrapper.dir\build.make GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/PipelineWrapper.cpp.obj
+.PHONY : src/Graphics/Wrappers/PipelineWrapper.cpp.obj
+
+src/Graphics/Wrappers/PipelineWrapper.i: src/Graphics/Wrappers/PipelineWrapper.cpp.i
+.PHONY : src/Graphics/Wrappers/PipelineWrapper.i
+
+# target to preprocess a source file
+src/Graphics/Wrappers/PipelineWrapper.cpp.i:
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f GraphicsWrapper\CMakeFiles\GraphicsWrapper.dir\build.make GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/PipelineWrapper.cpp.i
+.PHONY : src/Graphics/Wrappers/PipelineWrapper.cpp.i
+
+src/Graphics/Wrappers/PipelineWrapper.s: src/Graphics/Wrappers/PipelineWrapper.cpp.s
+.PHONY : src/Graphics/Wrappers/PipelineWrapper.s
+
+# target to generate assembly for a file
+src/Graphics/Wrappers/PipelineWrapper.cpp.s:
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug" && $(MAKE) $(MAKESILENT) -f GraphicsWrapper\CMakeFiles\GraphicsWrapper.dir\build.make GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/PipelineWrapper.cpp.s
+.PHONY : src/Graphics/Wrappers/PipelineWrapper.cpp.s
+
 tests/main.obj: tests/main.cpp.obj
 .PHONY : tests/main.obj
 
@@ -1118,6 +1142,9 @@ help:
 	@echo ... src/Graphics/Wrappers/InstanceWrapper.obj
 	@echo ... src/Graphics/Wrappers/InstanceWrapper.i
 	@echo ... src/Graphics/Wrappers/InstanceWrapper.s
+	@echo ... src/Graphics/Wrappers/PipelineWrapper.obj
+	@echo ... src/Graphics/Wrappers/PipelineWrapper.i
+	@echo ... src/Graphics/Wrappers/PipelineWrapper.s
 	@echo ... tests/main.obj
 	@echo ... tests/main.i
 	@echo ... tests/main.s

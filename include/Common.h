@@ -18,6 +18,8 @@
 
 #include "Graphics/Graphics.h"
 
+#include "JsonParser/Value.h"
+
 namespace Gfx = Graphics;
 
 template<typename E>
@@ -608,3 +610,12 @@ namespace std {
 		}
 	};
 }
+
+struct InputSettings {
+	float mouseSensitivity;
+};
+
+struct MovementSettings {
+	float moveVelocity;
+	float fastMoveVelocity;
+};

@@ -8,7 +8,7 @@ public:
 	enum class ShaderPurpose
 	{
 		VoxelVert = 0,
-        CubeVert = 0,
+        CubeVert,
 		VoxelFrag,
         //ModelVert,
         //ModelFrag,
@@ -18,6 +18,7 @@ public:
 
 private:
 	Gfx::Utility::ShaderModuleData m_shaderModuleData;
+
     static inline const std::array<std::string, enumCast(ShaderPurpose::Count)> m_shaderFileNames = {
         "Voxel.vert.spv",
         "Cube.vert.spv",
@@ -81,9 +82,8 @@ public:
         m_initialized = false;
     }
 
-    std::vector<Gfx::PipelineShaderStageCreateInfo> getShaderStageCreateInfos()
-    {
-        return Gfx::Utility::createShaderStageInfos(m_shaderModuleData);
+    const Gfx::Utility::ShaderModuleData& getShaderModuleData() const {
+        return m_shaderModuleData;
     }
 };
 

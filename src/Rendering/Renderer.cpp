@@ -10,14 +10,13 @@
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 void Renderer::init(std::string engineName, std::string appName,
-    Platform::Window& window, MT::ThreadPool& poolHandle, const EngineFilesystem& engineFiles)
+    Platform::Window& window, MT::MinimalThreadPool& poolHandle, const EngineFilesystem& engineFiles)
 {
     m_poolHandle = &poolHandle;
 
-    m_instance.create(Gfx::AppInfo().setAppName(appName).setEngineName(engineName)
-        .setAppVersion({1, 0, 0}).setEngineVersion({1, 0, 0}));
+    m_instance.create({engineName, appName, {1, 0, 0}, {1, 0, 0}});
 
-    m_instance.cachePhysicalDevices();    
+    m_instance.cachePhysicalDevices();
 
     m_surface.create(m_instance.getFunctionTable(), m_instance, window);
 
@@ -126,68 +125,137 @@ void Renderer::init(std::string engineName, std::string appName,
     pushConstantRange.setStageFlags(Gfx::Flags::ShaderStage::Bits::Vertex)
         .setOffset(0).setSize(sizeof(PushConstants));
 
-    m_graphicsPipelineData.pipelineLayoutCreateInfo
+    m_generalVoxelGraphicsPipelineData.pipelineLayoutCreateInfo
         .setSetLayouts(m_descriptorSetLayouts)
         .setPushConstantRanges(pushConstantRange);
-    m_graphicsPipelineData.pipelineLayout.create(m_device.getFunctionTable(), 
-        m_device, m_graphicsPipelineData.pipelineLayoutCreateInfo);
+    m_generalVoxelGraphicsPipelineData.pipelineLayout.create(m_device.getFunctionTable(), 
+        m_device, m_generalVoxelGraphicsPipelineData.pipelineLayoutCreateInfo);
 
-    m_graphicsPipelineData.shaderStages = m_shaderCache.getShaderStageCreateInfos();
+    auto shaderStageCreateInfos = Gfx::Utility::createShaderStageInfos(m_shaderCache.getShaderModuleData());
+
+    m_generalVoxelGraphicsPipelineData.shaderStages = {
+        shaderStageCreateInfos[enumCast(ShaderCache::ShaderPurpose::VoxelVert)],
+        shaderStageCreateInfos[enumCast(ShaderCache::ShaderPurpose::VoxelFrag)],
+    };
     
-    m_graphicsPipelineData.dynamicStates = { Gfx::DynamicState::Viewport, Gfx::DynamicState::Scissor };
-    m_graphicsPipelineData.viewports = { m_canvas.getViewport() };
-    m_graphicsPipelineData.scissors = { m_canvas.getScissor() };
-    m_graphicsPipelineData.colorBlendAttachmentStates.push_back(Gfx::PipelineColorBlendAttachmentState(false,
+    m_generalVoxelGraphicsPipelineData.dynamicStates = { Gfx::DynamicState::Viewport, Gfx::DynamicState::Scissor };
+    m_generalVoxelGraphicsPipelineData.viewports = { m_canvas.getViewport() };
+    m_generalVoxelGraphicsPipelineData.scissors = { m_canvas.getScissor() };
+    m_generalVoxelGraphicsPipelineData.colorBlendAttachmentStates.push_back(Gfx::PipelineColorBlendAttachmentState(false,
         Gfx::BlendFactor::One, Gfx::BlendFactor::Zero,
         Gfx::BlendOp::Add, Gfx::BlendFactor::One,
         Gfx::BlendFactor::Zero, Gfx::BlendOp::Add,
         Gfx::Flags::ColorComponent::Bits::R | Gfx::Flags::ColorComponent::Bits::G |
         Gfx::Flags::ColorComponent::Bits::B | Gfx::Flags::ColorComponent::Bits::A));
 
-    m_graphicsPipelineData.vertexInputState = {
-        m_graphicsPipelineData.vertexBindings, m_graphicsPipelineData.vertexAttributes
+    m_generalVoxelGraphicsPipelineData.vertexInputState = {
+        m_generalVoxelGraphicsPipelineData.vertexBindings, m_generalVoxelGraphicsPipelineData.vertexAttributes
     };
-    m_graphicsPipelineData.inputAssemblyState = {
+    m_generalVoxelGraphicsPipelineData.inputAssemblyState = {
         Gfx::PrimitiveTopology::TriangleList, false
     };
-    m_graphicsPipelineData.dynamicState = {
-        m_graphicsPipelineData.dynamicStates
+    m_generalVoxelGraphicsPipelineData.dynamicState = {
+        m_generalVoxelGraphicsPipelineData.dynamicStates
     };
-    m_graphicsPipelineData.viewportState = {
-        m_graphicsPipelineData.viewports, m_graphicsPipelineData.scissors
+    m_generalVoxelGraphicsPipelineData.viewportState = {
+        m_generalVoxelGraphicsPipelineData.viewports, m_generalVoxelGraphicsPipelineData.scissors
     };
-    m_graphicsPipelineData.rasterizationState = { 
+    m_generalVoxelGraphicsPipelineData.rasterizationState = { 
         false, false, Gfx::PolygonMode::Fill, Gfx::Flags::CullMode::Bits::Back, 
         Gfx::FrontFace::CounterClockwise, false, 0.0f, 0.0f, 0.0f, 1.0f 
     };
-    m_graphicsPipelineData.multisampleState = { 
+    m_generalVoxelGraphicsPipelineData.multisampleState = { 
         false, Gfx::Flags::SampleCount::Bits::SC1, 1.0f, {}, false, false 
     };
-    m_graphicsPipelineData.colorBlendState = { 
-        m_graphicsPipelineData.colorBlendAttachmentStates,
+    m_generalVoxelGraphicsPipelineData.colorBlendState = { 
+        m_generalVoxelGraphicsPipelineData.colorBlendAttachmentStates,
         false, Gfx::LogicOp::Copy, Gfx::Color::empty()
     };
-    m_graphicsPipelineData.depthStencilState = { 
+    m_generalVoxelGraphicsPipelineData.depthStencilState = { 
         Gfx::StencilOpState(), Gfx::StencilOpState(),
         Gfx::CompareOp::Less, false, false, true, true, 0, 1
     };
 
-    m_graphicsPipelineData.graphicsPipelineInfo.setLayout(m_graphicsPipelineData.pipelineLayout)
+    m_generalVoxelGraphicsPipelineData.graphicsPipelineInfo.setLayout(m_generalVoxelGraphicsPipelineData.pipelineLayout)
         .setRenderPass(m_renderPassData.renderPass)
         .setSubpass(0)
-        .setStages(m_graphicsPipelineData.shaderStages)
-        .setVertexInputState(m_graphicsPipelineData.vertexInputState)
-        .setInputAssemblyState(m_graphicsPipelineData.inputAssemblyState)
-        .setDynamicState(m_graphicsPipelineData.dynamicState)
-        .setViewportState(m_graphicsPipelineData.viewportState)
-        .setRasterizationState(m_graphicsPipelineData.rasterizationState)
-        .setMultisampleState(m_graphicsPipelineData.multisampleState)
-        .setColorBlendState(m_graphicsPipelineData.colorBlendState)
-        .setDepthStencilState(m_graphicsPipelineData.depthStencilState);
-    m_graphicsPipelineData.graphicsPipeline.create(m_device.getFunctionTable(), 
-        m_device, m_graphicsPipelineData.graphicsPipelineInfo);
+        .setStages(m_generalVoxelGraphicsPipelineData.shaderStages)
+        .setVertexInputState(m_generalVoxelGraphicsPipelineData.vertexInputState)
+        .setInputAssemblyState(m_generalVoxelGraphicsPipelineData.inputAssemblyState)
+        .setDynamicState(m_generalVoxelGraphicsPipelineData.dynamicState)
+        .setViewportState(m_generalVoxelGraphicsPipelineData.viewportState)
+        .setRasterizationState(m_generalVoxelGraphicsPipelineData.rasterizationState)
+        .setMultisampleState(m_generalVoxelGraphicsPipelineData.multisampleState)
+        .setColorBlendState(m_generalVoxelGraphicsPipelineData.colorBlendState)
+        .setDepthStencilState(m_generalVoxelGraphicsPipelineData.depthStencilState);
+    m_generalVoxelGraphicsPipelineData.graphicsPipeline.create(m_device.getFunctionTable(), 
+        m_device, m_generalVoxelGraphicsPipelineData.graphicsPipelineInfo);
 
-    // Gfx::Utility::createBasicGraphicsPipeline(m_graphicsPipelineData,
+    m_cubeVoxelGraphicsPipelineData.pipelineLayoutCreateInfo
+        .setSetLayouts(m_descriptorSetLayouts)
+        .setPushConstantRanges(pushConstantRange);
+    m_cubeVoxelGraphicsPipelineData.pipelineLayout.create(m_device.getFunctionTable(), 
+        m_device, m_cubeVoxelGraphicsPipelineData.pipelineLayoutCreateInfo);
+
+    m_cubeVoxelGraphicsPipelineData.shaderStages = {
+        shaderStageCreateInfos[enumCast(ShaderCache::ShaderPurpose::CubeVert)],
+        shaderStageCreateInfos[enumCast(ShaderCache::ShaderPurpose::VoxelFrag)],
+    };
+    
+    m_cubeVoxelGraphicsPipelineData.dynamicStates = { Gfx::DynamicState::Viewport, Gfx::DynamicState::Scissor };
+    m_cubeVoxelGraphicsPipelineData.viewports = { m_canvas.getViewport() };
+    m_cubeVoxelGraphicsPipelineData.scissors = { m_canvas.getScissor() };
+    m_cubeVoxelGraphicsPipelineData.colorBlendAttachmentStates.push_back(Gfx::PipelineColorBlendAttachmentState(false,
+        Gfx::BlendFactor::One, Gfx::BlendFactor::Zero,
+        Gfx::BlendOp::Add, Gfx::BlendFactor::One,
+        Gfx::BlendFactor::Zero, Gfx::BlendOp::Add,
+        Gfx::Flags::ColorComponent::Bits::R | Gfx::Flags::ColorComponent::Bits::G |
+        Gfx::Flags::ColorComponent::Bits::B | Gfx::Flags::ColorComponent::Bits::A));
+
+    m_cubeVoxelGraphicsPipelineData.vertexInputState = {
+        m_cubeVoxelGraphicsPipelineData.vertexBindings, m_cubeVoxelGraphicsPipelineData.vertexAttributes
+    };
+    m_cubeVoxelGraphicsPipelineData.inputAssemblyState = {
+        Gfx::PrimitiveTopology::TriangleList, false
+    };
+    m_cubeVoxelGraphicsPipelineData.dynamicState = {
+        m_cubeVoxelGraphicsPipelineData.dynamicStates
+    };
+    m_cubeVoxelGraphicsPipelineData.viewportState = {
+        m_cubeVoxelGraphicsPipelineData.viewports, m_cubeVoxelGraphicsPipelineData.scissors
+    };
+    m_cubeVoxelGraphicsPipelineData.rasterizationState = { 
+        false, false, Gfx::PolygonMode::Fill, Gfx::Flags::CullMode::Bits::Back, 
+        Gfx::FrontFace::CounterClockwise, false, 0.0f, 0.0f, 0.0f, 1.0f 
+    };
+    m_cubeVoxelGraphicsPipelineData.multisampleState = { 
+        false, Gfx::Flags::SampleCount::Bits::SC1, 1.0f, {}, false, false 
+    };
+    m_cubeVoxelGraphicsPipelineData.colorBlendState = { 
+        m_cubeVoxelGraphicsPipelineData.colorBlendAttachmentStates,
+        false, Gfx::LogicOp::Copy, Gfx::Color::empty()
+    };
+    m_cubeVoxelGraphicsPipelineData.depthStencilState = { 
+        Gfx::StencilOpState(), Gfx::StencilOpState(),
+        Gfx::CompareOp::Less, false, false, true, true, 0, 1
+    };
+
+    m_cubeVoxelGraphicsPipelineData.graphicsPipelineInfo.setLayout(m_cubeVoxelGraphicsPipelineData.pipelineLayout)
+        .setRenderPass(m_renderPassData.renderPass)
+        .setSubpass(0)
+        .setStages(m_cubeVoxelGraphicsPipelineData.shaderStages)
+        .setVertexInputState(m_cubeVoxelGraphicsPipelineData.vertexInputState)
+        .setInputAssemblyState(m_cubeVoxelGraphicsPipelineData.inputAssemblyState)
+        .setDynamicState(m_cubeVoxelGraphicsPipelineData.dynamicState)
+        .setViewportState(m_cubeVoxelGraphicsPipelineData.viewportState)
+        .setRasterizationState(m_cubeVoxelGraphicsPipelineData.rasterizationState)
+        .setMultisampleState(m_cubeVoxelGraphicsPipelineData.multisampleState)
+        .setColorBlendState(m_cubeVoxelGraphicsPipelineData.colorBlendState)
+        .setDepthStencilState(m_cubeVoxelGraphicsPipelineData.depthStencilState);
+    m_cubeVoxelGraphicsPipelineData.graphicsPipeline.create(m_device.getFunctionTable(), 
+        m_device, m_cubeVoxelGraphicsPipelineData.graphicsPipelineInfo);
+
+    // Gfx::Utility::createBasicGraphicsPipeline(m_generalVoxelGraphicsPipelineData,
     //     m_device.getFunctionTable(), m_device, m_renderPassData.renderPass,
     //     0, Gfx::PrimitiveTopology::TriangleList,
     //     Gfx::PolygonMode::Fill, Gfx::Flags::CullMode::Bits::Back,
@@ -402,7 +470,9 @@ void Renderer::resetChunkBuffers(const WorldGrid& grid)
     m_indexAllocations.resize(m_chunkCount, 
         Gfx::MemoryManagement::MemoryPool::Allocation::getEmptyAllocation());
 
-    m_stagingBuffers.resize(m_poolHandle->getWorkerCount());
+    size_t workerCount;
+    m_poolHandle->size(workerCount);
+    m_stagingBuffers.resize(workerCount);
 
     for (size_t i = 0; i < m_stagingBuffers.size(); ++i)
         m_stagingBuffers[i].reserve(Constants::chunkSize * 120);
@@ -475,7 +545,7 @@ void Renderer::createLayouts()
 
 void Renderer::cleanup(StorageCache& cache)
 {
-    auto lock = m_poolHandle->pausePool();
+    auto lock = m_poolHandle->wait();
     m_device.waitIdle();
 
     ImGui_ImplVulkan_Shutdown();
@@ -526,8 +596,11 @@ void Renderer::cleanup(StorageCache& cache)
 
     m_indicesPool.destroy(m_device.getFunctionTable(), m_device);
 
-    m_graphicsPipelineData.graphicsPipeline.destroy(m_device.getFunctionTable(), m_device);
-    m_graphicsPipelineData.pipelineLayout.destroy(m_device.getFunctionTable(), m_device);
+    m_cubeVoxelGraphicsPipelineData.graphicsPipeline.destroy(m_device.getFunctionTable(), m_device);
+    m_cubeVoxelGraphicsPipelineData.pipelineLayout.destroy(m_device.getFunctionTable(), m_device);
+
+    m_generalVoxelGraphicsPipelineData.graphicsPipeline.destroy(m_device.getFunctionTable(), m_device);
+    m_generalVoxelGraphicsPipelineData.pipelineLayout.destroy(m_device.getFunctionTable(), m_device);
     m_renderPassData.renderPass.destroy(m_device.getFunctionTable(), m_device);
 
     Gfx::Utility::destroySwapChainData(m_device.getFunctionTable(), m_device, m_swapChainData);
@@ -614,15 +687,15 @@ void Renderer::drawFrame(const Gfx::Utility::CameraPerspective& camera)
         renderPassBeginInfo, Gfx::SubpassContents::Inline);
         
     m_perFrameInFlightObjects[m_currentFrame].graphicsCommandBuffer.bindPipeline(
-        m_device.getFunctionTable(), m_graphicsPipelineData.graphicsPipeline, Gfx::PipelineBindPoint::Graphics);
+        m_device.getFunctionTable(), m_generalVoxelGraphicsPipelineData.graphicsPipeline, Gfx::PipelineBindPoint::Graphics);
 
     m_perFrameInFlightObjects[m_currentFrame].graphicsCommandBuffer.setViewport(m_device.getFunctionTable(), m_canvas.getViewport());
     m_perFrameInFlightObjects[m_currentFrame].graphicsCommandBuffer.setScissor(m_device.getFunctionTable(), m_canvas.getScissor());
 
     m_perFrameInFlightObjects[m_currentFrame].graphicsCommandBuffer.bindDescriptorSets(m_device.getFunctionTable(), Gfx::PipelineBindPoint::Graphics,
-        m_graphicsPipelineData.pipelineLayout, 0, m_descriptorSets, {});
+        m_generalVoxelGraphicsPipelineData.pipelineLayout, 0, m_descriptorSets, {});
 
-    m_perFrameInFlightObjects[m_currentFrame].graphicsCommandBuffer.pushConstants(m_device.getFunctionTable(), m_graphicsPipelineData.pipelineLayout,
+    m_perFrameInFlightObjects[m_currentFrame].graphicsCommandBuffer.pushConstants(m_device.getFunctionTable(), m_generalVoxelGraphicsPipelineData.pipelineLayout,
         Gfx::Flags::ShaderStage::Bits::Vertex, 0, sizeof(PushConstants), &m_pushConstants);
 
     m_perFrameInFlightObjects[m_currentFrame].graphicsCommandBuffer.drawIndirect(m_device.getFunctionTable(),
@@ -717,6 +790,7 @@ void Renderer::updateChunk(const ResourceCache& resources, size_t chunkPoolIndex
 	auto& cullingCache = assets.getVoxelCullingCache();
 
     auto& buffer = m_stagingBuffers[threadId];
+    buffer.clear();
 
     size_t chunkEnd = chunk.start + Constants::chunkSize;
     for (size_t block = chunk.start; block < chunkEnd; ++block)
@@ -798,7 +872,6 @@ void Renderer::updateChunk(const ResourceCache& resources, size_t chunkPoolIndex
         command.drawCommand.firstInstance = allocation.region.offset / sizeof(Indices);
         command.bufferId = allocation.bufferIndex;
     }
-    buffer.clear();
     m_meshedChunks[chunkPoolIndex] = true;
     
     auto endMemoryPopulate = std::chrono::high_resolution_clock::now();
@@ -925,8 +998,8 @@ void Renderer::dumpHandles() {
 
     std::cout << "m_renderPassData.renderPass: " << m_renderPassData.renderPass.getNumerical() << std::endl;
     std::cout << "m_swapChainData.swapChain: " << m_swapChainData.swapChain.getNumerical() << std::endl;
-    std::cout << "m_pipelineData.pipelineLayout: " << m_graphicsPipelineData.pipelineLayout.getNumerical() << std::endl;
-    std::cout << "m_pipelineData.graphicsPipeline: " << m_graphicsPipelineData.graphicsPipeline.getNumerical() << std::endl;
+    std::cout << "m_pipelineData.pipelineLayout: " << m_generalVoxelGraphicsPipelineData.pipelineLayout.getNumerical() << std::endl;
+    std::cout << "m_pipelineData.graphicsPipeline: " << m_generalVoxelGraphicsPipelineData.graphicsPipeline.getNumerical() << std::endl;
 
     std::cout << "m_graphicsCommandPool: " << m_graphicsCommandPool.getNumerical() << std::endl;
     std::cout << "m_temporaryBufferPool: " << m_temporaryBufferPool.getNumerical() << std::endl;

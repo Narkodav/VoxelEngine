@@ -1,30 +1,32 @@
 {
-    "MouseSensitivity" : 80.0,
-    "MoveVelocity" : 10.0,
-    "SpeedMoveVelocity" : 100.0,
+    "Input": {
+        "MouseSensitivity" : 80.0
+    },
+    "Movement": {
+        "MoveVelocity" : { "Value": 10.0, "Unit": "MeterPerSecond" },
+        "FastMoveVelocity" : { "Value": 100.0, "Unit": "MeterPerSecond" }
+    },
     "Generator" : {
-        "Type" : "Cylinder",
-        "Radius" : 10,
-        "Height" : 16,
-        "BottomCenterPostition" : {
-            "X" : 0,
-            "Y" : 0,
-            "Z" : 0
+        "Type": "Default",
+        "Shape" : "Cylinder",
+        "Params": {
+            "Radius" : { "Value": 3, "Unit": "Meter" },
+            "Height" : { "Value": 3, "Unit": "Meter" },
+            "BottomCenterPosition" : { "Value": { "X" : 0, "Y" : 0, "Z" : 0 }, "Unit": "Meter" }
         }
     },
-    "CameraSettings" : {
-        "WorldUpVector" : {
-            "X" : 0,
-            "Y" : 1,
-            "Z" : 0
+    "Graphics": {
+        "Camera" : {
+            "WorldUpVector" : {
+                "X" : 0,
+                "Y" : 1,
+                "Z" : 0
+            },
+            "Position" : { "Value": { "X" : 0, "Y" : 0, "Z" : 0 }, "Unit": "Meter" },
+            "Pitch" : { "Value": 0.0, "Unit": "Degree" },
+            "Yaw" : { "Value": 0.0, "Unit": "Degree" },
+            "Fov" : { "Value": 100.0, "Unit": "Degree" }
         },
-        "Position" : {
-            "X" : 0,
-            "Y" : 0,
-            "Z" : 0
-        },
-        "Pitch" : 0.0,
-        "Yaw" : 0.0,
-        "Fov" : 100.0
+        "Contrast" : 0.8
     }
 }

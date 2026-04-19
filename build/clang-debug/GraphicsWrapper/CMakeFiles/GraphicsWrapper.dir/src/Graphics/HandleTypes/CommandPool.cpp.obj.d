@@ -1272,10 +1272,10 @@ GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/CommandP
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/PlatformManagement/Mouse.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/PlatformManagement/InputStateTracker.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/PlatformManagement/Keyboard.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/Utilities/EventSystems/MultiEventSystem.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/Namespaces.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/Utilities/EventSystems/EventSystemConcept.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/Utilities/EventSystems/SingleCallbackEventSystem.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Utilities/EventSystems/MultiEventSystem.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Namespaces.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Utilities/EventSystems/EventSystemConcept.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Utilities/EventSystems/SingleCallbackEventSystem.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/../FunctionPointers.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/../DeviceFunctionTable.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/../FunctionTable.h \
@@ -1341,11 +1341,6 @@ GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/CommandP
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Utility/BufferDataBuilders.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Utility/Camera.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/InstanceWrapper.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/Instance.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/Surface.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/PhysicalDeviceCache.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/DebugLogger.h \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/shared_mutex \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/DebugUtilsMessenger.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/DeviceWrapper.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/Device.h
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/DeviceWrapper.h

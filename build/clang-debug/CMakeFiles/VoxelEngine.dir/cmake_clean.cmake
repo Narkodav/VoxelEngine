@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/VoxelEngine.dir/src/GameData/EngineSettingsDeserializer.cpp.obj"
+  "CMakeFiles/VoxelEngine.dir/src/GameData/EngineSettingsDeserializer.cpp.obj.d"
   "CMakeFiles/VoxelEngine.dir/src/GameData/ResourceCache.cpp.obj"
   "CMakeFiles/VoxelEngine.dir/src/GameData/ResourceCache.cpp.obj.d"
   "CMakeFiles/VoxelEngine.dir/src/Rendering/AssetCache.cpp.obj"

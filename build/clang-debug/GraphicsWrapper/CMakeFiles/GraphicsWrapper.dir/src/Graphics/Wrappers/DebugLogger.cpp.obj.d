@@ -888,8 +888,8 @@ GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/DebugLogger
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/__charconv/from_chars_integral.h \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/__charconv/to_chars.h \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/shared_mutex \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/DebugUtilsMessenger.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/../Common.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/DebugUtilsMessenger.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/../Common.h \
   E:/Program\ Files\ (x86)/API/Vulkan/Include/vulkan/vulkan_core.h \
   E:/Program\ Files\ (x86)/API/Vulkan/Include/vulkan/vk_platform.h \
   E:/Program\ Files\ (x86)/API/Vulkan/Include/vk_video/vulkan_video_codec_h264std.h \
@@ -1253,19 +1253,19 @@ GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/DebugLogger
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/map \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/unordered_set \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/source_location \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/../StructTraits.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/../Enums.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/../StructTraits.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/../Enums.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/Containers/include/Utilities/TemplateUnion.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/Containers/include/Utilities/Concepts.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/Containers/include/Utilities/Macros.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/../Structs.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/../Flags.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/../TaskTables/FeatureEnum.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/../Structs.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/../Flags.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/../TaskTables/FeatureEnum.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Common.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/../TaskTables/PropertyEnum.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/../TaskTables/QueuePropertyEnum.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/../TaskTables/PropertyEnum.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/../TaskTables/QueuePropertyEnum.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Flags.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/../PlatformManagement/Window.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/../PlatformManagement/Window.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/PlatformManagement/WindowWin32.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/PlatformManagement/Structs.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/PlatformManagement/WindowEvents.h \
@@ -1273,12 +1273,12 @@ GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/DebugLogger
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/PlatformManagement/Mouse.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/PlatformManagement/InputStateTracker.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/PlatformManagement/Keyboard.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/Utilities/EventSystems/MultiEventSystem.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/Namespaces.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/Utilities/EventSystems/EventSystemConcept.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/Utilities/EventSystems/SingleCallbackEventSystem.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/../FunctionPointers.h \
-  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Wrappers/../HandleTypes/../InstanceFunctionTable.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Utilities/EventSystems/MultiEventSystem.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Namespaces.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Utilities/EventSystems/EventSystemConcept.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/include/CommonApi/Utilities/EventSystems/SingleCallbackEventSystem.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/../FunctionPointers.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/../InstanceFunctionTable.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/FunctionTable.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Enums.h \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/include/Graphics/PlatformManagement/TypeDefinitionsWin32.h \

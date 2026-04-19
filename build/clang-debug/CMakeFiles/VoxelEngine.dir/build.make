@@ -143,11 +143,26 @@ CMakeFiles/VoxelEngine.dir/src/GameData/ResourceCache.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VoxelEngine.dir/src/GameData/ResourceCache.cpp.s"
 	C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\src\GameData\ResourceCache.cpp" -o CMakeFiles\VoxelEngine.dir\src\GameData\ResourceCache.cpp.s
 
+CMakeFiles/VoxelEngine.dir/src/GameData/EngineSettingsDeserializer.cpp.obj: CMakeFiles/VoxelEngine.dir/flags.make
+CMakeFiles/VoxelEngine.dir/src/GameData/EngineSettingsDeserializer.cpp.obj: CMakeFiles/VoxelEngine.dir/includes_CXX.rsp
+CMakeFiles/VoxelEngine.dir/src/GameData/EngineSettingsDeserializer.cpp.obj: E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/src/GameData/EngineSettingsDeserializer.cpp
+CMakeFiles/VoxelEngine.dir/src/GameData/EngineSettingsDeserializer.cpp.obj: CMakeFiles/VoxelEngine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/VoxelEngine.dir/src/GameData/EngineSettingsDeserializer.cpp.obj"
+	C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VoxelEngine.dir/src/GameData/EngineSettingsDeserializer.cpp.obj -MF CMakeFiles\VoxelEngine.dir\src\GameData\EngineSettingsDeserializer.cpp.obj.d -o CMakeFiles\VoxelEngine.dir\src\GameData\EngineSettingsDeserializer.cpp.obj -c "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\src\GameData\EngineSettingsDeserializer.cpp"
+
+CMakeFiles/VoxelEngine.dir/src/GameData/EngineSettingsDeserializer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VoxelEngine.dir/src/GameData/EngineSettingsDeserializer.cpp.i"
+	C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\src\GameData\EngineSettingsDeserializer.cpp" > CMakeFiles\VoxelEngine.dir\src\GameData\EngineSettingsDeserializer.cpp.i
+
+CMakeFiles/VoxelEngine.dir/src/GameData/EngineSettingsDeserializer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VoxelEngine.dir/src/GameData/EngineSettingsDeserializer.cpp.s"
+	C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\src\GameData\EngineSettingsDeserializer.cpp" -o CMakeFiles\VoxelEngine.dir\src\GameData\EngineSettingsDeserializer.cpp.s
+
 CMakeFiles/VoxelEngine.dir/src/WorldManagement/Generator.cpp.obj: CMakeFiles/VoxelEngine.dir/flags.make
 CMakeFiles/VoxelEngine.dir/src/WorldManagement/Generator.cpp.obj: CMakeFiles/VoxelEngine.dir/includes_CXX.rsp
 CMakeFiles/VoxelEngine.dir/src/WorldManagement/Generator.cpp.obj: E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/src/WorldManagement/Generator.cpp
 CMakeFiles/VoxelEngine.dir/src/WorldManagement/Generator.cpp.obj: CMakeFiles/VoxelEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/VoxelEngine.dir/src/WorldManagement/Generator.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/VoxelEngine.dir/src/WorldManagement/Generator.cpp.obj"
 	C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VoxelEngine.dir/src/WorldManagement/Generator.cpp.obj -MF CMakeFiles\VoxelEngine.dir\src\WorldManagement\Generator.cpp.obj.d -o CMakeFiles\VoxelEngine.dir\src\WorldManagement\Generator.cpp.obj -c "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\src\WorldManagement\Generator.cpp"
 
 CMakeFiles/VoxelEngine.dir/src/WorldManagement/Generator.cpp.i: cmake_force
@@ -162,7 +177,7 @@ CMakeFiles/VoxelEngine.dir/src/WorldManagement/WorldGrid.cpp.obj: CMakeFiles/Vox
 CMakeFiles/VoxelEngine.dir/src/WorldManagement/WorldGrid.cpp.obj: CMakeFiles/VoxelEngine.dir/includes_CXX.rsp
 CMakeFiles/VoxelEngine.dir/src/WorldManagement/WorldGrid.cpp.obj: E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/src/WorldManagement/WorldGrid.cpp
 CMakeFiles/VoxelEngine.dir/src/WorldManagement/WorldGrid.cpp.obj: CMakeFiles/VoxelEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/VoxelEngine.dir/src/WorldManagement/WorldGrid.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/VoxelEngine.dir/src/WorldManagement/WorldGrid.cpp.obj"
 	C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VoxelEngine.dir/src/WorldManagement/WorldGrid.cpp.obj -MF CMakeFiles\VoxelEngine.dir\src\WorldManagement\WorldGrid.cpp.obj.d -o CMakeFiles\VoxelEngine.dir\src\WorldManagement\WorldGrid.cpp.obj -c "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\src\WorldManagement\WorldGrid.cpp"
 
 CMakeFiles/VoxelEngine.dir/src/WorldManagement/WorldGrid.cpp.i: cmake_force
@@ -177,7 +192,7 @@ CMakeFiles/VoxelEngine.dir/src/main.cpp.obj: CMakeFiles/VoxelEngine.dir/flags.ma
 CMakeFiles/VoxelEngine.dir/src/main.cpp.obj: CMakeFiles/VoxelEngine.dir/includes_CXX.rsp
 CMakeFiles/VoxelEngine.dir/src/main.cpp.obj: E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/src/main.cpp
 CMakeFiles/VoxelEngine.dir/src/main.cpp.obj: CMakeFiles/VoxelEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/VoxelEngine.dir/src/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/VoxelEngine.dir/src/main.cpp.obj"
 	C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VoxelEngine.dir/src/main.cpp.obj -MF CMakeFiles\VoxelEngine.dir\src\main.cpp.obj.d -o CMakeFiles\VoxelEngine.dir\src\main.cpp.obj -c "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\src\main.cpp"
 
 CMakeFiles/VoxelEngine.dir/src/main.cpp.i: cmake_force
@@ -195,6 +210,7 @@ VoxelEngine_OBJECTS = \
 "CMakeFiles/VoxelEngine.dir/src/Rendering/VoxelCullingCache.cpp.obj" \
 "CMakeFiles/VoxelEngine.dir/src/Rendering/Renderer.cpp.obj" \
 "CMakeFiles/VoxelEngine.dir/src/GameData/ResourceCache.cpp.obj" \
+"CMakeFiles/VoxelEngine.dir/src/GameData/EngineSettingsDeserializer.cpp.obj" \
 "CMakeFiles/VoxelEngine.dir/src/WorldManagement/Generator.cpp.obj" \
 "CMakeFiles/VoxelEngine.dir/src/WorldManagement/WorldGrid.cpp.obj" \
 "CMakeFiles/VoxelEngine.dir/src/main.cpp.obj"
@@ -207,6 +223,7 @@ VoxelEngine.exe: CMakeFiles/VoxelEngine.dir/src/Rendering/AssetCache.cpp.obj
 VoxelEngine.exe: CMakeFiles/VoxelEngine.dir/src/Rendering/VoxelCullingCache.cpp.obj
 VoxelEngine.exe: CMakeFiles/VoxelEngine.dir/src/Rendering/Renderer.cpp.obj
 VoxelEngine.exe: CMakeFiles/VoxelEngine.dir/src/GameData/ResourceCache.cpp.obj
+VoxelEngine.exe: CMakeFiles/VoxelEngine.dir/src/GameData/EngineSettingsDeserializer.cpp.obj
 VoxelEngine.exe: CMakeFiles/VoxelEngine.dir/src/WorldManagement/Generator.cpp.obj
 VoxelEngine.exe: CMakeFiles/VoxelEngine.dir/src/WorldManagement/WorldGrid.cpp.obj
 VoxelEngine.exe: CMakeFiles/VoxelEngine.dir/src/main.cpp.obj
@@ -219,7 +236,7 @@ VoxelEngine.exe: E:/Program\ Files\ (x86)/API/Vulkan/Lib/vulkan-1.lib
 VoxelEngine.exe: CMakeFiles/VoxelEngine.dir/linkLibs.rsp
 VoxelEngine.exe: CMakeFiles/VoxelEngine.dir/objects1.rsp
 VoxelEngine.exe: CMakeFiles/VoxelEngine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable VoxelEngine.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable VoxelEngine.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\VoxelEngine.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

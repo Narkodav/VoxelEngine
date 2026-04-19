@@ -563,6 +563,21 @@ GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/InstanceWra
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/InstanceWrapper.cpp.s"
 	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\GraphicsWrapper" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "E:\Program Files (x86)\Code\C_code\libraries\GraphicsWrapper\src\Graphics\Wrappers\InstanceWrapper.cpp" -o CMakeFiles\GraphicsWrapper.dir\src\Graphics\Wrappers\InstanceWrapper.cpp.s
 
+GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/PipelineWrapper.cpp.obj: GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/flags.make
+GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/PipelineWrapper.cpp.obj: GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp
+GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/PipelineWrapper.cpp.obj: E:/Program\ Files\ (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/PipelineWrapper.cpp
+GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/PipelineWrapper.cpp.obj: GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/PipelineWrapper.cpp.obj"
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\GraphicsWrapper" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/PipelineWrapper.cpp.obj -MF CMakeFiles\GraphicsWrapper.dir\src\Graphics\Wrappers\PipelineWrapper.cpp.obj.d -o CMakeFiles\GraphicsWrapper.dir\src\Graphics\Wrappers\PipelineWrapper.cpp.obj -c "E:\Program Files (x86)\Code\C_code\libraries\GraphicsWrapper\src\Graphics\Wrappers\PipelineWrapper.cpp"
+
+GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/PipelineWrapper.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/PipelineWrapper.cpp.i"
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\GraphicsWrapper" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "E:\Program Files (x86)\Code\C_code\libraries\GraphicsWrapper\src\Graphics\Wrappers\PipelineWrapper.cpp" > CMakeFiles\GraphicsWrapper.dir\src\Graphics\Wrappers\PipelineWrapper.cpp.i
+
+GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/PipelineWrapper.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/PipelineWrapper.cpp.s"
+	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\GraphicsWrapper" && C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "E:\Program Files (x86)\Code\C_code\libraries\GraphicsWrapper\src\Graphics\Wrappers\PipelineWrapper.cpp" -o CMakeFiles\GraphicsWrapper.dir\src\Graphics\Wrappers\PipelineWrapper.cpp.s
+
 # Object files for target GraphicsWrapper
 GraphicsWrapper_OBJECTS = \
 "CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/Buffer.cpp.obj" \
@@ -597,7 +612,8 @@ GraphicsWrapper_OBJECTS = \
 "CMakeFiles/GraphicsWrapper.dir/src/Graphics/Utility/Utility.cpp.obj" \
 "CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/DebugLogger.cpp.obj" \
 "CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/DeviceWrapper.cpp.obj" \
-"CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/InstanceWrapper.cpp.obj"
+"CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/InstanceWrapper.cpp.obj" \
+"CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/PipelineWrapper.cpp.obj"
 
 # External object files for target GraphicsWrapper
 GraphicsWrapper_EXTERNAL_OBJECTS =
@@ -635,9 +651,10 @@ GraphicsWrapper/libGraphicsWrapper.a: GraphicsWrapper/CMakeFiles/GraphicsWrapper
 GraphicsWrapper/libGraphicsWrapper.a: GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/DebugLogger.cpp.obj
 GraphicsWrapper/libGraphicsWrapper.a: GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/DeviceWrapper.cpp.obj
 GraphicsWrapper/libGraphicsWrapper.a: GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/InstanceWrapper.cpp.obj
+GraphicsWrapper/libGraphicsWrapper.a: GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/PipelineWrapper.cpp.obj
 GraphicsWrapper/libGraphicsWrapper.a: GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/build.make
 GraphicsWrapper/libGraphicsWrapper.a: GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_34) "Linking CXX static library libGraphicsWrapper.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_35) "Linking CXX static library libGraphicsWrapper.a"
 	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\GraphicsWrapper" && $(CMAKE_COMMAND) -P CMakeFiles\GraphicsWrapper.dir\cmake_clean_target.cmake
 	cd /d "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\GraphicsWrapper" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\GraphicsWrapper.dir\link.txt --verbose=$(VERBOSE)
 

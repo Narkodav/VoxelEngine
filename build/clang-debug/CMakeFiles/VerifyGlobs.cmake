@@ -38,6 +38,7 @@ set(OLD_GLOB
   "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/DebugLogger.cpp"
   "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/DeviceWrapper.cpp"
   "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/InstanceWrapper.cpp"
+  "E:/Program Files (x86)/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/PipelineWrapper.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

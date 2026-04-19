@@ -9,6 +9,45 @@
 class WorldGrid
 {
 public:
+
+    enum class ShapeToGenerate {
+		Sphere,
+		Cylinder,
+		Parallelepiped,
+		Cube,
+		Count
+    };
+
+	struct GeneratorParams {};
+
+    struct SphereGeneratorParams : public GeneratorParams {
+		size_t radius;
+		glm::ivec3 centerPosition;
+    };
+
+    struct CylinderGeneratorParams : public GeneratorParams {
+		size_t radius;
+		size_t height;
+		glm::ivec3 bottomCenterPosition;
+    };
+
+    struct ParallelepipedGeneratorParams : public GeneratorParams {
+		size_t width;
+		size_t depth;
+		size_t height;
+		glm::ivec3 cornerPosition;
+    };
+
+    struct CubeGeneratorParams : public GeneratorParams {
+		size_t edge;
+		glm::ivec3 cornerPosition;
+    };
+
+    struct GeneratorSettings {
+		std::unique_ptr<GeneratorParams> params;
+		ShapeToGenerate shape;
+    };
+
 	using Grid = std::vector<Id::VoxelState>;
 
 	struct alignas(16) Chunk {	
@@ -35,13 +74,11 @@ private:
 public:
 	WorldGrid() = default;
 
-	WorldGrid(size_t sphereRadius, glm::ivec3 centerPos);
-	WorldGrid(size_t radius, size_t height, glm::ivec3 centerPos);
-
-	void generateSphere(size_t radius, glm::ivec3 centerPos);
-	void generateCylinder(size_t radius, size_t height, glm::ivec3 centerPos);
-	void generateParallelogram(size_t width, size_t height, size_t depth, glm::ivec3 cornerPos);
-	void generateCube(size_t edge, glm::ivec3 cornerPos);
+	void generate(const GeneratorSettings& settings);
+	void generateSphere(const SphereGeneratorParams& params);
+	void generateCylinder(const CylinderGeneratorParams& params);
+	void generateParallelepiped(const ParallelepipedGeneratorParams& params);
+	void generateCube(const CubeGeneratorParams& params);
 
 	void sortAllocationsByDistance(glm::ivec3 centerPos);
 
@@ -54,7 +91,6 @@ public:
 	auto& getAllocatedChunks() { return m_allocations; }
 	auto& getCoordToChunk() { return m_coordToAllocation; }
 	auto& getPool() { return m_pool; }
-
 
 	inline const Id::VoxelState& getBlock(glm::ivec3 coords) const
 	{

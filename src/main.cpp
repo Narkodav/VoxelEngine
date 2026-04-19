@@ -4,39 +4,22 @@
 
 #include "GameData/ResourceCache.h"
 #include "GameData/EngineFilesystem.h"
+#include "GameData/EngineSettingsDeserializer.h"
 
 #include "WorldManagement/WorldGrid.h"
 #include "WorldManagement/Generator.h"
 
-#include "PlatformAbstractions/Console.h"
+#include "CommonApi/PlatformAbstractions/Console.h"
 
 glm::vec3 moveDir(0.0f);
 bool CkeyPressed = false;
 bool cursorMode = true;
 Graphics::Utility::CameraPerspective camera;
 Platform::Window window;
-
-template<typename T>
-T getNumber(const Json::Value& value) {
-    if (value.isInteger()) return value.asInteger(); 
-    else if (value.isNumber()) return value.asNumber();
-    else throw std::runtime_error("value must contain a number");
-}
-
-template<typename T>
-T getVector(const Json::Value& value) {
-	T vec;
-	if(value.isObject()) {
-		vec.x = getNumber<decltype(vec.x)>(value.asObject().at("X"));
-		vec.y = getNumber<decltype(vec.y)>(value.asObject().at("Y"));
-		vec.z = getNumber<decltype(vec.z)>(value.asObject().at("Z"));
-	} else if(value.isArray()) {
-		vec.x = getNumber<decltype(vec.x)>(value.asArray()[0]);
-		vec.y = getNumber<decltype(vec.y)>(value.asArray()[1]);
-		vec.z = getNumber<decltype(vec.z)>(value.asArray()[2]);
-	} else throw std::runtime_error("Cannot parse vector that is not object or array");
-	return vec;
-}
+Generator generator;
+WorldGrid grid;
+Renderer renderer;
+ResourceCache resources;
 
 void handleInputs(Platform::Window& window, Graphics::Utility::CameraPerspective& camera,
 	float deltaTime, float sensitivity, float moveVelocity, float speedMoveVelocity)
@@ -70,6 +53,11 @@ void handleInputs(Platform::Window& window, Graphics::Utility::CameraPerspective
 			moveDir -= camera.getWorldUp();
 		}
 
+		// if (keyboard.keyPressed<Platform::KeyboardKey::LeftControl>() || keyboard.keyPressed<Platform::KeyboardKey::RightControl>() &&
+		// 	keyboard.keyJustPressed<Platform::KeyboardKey::R>()) {
+			
+		// }
+
 		if (glm::length(moveDir) > std::numeric_limits<float>::epsilon()) {
 			moveDir = glm::normalize(moveDir);
 			if(mouse.buttonPressed<Platform::MouseButton::Rmb>())
@@ -101,56 +89,24 @@ void keyPressed(Platform::KeyboardKey key) {
 int main()
 {
 	std::cout << std::endl;
-	MT::ThreadPool pool;
-	pool.init(16);
+	MT::MinimalThreadPool pool;
+	pool.init(16, std::cerr);
 
 	EngineFilesystem engineFiles;
 	engineFiles.init();
 	engineFiles.printDirectories();
 	engineFiles.printPaths();
 
-	auto renderConfigPath = engineFiles.getRootDirectory() / "EngineSettings.json";
-	Json::Value config = Json::Value::fromFile(renderConfigPath.string()).front();
+	Json::Value settings = Json::Value::fromFile(engineFiles.getSettingsFile().string()).front();
 
-	cursorMode = 1;
-	Generator generator;
-	WorldGrid grid;
-	
-	auto& generatorSettings = config.asObject().at("Generator").asObject();
-	if(generatorSettings.at("Type") == "Cube") {
-		auto edge = generatorSettings.at("Edge").asInteger();
-		glm::ivec3 cornerPos = getVector<glm::ivec3>(generatorSettings.at("CornerPostition"));
-		grid.generateCube(edge, cornerPos);
-	}
-	else if(generatorSettings.at("Type") == "Parallelogram") {
-		auto width = generatorSettings.at("Width").asInteger();
-		auto height = generatorSettings.at("Height").asInteger();
-		auto depth = generatorSettings.at("Depth").asInteger();
-		glm::ivec3 cornerPos = getVector<glm::ivec3>(generatorSettings.at("CornerPostition"));
-		grid.generateParallelogram(width, height, depth, cornerPos);
-	}
-	else if(generatorSettings.at("Type") == "Sphere") {
-		auto radius = generatorSettings.at("Radius").asInteger();
-		glm::ivec3 centerPos = getVector<glm::ivec3>(generatorSettings.at("CenterPostition"));
-		grid.generateSphere(radius, centerPos);
-	}
-	else if(generatorSettings.at("Type") == "Cylinder") {
-		auto radius = generatorSettings.at("Radius").asInteger();
-		auto height = generatorSettings.at("Height").asInteger();
-		glm::ivec3 bottomCenterPostition = getVector<glm::ivec3>(generatorSettings.at("BottomCenterPostition"));
-		grid.generateCylinder(radius, height, bottomCenterPostition);
-	}
-	else throw std::runtime_error("Shape not implemented");
-	
-	auto& cameraSettings = config.asObject().at("CameraSettings").asObject();
-	glm::vec3 worldUpVector = getVector<glm::vec3>(cameraSettings.at("WorldUpVector"));
-	glm::vec3 position = getVector<glm::vec3>(cameraSettings.at("Position"));
-	float pitch = cameraSettings.at("Pitch").asNumber();
-	float yaw = cameraSettings.at("Yaw").asNumber();
-	float fov = cameraSettings.at("Fov").asNumber();
+	cursorMode = 1;	
+	grid.generate(EngineSettingsDeserializer::parseGenerator(settings));
+	auto graphicsSettings = EngineSettingsDeserializer::parseGraphics(settings);
 
 	Graphics::Utility::CameraPerspective camera = Graphics::Utility::CameraPerspective(
-		worldUpVector, position, pitch, yaw, fov, 800.f / 600.f, 0.1f, 100000.0f);
+		graphicsSettings.camera.upVector, graphicsSettings.camera.position, 
+		graphicsSettings.camera.pitch, graphicsSettings.camera.yaw, graphicsSettings.camera.fov, 
+		800.f / 600.f, 0.1f, 100000.0f);
 	
 	generator.set(1234);
     
@@ -163,36 +119,36 @@ int main()
 		if(cursorMode) window.centerCursor();
 	});
 
-	Renderer renderer;
 	renderer.init("eng", "app", window, pool, engineFiles);
+	renderer.setContrast(graphicsSettings.contrast);
 
-	ResourceCache resources;
 	resources.registerResources(engineFiles);
 	resources.getAssetCache().printStatistics();
 
 	float deltaTime = 0.0f;
 
-	float mouseSensitivity = config.asObject().at("MouseSensitivity").asNumber();
-	float moveVelocity = config.asObject().at("MoveVelocity").asNumber();
-	float speedMoveVelocity = config.asObject().at("SpeedMoveVelocity").asNumber();
+	auto movementSettings = EngineSettingsDeserializer::parseMovement(settings);
+	auto inputSettings = EngineSettingsDeserializer::parseInput(settings);
 
 	renderer.createAndWriteAssets(resources.getAssetCache(), resources.getVoxelStateCache());
 	renderer.resetChunkBuffers(grid);
+	renderer.dumpHandles();
 
 	grid.sortAllocationsByDistance(glm::ivec3(
 		camera.getPosition().x / Constants::chunkWidth,
 		camera.getPosition().y / Constants::chunkHeight,
 		camera.getPosition().z / Constants::chunkDepth));
 	for (size_t i = 0; i < grid.getAllocatedChunks().size(); ++i)
-		pool.pushTask([&generator, &grid, i]() {
+		pool.pushTask([i]() {
 			//generator.fillChunk(grid, i, Generator::BlockTypes::Dirt);
 			generator.setChunkData(grid, i);
+			renderer.updateChunkAsync(resources, grid.getAllocatedChunks()[i].getIndex(), grid);
 		});
-	pool.pausePool();
-	renderer.dumpHandles();
+	//pool.waitIdle();
 	
-	for (size_t i = 0; i < grid.getAllocatedChunks().size(); ++i)
-		renderer.updateChunkAsync(resources, grid.getAllocatedChunks()[i].getIndex(), grid);
+	
+	// for (size_t i = 0; i < grid.getAllocatedChunks().size(); ++i)
+	// 	renderer.updateChunkAsync(resources, grid.getAllocatedChunks()[i].getIndex(), grid);
 	
 	while (!window.shouldClose()) {
 		auto startTime = std::chrono::high_resolution_clock::now();
@@ -206,14 +162,14 @@ int main()
 		
 		camera.setAspectRatio(window.getAspectRatio());
 		
-		handleInputs(window, camera, deltaTime, mouseSensitivity, moveVelocity, speedMoveVelocity);
+		handleInputs(window, camera, deltaTime, inputSettings.mouseSensitivity, movementSettings.moveVelocity, movementSettings.fastMoveVelocity);
 		
 		renderer.drawFrame(camera);
 		
 		auto currentTime = std::chrono::high_resolution_clock::now();
 		deltaTime = std::chrono::duration<float, std::chrono::seconds::period>(currentTime - startTime).count();
 	}
-	pool.terminate();
+	pool.destroy(pool.wait());
 	renderer.cleanup(resources.getAssetCache().getStorageCache());
 	window.destroy();
 }
