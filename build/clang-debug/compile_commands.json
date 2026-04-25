@@ -318,6 +318,30 @@
   "output": "JsonParser/CMakeFiles/JsonParserBenchmark.dir/tests/benchmark.cpp.obj"
 },
 {
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/PluginFramework",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DLIBRARY_LOADER_EXPORTS @CMakeFiles/PluginFramework.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\PluginFramework.dir\\src\\Modular\\Library.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\PluginFramework\\src\\Modular\\Library.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/PluginFramework/src/Modular/Library.cpp",
+  "output": "PluginFramework/CMakeFiles/PluginFramework.dir/src/Modular/Library.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/PluginFramework",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DTEST_PLUGIN_EXPORTS -DTestPlugin_EXPORTS @CMakeFiles/TestPlugin.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\TestPlugin.dir\\tests\\mod.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\PluginFramework\\tests\\mod.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/PluginFramework/tests/mod.cpp",
+  "output": "PluginFramework/CMakeFiles/TestPlugin.dir/tests/mod.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/PluginFramework",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe  @CMakeFiles/PluginFrameworkTests.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\PluginFrameworkTests.dir\\tests\\main.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\PluginFramework\\tests\\main.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/PluginFramework/tests/main.cpp",
+  "output": "PluginFramework/CMakeFiles/PluginFrameworkTests.dir/tests/main.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/PluginFramework",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe  @CMakeFiles/PluginFrameworkTests.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\PluginFrameworkTests.dir\\tests\\mod.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\libraries\\PluginFramework\\tests\\mod.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/libraries/PluginFramework/tests/mod.cpp",
+  "output": "PluginFramework/CMakeFiles/PluginFrameworkTests.dir/tests/mod.cpp.obj"
+},
+{
   "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/Vendor/imgui",
   "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe  @CMakeFiles/imgui.dir/includes_CXX.rsp -g -o CMakeFiles\\imgui.dir\\imgui.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\Vendor\\imgui\\imgui.cpp\"",
   "file": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/Vendor/imgui/imgui.cpp",
@@ -370,5 +394,11 @@
   "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe  @CMakeFiles/Clipper2Lib.dir/includes_CXX.rsp -g -o CMakeFiles\\Clipper2Lib.dir\\src\\clipper.rectclip.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\Vendor\\Clipper2Lib\\src\\clipper.rectclip.cpp\"",
   "file": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/Vendor/Clipper2Lib/src/clipper.rectclip.cpp",
   "output": "Vendor/Clipper2Lib/CMakeFiles/Clipper2Lib.dir/src/clipper.rectclip.cpp.obj"
+},
+{
+  "directory": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/Modules/DefaultModule",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DDefaultModule_EXPORTS -D_WIN32_WINNT=0x0600 @CMakeFiles/DefaultModule.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -mavx -o CMakeFiles\\DefaultModule.dir\\src\\DefaultGeneratorApi.cpp.obj -c \"E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\Modules\\DefaultModule\\src\\DefaultGeneratorApi.cpp\"",
+  "file": "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/Modules/DefaultModule/src/DefaultGeneratorApi.cpp",
+  "output": "Modules/DefaultModule/CMakeFiles/DefaultModule.dir/src/DefaultGeneratorApi.cpp.obj"
 }
 ]

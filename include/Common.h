@@ -22,6 +22,65 @@
 
 namespace Gfx = Graphics;
 
+struct TransparentStringHash {
+	using is_transparent = void;
+
+	size_t operator()(std::string_view sv) const noexcept {
+		return std::hash<std::string_view>{}(sv);
+	}
+
+	size_t operator()(const std::string& s) const noexcept {
+		return std::hash<std::string_view>{}(s);
+	}
+
+	size_t operator()(const char* s) const noexcept {
+		return std::hash<std::string_view>{}(s);
+	}
+};
+
+struct TransparentStringEqual {
+	using is_transparent = void;
+
+	bool operator()(std::string_view lhs,
+					std::string_view rhs) const noexcept {
+		return lhs == rhs;
+	}
+};
+
+// template<typename T>
+// struct TransparentPointerHash {
+// 	using is_transparent = void;
+
+// 	size_t operator()(std::unique_ptr<T> sv) const noexcept {
+// 		return std::hash<std::unique_ptr<T>>{}(sv);
+// 	}
+
+// 	size_t operator()(const T* s) const noexcept {
+// 		return std::hash<const T*>{}(s);
+// 	}
+// };
+
+// template<typename T>
+// struct TransparentPointerEqual {
+// 	using is_transparent = void;
+
+// 	bool operator()(const T* lhs, const T* rhs) const noexcept {
+// 		return lhs == rhs;
+// 	}
+
+// 	bool operator()(const std::unique_ptr<T> lhs, const T* rhs) const noexcept {
+// 		return lhs.get() == rhs;
+// 	}
+
+// 	bool operator()(const T* lhs, const std::unique_ptr<T> rhs) const noexcept {
+// 		return lhs == rhs.get();
+// 	}
+
+// 	bool operator()(const std::unique_ptr<T> lhs, const std::unique_ptr<T> rhs) const noexcept {
+// 		return lhs.get() == rhs.get();
+// 	}
+// };
+
 template<typename E>
 inline constexpr std::underlying_type_t<E> enumCast(const E& enumObj) {
 	return static_cast<std::underlying_type_t<E>>(enumObj);
@@ -246,7 +305,7 @@ namespace Id
 	private:
 		std::vector<T> m_cache;
 		std::vector<std::string> m_names;
-		std::unordered_map<std::string, Id> m_nameToId;
+		std::unordered_map<std::string, Id, TransparentStringHash, TransparentStringEqual> m_nameToId;
 		mutable std::shared_mutex m_mutex;
 
 	public:
@@ -289,34 +348,34 @@ namespace Id
 			return m_cache[static_cast<Id::DataType>(id)];
 		}
 
-		inline const T& operator[](const std::string& name) const {
+		inline const T& operator[](std::string_view name) const {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			auto it = m_nameToId.find(name);
 			if (it == m_nameToId.end()) {
-				throw std::runtime_error("Asset not found: " + name);
+				throw std::runtime_error("Asset not found: " + std::string(name));
 			}
 			return m_cache[it->second];
 		}
 
-		inline T& operator[](const std::string& name) {
+		inline T& operator[](std::string_view name) {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			auto it = m_nameToId.find(name);
 			if (it == m_nameToId.end()) {
-				throw std::runtime_error("Asset not found: " + name);
+				throw std::runtime_error("Asset not found: " + std::string(name));
 			}
 			return m_cache[it->second];
 		}
 
-		inline Id getId(const std::string& name) const {
+		inline Id getId(std::string_view name) const {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			auto it = m_nameToId.find(name);
 			if (it == m_nameToId.end()) {
-				throw std::runtime_error("Asset not found: " + name);
+				throw std::runtime_error("Asset not found: " + std::string(name));
 			}
 			return it->second;
 		}
 
-		inline bool exists(const std::string& name) const {
+		inline bool exists(std::string_view name) const {
 			std::shared_lock<std::shared_mutex> lock(m_mutex);
 			return m_nameToId.contains(name);
 		}

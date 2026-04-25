@@ -7,7 +7,9 @@
 #include "GameData/Voxel.h"
 #include "GameData/EngineFilesystem.h"
 
-class ResourceCache
+#include "SDK/ResourceCacheInterface.h"
+
+class ResourceCache : public Modular::ModuleBase<ResourceCache>
 {
 private:
 	using VoxelCache = Id::NamedCache<Voxel, Id::Voxel>;
@@ -16,7 +18,18 @@ private:
 	VoxelStateCache m_voxelStates;
 	AssetCache m_assetCache;
 
+	ResourceCacheInterface m_interface;
+
 public:
+
+	ResourceCache() {
+		m_interface.getVoxelId = this->bind<&ResourceCache::getVoxelId>();
+		m_interface.getVoxelStateId = this->bind<&ResourceCache::getVoxelStateId>();
+		m_interface.self = this;
+	}
+
+	VoxelId getVoxelId(const char* name) { return m_voxels.getId(name); }
+	VoxelStateId getVoxelStateId(const char* name) { return m_voxelStates.getId(name); }
 
 	void registerResources(const EngineFilesystem& engineFiles);
 	void registerVoxel(std::string_view path);
@@ -29,5 +42,7 @@ public:
 
 	auto& getVoxelStateCache() { return m_voxelStates; };
 	const auto& getVoxelStateCache() const { return m_voxelStates; };
+
+	ResourceCacheInterface* getInterface() { return &m_interface; }
 };
 

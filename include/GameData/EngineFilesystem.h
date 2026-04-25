@@ -19,6 +19,7 @@ public:
         Executable,
         Assets,
         Shaders,
+        Modules,
 
         Textures,
         Models,
@@ -33,6 +34,7 @@ private:
     static inline const std::string s_defaultTextureDirectoryPath = "textures";
     static inline const std::string s_defaultModelDirectoryPath = "models";
     static inline const std::string s_defaultVoxelDirectoryPath = "voxels";
+    static inline const std::string s_defaultModulesDirectoryPath = "Modules";
 
     static inline const std::string s_defaultConfigFileName = "EngineConfig.json";
     static inline const std::string s_defaultSettingsFilePath = "EngineSettings.json";
@@ -63,6 +65,7 @@ public:
         
         registerDirectory(Directory::Root, Directory::Assets, "assetDirectory", s_defaultAssetDirectoryPath, root);
         registerDirectory(Directory::Root, Directory::Shaders, "shaderDirectory", s_defaultShaderDirectoryPath, root);
+        registerDirectory(Directory::Root, Directory::Modules, "moduleDirectory", s_defaultModulesDirectoryPath, root);
         registerDirectory(Directory::Assets, Directory::Textures, "textureDirectory", s_defaultTextureDirectoryPath, root);
         registerDirectory(Directory::Assets, Directory::Models, "modelDirectory", s_defaultModelDirectoryPath, root);
         registerDirectory(Directory::Assets, Directory::Voxels, "voxelDirectory", s_defaultVoxelDirectoryPath, root);
@@ -73,6 +76,7 @@ public:
     const auto& getRootDirectory() const { return m_directories[enumCast(Directory::Root)]; }    
     const auto& getShaderDirectory() const { return m_directories[enumCast(Directory::Shaders)]; }
     const auto& getAssetDirectory() const { return m_directories[enumCast(Directory::Assets)]; }
+    const auto& getModulesDirectory() const { return m_directories[enumCast(Directory::Modules)]; }
     const auto& getTextureDirectory() const { return m_directories[enumCast(Directory::Textures)]; }
     const auto& getModelDirectory() const { return m_directories[enumCast(Directory::Models)]; }
     const auto& getVoxelDirectory() const { return m_directories[enumCast(Directory::Voxels)]; }

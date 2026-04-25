@@ -1553,6 +1553,9 @@ CMakeFiles/VoxelEngine.dir/src/GameData/EngineSettingsDeserializer.cpp.obj: \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/Vendor/glm/glm/gtc/../mat4x3.hpp \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/Vendor/glm/glm/gtc/type_ptr.inl \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/Utility/StructOfArraysPool.h \
+  E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/SDK/WorldGridInterface.h \
+  E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/SDK/ResourceCacheInterface.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/PluginFramework/include/Modular/Interfaces.h \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/Rendering/Renderer.h \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/Rendering/ShaderCache.h \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/GameData/EngineFilesystem.h \

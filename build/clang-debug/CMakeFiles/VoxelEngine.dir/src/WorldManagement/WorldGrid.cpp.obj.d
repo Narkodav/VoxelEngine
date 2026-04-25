@@ -1551,4 +1551,7 @@ CMakeFiles/VoxelEngine.dir/src/WorldManagement/WorldGrid.cpp.obj: \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/Vendor/glm/glm/gtc/../mat4x2.hpp \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/Vendor/glm/glm/gtc/../mat4x3.hpp \
   E:/Program\ Files\ (x86)/Code/C_code/libraries/CommonApi/Vendor/glm/glm/gtc/type_ptr.inl \
-  E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/Utility/StructOfArraysPool.h
+  E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/Utility/StructOfArraysPool.h \
+  E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/SDK/WorldGridInterface.h \
+  E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/SDK/ResourceCacheInterface.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/PluginFramework/include/Modular/Interfaces.h

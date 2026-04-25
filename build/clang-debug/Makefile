@@ -240,6 +240,45 @@ JsonParserBenchmark/fast:
 .PHONY : JsonParserBenchmark/fast
 
 #=============================================================================
+# Target rules for targets named PluginFramework
+
+# Build rule for target.
+PluginFramework: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 PluginFramework
+.PHONY : PluginFramework
+
+# fast build rule for target.
+PluginFramework/fast:
+	$(MAKE) $(MAKESILENT) -f PluginFramework\CMakeFiles\PluginFramework.dir\build.make PluginFramework/CMakeFiles/PluginFramework.dir/build
+.PHONY : PluginFramework/fast
+
+#=============================================================================
+# Target rules for targets named TestPlugin
+
+# Build rule for target.
+TestPlugin: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 TestPlugin
+.PHONY : TestPlugin
+
+# fast build rule for target.
+TestPlugin/fast:
+	$(MAKE) $(MAKESILENT) -f PluginFramework\CMakeFiles\TestPlugin.dir\build.make PluginFramework/CMakeFiles/TestPlugin.dir/build
+.PHONY : TestPlugin/fast
+
+#=============================================================================
+# Target rules for targets named PluginFrameworkTests
+
+# Build rule for target.
+PluginFrameworkTests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 PluginFrameworkTests
+.PHONY : PluginFrameworkTests
+
+# fast build rule for target.
+PluginFrameworkTests/fast:
+	$(MAKE) $(MAKESILENT) -f PluginFramework\CMakeFiles\PluginFrameworkTests.dir\build.make PluginFramework/CMakeFiles/PluginFrameworkTests.dir/build
+.PHONY : PluginFrameworkTests/fast
+
+#=============================================================================
 # Target rules for targets named imgui
 
 # Build rule for target.
@@ -264,6 +303,19 @@ Clipper2Lib: cmake_check_build_system
 Clipper2Lib/fast:
 	$(MAKE) $(MAKESILENT) -f Vendor\Clipper2Lib\CMakeFiles\Clipper2Lib.dir\build.make Vendor/Clipper2Lib/CMakeFiles/Clipper2Lib.dir/build
 .PHONY : Clipper2Lib/fast
+
+#=============================================================================
+# Target rules for targets named DefaultModule
+
+# Build rule for target.
+DefaultModule: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 DefaultModule
+.PHONY : DefaultModule
+
+# fast build rule for target.
+DefaultModule/fast:
+	$(MAKE) $(MAKESILENT) -f Modules\DefaultModule\CMakeFiles\DefaultModule.dir\build.make Modules/DefaultModule/CMakeFiles/DefaultModule.dir/build
+.PHONY : DefaultModule/fast
 
 src/GameData/EngineSettingsDeserializer.obj: src/GameData/EngineSettingsDeserializer.cpp.obj
 .PHONY : src/GameData/EngineSettingsDeserializer.obj
@@ -496,9 +548,13 @@ help:
 	@echo ... Clipper2Lib
 	@echo ... CommonApi
 	@echo ... CommonApiTests
+	@echo ... DefaultModule
 	@echo ... GraphicsWrapper
 	@echo ... GraphicsWrapperTests
 	@echo ... JsonParserBenchmark
+	@echo ... PluginFramework
+	@echo ... PluginFrameworkTests
+	@echo ... TestPlugin
 	@echo ... VoxelEngine
 	@echo ... imgui
 	@echo ... src/GameData/EngineSettingsDeserializer.obj

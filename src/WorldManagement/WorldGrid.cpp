@@ -1,56 +1,25 @@
 #include "WorldManagement/WorldGrid.h"
 
-void WorldGrid::generate(const GeneratorSettings& settings) {
-	// auto& generatorSettings = config.asObject().at("Generator").asObject();
-	// if(generatorSettings.at("Type") == "Cube") {
-	// 	auto edge = generatorSettings.at("Edge").asInteger();
-	// 	glm::ivec3 cornerPos = Json::getVector<glm::ivec3>(generatorSettings.at("CornerPosition"));
-	// 	generateCube(edge, cornerPos);
-	// }
-	// else if(generatorSettings.at("Type") == "Parallelepiped") {
-	// 	auto width = generatorSettings.at("Width").asInteger();
-	// 	auto height = generatorSettings.at("Height").asInteger();
-	// 	auto depth = generatorSettings.at("Depth").asInteger();
-	// 	glm::ivec3 cornerPos = Json::getVector<glm::ivec3>(generatorSettings.at("CornerPosition"));
-	// 	generateParallelogram(width, height, depth, cornerPos);
-	// }
-	// else if(generatorSettings.at("Type") == "Cube") {
-	// 	auto edge = generatorSettings.at("Edge").asInteger();
-	// 	glm::ivec3 cornerPos = Json::getVector<glm::ivec3>(generatorSettings.at("CornerPosition"));
-	// 	generateCube(edge, cornerPos);
-	// }
-	// else if(generatorSettings.at("Type") == "Sphere") {
-	// 	auto radius = generatorSettings.at("Radius").asInteger();
-	// 	glm::ivec3 centerPos = Json::getVector<glm::ivec3>(generatorSettings.at("CenterPosition"));
-	// 	generateSphere(radius, centerPos);
-	// }
-	// else if(generatorSettings.at("Type") == "Cylinder") {
-	// 	auto radius = generatorSettings.at("Radius").asInteger();
-	// 	auto height = generatorSettings.at("Height").asInteger();
-	// 	glm::ivec3 bottomCenterPostition = Json::getVector<glm::ivec3>(generatorSettings.at("BottomCenterPosition"));
-	// 	generateCylinder(radius, height, bottomCenterPostition);
-	// }
-	// else throw std::runtime_error("Shape not implemented");
-
+void WorldGrid::generate(const ShapeSettings& settings) {
 	switch (settings.shape) {
 		case ShapeToGenerate::Sphere:
-			generateSphere(*static_cast<const SphereGeneratorParams*>(settings.params.get()));
+			generateSphere(*static_cast<const SphereShapeParams*>(settings.params.get()));
 			break;
 		case ShapeToGenerate::Cylinder:
-			generateCylinder(*static_cast<const CylinderGeneratorParams*>(settings.params.get()));
+			generateCylinder(*static_cast<const CylinderShapeParams*>(settings.params.get()));
 			break;
 		case ShapeToGenerate::Parallelepiped:
-			generateParallelepiped(*static_cast<const ParallelepipedGeneratorParams*>(settings.params.get()));
+			generateParallelepiped(*static_cast<const ParallelepipedShapeParams*>(settings.params.get()));
 			break;
 		case ShapeToGenerate::Cube:
-			generateCube(*static_cast<const CubeGeneratorParams*>(settings.params.get()));
+			generateCube(*static_cast<const CubeShapeParams*>(settings.params.get()));
 			break;
 		default:
 			throw std::runtime_error("Shape not implemented");
 	}
 }
 
-void WorldGrid::generateSphere(const SphereGeneratorParams& params)
+void WorldGrid::generateSphere(const SphereShapeParams& params)
 {
 	m_pool.clear();
 	m_allocations.clear();
@@ -77,7 +46,7 @@ void WorldGrid::generateSphere(const SphereGeneratorParams& params)
 	}
 }
 
-void WorldGrid::generateCylinder(const CylinderGeneratorParams& params)
+void WorldGrid::generateCylinder(const CylinderShapeParams& params)
 {
 	m_pool.clear();
 	m_allocations.clear();
@@ -103,7 +72,7 @@ void WorldGrid::generateCylinder(const CylinderGeneratorParams& params)
 	}
 }
 
-void WorldGrid::generateParallelepiped(const ParallelepipedGeneratorParams& params)
+void WorldGrid::generateParallelepiped(const ParallelepipedShapeParams& params)
 {
 	m_pool.clear();
 	m_allocations.clear();
@@ -118,7 +87,7 @@ void WorldGrid::generateParallelepiped(const ParallelepipedGeneratorParams& para
 				addChunk(pos);
 }
 
-void WorldGrid::generateCube(const CubeGeneratorParams& params) {
+void WorldGrid::generateCube(const CubeShapeParams& params) {
 	m_pool.clear();
 	m_allocations.clear();
 	m_coordToAllocation.clear();

@@ -4,6 +4,8 @@
 #include "WorldManagement/WorldGrid.h"
 #include "Rendering/Renderer.h"
 
+#include "Modular/Interfaces.h"
+
 #include <unordered_map>
 #include <string>
 
@@ -16,7 +18,7 @@
 //         "FastMoveVelocity" : { "Value": 100.0, "Units": "MeterPerSecond" }
 //     },
 //     "Generator" : {
-//         "Type": "Default",
+//         "Type": "DefaultGenerator",
 //         "Shape" : "Cylinder",
 //         "Params": {
 //             "Radius" : { "Value": 10, "Units": "Meter" },
@@ -41,34 +43,18 @@
 // }
 
 // Translation layer between congig files and internal engine data representation
+
+struct GeneratorSettings {
+	WorldGrid::ShapeSettings shapeSettings;
+	uint64_t seed;
+	Modular_ServiceId generatorId;
+};
+
 class EngineSettingsDeserializer {
 private:
-	struct TransparentHash {
-		using is_transparent = void;
 
-		size_t operator()(std::string_view sv) const noexcept {
-			return std::hash<std::string_view>{}(sv);
-		}
-
-		size_t operator()(const std::string& s) const noexcept {
-			return std::hash<std::string_view>{}(s);
-		}
-
-		size_t operator()(const char* s) const noexcept {
-			return std::hash<std::string_view>{}(s);
-		}
-	};
-
-	struct TransparentEqual {
-		using is_transparent = void;
-
-		bool operator()(std::string_view lhs,
-						std::string_view rhs) const noexcept {
-			return lhs == rhs;
-		}
-	};
 	template<typename Enum>
-	using EnumMap = std::unordered_map<std::string, Enum, TransparentHash, TransparentEqual>;
+	using EnumMap = std::unordered_map<std::string, Enum, TransparentStringHash, TransparentStringEqual>;
 
 	static inline const EnumMap<WorldGrid::ShapeToGenerate> s_shapeStringToEnum = {
 		{ "Sphere", WorldGrid::ShapeToGenerate::Sphere },
@@ -81,7 +67,7 @@ public:
 
     static InputSettings parseInput(const Json::Value& config);
 	static MovementSettings parseMovement(const Json::Value& config);
-	static WorldGrid::GeneratorSettings parseGenerator(const Json::Value& config);
+	static GeneratorSettings parseGenerator(const Json::Value& config);
 	static Renderer::GraphicsSettings parseGraphics(const Json::Value& config);
 
 
@@ -172,10 +158,18 @@ private:
 		return settingObj.asObject();
 	}
 
+	static const std::string& getString(const Json::Value& value) {
+		if(!value.isString()) throw std::runtime_error("Value must be a string");
+		const auto& valueStr = value.asString();
+		return valueStr;
+	}
+
 	template<typename Enum>
-	static Enum getEnum(EnumMap<Enum> enumMap, std::string_view value) {
-		auto enumIt = enumMap.find(value);
-		if(enumIt == enumMap.end()) throw std::runtime_error(std::string(value) + " - unknown enum value");
+	static Enum getEnum(EnumMap<Enum> enumMap, const Json::Value& value) {
+		if(!value.isString()) throw std::runtime_error("Enum value must be a string");
+		const auto& valueStr = value.asString();
+		auto enumIt = enumMap.find(valueStr);
+		if(enumIt == enumMap.end()) throw std::runtime_error(valueStr + " - unknown enum value");
 		return enumIt->second;
 	}
 };

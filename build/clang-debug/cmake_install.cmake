@@ -54,12 +54,22 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/PluginFramework/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/Vendor/imgui/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
   include("E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/Vendor/Clipper2Lib/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/Modules/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)

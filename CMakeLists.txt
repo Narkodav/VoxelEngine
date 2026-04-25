@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.20)
 project(VoxelEngine)
 
+set(PLUGINS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Modules")
+set(PLUGIN_OUTPUT_DIR "${CMAKE_BINARY_DIR}/Plugins") # TODO: replace
+file(MAKE_DIRECTORY ${PLUGIN_OUTPUT_DIR})
+
 file(GLOB_RECURSE SRC_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
 )
@@ -62,6 +66,14 @@ add_subdirectory(
 
 target_link_libraries(${PROJECT_NAME} PRIVATE JsonParser)
 
+set(PluginFramework_Directory "E:/Program Files (x86)/Code/C_code/libraries/PluginFramework")
+add_subdirectory(
+    ${PluginFramework_Directory}
+    ${CMAKE_CURRENT_BINARY_DIR}/PluginFramework
+)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE PluginFramework)
+
 add_subdirectory(Vendor/imgui)
 target_link_libraries(${PROJECT_NAME} PRIVATE imgui)
 
@@ -73,3 +85,21 @@ if(WIN32)
     target_link_libraries(${PROJECT_NAME} PRIVATE dwmapi)
     add_definitions(-D_WIN32_WINNT=0x0600)
 endif()
+
+# ===============================
+# Plugins
+# ===============================
+
+set(PLUGIN_OUTPUT_DIR "${CMAKE_BINARY_DIR}/plugins") # TODO: replace
+file(MAKE_DIRECTORY ${PLUGIN_OUTPUT_DIR})
+
+# Make it visible to subdirectories
+set(PLUGIN_OUTPUT_DIR ${PLUGIN_OUTPUT_DIR} CACHE INTERNAL "")
+
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Modules)
+
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${PLUGIN_OUTPUT_DIR}
+        ${PLUGINS_DIR}
+)

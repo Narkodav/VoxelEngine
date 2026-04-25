@@ -61,8 +61,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-nakb1v"
-      binary: "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-nakb1v"
+      source: "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-u57l51"
+      binary: "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-u57l51"
     cmakeVariables:
       CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "C:/Users/user/.utils/llvm-mingw/bin/clang-scan-deps.exe"
       CMAKE_C_FLAGS: ""
@@ -72,20 +72,20 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-nakb1v'
+        Change Dir: 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-u57l51'
         
-        Run Build Command(s): "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/bin/cmake.exe" -E env VERBOSE=1 A:/compilers/mingw64/bin/mingw32-make.exe -f Makefile cmTC_aa44f/fast
-        A:/compilers/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_aa44f.dir\\build.make CMakeFiles/cmTC_aa44f.dir/build
-        mingw32-make[1]: Entering directory 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-nakb1v'
-        Building C object CMakeFiles/cmTC_aa44f.dir/CMakeCCompilerABI.c.obj
-        C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe   -v -MD -MT CMakeFiles/cmTC_aa44f.dir/CMakeCCompilerABI.c.obj -MF CMakeFiles\\cmTC_aa44f.dir\\CMakeCCompilerABI.c.obj.d -o CMakeFiles\\cmTC_aa44f.dir\\CMakeCCompilerABI.c.obj -c "E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"
+        Run Build Command(s): "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/bin/cmake.exe" -E env VERBOSE=1 A:/compilers/mingw64/bin/mingw32-make.exe -f Makefile cmTC_a8f1d/fast
+        A:/compilers/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_a8f1d.dir\\build.make CMakeFiles/cmTC_a8f1d.dir/build
+        mingw32-make[1]: Entering directory 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-u57l51'
+        Building C object CMakeFiles/cmTC_a8f1d.dir/CMakeCCompilerABI.c.obj
+        C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe   -v -MD -MT CMakeFiles/cmTC_a8f1d.dir/CMakeCCompilerABI.c.obj -MF CMakeFiles\\cmTC_a8f1d.dir\\CMakeCCompilerABI.c.obj.d -o CMakeFiles\\cmTC_a8f1d.dir\\CMakeCCompilerABI.c.obj -c "E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"
         clang version 22.1.0-rc3 (https://github.com/llvm/llvm-project.git 8530a2cf135c6091438b92b3778d1f23bf77d905)
         Target: x86_64-w64-windows-gnu
         Thread model: posix
         InstalledDir: C:/Users/user/.utils/llvm-mingw/bin
         Configuration file: C:/Users/user/.utils/llvm-mingw/bin/x86_64-w64-windows-gnu.cfg
          (in-process)
-         "C:/Users/user/.utils/llvm-mingw/bin/clang-22.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -fno-sized-deallocation -fno-use-init-array -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb "-fdebug-compilation-dir=E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-nakb1v" -v "-fcoverage-compilation-dir=E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-nakb1v" -resource-dir C:/Users/user/.utils/llvm-mingw/lib/clang/22 -dependency-file "CMakeFiles\\\\cmTC_aa44f.dir\\\\CMakeCCompilerABI.c.obj.d" -MT CMakeFiles/cmTC_aa44f.dir/CMakeCCompilerABI.c.obj -sys-header-deps -internal-isystem C:/Users/user/.utils/llvm-mingw/lib/clang/22/include -internal-isystem C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/include -internal-isystem C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/usr/include -internal-isystem C:/Users/user/.utils/llvm-mingw/include -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -exception-model=seh -faddrsig -o "CMakeFiles\\\\cmTC_aa44f.dir\\\\CMakeCCompilerABI.c.obj" -x c "E:\\\\Program Files (x86)\\\\CMake\\\\cmake-3.30.2-windows-x86_64\\\\share\\\\cmake-3.30\\\\Modules\\\\CMakeCCompilerABI.c"
+         "C:/Users/user/.utils/llvm-mingw/bin/clang-22.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -fno-sized-deallocation -fno-use-init-array -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb "-fdebug-compilation-dir=E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-u57l51" -v "-fcoverage-compilation-dir=E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-u57l51" -resource-dir C:/Users/user/.utils/llvm-mingw/lib/clang/22 -dependency-file "CMakeFiles\\\\cmTC_a8f1d.dir\\\\CMakeCCompilerABI.c.obj.d" -MT CMakeFiles/cmTC_a8f1d.dir/CMakeCCompilerABI.c.obj -sys-header-deps -internal-isystem C:/Users/user/.utils/llvm-mingw/lib/clang/22/include -internal-isystem C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/include -internal-isystem C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/usr/include -internal-isystem C:/Users/user/.utils/llvm-mingw/include -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -exception-model=seh -faddrsig -o "CMakeFiles\\\\cmTC_a8f1d.dir\\\\CMakeCCompilerABI.c.obj" -x c "E:\\\\Program Files (x86)\\\\CMake\\\\cmake-3.30.2-windows-x86_64\\\\share\\\\cmake-3.30\\\\Modules\\\\CMakeCCompilerABI.c"
         clang -cc1 version 22.1.0-rc3 based upon LLVM 22.1.0-rc3 default target x86_64-w64-mingw32
         ignoring nonexistent directory "C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/include"
         ignoring nonexistent directory "C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/usr/include"
@@ -94,19 +94,19 @@ events:
          C:/Users/user/.utils/llvm-mingw/lib/clang/22/include
          C:/Users/user/.utils/llvm-mingw/include
         End of search list.
-        Linking C executable cmTC_aa44f.exe
-        "E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_aa44f.dir\\link.txt --verbose=1
-        "E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_aa44f.dir/objects.a
-        C:\\Users\\user\\.utils\\llvm-mingw\\bin\\llvm-ar.exe qc CMakeFiles\\cmTC_aa44f.dir/objects.a @CMakeFiles\\cmTC_aa44f.dir\\objects1.rsp
-        C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe  -v -Wl,-v -Wl,--whole-archive CMakeFiles\\cmTC_aa44f.dir/objects.a -Wl,--no-whole-archive -o cmTC_aa44f.exe -Wl,--out-implib,libcmTC_aa44f.dll.a -Wl,--major-image-version,0,--minor-image-version,0
+        Linking C executable cmTC_a8f1d.exe
+        "E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_a8f1d.dir\\link.txt --verbose=1
+        "E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_a8f1d.dir/objects.a
+        C:\\Users\\user\\.utils\\llvm-mingw\\bin\\llvm-ar.exe qc CMakeFiles\\cmTC_a8f1d.dir/objects.a @CMakeFiles\\cmTC_a8f1d.dir\\objects1.rsp
+        C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe  -v -Wl,-v -Wl,--whole-archive CMakeFiles\\cmTC_a8f1d.dir/objects.a -Wl,--no-whole-archive -o cmTC_a8f1d.exe -Wl,--out-implib,libcmTC_a8f1d.dll.a -Wl,--major-image-version,0,--minor-image-version,0
         clang version 22.1.0-rc3 (https://github.com/llvm/llvm-project.git 8530a2cf135c6091438b92b3778d1f23bf77d905)
         Target: x86_64-w64-windows-gnu
         Thread model: posix
         InstalledDir: C:/Users/user/.utils/llvm-mingw/bin
         Configuration file: C:/Users/user/.utils/llvm-mingw/bin/x86_64-w64-windows-gnu.cfg
-         "C:/Users/user/.utils/llvm-mingw/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_aa44f.exe C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crt2.o C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crtbegin.o -LC:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib -LC:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/mingw/lib -LC:/Users/user/.utils/llvm-mingw/lib -LC:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows -v --whole-archive "CMakeFiles\\\\cmTC_aa44f.dir/objects.a" --no-whole-archive --out-implib libcmTC_aa44f.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 C:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crtend.o
+         "C:/Users/user/.utils/llvm-mingw/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_a8f1d.exe C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crt2.o C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crtbegin.o -LC:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib -LC:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/mingw/lib -LC:/Users/user/.utils/llvm-mingw/lib -LC:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows -v --whole-archive "CMakeFiles\\\\cmTC_a8f1d.dir/objects.a" --no-whole-archive --out-implib libcmTC_a8f1d.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 C:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crtend.o
         LLD 22.1.0 (https://github.com/llvm/llvm-project.git 8530a2cf135c6091438b92b3778d1f23bf77d905) (compatible with GNU linkers)
-        mingw32-make[1]: Leaving directory 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-nakb1v'
+        mingw32-make[1]: Leaving directory 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-u57l51'
         
       exitCode: 0
   -
@@ -137,20 +137,20 @@ events:
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
-        ignore line: [Change Dir: 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-nakb1v']
+        ignore line: [Change Dir: 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-u57l51']
         ignore line: []
-        ignore line: [Run Build Command(s): "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/bin/cmake.exe" -E env VERBOSE=1 A:/compilers/mingw64/bin/mingw32-make.exe -f Makefile cmTC_aa44f/fast]
-        ignore line: [A:/compilers/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_aa44f.dir\\build.make CMakeFiles/cmTC_aa44f.dir/build]
-        ignore line: [mingw32-make[1]: Entering directory 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-nakb1v']
-        ignore line: [Building C object CMakeFiles/cmTC_aa44f.dir/CMakeCCompilerABI.c.obj]
-        ignore line: [C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe   -v -MD -MT CMakeFiles/cmTC_aa44f.dir/CMakeCCompilerABI.c.obj -MF CMakeFiles\\cmTC_aa44f.dir\\CMakeCCompilerABI.c.obj.d -o CMakeFiles\\cmTC_aa44f.dir\\CMakeCCompilerABI.c.obj -c "E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"]
+        ignore line: [Run Build Command(s): "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/bin/cmake.exe" -E env VERBOSE=1 A:/compilers/mingw64/bin/mingw32-make.exe -f Makefile cmTC_a8f1d/fast]
+        ignore line: [A:/compilers/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_a8f1d.dir\\build.make CMakeFiles/cmTC_a8f1d.dir/build]
+        ignore line: [mingw32-make[1]: Entering directory 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-u57l51']
+        ignore line: [Building C object CMakeFiles/cmTC_a8f1d.dir/CMakeCCompilerABI.c.obj]
+        ignore line: [C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe   -v -MD -MT CMakeFiles/cmTC_a8f1d.dir/CMakeCCompilerABI.c.obj -MF CMakeFiles\\cmTC_a8f1d.dir\\CMakeCCompilerABI.c.obj.d -o CMakeFiles\\cmTC_a8f1d.dir\\CMakeCCompilerABI.c.obj -c "E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"]
         ignore line: [clang version 22.1.0-rc3 (https://github.com/llvm/llvm-project.git 8530a2cf135c6091438b92b3778d1f23bf77d905)]
         ignore line: [Target: x86_64-w64-windows-gnu]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: C:/Users/user/.utils/llvm-mingw/bin]
         ignore line: [Configuration file: C:/Users/user/.utils/llvm-mingw/bin/x86_64-w64-windows-gnu.cfg]
         ignore line: [ (in-process)]
-        ignore line: [ "C:/Users/user/.utils/llvm-mingw/bin/clang-22.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -fno-sized-deallocation -fno-use-init-array -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb "-fdebug-compilation-dir=E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-nakb1v" -v "-fcoverage-compilation-dir=E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-nakb1v" -resource-dir C:/Users/user/.utils/llvm-mingw/lib/clang/22 -dependency-file "CMakeFiles\\\\cmTC_aa44f.dir\\\\CMakeCCompilerABI.c.obj.d" -MT CMakeFiles/cmTC_aa44f.dir/CMakeCCompilerABI.c.obj -sys-header-deps -internal-isystem C:/Users/user/.utils/llvm-mingw/lib/clang/22/include -internal-isystem C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/include -internal-isystem C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/usr/include -internal-isystem C:/Users/user/.utils/llvm-mingw/include -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -exception-model=seh -faddrsig -o "CMakeFiles\\\\cmTC_aa44f.dir\\\\CMakeCCompilerABI.c.obj" -x c "E:\\\\Program Files (x86)\\\\CMake\\\\cmake-3.30.2-windows-x86_64\\\\share\\\\cmake-3.30\\\\Modules\\\\CMakeCCompilerABI.c"]
+        ignore line: [ "C:/Users/user/.utils/llvm-mingw/bin/clang-22.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -fno-sized-deallocation -fno-use-init-array -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb "-fdebug-compilation-dir=E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-u57l51" -v "-fcoverage-compilation-dir=E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-u57l51" -resource-dir C:/Users/user/.utils/llvm-mingw/lib/clang/22 -dependency-file "CMakeFiles\\\\cmTC_a8f1d.dir\\\\CMakeCCompilerABI.c.obj.d" -MT CMakeFiles/cmTC_a8f1d.dir/CMakeCCompilerABI.c.obj -sys-header-deps -internal-isystem C:/Users/user/.utils/llvm-mingw/lib/clang/22/include -internal-isystem C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/include -internal-isystem C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/usr/include -internal-isystem C:/Users/user/.utils/llvm-mingw/include -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -exception-model=seh -faddrsig -o "CMakeFiles\\\\cmTC_a8f1d.dir\\\\CMakeCCompilerABI.c.obj" -x c "E:\\\\Program Files (x86)\\\\CMake\\\\cmake-3.30.2-windows-x86_64\\\\share\\\\cmake-3.30\\\\Modules\\\\CMakeCCompilerABI.c"]
         ignore line: [clang -cc1 version 22.1.0-rc3 based upon LLVM 22.1.0-rc3 default target x86_64-w64-mingw32]
         ignore line: [ignoring nonexistent directory "C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/include"]
         ignore line: [ignoring nonexistent directory "C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/usr/include"]
@@ -159,23 +159,23 @@ events:
         ignore line: [ C:/Users/user/.utils/llvm-mingw/lib/clang/22/include]
         ignore line: [ C:/Users/user/.utils/llvm-mingw/include]
         ignore line: [End of search list.]
-        ignore line: [Linking C executable cmTC_aa44f.exe]
-        ignore line: ["E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_aa44f.dir\\link.txt --verbose=1]
-        ignore line: ["E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_aa44f.dir/objects.a]
-        ignore line: [C:\\Users\\user\\.utils\\llvm-mingw\\bin\\llvm-ar.exe qc CMakeFiles\\cmTC_aa44f.dir/objects.a @CMakeFiles\\cmTC_aa44f.dir\\objects1.rsp]
-        ignore line: [C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe  -v -Wl -v -Wl --whole-archive CMakeFiles\\cmTC_aa44f.dir/objects.a -Wl --no-whole-archive -o cmTC_aa44f.exe -Wl --out-implib libcmTC_aa44f.dll.a -Wl --major-image-version 0 --minor-image-version 0]
+        ignore line: [Linking C executable cmTC_a8f1d.exe]
+        ignore line: ["E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_a8f1d.dir\\link.txt --verbose=1]
+        ignore line: ["E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_a8f1d.dir/objects.a]
+        ignore line: [C:\\Users\\user\\.utils\\llvm-mingw\\bin\\llvm-ar.exe qc CMakeFiles\\cmTC_a8f1d.dir/objects.a @CMakeFiles\\cmTC_a8f1d.dir\\objects1.rsp]
+        ignore line: [C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe  -v -Wl -v -Wl --whole-archive CMakeFiles\\cmTC_a8f1d.dir/objects.a -Wl --no-whole-archive -o cmTC_a8f1d.exe -Wl --out-implib libcmTC_a8f1d.dll.a -Wl --major-image-version 0 --minor-image-version 0]
         ignore line: [clang version 22.1.0-rc3 (https://github.com/llvm/llvm-project.git 8530a2cf135c6091438b92b3778d1f23bf77d905)]
         ignore line: [Target: x86_64-w64-windows-gnu]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: C:/Users/user/.utils/llvm-mingw/bin]
         ignore line: [Configuration file: C:/Users/user/.utils/llvm-mingw/bin/x86_64-w64-windows-gnu.cfg]
-        link line: [ "C:/Users/user/.utils/llvm-mingw/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_aa44f.exe C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crt2.o C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crtbegin.o -LC:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib -LC:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/mingw/lib -LC:/Users/user/.utils/llvm-mingw/lib -LC:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows -v --whole-archive "CMakeFiles\\\\cmTC_aa44f.dir/objects.a" --no-whole-archive --out-implib libcmTC_aa44f.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 C:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crtend.o]
+        link line: [ "C:/Users/user/.utils/llvm-mingw/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_a8f1d.exe C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crt2.o C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crtbegin.o -LC:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib -LC:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/mingw/lib -LC:/Users/user/.utils/llvm-mingw/lib -LC:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows -v --whole-archive "CMakeFiles\\\\cmTC_a8f1d.dir/objects.a" --no-whole-archive --out-implib libcmTC_a8f1d.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 C:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crtend.o]
           arg [C:/Users/user/.utils/llvm-mingw/bin/ld.lld] ==> ignore
           arg [-m] ==> ignore
           arg [i386pep] ==> ignore
           arg [-Bdynamic] ==> search dynamic
           arg [-o] ==> ignore
-          arg [cmTC_aa44f.exe] ==> ignore
+          arg [cmTC_a8f1d.exe] ==> ignore
           arg [C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crt2.o] ==> obj [C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crt2.o]
           arg [C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crtbegin.o] ==> obj [C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crtbegin.o]
           arg [-LC:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib] ==> dir [C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib]
@@ -184,10 +184,10 @@ events:
           arg [-LC:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows] ==> dir [C:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows]
           arg [-v] ==> ignore
           arg [--whole-archive] ==> ignore
-          arg [CMakeFiles\\\\cmTC_aa44f.dir/objects.a] ==> ignore
+          arg [CMakeFiles\\\\cmTC_a8f1d.dir/objects.a] ==> ignore
           arg [--no-whole-archive] ==> ignore
           arg [--out-implib] ==> ignore
-          arg [libcmTC_aa44f.dll.a] ==> ignore
+          arg [libcmTC_a8f1d.dll.a] ==> ignore
           arg [--major-image-version] ==> ignore
           arg [0] ==> ignore
           arg [--minor-image-version] ==> ignore
@@ -244,8 +244,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-tsmgfh"
-      binary: "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-tsmgfh"
+      source: "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-xlohnk"
+      binary: "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-xlohnk"
     cmakeVariables:
       CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "C:/Users/user/.utils/llvm-mingw/bin/clang-scan-deps.exe"
       CMAKE_CXX_FLAGS: ""
@@ -256,20 +256,20 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-tsmgfh'
+        Change Dir: 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-xlohnk'
         
-        Run Build Command(s): "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/bin/cmake.exe" -E env VERBOSE=1 A:/compilers/mingw64/bin/mingw32-make.exe -f Makefile cmTC_12fc9/fast
-        A:/compilers/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_12fc9.dir\\build.make CMakeFiles/cmTC_12fc9.dir/build
-        mingw32-make[1]: Entering directory 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-tsmgfh'
-        Building CXX object CMakeFiles/cmTC_12fc9.dir/CMakeCXXCompilerABI.cpp.obj
-        C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe   -v -MD -MT CMakeFiles/cmTC_12fc9.dir/CMakeCXXCompilerABI.cpp.obj -MF CMakeFiles\\cmTC_12fc9.dir\\CMakeCXXCompilerABI.cpp.obj.d -o CMakeFiles\\cmTC_12fc9.dir\\CMakeCXXCompilerABI.cpp.obj -c "E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
+        Run Build Command(s): "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/bin/cmake.exe" -E env VERBOSE=1 A:/compilers/mingw64/bin/mingw32-make.exe -f Makefile cmTC_99086/fast
+        A:/compilers/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_99086.dir\\build.make CMakeFiles/cmTC_99086.dir/build
+        mingw32-make[1]: Entering directory 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-xlohnk'
+        Building CXX object CMakeFiles/cmTC_99086.dir/CMakeCXXCompilerABI.cpp.obj
+        C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe   -v -MD -MT CMakeFiles/cmTC_99086.dir/CMakeCXXCompilerABI.cpp.obj -MF CMakeFiles\\cmTC_99086.dir\\CMakeCXXCompilerABI.cpp.obj.d -o CMakeFiles\\cmTC_99086.dir\\CMakeCXXCompilerABI.cpp.obj -c "E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
         clang version 22.1.0-rc3 (https://github.com/llvm/llvm-project.git 8530a2cf135c6091438b92b3778d1f23bf77d905)
         Target: x86_64-w64-windows-gnu
         Thread model: posix
         InstalledDir: C:/Users/user/.utils/llvm-mingw/bin
         Configuration file: C:/Users/user/.utils/llvm-mingw/bin/x86_64-w64-windows-gnu.cfg
          (in-process)
-         "C:/Users/user/.utils/llvm-mingw/bin/clang-22.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -fno-sized-deallocation -fno-use-init-array -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb "-fdebug-compilation-dir=E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-tsmgfh" -v "-fcoverage-compilation-dir=E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-tsmgfh" -resource-dir C:/Users/user/.utils/llvm-mingw/lib/clang/22 -dependency-file "CMakeFiles\\\\cmTC_12fc9.dir\\\\CMakeCXXCompilerABI.cpp.obj.d" -MT CMakeFiles/cmTC_12fc9.dir/CMakeCXXCompilerABI.cpp.obj -sys-header-deps -internal-isystem C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/include/c++/v1 -internal-isystem C:/Users/user/.utils/llvm-mingw/include/c++/v1 -internal-isystem C:/Users/user/.utils/llvm-mingw/lib/clang/22/include -internal-isystem C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/include -internal-isystem C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/usr/include -internal-isystem C:/Users/user/.utils/llvm-mingw/include -fdeprecated-macro -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -exception-model=seh -faddrsig -o "CMakeFiles\\\\cmTC_12fc9.dir\\\\CMakeCXXCompilerABI.cpp.obj" -x c++ "E:\\\\Program Files (x86)\\\\CMake\\\\cmake-3.30.2-windows-x86_64\\\\share\\\\cmake-3.30\\\\Modules\\\\CMakeCXXCompilerABI.cpp"
+         "C:/Users/user/.utils/llvm-mingw/bin/clang-22.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -fno-sized-deallocation -fno-use-init-array -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb "-fdebug-compilation-dir=E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-xlohnk" -v "-fcoverage-compilation-dir=E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-xlohnk" -resource-dir C:/Users/user/.utils/llvm-mingw/lib/clang/22 -dependency-file "CMakeFiles\\\\cmTC_99086.dir\\\\CMakeCXXCompilerABI.cpp.obj.d" -MT CMakeFiles/cmTC_99086.dir/CMakeCXXCompilerABI.cpp.obj -sys-header-deps -internal-isystem C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/include/c++/v1 -internal-isystem C:/Users/user/.utils/llvm-mingw/include/c++/v1 -internal-isystem C:/Users/user/.utils/llvm-mingw/lib/clang/22/include -internal-isystem C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/include -internal-isystem C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/usr/include -internal-isystem C:/Users/user/.utils/llvm-mingw/include -fdeprecated-macro -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -exception-model=seh -faddrsig -o "CMakeFiles\\\\cmTC_99086.dir\\\\CMakeCXXCompilerABI.cpp.obj" -x c++ "E:\\\\Program Files (x86)\\\\CMake\\\\cmake-3.30.2-windows-x86_64\\\\share\\\\cmake-3.30\\\\Modules\\\\CMakeCXXCompilerABI.cpp"
         clang -cc1 version 22.1.0-rc3 based upon LLVM 22.1.0-rc3 default target x86_64-w64-mingw32
         ignoring nonexistent directory "C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/include/c++/v1"
         ignoring nonexistent directory "C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/include"
@@ -280,19 +280,19 @@ events:
          C:/Users/user/.utils/llvm-mingw/lib/clang/22/include
          C:/Users/user/.utils/llvm-mingw/include
         End of search list.
-        Linking CXX executable cmTC_12fc9.exe
-        "E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_12fc9.dir\\link.txt --verbose=1
-        "E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_12fc9.dir/objects.a
-        C:\\Users\\user\\.utils\\llvm-mingw\\bin\\llvm-ar.exe qc CMakeFiles\\cmTC_12fc9.dir/objects.a @CMakeFiles\\cmTC_12fc9.dir\\objects1.rsp
-        C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe  -v -Wl,-v -Wl,--whole-archive CMakeFiles\\cmTC_12fc9.dir/objects.a -Wl,--no-whole-archive -o cmTC_12fc9.exe -Wl,--out-implib,libcmTC_12fc9.dll.a -Wl,--major-image-version,0,--minor-image-version,0
+        Linking CXX executable cmTC_99086.exe
+        "E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_99086.dir\\link.txt --verbose=1
+        "E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_99086.dir/objects.a
+        C:\\Users\\user\\.utils\\llvm-mingw\\bin\\llvm-ar.exe qc CMakeFiles\\cmTC_99086.dir/objects.a @CMakeFiles\\cmTC_99086.dir\\objects1.rsp
+        C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe  -v -Wl,-v -Wl,--whole-archive CMakeFiles\\cmTC_99086.dir/objects.a -Wl,--no-whole-archive -o cmTC_99086.exe -Wl,--out-implib,libcmTC_99086.dll.a -Wl,--major-image-version,0,--minor-image-version,0
         clang version 22.1.0-rc3 (https://github.com/llvm/llvm-project.git 8530a2cf135c6091438b92b3778d1f23bf77d905)
         Target: x86_64-w64-windows-gnu
         Thread model: posix
         InstalledDir: C:/Users/user/.utils/llvm-mingw/bin
         Configuration file: C:/Users/user/.utils/llvm-mingw/bin/x86_64-w64-windows-gnu.cfg
-         "C:/Users/user/.utils/llvm-mingw/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_12fc9.exe C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crt2.o C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crtbegin.o -LC:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib -LC:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/mingw/lib -LC:/Users/user/.utils/llvm-mingw/lib -LC:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows -v --whole-archive "CMakeFiles\\\\cmTC_12fc9.dir/objects.a" --no-whole-archive --out-implib libcmTC_12fc9.dll.a --major-image-version 0 --minor-image-version 0 -lc++ -lmingw32 C:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crtend.o
+         "C:/Users/user/.utils/llvm-mingw/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_99086.exe C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crt2.o C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crtbegin.o -LC:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib -LC:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/mingw/lib -LC:/Users/user/.utils/llvm-mingw/lib -LC:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows -v --whole-archive "CMakeFiles\\\\cmTC_99086.dir/objects.a" --no-whole-archive --out-implib libcmTC_99086.dll.a --major-image-version 0 --minor-image-version 0 -lc++ -lmingw32 C:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crtend.o
         LLD 22.1.0 (https://github.com/llvm/llvm-project.git 8530a2cf135c6091438b92b3778d1f23bf77d905) (compatible with GNU linkers)
-        mingw32-make[1]: Leaving directory 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-tsmgfh'
+        mingw32-make[1]: Leaving directory 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-xlohnk'
         
       exitCode: 0
   -
@@ -325,20 +325,20 @@ events:
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
-        ignore line: [Change Dir: 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-tsmgfh']
+        ignore line: [Change Dir: 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-xlohnk']
         ignore line: []
-        ignore line: [Run Build Command(s): "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/bin/cmake.exe" -E env VERBOSE=1 A:/compilers/mingw64/bin/mingw32-make.exe -f Makefile cmTC_12fc9/fast]
-        ignore line: [A:/compilers/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_12fc9.dir\\build.make CMakeFiles/cmTC_12fc9.dir/build]
-        ignore line: [mingw32-make[1]: Entering directory 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-tsmgfh']
-        ignore line: [Building CXX object CMakeFiles/cmTC_12fc9.dir/CMakeCXXCompilerABI.cpp.obj]
-        ignore line: [C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe   -v -MD -MT CMakeFiles/cmTC_12fc9.dir/CMakeCXXCompilerABI.cpp.obj -MF CMakeFiles\\cmTC_12fc9.dir\\CMakeCXXCompilerABI.cpp.obj.d -o CMakeFiles\\cmTC_12fc9.dir\\CMakeCXXCompilerABI.cpp.obj -c "E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"]
+        ignore line: [Run Build Command(s): "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/bin/cmake.exe" -E env VERBOSE=1 A:/compilers/mingw64/bin/mingw32-make.exe -f Makefile cmTC_99086/fast]
+        ignore line: [A:/compilers/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_99086.dir\\build.make CMakeFiles/cmTC_99086.dir/build]
+        ignore line: [mingw32-make[1]: Entering directory 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-xlohnk']
+        ignore line: [Building CXX object CMakeFiles/cmTC_99086.dir/CMakeCXXCompilerABI.cpp.obj]
+        ignore line: [C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe   -v -MD -MT CMakeFiles/cmTC_99086.dir/CMakeCXXCompilerABI.cpp.obj -MF CMakeFiles\\cmTC_99086.dir\\CMakeCXXCompilerABI.cpp.obj.d -o CMakeFiles\\cmTC_99086.dir\\CMakeCXXCompilerABI.cpp.obj -c "E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"]
         ignore line: [clang version 22.1.0-rc3 (https://github.com/llvm/llvm-project.git 8530a2cf135c6091438b92b3778d1f23bf77d905)]
         ignore line: [Target: x86_64-w64-windows-gnu]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: C:/Users/user/.utils/llvm-mingw/bin]
         ignore line: [Configuration file: C:/Users/user/.utils/llvm-mingw/bin/x86_64-w64-windows-gnu.cfg]
         ignore line: [ (in-process)]
-        ignore line: [ "C:/Users/user/.utils/llvm-mingw/bin/clang-22.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -fno-sized-deallocation -fno-use-init-array -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb "-fdebug-compilation-dir=E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-tsmgfh" -v "-fcoverage-compilation-dir=E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-tsmgfh" -resource-dir C:/Users/user/.utils/llvm-mingw/lib/clang/22 -dependency-file "CMakeFiles\\\\cmTC_12fc9.dir\\\\CMakeCXXCompilerABI.cpp.obj.d" -MT CMakeFiles/cmTC_12fc9.dir/CMakeCXXCompilerABI.cpp.obj -sys-header-deps -internal-isystem C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/include/c++/v1 -internal-isystem C:/Users/user/.utils/llvm-mingw/include/c++/v1 -internal-isystem C:/Users/user/.utils/llvm-mingw/lib/clang/22/include -internal-isystem C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/include -internal-isystem C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/usr/include -internal-isystem C:/Users/user/.utils/llvm-mingw/include -fdeprecated-macro -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -exception-model=seh -faddrsig -o "CMakeFiles\\\\cmTC_12fc9.dir\\\\CMakeCXXCompilerABI.cpp.obj" -x c++ "E:\\\\Program Files (x86)\\\\CMake\\\\cmake-3.30.2-windows-x86_64\\\\share\\\\cmake-3.30\\\\Modules\\\\CMakeCXXCompilerABI.cpp"]
+        ignore line: [ "C:/Users/user/.utils/llvm-mingw/bin/clang-22.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -fno-sized-deallocation -fno-use-init-array -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb "-fdebug-compilation-dir=E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-xlohnk" -v "-fcoverage-compilation-dir=E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-xlohnk" -resource-dir C:/Users/user/.utils/llvm-mingw/lib/clang/22 -dependency-file "CMakeFiles\\\\cmTC_99086.dir\\\\CMakeCXXCompilerABI.cpp.obj.d" -MT CMakeFiles/cmTC_99086.dir/CMakeCXXCompilerABI.cpp.obj -sys-header-deps -internal-isystem C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/include/c++/v1 -internal-isystem C:/Users/user/.utils/llvm-mingw/include/c++/v1 -internal-isystem C:/Users/user/.utils/llvm-mingw/lib/clang/22/include -internal-isystem C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/include -internal-isystem C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/usr/include -internal-isystem C:/Users/user/.utils/llvm-mingw/include -fdeprecated-macro -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -exception-model=seh -faddrsig -o "CMakeFiles\\\\cmTC_99086.dir\\\\CMakeCXXCompilerABI.cpp.obj" -x c++ "E:\\\\Program Files (x86)\\\\CMake\\\\cmake-3.30.2-windows-x86_64\\\\share\\\\cmake-3.30\\\\Modules\\\\CMakeCXXCompilerABI.cpp"]
         ignore line: [clang -cc1 version 22.1.0-rc3 based upon LLVM 22.1.0-rc3 default target x86_64-w64-mingw32]
         ignore line: [ignoring nonexistent directory "C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/include/c++/v1"]
         ignore line: [ignoring nonexistent directory "C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/include"]
@@ -349,23 +349,23 @@ events:
         ignore line: [ C:/Users/user/.utils/llvm-mingw/lib/clang/22/include]
         ignore line: [ C:/Users/user/.utils/llvm-mingw/include]
         ignore line: [End of search list.]
-        ignore line: [Linking CXX executable cmTC_12fc9.exe]
-        ignore line: ["E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_12fc9.dir\\link.txt --verbose=1]
-        ignore line: ["E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_12fc9.dir/objects.a]
-        ignore line: [C:\\Users\\user\\.utils\\llvm-mingw\\bin\\llvm-ar.exe qc CMakeFiles\\cmTC_12fc9.dir/objects.a @CMakeFiles\\cmTC_12fc9.dir\\objects1.rsp]
-        ignore line: [C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe  -v -Wl -v -Wl --whole-archive CMakeFiles\\cmTC_12fc9.dir/objects.a -Wl --no-whole-archive -o cmTC_12fc9.exe -Wl --out-implib libcmTC_12fc9.dll.a -Wl --major-image-version 0 --minor-image-version 0]
+        ignore line: [Linking CXX executable cmTC_99086.exe]
+        ignore line: ["E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_99086.dir\\link.txt --verbose=1]
+        ignore line: ["E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_99086.dir/objects.a]
+        ignore line: [C:\\Users\\user\\.utils\\llvm-mingw\\bin\\llvm-ar.exe qc CMakeFiles\\cmTC_99086.dir/objects.a @CMakeFiles\\cmTC_99086.dir\\objects1.rsp]
+        ignore line: [C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe  -v -Wl -v -Wl --whole-archive CMakeFiles\\cmTC_99086.dir/objects.a -Wl --no-whole-archive -o cmTC_99086.exe -Wl --out-implib libcmTC_99086.dll.a -Wl --major-image-version 0 --minor-image-version 0]
         ignore line: [clang version 22.1.0-rc3 (https://github.com/llvm/llvm-project.git 8530a2cf135c6091438b92b3778d1f23bf77d905)]
         ignore line: [Target: x86_64-w64-windows-gnu]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: C:/Users/user/.utils/llvm-mingw/bin]
         ignore line: [Configuration file: C:/Users/user/.utils/llvm-mingw/bin/x86_64-w64-windows-gnu.cfg]
-        link line: [ "C:/Users/user/.utils/llvm-mingw/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_12fc9.exe C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crt2.o C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crtbegin.o -LC:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib -LC:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/mingw/lib -LC:/Users/user/.utils/llvm-mingw/lib -LC:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows -v --whole-archive "CMakeFiles\\\\cmTC_12fc9.dir/objects.a" --no-whole-archive --out-implib libcmTC_12fc9.dll.a --major-image-version 0 --minor-image-version 0 -lc++ -lmingw32 C:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crtend.o]
+        link line: [ "C:/Users/user/.utils/llvm-mingw/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_99086.exe C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crt2.o C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crtbegin.o -LC:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib -LC:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/mingw/lib -LC:/Users/user/.utils/llvm-mingw/lib -LC:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows -v --whole-archive "CMakeFiles\\\\cmTC_99086.dir/objects.a" --no-whole-archive --out-implib libcmTC_99086.dll.a --major-image-version 0 --minor-image-version 0 -lc++ -lmingw32 C:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crtend.o]
           arg [C:/Users/user/.utils/llvm-mingw/bin/ld.lld] ==> ignore
           arg [-m] ==> ignore
           arg [i386pep] ==> ignore
           arg [-Bdynamic] ==> search dynamic
           arg [-o] ==> ignore
-          arg [cmTC_12fc9.exe] ==> ignore
+          arg [cmTC_99086.exe] ==> ignore
           arg [C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crt2.o] ==> obj [C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crt2.o]
           arg [C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crtbegin.o] ==> obj [C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib/crtbegin.o]
           arg [-LC:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib] ==> dir [C:/Users/user/.utils/llvm-mingw/x86_64-w64-mingw32/lib]
@@ -374,10 +374,10 @@ events:
           arg [-LC:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows] ==> dir [C:/Users/user/.utils/llvm-mingw/lib/clang/22/lib/windows]
           arg [-v] ==> ignore
           arg [--whole-archive] ==> ignore
-          arg [CMakeFiles\\\\cmTC_12fc9.dir/objects.a] ==> ignore
+          arg [CMakeFiles\\\\cmTC_99086.dir/objects.a] ==> ignore
           arg [--no-whole-archive] ==> ignore
           arg [--out-implib] ==> ignore
-          arg [libcmTC_12fc9.dll.a] ==> ignore
+          arg [libcmTC_99086.dll.a] ==> ignore
           arg [--major-image-version] ==> ignore
           arg [0] ==> ignore
           arg [--minor-image-version] ==> ignore
@@ -436,8 +436,8 @@ events:
     checks:
       - "Performing Test COMPILER_SUPPORTS_AVX2"
     directories:
-      source: "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-09996r"
-      binary: "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-09996r"
+      source: "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-x1cgki"
+      binary: "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-x1cgki"
     cmakeVariables:
       CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "C:/Users/user/.utils/llvm-mingw/bin/clang-scan-deps.exe"
       CMAKE_CXX_FLAGS: ""
@@ -447,19 +447,19 @@ events:
       variable: "COMPILER_SUPPORTS_AVX2"
       cached: true
       stdout: |
-        Change Dir: 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-09996r'
+        Change Dir: 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-x1cgki'
         
-        Run Build Command(s): "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/bin/cmake.exe" -E env VERBOSE=1 A:/compilers/mingw64/bin/mingw32-make.exe -f Makefile cmTC_66f68/fast
-        A:/compilers/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_66f68.dir\\build.make CMakeFiles/cmTC_66f68.dir/build
-        mingw32-make[1]: Entering directory 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-09996r'
-        Building CXX object CMakeFiles/cmTC_66f68.dir/src.cxx.obj
-        C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DCOMPILER_SUPPORTS_AVX2  -mavx2 -MD -MT CMakeFiles/cmTC_66f68.dir/src.cxx.obj -MF CMakeFiles\\cmTC_66f68.dir\\src.cxx.obj.d -o CMakeFiles\\cmTC_66f68.dir\\src.cxx.obj -c "E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\build\\clang-debug\\CMakeFiles\\CMakeScratch\\TryCompile-09996r\\src.cxx"
-        Linking CXX executable cmTC_66f68.exe
-        "E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_66f68.dir\\link.txt --verbose=1
-        "E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_66f68.dir/objects.a
-        C:\\Users\\user\\.utils\\llvm-mingw\\bin\\llvm-ar.exe qc CMakeFiles\\cmTC_66f68.dir/objects.a @CMakeFiles\\cmTC_66f68.dir\\objects1.rsp
-        C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -Wl,--whole-archive CMakeFiles\\cmTC_66f68.dir/objects.a -Wl,--no-whole-archive -o cmTC_66f68.exe -Wl,--out-implib,libcmTC_66f68.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_66f68.dir\\linkLibs.rsp
-        mingw32-make[1]: Leaving directory 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-09996r'
+        Run Build Command(s): "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/bin/cmake.exe" -E env VERBOSE=1 A:/compilers/mingw64/bin/mingw32-make.exe -f Makefile cmTC_7edac/fast
+        A:/compilers/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_7edac.dir\\build.make CMakeFiles/cmTC_7edac.dir/build
+        mingw32-make[1]: Entering directory 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-x1cgki'
+        Building CXX object CMakeFiles/cmTC_7edac.dir/src.cxx.obj
+        C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DCOMPILER_SUPPORTS_AVX2  -mavx2 -MD -MT CMakeFiles/cmTC_7edac.dir/src.cxx.obj -MF CMakeFiles\\cmTC_7edac.dir\\src.cxx.obj.d -o CMakeFiles\\cmTC_7edac.dir\\src.cxx.obj -c "E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\build\\clang-debug\\CMakeFiles\\CMakeScratch\\TryCompile-x1cgki\\src.cxx"
+        Linking CXX executable cmTC_7edac.exe
+        "E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_7edac.dir\\link.txt --verbose=1
+        "E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_7edac.dir/objects.a
+        C:\\Users\\user\\.utils\\llvm-mingw\\bin\\llvm-ar.exe qc CMakeFiles\\cmTC_7edac.dir/objects.a @CMakeFiles\\cmTC_7edac.dir\\objects1.rsp
+        C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -Wl,--whole-archive CMakeFiles\\cmTC_7edac.dir/objects.a -Wl,--no-whole-archive -o cmTC_7edac.exe -Wl,--out-implib,libcmTC_7edac.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_7edac.dir\\linkLibs.rsp
+        mingw32-make[1]: Leaving directory 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-x1cgki'
         
       exitCode: 0
   -
@@ -472,8 +472,8 @@ events:
     checks:
       - "Performing Test COMPILER_SUPPORTS_SSE2"
     directories:
-      source: "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-eyqo3w"
-      binary: "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-eyqo3w"
+      source: "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-avrro1"
+      binary: "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-avrro1"
     cmakeVariables:
       CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "C:/Users/user/.utils/llvm-mingw/bin/clang-scan-deps.exe"
       CMAKE_CXX_FLAGS: ""
@@ -483,19 +483,19 @@ events:
       variable: "COMPILER_SUPPORTS_SSE2"
       cached: true
       stdout: |
-        Change Dir: 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-eyqo3w'
+        Change Dir: 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-avrro1'
         
-        Run Build Command(s): "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/bin/cmake.exe" -E env VERBOSE=1 A:/compilers/mingw64/bin/mingw32-make.exe -f Makefile cmTC_a7f03/fast
-        A:/compilers/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_a7f03.dir\\build.make CMakeFiles/cmTC_a7f03.dir/build
-        mingw32-make[1]: Entering directory 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-eyqo3w'
-        Building CXX object CMakeFiles/cmTC_a7f03.dir/src.cxx.obj
-        C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DCOMPILER_SUPPORTS_SSE2  -msse2 -MD -MT CMakeFiles/cmTC_a7f03.dir/src.cxx.obj -MF CMakeFiles\\cmTC_a7f03.dir\\src.cxx.obj.d -o CMakeFiles\\cmTC_a7f03.dir\\src.cxx.obj -c "E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\build\\clang-debug\\CMakeFiles\\CMakeScratch\\TryCompile-eyqo3w\\src.cxx"
-        Linking CXX executable cmTC_a7f03.exe
-        "E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_a7f03.dir\\link.txt --verbose=1
-        "E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_a7f03.dir/objects.a
-        C:\\Users\\user\\.utils\\llvm-mingw\\bin\\llvm-ar.exe qc CMakeFiles\\cmTC_a7f03.dir/objects.a @CMakeFiles\\cmTC_a7f03.dir\\objects1.rsp
-        C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -Wl,--whole-archive CMakeFiles\\cmTC_a7f03.dir/objects.a -Wl,--no-whole-archive -o cmTC_a7f03.exe -Wl,--out-implib,libcmTC_a7f03.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_a7f03.dir\\linkLibs.rsp
-        mingw32-make[1]: Leaving directory 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-eyqo3w'
+        Run Build Command(s): "E:/Program Files (x86)/CMake/cmake-3.30.2-windows-x86_64/bin/cmake.exe" -E env VERBOSE=1 A:/compilers/mingw64/bin/mingw32-make.exe -f Makefile cmTC_47448/fast
+        A:/compilers/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_47448.dir\\build.make CMakeFiles/cmTC_47448.dir/build
+        mingw32-make[1]: Entering directory 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-avrro1'
+        Building CXX object CMakeFiles/cmTC_47448.dir/src.cxx.obj
+        C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DCOMPILER_SUPPORTS_SSE2  -msse2 -MD -MT CMakeFiles/cmTC_47448.dir/src.cxx.obj -MF CMakeFiles\\cmTC_47448.dir\\src.cxx.obj.d -o CMakeFiles\\cmTC_47448.dir\\src.cxx.obj -c "E:\\Program Files (x86)\\Code\\C_code\\vulkan_projects\\VoxelEngine\\build\\clang-debug\\CMakeFiles\\CMakeScratch\\TryCompile-avrro1\\src.cxx"
+        Linking CXX executable cmTC_47448.exe
+        "E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_47448.dir\\link.txt --verbose=1
+        "E:\\Program Files (x86)\\CMake\\cmake-3.30.2-windows-x86_64\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_47448.dir/objects.a
+        C:\\Users\\user\\.utils\\llvm-mingw\\bin\\llvm-ar.exe qc CMakeFiles\\cmTC_47448.dir/objects.a @CMakeFiles\\cmTC_47448.dir\\objects1.rsp
+        C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -Wl,--whole-archive CMakeFiles\\cmTC_47448.dir/objects.a -Wl,--no-whole-archive -o cmTC_47448.exe -Wl,--out-implib,libcmTC_47448.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_47448.dir\\linkLibs.rsp
+        mingw32-make[1]: Leaving directory 'E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/CMakeScratch/TryCompile-avrro1'
         
       exitCode: 0
 ...

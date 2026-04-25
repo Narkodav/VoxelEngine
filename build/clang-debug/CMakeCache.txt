@@ -296,6 +296,15 @@ JsonParser_IS_TOP_LEVEL:STATIC=OFF
 JsonParser_SOURCE_DIR:STATIC=E:/Program Files (x86)/Code/C_code/libraries/JsonParser
 
 //Value Computed by CMake
+PluginFramework_BINARY_DIR:STATIC=E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/PluginFramework
+
+//Value Computed by CMake
+PluginFramework_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+PluginFramework_SOURCE_DIR:STATIC=E:/Program Files (x86)/Code/C_code/libraries/PluginFramework
+
+//Value Computed by CMake
 VoxelEngine_BINARY_DIR:STATIC=E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug
 
 //Value Computed by CMake
@@ -427,7 +436,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=6
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=9
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -489,6 +498,7 @@ COMPILER_SUPPORTS_AVX2:INTERNAL=1
 COMPILER_SUPPORTS_SSE2:INTERNAL=1
 //Details about finding Vulkan
 FIND_PACKAGE_MESSAGE_DETAILS_Vulkan:INTERNAL=[E:/Program Files (x86)/API/Vulkan/Lib/vulkan-1.lib][E:/Program Files (x86)/API/Vulkan/Include][cfound components: glslc glslangValidator ][v1.4.309()]
+PLUGIN_OUTPUT_DIR:INTERNAL=E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/plugins
 //ADVANCED property for variable: Vulkan_GLSLANG_VALIDATOR_EXECUTABLE
 Vulkan_GLSLANG_VALIDATOR_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Vulkan_GLSLC_EXECUTABLE

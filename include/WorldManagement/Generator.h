@@ -1,51 +1,53 @@
-#ifndef GENERATOR_H
-#define GENERATOR_H
+// #ifndef GENERATOR_H
+// #define GENERATOR_H
 
-#pragma once
-#include "Common.h"
+// #pragma once
+// #include "Common.h"
 
-#include "WorldManagement/WorldGrid.h"
+// #include "WorldManagement/WorldGrid.h"
+// #include "GameData/ResourceCache.h"
 
-#include "CommonApi/Mathematics/PerlinNoise2d.h"
-#include "CommonApi/Mathematics/PerlinNoise3d.h"
+// #include "CommonApi/Mathematics/PerlinNoise2d.h"
+// #include "CommonApi/Mathematics/PerlinNoise3d.h"
 
-#include <random>
+// #include <random>
 
-//generators are custom made for a specific item set, completely new item set requires a new generator
-class Generator
-{
-public:
+// //generators are custom made for a specific item set, completely new item set requires a new generator
+// class Generator
+// {
+// public:
 
-	enum class BlockTypes : uint32_t
-	{
-		Air = 0,
-		Dirt = 1,
-		Num,
-	};
+// 	enum class BlockTypes : uint32_t
+// 	{
+// 		Air = 0,
+// 		Dirt = 1,
+// 		Grass = 2,
+// 		Num,
+// 	};
 
-private:
-	using SeedType = uint64_t;
-	Math::PerlinNoise2d m_perlinNoise2d;
-	Math::PerlinNoise3d m_perlinNoise3d1;
-	Math::PerlinNoise3d m_perlinNoise3d2;
+// private:
+// 	using SeedType = uint64_t;
+// 	Math::PerlinNoise2d m_perlinNoise2d;
+// 	Math::PerlinNoise3d m_perlinNoise3d1;
+// 	Math::PerlinNoise3d m_perlinNoise3d2;
 
-	Id::VoxelState m_relevantBlockIds[static_cast<uint32_t>(BlockTypes::Num)];
+// 	Id::VoxelState m_relevantBlockIds[static_cast<uint32_t>(BlockTypes::Num)];
 
-	static const int32_t m_groundLevel = 200;
-	SeedType m_seed;
-public:
-	Generator();
-	Generator(const Generator& other) = default;
-	Generator& operator=(const Generator& other) = default;
+// 	static const int32_t m_groundLevel = 200;
+// 	SeedType m_seed;
+// public:
+// 	Generator();
+// 	Generator(const Generator& other) = default;
+// 	Generator& operator=(const Generator& other) = default;
 
-	void set(SeedType seed);
+// 	void set(SeedType seed, const ResourceCache& resourceCache);
 
-	bool shouldBeCave(int32_t x, int32_t y, int32_t z);
+// 	bool shouldBeCave(int32_t x, int32_t y, int32_t z);
 
-	void setChunkData(WorldGrid& grid, size_t allocIndex);
+// 	void setChunkData(WorldGrid& grid, size_t allocIndex);
 
-	void fillChunk(WorldGrid& grid, size_t allocIndex, BlockTypes type);
-};
+// 	void fillChunk(WorldGrid& grid, size_t allocIndex, BlockTypes type);
+// };
 
-#endif
+// #endif
 

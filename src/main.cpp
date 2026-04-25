@@ -7,16 +7,22 @@
 #include "GameData/EngineSettingsDeserializer.h"
 
 #include "WorldManagement/WorldGrid.h"
-#include "WorldManagement/Generator.h"
 
 #include "CommonApi/PlatformAbstractions/Console.h"
+
+#include "Modular/HostBase.h"
+#include "Modular/PluginManager.h"
+
+#include "SDK/GeneratorInterface.h"
 
 glm::vec3 moveDir(0.0f);
 bool CkeyPressed = false;
 bool cursorMode = true;
+bool shouldReload = false;
 Graphics::Utility::CameraPerspective camera;
 Platform::Window window;
-Generator generator;
+GeneratorApiInterface* generatorApi;
+GeneratorInterface* generator;
 WorldGrid grid;
 Renderer renderer;
 ResourceCache resources;
@@ -88,6 +94,10 @@ void keyPressed(Platform::KeyboardKey key) {
 
 int main()
 {
+	Modular::HostBase host;
+	Modular::PluginManager pluginManager;
+	pluginManager.setHost(host.getInterfaceOnLoad());
+
 	std::cout << std::endl;
 	MT::MinimalThreadPool pool;
 	pool.init(16, std::cerr);
@@ -97,18 +107,22 @@ int main()
 	engineFiles.printDirectories();
 	engineFiles.printPaths();
 
+	pluginManager.loadPluginsInDirectory(engineFiles.getModulesDirectory());
+
 	Json::Value settings = Json::Value::fromFile(engineFiles.getSettingsFile().string()).front();
 
-	cursorMode = 1;	
-	grid.generate(EngineSettingsDeserializer::parseGenerator(settings));
+	cursorMode = 1;
+	auto generatorSettings = EngineSettingsDeserializer::parseGenerator(settings);
+	grid.generate(generatorSettings.shapeSettings);
 	auto graphicsSettings = EngineSettingsDeserializer::parseGraphics(settings);
+
+	generatorApi = host.getService<GeneratorApiInterface>(generatorSettings.generatorId);
+	generator = generatorApi->createGenerator(generatorApi->self);
 
 	Graphics::Utility::CameraPerspective camera = Graphics::Utility::CameraPerspective(
 		graphicsSettings.camera.upVector, graphicsSettings.camera.position, 
 		graphicsSettings.camera.pitch, graphicsSettings.camera.yaw, graphicsSettings.camera.fov, 
 		800.f / 600.f, 0.1f, 100000.0f);
-	
-	generator.set(1234);
     
     window.create({ 800, 600 }, "app", Platform::WindowAttributes::firstPersonGameMaximisedAtr());
 
@@ -124,6 +138,8 @@ int main()
 
 	resources.registerResources(engineFiles);
 	resources.getAssetCache().printStatistics();
+
+	generator->init(generator->self, generatorSettings.seed, resources.getInterface());
 
 	float deltaTime = 0.0f;
 
@@ -141,14 +157,13 @@ int main()
 	for (size_t i = 0; i < grid.getAllocatedChunks().size(); ++i)
 		pool.pushTask([i]() {
 			//generator.fillChunk(grid, i, Generator::BlockTypes::Dirt);
-			generator.setChunkData(grid, i);
-			renderer.updateChunkAsync(resources, grid.getAllocatedChunks()[i].getIndex(), grid);
+			generator->setChunkData(generator->self, grid.getInterface(), i);
+			//renderer.updateChunkAsync(resources, grid.getAllocatedChunks()[i].getIndex(), grid);
 		});
-	//pool.waitIdle();
+	pool.waitIdle();
 	
-	
-	// for (size_t i = 0; i < grid.getAllocatedChunks().size(); ++i)
-	// 	renderer.updateChunkAsync(resources, grid.getAllocatedChunks()[i].getIndex(), grid);
+	for (size_t i = 0; i < grid.getAllocatedChunks().size(); ++i)
+		renderer.updateChunkAsync(resources, grid.getAllocatedChunks()[i].getIndex(), grid);
 	
 	while (!window.shouldClose()) {
 		auto startTime = std::chrono::high_resolution_clock::now();
@@ -172,4 +187,5 @@ int main()
 	pool.destroy(pool.wait());
 	renderer.cleanup(resources.getAssetCache().getStorageCache());
 	window.destroy();
+	generatorApi->destroyGenerator(generatorApi->self, generator);
 }

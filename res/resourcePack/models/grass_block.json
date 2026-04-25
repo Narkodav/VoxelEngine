@@ -1,27 +1,27 @@
 {
-    "name": "grass_block",
-    "shapes" : [
-      {
-        "textures": {
-          "front": {
-            "name": "grass_block_side"
-          },
-          "right": {
-            "name": "grass_block_side"
-          },
-          "top": {
-            "name": "grass_block_top"
-          },
-          "back": {
-            "name": "grass_block_side"
-          },
-          "left": {
-            "name": "grass_block_side"
-          },
-          "bottom": {
-            "name": "dirt"
-          }
+  "name": "grass_block",
+  "shapes" : [
+    {
+      "textures": {
+        "front": {
+          "name": "grass_block_side"
+        },
+        "right": {
+          "name": "grass_block_side"
+        },
+        "top": {
+          "name": "grass_block_top"
+        },
+        "back": {
+          "name": "grass_block_side"
+        },
+        "left": {
+          "name": "grass_block_side"
+        },
+        "bottom": {
+          "name": "dirt"
         }
       }
-]
+    }
+  ]
 }

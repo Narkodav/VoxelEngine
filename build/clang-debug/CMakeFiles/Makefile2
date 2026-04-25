@@ -66,16 +66,20 @@ all: CMakeFiles/VoxelEngine.dir/all
 all: CommonApi/all
 all: GraphicsWrapper/all
 all: JsonParser/all
+all: PluginFramework/all
 all: Vendor/imgui/all
 all: Vendor/Clipper2Lib/all
+all: Modules/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
 preinstall: CommonApi/preinstall
 preinstall: GraphicsWrapper/preinstall
 preinstall: JsonParser/preinstall
+preinstall: PluginFramework/preinstall
 preinstall: Vendor/imgui/preinstall
 preinstall: Vendor/Clipper2Lib/preinstall
+preinstall: Modules/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
@@ -83,8 +87,10 @@ clean: CMakeFiles/VoxelEngine.dir/clean
 clean: CommonApi/clean
 clean: GraphicsWrapper/clean
 clean: JsonParser/clean
+clean: PluginFramework/clean
 clean: Vendor/imgui/clean
 clean: Vendor/Clipper2Lib/clean
+clean: Modules/clean
 .PHONY : clean
 
 #=============================================================================
@@ -137,6 +143,55 @@ JsonParser/clean: JsonParser/CMakeFiles/JsonParserBenchmark.dir/clean
 .PHONY : JsonParser/clean
 
 #=============================================================================
+# Directory level rules for directory Modules
+
+# Recursive "all" directory target.
+Modules/all: Modules/DefaultModule/all
+.PHONY : Modules/all
+
+# Recursive "preinstall" directory target.
+Modules/preinstall: Modules/DefaultModule/preinstall
+.PHONY : Modules/preinstall
+
+# Recursive "clean" directory target.
+Modules/clean: Modules/DefaultModule/clean
+.PHONY : Modules/clean
+
+#=============================================================================
+# Directory level rules for directory Modules/DefaultModule
+
+# Recursive "all" directory target.
+Modules/DefaultModule/all: Modules/DefaultModule/CMakeFiles/DefaultModule.dir/all
+.PHONY : Modules/DefaultModule/all
+
+# Recursive "preinstall" directory target.
+Modules/DefaultModule/preinstall:
+.PHONY : Modules/DefaultModule/preinstall
+
+# Recursive "clean" directory target.
+Modules/DefaultModule/clean: Modules/DefaultModule/CMakeFiles/DefaultModule.dir/clean
+.PHONY : Modules/DefaultModule/clean
+
+#=============================================================================
+# Directory level rules for directory PluginFramework
+
+# Recursive "all" directory target.
+PluginFramework/all: PluginFramework/CMakeFiles/PluginFramework.dir/all
+PluginFramework/all: PluginFramework/CMakeFiles/TestPlugin.dir/all
+PluginFramework/all: PluginFramework/CMakeFiles/PluginFrameworkTests.dir/all
+.PHONY : PluginFramework/all
+
+# Recursive "preinstall" directory target.
+PluginFramework/preinstall:
+.PHONY : PluginFramework/preinstall
+
+# Recursive "clean" directory target.
+PluginFramework/clean: PluginFramework/CMakeFiles/PluginFramework.dir/clean
+PluginFramework/clean: PluginFramework/CMakeFiles/TestPlugin.dir/clean
+PluginFramework/clean: PluginFramework/CMakeFiles/PluginFrameworkTests.dir/clean
+.PHONY : PluginFramework/clean
+
+#=============================================================================
 # Directory level rules for directory Vendor/Clipper2Lib
 
 # Recursive "all" directory target.
@@ -172,16 +227,17 @@ Vendor/imgui/clean: Vendor/imgui/CMakeFiles/imgui.dir/clean
 # All Build rule for target.
 CMakeFiles/VoxelEngine.dir/all: CommonApi/CMakeFiles/CommonApi.dir/all
 CMakeFiles/VoxelEngine.dir/all: GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/all
+CMakeFiles/VoxelEngine.dir/all: PluginFramework/CMakeFiles/PluginFramework.dir/all
 CMakeFiles/VoxelEngine.dir/all: Vendor/imgui/CMakeFiles/imgui.dir/all
 CMakeFiles/VoxelEngine.dir/all: Vendor/Clipper2Lib/CMakeFiles/Clipper2Lib.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\VoxelEngine.dir\build.make CMakeFiles/VoxelEngine.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\VoxelEngine.dir\build.make CMakeFiles/VoxelEngine.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=54,55,56,57,58,59,60,61,62,63 "Built target VoxelEngine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=63,64,65,66,67,68,69,70,71,72 "Built target VoxelEngine"
 .PHONY : CMakeFiles/VoxelEngine.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/VoxelEngine.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" 64
+	$(CMAKE_COMMAND) -E cmake_progress_start "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" 66
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/VoxelEngine.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" 0
 .PHONY : CMakeFiles/VoxelEngine.dir/rule
@@ -254,7 +310,7 @@ CommonApi/CMakeFiles/CommonApiTests.dir/clean:
 GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/all: CommonApi/CMakeFiles/CommonApi.dir/all
 	$(MAKE) $(MAKESILENT) -f GraphicsWrapper\CMakeFiles\GraphicsWrapper.dir\build.make GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/depend
 	$(MAKE) $(MAKESILENT) -f GraphicsWrapper\CMakeFiles\GraphicsWrapper.dir\build.make GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49 "Built target GraphicsWrapper"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51 "Built target GraphicsWrapper"
 .PHONY : GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/all
 
 # Build rule for subdir invocation for target.
@@ -281,7 +337,7 @@ GraphicsWrapper/CMakeFiles/GraphicsWrapperTests.dir/all: CommonApi/CMakeFiles/Co
 GraphicsWrapper/CMakeFiles/GraphicsWrapperTests.dir/all: GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/all
 	$(MAKE) $(MAKESILENT) -f GraphicsWrapper\CMakeFiles\GraphicsWrapperTests.dir\build.make GraphicsWrapper/CMakeFiles/GraphicsWrapperTests.dir/depend
 	$(MAKE) $(MAKESILENT) -f GraphicsWrapper\CMakeFiles\GraphicsWrapperTests.dir\build.make GraphicsWrapper/CMakeFiles/GraphicsWrapperTests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=50,51 "Built target GraphicsWrapperTests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=52,53 "Built target GraphicsWrapperTests"
 .PHONY : GraphicsWrapper/CMakeFiles/GraphicsWrapperTests.dir/all
 
 # Build rule for subdir invocation for target.
@@ -307,7 +363,7 @@ GraphicsWrapper/CMakeFiles/GraphicsWrapperTests.dir/clean:
 JsonParser/CMakeFiles/JsonParserBenchmark.dir/all:
 	$(MAKE) $(MAKESILENT) -f JsonParser\CMakeFiles\JsonParserBenchmark.dir\build.make JsonParser/CMakeFiles/JsonParserBenchmark.dir/depend
 	$(MAKE) $(MAKESILENT) -f JsonParser\CMakeFiles\JsonParserBenchmark.dir\build.make JsonParser/CMakeFiles/JsonParserBenchmark.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=52,53 "Built target JsonParserBenchmark"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=54,55 "Built target JsonParserBenchmark"
 .PHONY : JsonParser/CMakeFiles/JsonParserBenchmark.dir/all
 
 # Build rule for subdir invocation for target.
@@ -327,13 +383,92 @@ JsonParser/CMakeFiles/JsonParserBenchmark.dir/clean:
 .PHONY : JsonParser/CMakeFiles/JsonParserBenchmark.dir/clean
 
 #=============================================================================
+# Target rules for target PluginFramework/CMakeFiles/PluginFramework.dir
+
+# All Build rule for target.
+PluginFramework/CMakeFiles/PluginFramework.dir/all:
+	$(MAKE) $(MAKESILENT) -f PluginFramework\CMakeFiles\PluginFramework.dir\build.make PluginFramework/CMakeFiles/PluginFramework.dir/depend
+	$(MAKE) $(MAKESILENT) -f PluginFramework\CMakeFiles\PluginFramework.dir\build.make PluginFramework/CMakeFiles/PluginFramework.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=56,57 "Built target PluginFramework"
+.PHONY : PluginFramework/CMakeFiles/PluginFramework.dir/all
+
+# Build rule for subdir invocation for target.
+PluginFramework/CMakeFiles/PluginFramework.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 PluginFramework/CMakeFiles/PluginFramework.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" 0
+.PHONY : PluginFramework/CMakeFiles/PluginFramework.dir/rule
+
+# Convenience name for target.
+PluginFramework: PluginFramework/CMakeFiles/PluginFramework.dir/rule
+.PHONY : PluginFramework
+
+# clean rule for target.
+PluginFramework/CMakeFiles/PluginFramework.dir/clean:
+	$(MAKE) $(MAKESILENT) -f PluginFramework\CMakeFiles\PluginFramework.dir\build.make PluginFramework/CMakeFiles/PluginFramework.dir/clean
+.PHONY : PluginFramework/CMakeFiles/PluginFramework.dir/clean
+
+#=============================================================================
+# Target rules for target PluginFramework/CMakeFiles/TestPlugin.dir
+
+# All Build rule for target.
+PluginFramework/CMakeFiles/TestPlugin.dir/all:
+	$(MAKE) $(MAKESILENT) -f PluginFramework\CMakeFiles\TestPlugin.dir\build.make PluginFramework/CMakeFiles/TestPlugin.dir/depend
+	$(MAKE) $(MAKESILENT) -f PluginFramework\CMakeFiles\TestPlugin.dir\build.make PluginFramework/CMakeFiles/TestPlugin.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=61,62 "Built target TestPlugin"
+.PHONY : PluginFramework/CMakeFiles/TestPlugin.dir/all
+
+# Build rule for subdir invocation for target.
+PluginFramework/CMakeFiles/TestPlugin.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 PluginFramework/CMakeFiles/TestPlugin.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" 0
+.PHONY : PluginFramework/CMakeFiles/TestPlugin.dir/rule
+
+# Convenience name for target.
+TestPlugin: PluginFramework/CMakeFiles/TestPlugin.dir/rule
+.PHONY : TestPlugin
+
+# clean rule for target.
+PluginFramework/CMakeFiles/TestPlugin.dir/clean:
+	$(MAKE) $(MAKESILENT) -f PluginFramework\CMakeFiles\TestPlugin.dir\build.make PluginFramework/CMakeFiles/TestPlugin.dir/clean
+.PHONY : PluginFramework/CMakeFiles/TestPlugin.dir/clean
+
+#=============================================================================
+# Target rules for target PluginFramework/CMakeFiles/PluginFrameworkTests.dir
+
+# All Build rule for target.
+PluginFramework/CMakeFiles/PluginFrameworkTests.dir/all: PluginFramework/CMakeFiles/PluginFramework.dir/all
+PluginFramework/CMakeFiles/PluginFrameworkTests.dir/all: PluginFramework/CMakeFiles/TestPlugin.dir/all
+	$(MAKE) $(MAKESILENT) -f PluginFramework\CMakeFiles\PluginFrameworkTests.dir\build.make PluginFramework/CMakeFiles/PluginFrameworkTests.dir/depend
+	$(MAKE) $(MAKESILENT) -f PluginFramework\CMakeFiles\PluginFrameworkTests.dir\build.make PluginFramework/CMakeFiles/PluginFrameworkTests.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=58,59,60 "Built target PluginFrameworkTests"
+.PHONY : PluginFramework/CMakeFiles/PluginFrameworkTests.dir/all
+
+# Build rule for subdir invocation for target.
+PluginFramework/CMakeFiles/PluginFrameworkTests.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" 7
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 PluginFramework/CMakeFiles/PluginFrameworkTests.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" 0
+.PHONY : PluginFramework/CMakeFiles/PluginFrameworkTests.dir/rule
+
+# Convenience name for target.
+PluginFrameworkTests: PluginFramework/CMakeFiles/PluginFrameworkTests.dir/rule
+.PHONY : PluginFrameworkTests
+
+# clean rule for target.
+PluginFramework/CMakeFiles/PluginFrameworkTests.dir/clean:
+	$(MAKE) $(MAKESILENT) -f PluginFramework\CMakeFiles\PluginFrameworkTests.dir\build.make PluginFramework/CMakeFiles/PluginFrameworkTests.dir/clean
+.PHONY : PluginFramework/CMakeFiles/PluginFrameworkTests.dir/clean
+
+#=============================================================================
 # Target rules for target Vendor/imgui/CMakeFiles/imgui.dir
 
 # All Build rule for target.
 Vendor/imgui/CMakeFiles/imgui.dir/all:
 	$(MAKE) $(MAKESILENT) -f Vendor\imgui\CMakeFiles\imgui.dir\build.make Vendor/imgui/CMakeFiles/imgui.dir/depend
 	$(MAKE) $(MAKESILENT) -f Vendor\imgui\CMakeFiles\imgui.dir\build.make Vendor/imgui/CMakeFiles/imgui.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=64,65,66,67,68,69,70 "Built target imgui"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=73,74,75,76,77,78,79 "Built target imgui"
 .PHONY : Vendor/imgui/CMakeFiles/imgui.dir/all
 
 # Build rule for subdir invocation for target.
@@ -377,6 +512,36 @@ Clipper2Lib: Vendor/Clipper2Lib/CMakeFiles/Clipper2Lib.dir/rule
 Vendor/Clipper2Lib/CMakeFiles/Clipper2Lib.dir/clean:
 	$(MAKE) $(MAKESILENT) -f Vendor\Clipper2Lib\CMakeFiles\Clipper2Lib.dir\build.make Vendor/Clipper2Lib/CMakeFiles/Clipper2Lib.dir/clean
 .PHONY : Vendor/Clipper2Lib/CMakeFiles/Clipper2Lib.dir/clean
+
+#=============================================================================
+# Target rules for target Modules/DefaultModule/CMakeFiles/DefaultModule.dir
+
+# All Build rule for target.
+Modules/DefaultModule/CMakeFiles/DefaultModule.dir/all: CommonApi/CMakeFiles/CommonApi.dir/all
+Modules/DefaultModule/CMakeFiles/DefaultModule.dir/all: GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/all
+Modules/DefaultModule/CMakeFiles/DefaultModule.dir/all: PluginFramework/CMakeFiles/PluginFramework.dir/all
+Modules/DefaultModule/CMakeFiles/DefaultModule.dir/all: Vendor/imgui/CMakeFiles/imgui.dir/all
+Modules/DefaultModule/CMakeFiles/DefaultModule.dir/all: Vendor/Clipper2Lib/CMakeFiles/Clipper2Lib.dir/all
+	$(MAKE) $(MAKESILENT) -f Modules\DefaultModule\CMakeFiles\DefaultModule.dir\build.make Modules/DefaultModule/CMakeFiles/DefaultModule.dir/depend
+	$(MAKE) $(MAKESILENT) -f Modules\DefaultModule\CMakeFiles\DefaultModule.dir\build.make Modules/DefaultModule/CMakeFiles/DefaultModule.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" --progress-num=15,16 "Built target DefaultModule"
+.PHONY : Modules/DefaultModule/CMakeFiles/DefaultModule.dir/all
+
+# Build rule for subdir invocation for target.
+Modules/DefaultModule/CMakeFiles/DefaultModule.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" 58
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Modules/DefaultModule/CMakeFiles/DefaultModule.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "E:\Program Files (x86)\Code\C_code\vulkan_projects\VoxelEngine\build\clang-debug\CMakeFiles" 0
+.PHONY : Modules/DefaultModule/CMakeFiles/DefaultModule.dir/rule
+
+# Convenience name for target.
+DefaultModule: Modules/DefaultModule/CMakeFiles/DefaultModule.dir/rule
+.PHONY : DefaultModule
+
+# clean rule for target.
+Modules/DefaultModule/CMakeFiles/DefaultModule.dir/clean:
+	$(MAKE) $(MAKESILENT) -f Modules\DefaultModule\CMakeFiles\DefaultModule.dir\build.make Modules/DefaultModule/CMakeFiles/DefaultModule.dir/clean
+.PHONY : Modules/DefaultModule/CMakeFiles/DefaultModule.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

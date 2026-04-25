@@ -1,0 +1,104 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"E:/Program Files (x86)/Code/C_code/libraries/PluginFramework/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 92,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 100,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 104,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 118,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"PluginFramework/libPluginFramework.a"
+			],
+			"targetId" : "PluginFramework::@8e53e527277048b9f046",
+			"targetIndex" : 7,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include",
+			"paths" : 
+			[
+				{
+					"from" : "E:/Program Files (x86)/Code/C_code/libraries/PluginFramework/include",
+					"to" : "."
+				}
+			],
+			"type" : "directory"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/PluginFramework",
+			"exportName" : "LibraryLoaderTargets",
+			"exportTargets" : 
+			[
+				{
+					"id" : "PluginFramework::@8e53e527277048b9f046",
+					"index" : 7
+				}
+			],
+			"paths" : 
+			[
+				"PluginFramework/CMakeFiles/Export/cf4f98bbade87ee6f0ae8a3a8f80cdf3/LibraryLoaderTargets.cmake"
+			],
+			"type" : "export"
+		},
+		{
+			"backtrace" : 4,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/PluginFramework",
+			"paths" : 
+			[
+				"build/clang-debug/PluginFramework/PluginFrameworkConfig.cmake"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "PluginFramework",
+		"source" : "E:/Program Files (x86)/Code/C_code/libraries/PluginFramework"
+	}
+}

@@ -54,7 +54,11 @@ set(CMAKE_MAKEFILE_DEPENDS
   "E:/Program Files (x86)/Code/C_code/libraries/JsonParser/tests/test.json"
   "E:/Program Files (x86)/Code/C_code/libraries/JsonParser/tests/test_edge_cases.json"
   "E:/Program Files (x86)/Code/C_code/libraries/JsonParser/tests/test_invalid.json"
+  "E:/Program Files (x86)/Code/C_code/libraries/PluginFramework/CMakeLists.txt"
+  "E:/Program Files (x86)/Code/C_code/libraries/PluginFramework/install/PluginFrameworkConfig.cmake.in"
   "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/CMakeLists.txt"
+  "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/Modules/CMakeLists.txt"
+  "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/Modules/DefaultModule/CMakeLists.txt"
   "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/Vendor/Clipper2Lib/CMakeLists.txt"
   "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/Vendor/imgui/CMakeLists.txt"
   "CMakeFiles/3.30.2/CMakeCCompiler.cmake"
@@ -84,8 +88,12 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "JsonParser/test_invalid.json"
   "JsonParser/JsonParserConfig.cmake"
   "JsonParser/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "PluginFramework/PluginFrameworkConfig.cmake"
+  "PluginFramework/CMakeFiles/CMakeDirectoryInformation.cmake"
   "Vendor/imgui/CMakeFiles/CMakeDirectoryInformation.cmake"
   "Vendor/Clipper2Lib/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "Modules/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "Modules/DefaultModule/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -96,6 +104,10 @@ set(CMAKE_DEPEND_INFO_FILES
   "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/DependInfo.cmake"
   "GraphicsWrapper/CMakeFiles/GraphicsWrapperTests.dir/DependInfo.cmake"
   "JsonParser/CMakeFiles/JsonParserBenchmark.dir/DependInfo.cmake"
+  "PluginFramework/CMakeFiles/PluginFramework.dir/DependInfo.cmake"
+  "PluginFramework/CMakeFiles/TestPlugin.dir/DependInfo.cmake"
+  "PluginFramework/CMakeFiles/PluginFrameworkTests.dir/DependInfo.cmake"
   "Vendor/imgui/CMakeFiles/imgui.dir/DependInfo.cmake"
   "Vendor/Clipper2Lib/CMakeFiles/Clipper2Lib.dir/DependInfo.cmake"
+  "Modules/DefaultModule/CMakeFiles/DefaultModule.dir/DependInfo.cmake"
   )

@@ -1557,6 +1557,9 @@ CMakeFiles/VoxelEngine.dir/src/Rendering/AssetCache.cpp.obj: \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/Rendering/VoxelCullingCache.h \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/WorldManagement/WorldGrid.h \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/Utility/StructOfArraysPool.h \
+  E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/SDK/WorldGridInterface.h \
+  E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/SDK/ResourceCacheInterface.h \
+  E:/Program\ Files\ (x86)/Code/C_code/libraries/PluginFramework/include/Modular/Interfaces.h \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/Rendering/ShaderLayoutDefinitions.h \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/include/Math/LinearAlgebra.h \
   E:/Program\ Files\ (x86)/Code/C_code/vulkan_projects/VoxelEngine/Vendor/Clipper2Lib/include/clipper2/clipper.h \

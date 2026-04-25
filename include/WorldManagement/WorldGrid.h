@@ -3,10 +3,12 @@
 #include "Rendering/Shape.h"
 #include "Utility/StructOfArraysPool.h"
 
+#include "SDK/WorldGridInterface.h"
+
 #include <vector>
 #include <unordered_map>
 
-class WorldGrid
+class WorldGrid : public Modular::ModuleBase<WorldGrid>
 {
 public:
 
@@ -18,33 +20,33 @@ public:
 		Count
     };
 
-	struct GeneratorParams {};
+	struct ShapeParams {};
 
-    struct SphereGeneratorParams : public GeneratorParams {
+    struct SphereShapeParams : public ShapeParams {
 		size_t radius;
 		glm::ivec3 centerPosition;
     };
 
-    struct CylinderGeneratorParams : public GeneratorParams {
+    struct CylinderShapeParams : public ShapeParams {
 		size_t radius;
 		size_t height;
 		glm::ivec3 bottomCenterPosition;
     };
 
-    struct ParallelepipedGeneratorParams : public GeneratorParams {
+    struct ParallelepipedShapeParams : public ShapeParams {
 		size_t width;
 		size_t depth;
 		size_t height;
 		glm::ivec3 cornerPosition;
     };
 
-    struct CubeGeneratorParams : public GeneratorParams {
+    struct CubeShapeParams : public ShapeParams {
 		size_t edge;
 		glm::ivec3 cornerPosition;
     };
 
-    struct GeneratorSettings {
-		std::unique_ptr<GeneratorParams> params;
+    struct ShapeSettings {
+		std::unique_ptr<ShapeParams> params;
 		ShapeToGenerate shape;
     };
 
@@ -60,7 +62,6 @@ public:
 
 	using CoordToChunk = std::unordered_map<glm::ivec3, size_t>;
 
-
 	using GridPoolDescriptor = StructOfArraysPoolType<Id::VoxelState, Constants::chunkSize>;
 	using ChunksPoolDescriptor = StructOfArraysPoolType<Chunk, 1>;
 	using GridPool = StructOfArraysPool<GridPoolDescriptor, ChunksPoolDescriptor>;
@@ -71,14 +72,41 @@ private:
 	std::vector<GridPool::Allocation> m_allocations;
 	CoordToChunk m_coordToAllocation;
 
-public:
-	WorldGrid() = default;
+	WorldGridInterface m_interface;
 
-	void generate(const GeneratorSettings& settings);
-	void generateSphere(const SphereGeneratorParams& params);
-	void generateCylinder(const CylinderGeneratorParams& params);
-	void generateParallelepiped(const ParallelepipedGeneratorParams& params);
-	void generateCube(const CubeGeneratorParams& params);
+public:
+
+	WorldGrid() {
+		m_interface.getChunkCoord = this->bind<&WorldGrid::getChunkCoord>();
+		m_interface.getChunkCornerCoord = this->bind<&WorldGrid::getChunkCornerCoord>();
+		m_interface.getChunkBlocks = this->bind<&WorldGrid::getChunkBlocks>();
+		m_interface.getAdjacentBlocks = this->bind<&WorldGrid::getAdjacentBlocks>();
+		m_interface.self = this;
+	}
+
+	glm::ivec4 getChunkCoord(ChunkIndex chunkIndex) {
+		return m_pool.getData<1>(m_allocations[chunkIndex]).front().coord; 
+	}
+
+	glm::ivec4 getChunkCornerCoord(ChunkIndex chunkIndex) {
+		return m_pool.getData<1>(m_allocations[chunkIndex]).front().coordCorner;
+	}
+
+	VoxelStateId* getChunkBlocks(ChunkIndex chunkIndex) {
+		return reinterpret_cast<VoxelStateId*>(m_pool.getData<0>(m_allocations[chunkIndex]).data()); 
+	}
+
+	VoxelStateId* getAdjacentBlocks(ChunkIndex chunkIndex, size_t sideIndex) {
+		return reinterpret_cast<VoxelStateId*>(m_pool.getField<0>().data() + m_pool.getData<1>(m_allocations[chunkIndex]).front().neighbourStarts[sideIndex]); 
+	}
+
+	WorldGridInterface* getInterface() { return &m_interface; }
+
+	void generate(const ShapeSettings& settings);
+	void generateSphere(const SphereShapeParams& params);
+	void generateCylinder(const CylinderShapeParams& params);
+	void generateParallelepiped(const ParallelepipedShapeParams& params);
+	void generateCube(const CubeShapeParams& params);
 
 	void sortAllocationsByDistance(glm::ivec3 centerPos);
 

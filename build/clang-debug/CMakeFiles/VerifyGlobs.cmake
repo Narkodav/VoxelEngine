@@ -44,3 +44,23 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
   file(TOUCH_NOCREATE "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/cmake.verify_globs")
 endif()
+
+# SRC_FILES at E:/Program Files (x86)/Code/C_code/libraries/PluginFramework/CMakeLists.txt:8 (file)
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "E:/Program Files (x86)/Code/C_code/libraries/PluginFramework/src/*.cpp")
+set(OLD_GLOB
+  "E:/Program Files (x86)/Code/C_code/libraries/PluginFramework/src/Modular/Library.cpp"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  file(TOUCH_NOCREATE "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/cmake.verify_globs")
+endif()
+
+# SRC_FILES at Modules/DefaultModule/CMakeLists.txt:8 (file)
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/Modules/DefaultModule/src/*.cpp")
+set(OLD_GLOB
+  "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/Modules/DefaultModule/src/DefaultGeneratorApi.cpp"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  file(TOUCH_NOCREATE "E:/Program Files (x86)/Code/C_code/vulkan_projects/VoxelEngine/build/clang-debug/CMakeFiles/cmake.verify_globs")
+endif()

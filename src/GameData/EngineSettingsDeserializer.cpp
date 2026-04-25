@@ -16,28 +16,32 @@ MovementSettings EngineSettingsDeserializer::parseMovement(const Json::Value& co
     return movement;
 }
 
-WorldGrid::GeneratorSettings EngineSettingsDeserializer::parseGenerator(const Json::Value& config) {
-    WorldGrid::GeneratorSettings generator;
+GeneratorSettings EngineSettingsDeserializer::parseGenerator(const Json::Value& config) {
+    GeneratorSettings generator;
     const auto& generatorSettings = getInner(config, "Config", "Generator");
+
+    generator.generatorId = Modular::serviceNameToId(getString(getInner(generatorSettings, "Generator", "Type")));
+
+    generator.seed = getNumber<uint64_t>(getInner(generatorSettings, "Generator", "Seed"));
+
     const auto& shape = getInner(generatorSettings, "Generator", "Shape");
-    if(!shape.isString()) throw std::runtime_error("Shape must be a string");
-    generator.shape = getEnum(s_shapeStringToEnum, shape.asString());
+    generator.shapeSettings.shape = getEnum(s_shapeStringToEnum, shape);
 
     const auto& paramsConfig = getInner(generatorSettings, "Generator", "Params");
     
-    switch(generator.shape) {
+    switch(generator.shapeSettings.shape) {
         case WorldGrid::ShapeToGenerate::Sphere:
             {
-                generator.params = std::make_unique<WorldGrid::SphereGeneratorParams>();
-                auto& params = *static_cast<WorldGrid::SphereGeneratorParams*>(generator.params.get());
+                generator.shapeSettings.params = std::make_unique<WorldGrid::SphereShapeParams>();
+                auto& params = *static_cast<WorldGrid::SphereShapeParams*>(generator.shapeSettings.params.get());
                 params.radius = getNumberWithUnit<size_t>(getInner(paramsConfig, "Params", "Radius"));
                 params.centerPosition = getVectorWithUnit<glm::ivec3>(getInner(paramsConfig, "Params", "CenterPosition"));
             }
             break;
         case WorldGrid::ShapeToGenerate::Cylinder:
             {
-                generator.params = std::make_unique<WorldGrid::CylinderGeneratorParams>();
-                auto& params = *static_cast<WorldGrid::CylinderGeneratorParams*>(generator.params.get());
+                generator.shapeSettings.params = std::make_unique<WorldGrid::CylinderShapeParams>();
+                auto& params = *static_cast<WorldGrid::CylinderShapeParams*>(generator.shapeSettings.params.get());
                 params.radius = getNumberWithUnit<size_t>(getInner(paramsConfig, "Params", "Radius"));
                 params.height = getNumberWithUnit<size_t>(getInner(paramsConfig, "Params", "Height"));
                 params.bottomCenterPosition = getVectorWithUnit<glm::ivec3>(getInner(paramsConfig, "Params", "BottomCenterPosition"));
@@ -45,8 +49,8 @@ WorldGrid::GeneratorSettings EngineSettingsDeserializer::parseGenerator(const Js
             break;
         case WorldGrid::ShapeToGenerate::Parallelepiped:
             {
-                generator.params = std::make_unique<WorldGrid::ParallelepipedGeneratorParams>();
-                auto& params = *static_cast<WorldGrid::ParallelepipedGeneratorParams*>(generator.params.get());
+                generator.shapeSettings.params = std::make_unique<WorldGrid::ParallelepipedShapeParams>();
+                auto& params = *static_cast<WorldGrid::ParallelepipedShapeParams*>(generator.shapeSettings.params.get());
                 params.width = getNumberWithUnit<size_t>(getInner(paramsConfig, "Params", "Width"));
                 params.depth = getNumberWithUnit<size_t>(getInner(paramsConfig, "Params", "Depth"));
                 params.height = getNumberWithUnit<size_t>(getInner(paramsConfig, "Params", "Height"));
@@ -55,8 +59,8 @@ WorldGrid::GeneratorSettings EngineSettingsDeserializer::parseGenerator(const Js
             break;
         case WorldGrid::ShapeToGenerate::Cube:
             {
-                generator.params = std::make_unique<WorldGrid::CubeGeneratorParams>();
-                auto& params = *static_cast<WorldGrid::CubeGeneratorParams*>(generator.params.get());
+                generator.shapeSettings.params = std::make_unique<WorldGrid::CubeShapeParams>();
+                auto& params = *static_cast<WorldGrid::CubeShapeParams*>(generator.shapeSettings.params.get());
                 params.edge = getNumberWithUnit<size_t>(getInner(paramsConfig, "Params", "Edge"));
                 params.cornerPosition = getVectorWithUnit<glm::ivec3>(getInner(paramsConfig, "Params", "CornerPosition"));
             }

@@ -145,7 +145,7 @@ public:
     inline auto getData(Allocation& alloc) {
         static_assert(index < s_fieldAmount,
             "Index must be less than field amount");
-        return std::span(std::get<index>(m_fields).data() + alloc.offsets[index], s_amounts[index]);
+        return std::span(std::get<index>(m_fields).data() + alloc.template getEntryOffset<index>(), s_amounts[index]);
     };
 
     size_t getPoolSize() const { return m_poolSize; }
